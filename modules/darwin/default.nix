@@ -4,8 +4,9 @@
     documentation.enable = true;
     programs.zsh.enable = true;
     environment = {
-        shells = [ pkgs.bash pkgs.zsh ];
-        # loginShell = pkgs.zsh;
+        shells = with pkgs; [ bash zsh ];
+        loginShell = "${pkgs.zsh}/bin/zsh -l";
+        variables.SHELL = "${pkgs.zsh}/bin/zsh";
     };
     nix.settings = {
         build-users-group = "nixbld";
@@ -27,7 +28,10 @@
         # taps = [];
     };
     users.users.nstanger.home = "/Users/nstanger";
-    environment.systemPackages = with pkgs; [ coreutils ];
+    environment.systemPackages = with pkgs; [
+        coreutils
+        zsh-completions
+    ];
 
     fonts.fontDir.enable = true;
     fonts.fonts = with pkgs; [

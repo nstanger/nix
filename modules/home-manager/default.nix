@@ -1,12 +1,22 @@
-{pkgs, ...}: {
+{ pkgs, lib, ... }: {
     home = {
         stateVersion = "23.05";
 
         homeDirectory = "/Users/nstanger";
-        packages = with pkgs; [ less lsd exa git-extras ];
+        packages = with pkgs; [
+            bat
+            exa
+            git-extras
+            less
+            lesspipe
+            lsd
+        ];
         sessionVariables = {
             PAGER = "less";
             ISPMS_HOST = "sobmac0011.staff.uod.otago.ac.nz";
+            LESS="--no-init --raw-control-chars";
+            LESSOPEN="| lesspipe.sh %s";
+            LSCOLORS="ExGxFxDaCxDxDxxbaDacec";
         };
         file = {
             ".config/lsd/config.yaml".source = ./configs/lsd/config.yaml;
@@ -64,11 +74,23 @@
     };
     programs.zsh = {
         enable = true;
+        autocd = true;
+        cdpath = [ "~" "~/Documents" "~/Documents/Development" "~/Documents/Teaching" ];
         enableCompletion = true;
         enableAutosuggestions = true;
+        history = {
+            # expire duplicates first
+            expireDuplicatesFirst = true;
+            # extended history information
+            extended = true;
+            # do not store any duplications
+            ignoreAllDups = true;
+
+        };
         syntaxHighlighting.enable = true;
         shellAliases = {
             empty = "/bin/rm -rf ~/.Trash/*";
+            java_home = "/usr/libexec/java_home";
             # unlocktrash = "/usr/bin/sudo /usr/sbin/chown -R ${USER}:${GROUP} ~/.Trash/*";
             ls = "lsd --classify --color=auto --group-directories-first";
             l = "lsd --classify --color=auto -l --group-directories-first";
@@ -90,5 +112,6 @@
     programs.starship = {
         enable = true;
         enableZshIntegration = true;
+        settings = import ./configs/starship/settings.nix;
     };
 }
