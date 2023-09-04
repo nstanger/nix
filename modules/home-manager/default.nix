@@ -10,7 +10,7 @@
         };
         file = {
             ".config/lsd/config.yaml".source = ./configs/lsd/config.yaml;
-            ".config/lsd/themes/light.yaml".source = ./configs/lsd/light.yaml;
+            ".config/lsd/colors.yaml".source = ./configs/lsd/colors.yaml;
         };
     };
     programs.git = {
