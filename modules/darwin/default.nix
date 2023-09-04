@@ -1,7 +1,11 @@
 { pkgs, ... }: {
+    system.stateVersion = 4;
+    
     programs.zsh.enable = true;
-    environment.shells = [ pkgs.bash pkgs.zsh ];
-    environment.loginShell = pkgs.zsh;
+    environment = {
+        shells = [ pkgs.bash pkgs.zsh ];
+        loginShell = pkgs.zsh;
+    };
     nix.settings = {
         build-users-group = "nixbld";
         experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" ];
@@ -48,5 +52,4 @@
             ShowSeconds = 1;
         };
     };
-    system.stateVersion = 4;
 }
