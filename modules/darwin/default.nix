@@ -28,9 +28,12 @@
         # taps = [];
     };
     users.users.nstanger.home = "/Users/nstanger";
+
     environment.systemPackages = with pkgs; [
+        curl
         coreutils
-        zsh-completions
+        git
+        gnused
     ];
 
     fonts.fontDir.enable = true;
