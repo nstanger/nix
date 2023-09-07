@@ -19,4 +19,8 @@ in {
     # smbclient = "rlwrap /opt/local/bin/smbclient";
     beep = "/usr/bin/tput bel";
     # grep = "${BREW_PREFIX}/bin/ggrep --color=auto";
+
+    # Set Terminal window and tab title
+    winname="printf \"\\033]2;%s\\a\"";
+    tabname="printf \"\\033]1;%s\\a\"";
 }
