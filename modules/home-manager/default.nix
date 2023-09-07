@@ -9,7 +9,7 @@
 
         homeDirectory = "/Users/${username}";
         packages = with pkgs; [
-            exa
+            eza
             git-extras
             less
             lesspipe
@@ -17,11 +17,11 @@
             zsh-completions
         ];
         sessionVariables = {
-            PAGER = "less";
             ISPMS_HOST = "sobmac0011.staff.uod.otago.ac.nz";
             LESS="--no-init --raw-control-chars";
             LESSOPEN="| lesspipe.sh %s";
             LSCOLORS="ExGxFxDaCxDxDxxbaDacec";
+            PAGER = "less";
         };
         file = {
             ".config/lsd/config.yaml".source = ./configs/lsd/config.yaml;
