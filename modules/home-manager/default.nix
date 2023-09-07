@@ -1,8 +1,13 @@
-{ pkgs, lib, ... }: {
+{
+    pkgs,
+    lib,
+    username,
+    ...
+}: {
     home = {
         stateVersion = "23.05";
 
-        homeDirectory = "/Users/nstanger";
+        homeDirectory = "/Users/${username}";
         packages = with pkgs; [
             exa
             git-extras
@@ -45,7 +50,7 @@
         enable = true;
         lfs.enable = true;
         package = pkgs.gitAndTools.gitFull;
-        userName = "nstanger";
+        userName = "${username}";
         userEmail = "nigel.stanger@otago.ac.nz";
         aliases = import ./configs/git/aliases.nix;
         extraConfig = import ./configs/git/extraConfig.nix;
@@ -159,8 +164,8 @@
         config = {
             taskd = {
                 certificate = ".config/task/Nigel_Stanger.cert.pem";
-                key = "/Users/nstanger/.config/task/Nigel_Stanger.key.pem";
-                ca = "/Users/nstanger/.config/task/ca.cert.pem";
+                key = "/Users/${username}/.config/task/Nigel_Stanger.key.pem";
+                ca = "/Users/${username}/.config/task/ca.cert.pem";
                 credentials = "stanger.org.nz/Nigel Stanger/c877003c-d516-4efb-ab5f-e004449c4232";
                 server = "taskd.stanger.org.nz:53589";
             };

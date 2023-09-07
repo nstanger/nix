@@ -1,4 +1,8 @@
-{ pkgs, ... }: {
+{
+    pkgs,
+    username,
+    ...
+}: {
     system.stateVersion = 4;
 
     documentation.enable = true;
@@ -27,7 +31,7 @@
         };
         # taps = [];
     };
-    users.users.nstanger.home = "/Users/nstanger";
+    users.users."${username}".home = "/Users/${username}";
 
     environment.systemPackages = with pkgs; [
         curl
