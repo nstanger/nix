@@ -49,6 +49,8 @@
     ];
     
     services.nix-daemon.enable = true;
+
+    # system.keyboard.enableKeyMapping = true;
     
     system.defaults = {
         NSGlobalDomain = {
