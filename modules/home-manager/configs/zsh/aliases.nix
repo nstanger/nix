@@ -3,7 +3,7 @@ let
     ezaLongOptions = "--long --group";
 in {
     empty = "/bin/rm -rf ~/.Trash/*";
-    java_home = "/usr/libexec/java_home";
+    # java_home = "/usr/libexec/java_home";
     # unlocktrash = "/usr/bin/sudo /usr/sbin/chown -R ${USER}:${GROUP} ~/.Trash/*";
     ls = "eza ${ezaBasicOptions}";
     lsr = "eza ${ezaBasicOptions} --tree";

@@ -11,6 +11,11 @@
         shells = with pkgs; [ bash zsh ];
         loginShell = "${pkgs.zsh}/bin/zsh -l";
         variables.SHELL = "${pkgs.zsh}/bin/zsh";
+        # hmm, this doesn't do what I thought it would :(
+        pathsToLink = [
+            "/usr/local/sbin"
+            "/usr/libexec"
+        ];
     };
     nix.settings = {
         build-users-group = "nixbld";
@@ -88,8 +93,8 @@
             launchanim = false;
             minimize-to-application = true;
             # don't auto-rearrange spaces based on recent usage
-            mouse-over-hilite-stack = true;
             mru-spaces = false;
+            mouse-over-hilite-stack = true;
             orientation = "right";
             # don't show recent apps
             show-recents = false;
@@ -183,7 +188,7 @@
 
             # Show the ~/Library folder
             # We really only ever need to do this *once*, but you never know...
-            chflags -f nohidden ~/Library && [[ $(xattr ~/Library) = *com.apple.FinderInfo* ]] && xattr -d com.apple.FinderInfo ~/Library
+            # chflags -f nohidden ~/Library && [[ $(xattr ~/Library) = *com.apple.FinderInfo* ]] && xattr -d com.apple.FinderInfo ~/Library
 
             # set Finder view preferences, but it doesn't seem to stick :(
             # defaults write "com.apple.finder" "DesktopViewSettings" -dict-add "IconViewSettings" \
