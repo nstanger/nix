@@ -28,6 +28,7 @@ in
             zsh-completions
         ];
         sessionVariables = {
+            EXA_COLORS = import ./configs/eza/colours.nix;
             ISPMS_HOST = "sobmac0011.staff.uod.otago.ac.nz";
             LESS="--no-init --raw-control-chars";
             LESSOPEN="| lesspipe.sh %s";
