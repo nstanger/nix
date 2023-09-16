@@ -25,7 +25,6 @@ in
             git-extras
             less
             lesspipe
-            lsd
             zsh-completions
         ];
         sessionVariables = {
@@ -34,10 +33,6 @@ in
             LESSOPEN="| lesspipe.sh %s";
             LSCOLORS="ExGxFxDaCxDxDxxbaDacec";
             PAGER = "less";
-        };
-        file = {
-            ".config/lsd/config.yaml".source = ./configs/lsd/config.yaml;
-            ".config/lsd/colors.yaml".source = ./configs/lsd/colors.yaml;
         };
     };
 
