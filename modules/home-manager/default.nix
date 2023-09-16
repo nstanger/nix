@@ -20,13 +20,21 @@ in
         stateVersion = "23.05";
 
         homeDirectory = "/Users/${username}";
+        file = {
+            ".agignore".source = ./configs/silver-searcher/agignore.nix;
+        };
+
         packages = with pkgs; [
             eza
             git-extras
+            gnupg
             less
             lesspipe
+            ripgrep
+            silver-searcher
             zsh-completions
         ];
+
         sessionVariables = {
             EXA_COLORS = import ./configs/eza/colours.nix;
             ISPMS_HOST = "sobmac0011.staff.uod.otago.ac.nz";
@@ -54,6 +62,12 @@ in
         };
     };
 
+    programs.direnv = {
+        enable = true;
+        enableZshIntegration = true;
+        nix-direnv.enable = true;
+    };
+
     programs.git = {
         enable = true;
         lfs.enable = true;
@@ -65,10 +79,8 @@ in
         ignores = import ./configs/git/gitignore.nix;
     };
 
-    programs.direnv = {
+    programs.gpg = {
         enable = true;
-        enableZshIntegration = true;
-        nix-direnv.enable = true;
     };
 
     programs.neovim = {
@@ -77,6 +89,16 @@ in
         vimdiffAlias = true;
         plugins = with pkgs.vimPlugins; [ quietlight ];
         extraConfig = import ./configs/vim/vimrc.nix;
+    };
+
+    programs.ripgrep = {
+        enable = true;
+    };
+
+    programs.starship = {
+        enable = true;
+        enableZshIntegration = true;
+        settings = import ./configs/starship/settings.nix;
     };
 
     programs.taskwarrior = {
@@ -142,11 +164,5 @@ in
         syntaxHighlighting.enable = true;
 
         shellAliases = import ./configs/zsh/aliases.nix;
-    };
-
-    programs.starship = {
-        enable = true;
-        enableZshIntegration = true;
-        settings = import ./configs/starship/settings.nix;
     };
 }
