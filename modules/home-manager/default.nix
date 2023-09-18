@@ -25,21 +25,46 @@ in
         };
 
         packages = with pkgs; [
+            bfg-repo-cleaner
+            blackbox
+            entr
             eza
+            # no aarch64-darwin build for xdotool dependency
+            # fff
+            ffmpeg
             git-extras
-            gnupg
-            less
-            lesspipe
-            ripgrep
+            gnugrep
+            gnumake
+            gnutar
+            gron
+            gzip
+            imagemagick
+            mkcert
+            neovide
+            openssl
+            p7zip
+            plantuml
+            proselint
+            ps2eps
+            R
+            rlwrap
+            rsync
             silver-searcher
+            svgcleaner
+            thefuck
+            tvnamer
+            vimv-rs
+            watch
+            wget
+            xq
             zsh-completions
+            zsh-you-should-use
         ];
 
         sessionVariables = {
             EXA_COLORS = import ./configs/eza/colours.nix;
             ISPMS_HOST = "sobmac0011.staff.uod.otago.ac.nz";
             LESS="--no-init --raw-control-chars";
-            LESSOPEN="| lesspipe.sh %s";
             LSCOLORS="ExGxFxDaCxDxDxxbaDacec";
             PAGER = "less";
         };
@@ -83,6 +108,15 @@ in
         enable = true;
     };
 
+    programs.java = {
+        enable = true;
+        package = pkgs.jdk17;
+    };
+
+    programs.jq.enable = true;
+    programs.less.enable = true;
+    programs.lesspipe.enable = true;
+
     programs.neovim = {
         enable = true;
         vimAlias = true;
@@ -90,6 +124,9 @@ in
         plugins = with pkgs.vimPlugins; [ quietlight ];
         extraConfig = import ./configs/vim/vimrc.nix;
     };
+
+    programs.pandoc.enable = true;
+    programs.readline.enable = true;
 
     programs.ripgrep = {
         enable = true;
@@ -129,6 +166,11 @@ in
         extraConfig = builtins.concatStringsSep "\n" [ "nag=" "context=home" ];
     };
 
+    programs.yt-dlp = {
+        enable = true;
+        extraConfig = import ./configs/yt-dlp/config;
+    };
+
     programs.zsh = {
         enable = true;
 
@@ -142,6 +184,8 @@ in
             "~/Documents/Development"
             "~/Documents/Teaching"
         ];
+
+        # this just enables completions, still need zsh-completions package
         enableCompletion = true;
         enableAutosuggestions = true;
 
