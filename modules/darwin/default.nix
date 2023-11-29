@@ -5,18 +5,34 @@
 }: {
     system.stateVersion = 4;
 
-    documentation.enable = true;
+    documentation = {
+        enable = true;
+        man.enable = true;
+    };
+
     programs.zsh.enable = true;
+    
     environment = {
         shells = with pkgs; [ bash zsh ];
         loginShell = "${pkgs.zsh}/bin/zsh -l";
         variables.SHELL = "${pkgs.zsh}/bin/zsh";
-        # hmm, this doesn't do what I thought it would :(
+        
         pathsToLink = [
+            "/Applications"
+            # hmm, this doesn't do what I hoped it would :(
             "/usr/local/sbin"
             "/usr/libexec"
         ];
+        
+        systemPackages = with pkgs; [
+            curl
+            coreutils
+            git
+            gnused
+        ];
+        systemPath = [ "/opt/homebrew/bin" ];
     };
+    
     nix.settings = {
         auto-optimise-store = true;
         bash-prompt-prefix = "(nix:$name)\\040";
@@ -24,11 +40,19 @@
         experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" ];
         extra-nix-path = "nixpkgs=flake:nixpkgs";
     };
+    
     homebrew = {
-        # enable = true;
+        enable = true;
         # brews = [];
-        # casks = [];
-        # caskArgs.no_quarantine = true;
+        casks = [
+            "dbeaver-community"
+            "default-folder-x"
+            "inkscape" # install fails under home-manager
+            "launchbar"
+            "rectangle"
+            "skim"
+        ];
+        caskArgs.no_quarantine = true;
         # masApps = {};
         onActivation = {
             autoUpdate = false;
@@ -37,22 +61,18 @@
         };
         # taps = [];
     };
+
     users.users."${username}".home = "/Users/${username}";
 
-    environment.systemPackages = with pkgs; [
-        curl
-        coreutils
-        git
-        gnused
-    ];
-
-    fonts.fontDir.enable = true;
-    fonts.fonts = with pkgs; [
-        iosevka
-        (nerdfonts.override { fonts = [ "Hack" ]; })
-        open-sans
-        roboto
-    ];
+    fonts = {
+        fontDir.enable = true;
+        fonts = with pkgs; [
+            iosevka
+            (nerdfonts.override { fonts = [ "Hack" ]; })
+            open-sans
+            roboto
+        ];
+    };
     
     services.nix-daemon.enable = true;
 

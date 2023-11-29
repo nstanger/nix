@@ -29,8 +29,6 @@ in
             blackbox
             entr
             eza
-            # no aarch64-darwin build for xdotool dependency
-            # fff
             ffmpeg
             git-extras
             gnugrep
