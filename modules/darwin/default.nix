@@ -45,14 +45,22 @@
         enable = true;
         # brews = [];
         casks = [
+            "1password"
+            "1password-cli"
             "dbeaver-community"
             "default-folder-x"
+            "forklift"
             "inkscape" # install fails under home-manager
+            "iterm2"
             "launchbar"
+            "netbeans"
             "rectangle"
             "skim"
+            "vivaldi"
+            "visual-studio-code"
         ];
         caskArgs.no_quarantine = true;
+        global.brewfile = true;
         # masApps = {};
         onActivation = {
             autoUpdate = false;
