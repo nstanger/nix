@@ -19,62 +19,55 @@
         home-manager,
         darwin,
         ...
-    }: let
-        stdUsername = "nstanger";
-        ouUsername = "stani07p";
-    in {
-        darwinConfigurations = {
-#            Nigels-Virtual-Machine = let
-#                username = stdUsername;
-#            in {
-#                darwin.lib.darwinSystem = {
-#                    system = "aarch64-darwin";
-#                    pkgs = import nixpkgs { system = "aarch64-darwin"; };
-#                    specialArgs = {
-#                        inherit inputs nixpkgs-stable nixpkgs-unstable username;
-#                    };
-#                    modules = [
-#                        ./modules/darwin
-#                        home-manager.darwinModules.home-manager {
-#                            home-manager = {
-#                                useGlobalPkgs = true;
-#                                useUserPackages = true;
-#                                users."${username}".imports = [
-#                                    ./modules/home-manager
-#                                ];
-#                                extraSpecialArgs = {
-#                                    inherit username;
-#                                };
-#                            };
-#                        }
-#                    ];
-#                };
-#            };
-            uoK79KQLK7M0 = let
-                username = ouUsername;
-            in {
-                darwin.lib.darwinSystem = {
-                    system = "aarch64-darwin";
-                    pkgs = import nixpkgs { system = "aarch64-darwin"; };
-                    specialArgs = {
-                        inherit inputs nixpkgs-stable nixpkgs-unstable username;
-                    };
-                    modules = [
-                        ./modules/darwin
-                        home-manager.darwinModules.home-manager {
-                            home-manager = {
-                                useGlobalPkgs = true;
-                                useUserPackages = true;
-                                users."${username}".imports = [
-                                    ./modules/home-manager
-                                ];
-                                extraSpecialArgs = {
-                                    inherit username;
-                                };
-                            };
-                        }
-                    ];
+    }: {
+        darwinConfigurations = let
+            username = "nstanger";
+        in {
+            Nigels-Virtual-Machine = darwin.lib.darwinSystem {
+                system = "aarch64-darwin";
+                pkgs = import nixpkgs { system = "aarch64-darwin"; };
+                specialArgs = {
+                    inherit inputs nixpkgs-stable nixpkgs-unstable username;
                 };
+                modules = [
+                    ./modules/darwin
+                    home-manager.darwinModules.home-manager {
+                        home-manager = {
+                            useGlobalPkgs = true;
+                            useUserPackages = true;
+                            users."${username}".imports = [
+                                ./modules/home-manager
+                            ];
+                            extraSpecialArgs = {
+                                inherit username;
+                            };
+                        };
+                    }
+                ];
+            };
+            uoK79KQLK7M0 = let
+                username = "stani07p";
+            in darwin.lib.darwinSystem {
+                system = "aarch64-darwin";
+                pkgs = import nixpkgs { system = "aarch64-darwin"; };
+                specialArgs = {
+                    inherit inputs nixpkgs-stable nixpkgs-unstable username;
+                };
+                modules = [
+                    ./modules/darwin
+                    home-manager.darwinModules.home-manager {
+                        home-manager = {
+                            useGlobalPkgs = true;
+                            useUserPackages = true;
+                            users."${username}".imports = [
+                                ./modules/home-manager
+                            ];
+                            extraSpecialArgs = {
+                                inherit username;
+                            };
+                        };
+                    }
+                ];
             };
         };
     };
