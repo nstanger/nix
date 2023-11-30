@@ -12,8 +12,8 @@ in {
     ll = "eza ${ezaBasicOptions} ${ezaLongOptions} --all";
     llr = "eza ${ezaBasicOptions} ${ezaLongOptions} --all --tree";
     # man = "/usr/local/bin/openman";
-    nixswitch = "darwin-rebuild switch --flake ~/Documents/nix/.#";
-    nixupdate = "pushd ~/Documents/nix; nix flake update; nixswitch; popd";
+    nixswitch = "darwin-rebuild switch --flake ~/Documents/Development/nix/.#";
+    nixupdate = "pushd ~/Documents/Development/nix; nix flake update; nixswitch; popd";
     rm = "/bin/rm -i";
     # locate = "${BREW_PREFIX}/bin/glocate -d /var/db/locate.database";
     # smbclient = "rlwrap /opt/local/bin/smbclient";
