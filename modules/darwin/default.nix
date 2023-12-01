@@ -11,7 +11,7 @@
     };
 
     programs.zsh.enable = true;
-    
+
     environment = {
         shells = with pkgs; [ bash zsh ];
         loginShell = "${pkgs.zsh}/bin/zsh -l";
@@ -19,9 +19,6 @@
         
         pathsToLink = [
             "/Applications"
-            # hmm, this doesn't do what I hoped it would :(
-            "/usr/local/sbin"
-            "/usr/libexec"
         ];
         
         systemPackages = with pkgs; [
@@ -30,7 +27,12 @@
             git
             gnused
         ];
-        systemPath = [ "/opt/homebrew/bin" ];
+        systemPath = [
+            "/opt/homebrew/bin"
+            "/opt/homebrew/sbin"
+            "/usr/local/sbin"
+            "/usr/libexec"
+        ];
     };
     
     nix.settings = {
@@ -60,17 +62,30 @@
             "visual-studio-code"
         ];
         caskArgs.no_quarantine = true;
-        global.brewfile = true;
+        global = {
+            autoUpdate = false;
+            brewfile = true;
+        };
         # masApps = {};
         onActivation = {
             autoUpdate = false;
             upgrade = false;
             cleanup = "uninstall"; # should maybe be "zap" - remove anything not listed here
         };
-        # taps = [];
+        taps = [
+            "homebrew/core"
+            "homebrew/cask"
+        ];
     };
 
-    users.users."${username}".home = "/Users/${username}";
+    users.users."${username}" = {
+        home = "/Users/${username}";
+        shell = pkgs.zsh;
+        openssh.authorizedKeys.keyFiles = [
+            ./ssh/work_desktop.pub
+            ./ssh/home_laptop.pub
+        ];
+    };
 
     fonts = {
         fontDir.enable = true;
@@ -81,6 +96,8 @@
             roboto
         ];
     };
+
+    security.pam.enableSudoTouchIdAuth = true;
     
     services.nix-daemon.enable = true;
 
