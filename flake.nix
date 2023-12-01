@@ -10,6 +10,12 @@
 
         darwin.url = "github:lnl7/nix-darwin";
         darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+        nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+        homebrew-core.url = "github:homebrew/homebrew-core";
+        homebrew-core.flake = false;
+        homebrew-cask.url = "github:homebrew/homebrew-cask";
+        homebrew-cask.flake = false;
     };
     outputs = inputs @ {
         self,
@@ -18,6 +24,7 @@
         nixpkgs-unstable,
         home-manager,
         darwin,
+        nix-homebrew,
         ...
     }: {
         darwinConfigurations = let
@@ -30,6 +37,35 @@
                     inherit inputs nixpkgs-stable nixpkgs-unstable username;
                 };
                 modules = [
+                    nix-homebrew.darwinModules.nix-homebrew {
+                        nix-homebrew = {
+                            # Install Homebrew under the default prefix
+                            enable = true;
+
+                            # apple silicon only: also install homebrew under the default intel prefix for rosetta 2
+                            enablerosetta = false;
+
+                            # user owning the homebrew prefix
+                            user = "${username}";
+
+                            # Declarative tap management
+                            taps = with inputs; {
+                                "homebrew/homebrew-core" = homebrew-core;
+                                "homebrew/homebrew-cask" = homebrew-cask;
+#                                "homebrew/homebrew-cask-fonts" = homebrew-cask-fonts;
+#                                "homebrew/homebrew-bundle" = homebrew-bundle;
+#                                "homebrew/homebrew-services" = homebrew-services;
+#                                "homebrew/homebrew-cask-drivers" = homebrew-cask-drivers;
+                            };
+
+                            # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+                            mutableTaps = false;
+
+                            # automatically migrate existing homebrew installations
+                            automigrate = false;
+                        };
+
+                    }
                     ./modules/darwin
                     home-manager.darwinModules.home-manager {
                         home-manager = {
