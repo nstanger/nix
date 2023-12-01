@@ -58,6 +58,10 @@
             "netbeans"
             "rectangle"
             "skim"
+            "temurin8"
+            "temurin11"
+            "temurin17"
+            "temurin21"
             "vivaldi"
             "visual-studio-code"
         ];
@@ -75,6 +79,8 @@
         taps = [
             "homebrew/core"
             "homebrew/cask"
+            "homebrew/cask-fonts"
+            "homebrew/cask-versions"
         ];
     };
 

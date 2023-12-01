@@ -12,10 +12,15 @@
         darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
         nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
         homebrew-core.url = "github:homebrew/homebrew-core";
         homebrew-core.flake = false;
         homebrew-cask.url = "github:homebrew/homebrew-cask";
         homebrew-cask.flake = false;
+        homebrew-cask-fonts.url = "github:homebrew/homebrew-cask-fonts";
+        homebrew-cask-fonts.flake = false;
+        homebrew-cask-versions.url = "github:homebrew/homebrew-cask-versions";
+        homebrew-cask-versions.flake = false;
     };
     outputs = inputs @ {
         self,
@@ -52,7 +57,8 @@
                             taps = with inputs; {
                                 "homebrew/homebrew-core" = homebrew-core;
                                 "homebrew/homebrew-cask" = homebrew-cask;
-#                                "homebrew/homebrew-cask-fonts" = homebrew-cask-fonts;
+                                "homebrew/homebrew-cask-fonts" = homebrew-cask-fonts;
+                                "homebrew/homebrew-cask-versions" = homebrew-cask-versions;
 #                                "homebrew/homebrew-bundle" = homebrew-bundle;
 #                                "homebrew/homebrew-services" = homebrew-services;
 #                                "homebrew/homebrew-cask-drivers" = homebrew-cask-drivers;

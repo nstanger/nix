@@ -92,6 +92,38 @@
         "type": "github"
       }
     },
+    "homebrew-cask-fonts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701383760,
+        "narHash": "sha256-82zqnn9bwSWWFfcE6xMQjGrmjVXTf7E6mF7/lsylEGU=",
+        "owner": "homebrew",
+        "repo": "homebrew-cask-fonts",
+        "rev": "c2bc6e514a65319891e4970d4a5f29bb3004906c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-cask-fonts",
+        "type": "github"
+      }
+    },
+    "homebrew-cask-versions": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701400644,
+        "narHash": "sha256-+wKa2XEGBmyWYkeWpaOUfEesbQsdZbv/FIlN9TnRkYk=",
+        "owner": "homebrew",
+        "repo": "homebrew-cask-versions",
+        "rev": "c4e294cfc47f025c575538afa8a13d4766ec62bb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-cask-versions",
+        "type": "github"
+      }
+    },
     "homebrew-core": {
       "flake": false,
       "locked": {
@@ -229,6 +261,8 @@
         "darwin": "darwin",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
+        "homebrew-cask-fonts": "homebrew-cask-fonts",
+        "homebrew-cask-versions": "homebrew-cask-versions",
         "homebrew-core": "homebrew-core",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_3",
