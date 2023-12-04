@@ -18,8 +18,6 @@
    git clone https://github.com/nstanger/nix.git
    ```
 
-1. Install Homebrew using the [https://brew.sh/](usual method).
-
 1. Assuming system and user names are correct, `cd` into the flake repo and bootstrap the flake:
 
    ```sh
@@ -28,8 +26,10 @@
    sudo mv /etc/shells /etc/shells.before-nix-darwin
    sudo mv /etc/zshenv /etc/zshenv.before-nix-darwin
 
-   nix build ./#darwinConfigurations.[system name].system
+   nix build --extra-experimental features "nix-command flakes" ./#darwinConfigurations.[system name].system
    ./result/sw/bin/darwin-rebuild switch --flake /path/to/flake/repo
    ```
+
+   If there is a “Problem with the SSL CA cert”, during the initial `nix build`, check the solutions in this issue: <https://github.com/nixos/nix/issues/2899>. this usually happens if starting again after wiping a previous `nix` installation, which can leave dangling links as per <https://github.com/nixos/nix/issues/2899#issuecomment-1669501326>. You need to `sudo rm /etc/ssl/certs/ca-vertificates.crt` again before `darwin-rebuild switch` as otherwise it complains about the file being in the way.
 
 1. Profit!

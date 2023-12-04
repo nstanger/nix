@@ -1,10 +1,10 @@
 {
     description = "System configuration";
     inputs = {
-        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
-        nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-23.05-darwin";
+        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+        nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-23.11-darwin";
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
 
         home-manager.url = "github:nix-community/home-manager/master";
         home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -18,6 +18,8 @@
         homebrew-core.flake = false;
         homebrew-cask.url = "github:homebrew/homebrew-cask";
         homebrew-cask.flake = false;
+        homebrew-bundle.url = "github:homebrew/homebrew-bundle";
+        homebrew-bundle.flake = false;
         homebrew-cask-fonts.url = "github:homebrew/homebrew-cask-fonts";
         homebrew-cask-fonts.flake = false;
         homebrew-cask-versions.url = "github:homebrew/homebrew-cask-versions";
@@ -27,6 +29,7 @@
         self,
         nixpkgs,
         nixpkgs-stable,
+        nixpkgs-darwin,
         nixpkgs-unstable,
         home-manager,
         darwin,
@@ -36,22 +39,22 @@
         let
             darwinSystem = system: extraModules: hostName:
                 let
-                    pkgs = import nixpkgs-darwin {
-                        inherit system;
-                    };
+                    pkgs = import nixpkgs-darwin { inherit system; };
                 in
                     darwin.lib.darwinSystem {
                         inherit system;
-                        specialArgs = { inherit lib pkgs inputs self darwin; };
+                        specialArgs = { inherit pkgs inputs self darwin; };
                         modules = [
                             home-manager.darwinModules.home-manager
                             {
 #                                nixpkgs.overlays = overlays;
                                 #system.darwinLabel = "${config.system.darwinLabel}@${rev}";
                                 networking.hostName = hostName;
-                                home-manager.useGlobalPkgs = true;
-                                home-manager.useUserPackages = true;
-                                home-manager.extraSpecialArgs = { inherit inputs pkgs; };
+                                home-manager = {
+                                    useGlobalPkgs = true;
+                                    useUserPackages = true;
+                                    extraSpecialArgs = { inherit inputs pkgs; };
+                                };
 #                                home-manager.users.ragon = hmConfig;
                             }
                             nix-homebrew.darwinModules.nix-homebrew {
@@ -59,41 +62,33 @@
                                     # Install Homebrew under the default prefix
                                     enable = true;
 
-                                    # apple silicon only: also install homebrew under the default intel prefix for rosetta 2
-                                    enablerosetta = false;
-
-                                    # user owning the homebrew prefix
-                                    user = "${username}";
+                                    # user is set in per-host configuration
 
                                     # Declarative tap management
                                     taps = with inputs; {
                                         "homebrew/homebrew-core" = homebrew-core;
                                         "homebrew/homebrew-cask" = homebrew-cask;
+                                        "homebrew/homebrew-bundle" = homebrew-bundle;
                                         "homebrew/homebrew-cask-fonts" = homebrew-cask-fonts;
                                         "homebrew/homebrew-cask-versions" = homebrew-cask-versions;
-        #                                "homebrew/homebrew-bundle" = homebrew-bundle;
         #                                "homebrew/homebrew-services" = homebrew-services;
         #                                "homebrew/homebrew-cask-drivers" = homebrew-cask-drivers;
                                     };
 
                                     # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
                                     mutableTaps = false;
-
-                                    # automatically migrate existing homebrew installations
-                                    automigrate = false;
                                 };
-
                             }
-                            ./darwin-common.nix
+                            ./modules/darwin
                         ] ++ extraModules;
                     };
 
+            processConfigurations = builtins.mapAttrs (n: v: v n);
 
-            processConfigurations = lib.mapAttrs (n: v: v n);
         in {
-            darwinConfigurations = {
-                Nigels-Virtual-Machine = darwinSystem "aarch64" [ ./hosts/Nigels-Virtual-Machine ];
-i               uoK79KQLK7M0 = darwinSystem "aarch64" [ ./hosts/uoK79KQLK7M0 ];
+            darwinConfigurations = processConfigurations {
+                Nigels-Virtual-Machine = darwinSystem "aarch64-darwin" [ ./hosts/Nigels-Virtual-Machine ];
+                # uoK79KQLK7M0 = darwinSystem "aarch64" [ ./hosts/uoK79KQLK7M0 ];
 #            Nigels-Virtual-Machine = darwin.lib.darwinSystem {
 #                system = "aarch64-darwin";
 #                pkgs = import nixpkgs { system = "aarch64-darwin"; };
@@ -170,6 +165,6 @@ i               uoK79KQLK7M0 = darwinSystem "aarch64" [ ./hosts/uoK79KQLK7M0 ];
 #                    }
 #                ];
 #            };
+            };
         };
-    };
 }

@@ -1,6 +1,5 @@
 {
     pkgs,
-    username,
     ...
 }: {
     system.stateVersion = 4;
@@ -58,7 +57,8 @@
             "netbeans"
             "rectangle"
             "skim"
-            "temurin8"
+            # temurin8 requires Rosetta 2 on macOS 13, and isn't supported
+            # at all on 14+; can enable on x86 hosts
             "temurin11"
             "temurin17"
             "temurin21"
@@ -79,17 +79,9 @@
         taps = [
             "homebrew/core"
             "homebrew/cask"
+            "homebrew/bundle"
             "homebrew/cask-fonts"
             "homebrew/cask-versions"
-        ];
-    };
-
-    users.users."${username}" = {
-        home = "/Users/${username}";
-        shell = pkgs.zsh;
-        openssh.authorizedKeys.keyFiles = [
-            ./ssh/work_desktop.pub
-            ./ssh/home_laptop.pub
         ];
     };
 
@@ -103,7 +95,7 @@
         ];
     };
 
-    security.pam.enableSudoTouchIdAuth = true;
+    # security.pam.enableSudoTouchIdAuth = true;
     
     services.nix-daemon.enable = true;
 
@@ -126,7 +118,7 @@
             PMPrintingExpandedStateForPrint = true;
             PMPrintingExpandedStateForPrint2 = true;
             # disable natural scrolling direction (for now)
-            "com.apple.swipescrolldirection" = false;
+            # "com.apple.swipescrolldirection" = false;
         };
         finder = {
             AppleShowAllExtensions = true;
