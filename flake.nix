@@ -88,7 +88,7 @@
         in {
             darwinConfigurations = processConfigurations {
                 Nigels-Virtual-Machine = darwinSystem "aarch64-darwin" [ ./hosts/Nigels-Virtual-Machine ];
-                # uoK79KQLK7M0 = darwinSystem "aarch64" [ ./hosts/uoK79KQLK7M0 ];
+                uoK79KQLK7M0 = darwinSystem "aarch64-darwin" [ ./hosts/uoK79KQLK7M0 ];
 #            Nigels-Virtual-Machine = darwin.lib.darwinSystem {
 #                system = "aarch64-darwin";
 #                pkgs = import nixpkgs { system = "aarch64-darwin"; };
