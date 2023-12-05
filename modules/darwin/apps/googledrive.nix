@@ -1,0 +1,3 @@
+{
+    PromptToBackupDevices = 0;
+}

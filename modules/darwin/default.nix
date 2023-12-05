@@ -48,13 +48,16 @@
             "1password-cli"
             "dbeaver-community"
             "default-folder-x"
+            # "dropbox"
             "forklift"
+            "google-drive"
             "inkscape" # install fails under home-manager
             "iterm2"
             "launchbar"
             "netbeans"
             "rectangle"
             "skim"
+            "synology-drive"
             # temurin8 requires Rosetta 2 on macOS 13, and isn't supported
             # at all on 14+; can enable on x86 hosts
             "temurin11"
@@ -175,9 +178,10 @@
                 DSDontWriteNetworkStores = true;
                 # DSDontWriteUSBStores = true;
             };
+            "at.obdev.LaunchBar" = import ./apps/launchbar.nix;
             "com.apple.finder" = import ./apps/finder.nix;
             "com.apple.Safari" = import ./apps/safari.nix;
-            "at.obdev.LaunchBar" = import ./apps/launchbar.nix;
+            "com.google.drivefs.settings" = import ./apps/googledrive.nix;
             "net.sourceforge.skim-app.skim" = import ./apps/skim.nix;
         };
     };
