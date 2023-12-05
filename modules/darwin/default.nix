@@ -244,61 +244,107 @@
                 SwitchToCalculatorAutomatically = 0;
                 SwitchToCalculatorWithEqualsSign = 1;
             };
+            # see extraUserActivation below for "complicated" settings
+            "net.sourceforge.skim-app.skim" = {
+                SKAutoCheckFileUpdate = 1;
+                SKAutoReloadFileUpdate = 1;
+                SKLeftSidePaneWidth = 0;
+                SKRememberLastPageViewed = 1;
+                SKReopenLastOpenFiles = 1;
+                SKRightSidePaneWidth = 0;
+                SKShowBookmarkStatusBar = 0;
+                SKShowStatusBar = 1;
+                SKTeXEditorArguments = "vscode://file\"%urlfile\":%line";
+                SKTeXEditorCommand = "open";
+                SKTeXEditorPreset = "Visual Studio Code";
+                SUEnableAutomaticChecks = 1;
+                SUScheduledCheckInterval = 604800;
+                # SUUpdateRelaunchingMarker = 0;
+            };
         };
     };
 
     system.activationScripts = {
-        extraActivation.enable = true;
+        extraUserActivation = {
+            enable = true;
 
-        # huh, .source doesn't work...
-        extraActivation.text = ''
-            echo "activating extra preferences..."
-            # Close any open System Preferences panes, to prevent them from overriding
-            # settings we're about to change
-            osascript -e 'tell application "System Settings" to quit'
+            # huh, .source doesn't work...
+            text = ''
+                echo "activating extra preferences..."
+                # Close any open System Preferences panes, to prevent them from overriding
+                # settings we're about to change
+                osascript -e 'tell application "System Settings" to quit'
 
-            # Show the ~/Library folder
-            # We really only ever need to do this *once*, but you never know...
-            # chflags -f nohidden ~/Library && [[ $(xattr ~/Library) = *com.apple.FinderInfo* ]] && xattr -d com.apple.FinderInfo ~/Library
+                # Show the ~/Library folder
+                # We really only ever need to do this *once*, but you never know...
+                # chflags -f nohidden ~/Library && [[ $(xattr ~/Library) = *com.apple.FinderInfo* ]] && xattr -d com.apple.FinderInfo ~/Library
 
-            # set Finder view preferences, but it doesn't seem to stick :(
-            # defaults write "com.apple.finder" "DesktopViewSettings" -dict-add "IconViewSettings" \
-            #     '{ arrangeBy = kind; backgroundColorBlue = 1; backgroundColorGreen = 1; backgroundColorRed = 1; backgroundType = 0; gridOffsetX = 0; gridOffsetY = 0; gridSpacing = 54; iconSize = 128; labelOnBottom = 1; showIconPreview = 1; showItemInfo = 1; textSize = 12; viewOptionsVersion = 1; }'
+                # set Finder view preferences, but it doesn't seem to stick :(
+                # defaults write "com.apple.finder" "DesktopViewSettings" -dict-add "IconViewSettings" \
+                #     '{ arrangeBy = kind; backgroundColorBlue = 1; backgroundColorGreen = 1; backgroundColorRed = 1; backgroundType = 0; gridOffsetX = 0; gridOffsetY = 0; gridSpacing = 54; iconSize = 128; labelOnBottom = 1; showIconPreview = 1; showItemInfo = 1; textSize = 12; viewOptionsVersion = 1; }'
 
-            # Display emails in threaded mode, sorted by date (newest at the top)
-            # defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
-            # defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "no"
-            # defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
+                # Display emails in threaded mode, sorted by date (newest at the top)
+                # defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
+                # defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "no"
+                # defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
 
-            # this doesn't seem to stick either :(:(
-            defaults write com.apple.spotlight orderedItems -array \
-                '{ enabled = 1; name = APPLICATIONS; }' \
-                '{ enabled = 0; name = "MENU_SPOTLIGHT_SUGGESTIONS"; }' \
-                '{ enabled = 0; name = "MENU_CONVERSION"; }' \
-                '{ enabled = 0; name = "MENU_EXPRESSION"; }' \
-                '{ enabled = 1; name = "MENU_DEFINITION"; }' \
-                '{ enabled = 0; name = "SYSTEM_PREFS"; }' \
-                '{ enabled = 1; name = DOCUMENTS; }' \
-                '{ enabled = 1; name = DIRECTORIES; }' \
-                '{ enabled = 1; name = PRESENTATIONS; }' \
-                '{ enabled = 0; name = SPREADSHEETS; }' \
-                '{ enabled = 1; name = PDF; }' \
-                '{ enabled = 1; name = MESSAGES; }' \
-                '{ enabled = 1; name = CONTACT; }' \
-                '{ enabled = 1; name = "EVENT_TODO"; }' \
-                '{ enabled = 1; name = IMAGES; }' \
-                '{ enabled = 0; name = BOOKMARKS; }' \
-                '{ enabled = 0; name = MUSIC; }' \
-                '{ enabled = 0; name = MOVIES; }' \
-                '{ enabled = 0; name = FONTS; }' \
-                '{ enabled = 1; name = "MENU_OTHER"; }' \
-                '{ enabled = 1; name = SOURCE; }'
-        '';
+                # this doesn't seem to stick either :(:(
+                defaults write com.apple.spotlight orderedItems -array \
+                    '{ enabled = 1; name = APPLICATIONS; }' \
+                    '{ enabled = 0; name = "MENU_SPOTLIGHT_SUGGESTIONS"; }' \
+                    '{ enabled = 0; name = "MENU_CONVERSION"; }' \
+                    '{ enabled = 0; name = "MENU_EXPRESSION"; }' \
+                    '{ enabled = 1; name = "MENU_DEFINITION"; }' \
+                    '{ enabled = 0; name = "SYSTEM_PREFS"; }' \
+                    '{ enabled = 1; name = DOCUMENTS; }' \
+                    '{ enabled = 1; name = DIRECTORIES; }' \
+                    '{ enabled = 1; name = PRESENTATIONS; }' \
+                    '{ enabled = 0; name = SPREADSHEETS; }' \
+                    '{ enabled = 1; name = PDF; }' \
+                    '{ enabled = 1; name = MESSAGES; }' \
+                    '{ enabled = 1; name = CONTACT; }' \
+                    '{ enabled = 1; name = "EVENT_TODO"; }' \
+                    '{ enabled = 1; name = IMAGES; }' \
+                    '{ enabled = 0; name = BOOKMARKS; }' \
+                    '{ enabled = 0; name = MUSIC; }' \
+                    '{ enabled = 0; name = MOVIES; }' \
+                    '{ enabled = 0; name = FONTS; }' \
+                    '{ enabled = 1; name = "MENU_OTHER"; }' \
+                    '{ enabled = 1; name = SOURCE; }'
+                
+                # this however *does* work :D
+                osascript -e 'tell application "Skim" to quit'
+                defaults write net.sourceforge.skim-app.skim SKDefaultPDFDisplaySettings -dict \
+                    autoScales 1 \
+                    displayBox 1 \
+                    displayDirection 0 \
+                    displayMode 0 \
+                    displaysAsBook 1 \
+                    displaysPageBreaks 1 \
+                    displaysRTL 0
+                
+                # defaults can't write complex nested structures using the
+                # provided command line options. The only way seems to be to
+                # provide a "legacy plist string", which may break at some
+                # future point?
+                # Tried: one huge string (bleh); printf | xargs (less bleh); heredoc (failed).
+                printf "'%s; %s; %s; %s; %s;'" \
+                    '"TB Display Mode" = 1' \
+                    '"TB Icon Size Mode" = 1' \
+                    '"TB Is Shown" = 1' \
+                    '"TB Size Mode" = 1' \
+                    '"TB Item Identifiers" = (SKDocumentToolbarPreviousNextItemIdentifier, SKDocumentToolbarPageNumberItemIdentifier, SKDocumentToolbarBackForwardItemIdentifier, SKDocumentToolbarZoomInActualOutItemIdentifier, SKDocumentToolbarScaleItemIdentifier, SKDocumentToolbarToolModeItemIdentifier, SKDocumentToolbarNewNoteItemIdentifier)' \
+                | xargs defaults write net.sourceforge.skim-app.skim "NSToolbar Configuration SKDocumentToolbar"
+            '';
+        };
 
         # https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
-        postUserActivation.text = ''
-            # Following line should allow us to avoid a logout/login cycle
-            /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-        '';
+        postUserActivation = {
+            enable = true;
+            text = ''
+                # Following line should allow us to avoid a logout/login cycle
+                /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+            '';
+        };
     };
 }
