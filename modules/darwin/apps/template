@@ -1,0 +1,30 @@
+# Copy this template to appname.sh and configure the settings accordingly.
+
+# Settings
+# The name of the application, e.g., "Finder".
+appname="Appname"
+
+# The corresponding defaults domain, e.g., "com.apple.finder".
+appdefaults="com.defaults.app"
+
+# Is this configuration enabled?
+enabled=0
+
+# Quit the app? This may not always be possible or appropriate.
+quitapp=1
+
+if [ $enabled -ne 0 ]; then
+    echo "    [$appname]"
+
+    apprunning=$(osascript -e 'tell application "System Events" to (name of processes) contains "'$appname'"')
+    if [ $quitapp -ne 0 -a $apprunning = "true" ]; then
+        osascript -e 'tell application "'$appname'" to quit'
+    fi
+
+    # repeat as needed...
+    # defaults write $appdefaults key value
+
+    if [ $quitapp -ne 0 -a $apprunning = "true" ]; then
+        open -a $appname
+    fi
+ fi
