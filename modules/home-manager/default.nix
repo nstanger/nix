@@ -4,7 +4,7 @@
     ...
 }:
 let
-    quietlight = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    quietlight = pkgs.vimUtils.buildVimPlugin {
         name = "quietlight";
         src = pkgs.fetchFromGitHub {
             owner = "aonemd";
@@ -70,16 +70,19 @@ in
         enable = true;
         # extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batwatch ];
         config = {
-            theme = "Quiet Light";
+            theme = "QuietLight";
             italic-text = "always";
         };
         themes = {
-            "Quiet Light" = builtins.readFile (pkgs.fetchFromGitHub {
-                owner = "colorsublime";
-                repo = "colorsublime-themes"; # Bat uses sublime syntax for its themes
-                rev = "949c70f12a8d8f5d8cfc966be45fd42cd3a6904c";
-                sha256 = null;
-            } + "/themes/QuietLight.tmTheme");
+            QuietLight = {
+                src = pkgs.fetchFromGitHub {
+                    owner = "colorsublime";
+                    repo = "colorsublime-themes"; # Bat uses sublime syntax for its themes
+                    rev = "949c70f12a8d8f5d8cfc966be45fd42cd3a6904c";
+                    sha256 = null;
+                };
+                file = "themes/QuietLight.tmTheme";
+            };
         };
     };
 
