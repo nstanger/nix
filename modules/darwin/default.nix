@@ -117,6 +117,7 @@
             PMPrintingExpandedStateForPrint2 = true;
             # disable natural scrolling direction (for now)
             # "com.apple.swipescrolldirection" = false;
+            "com.apple.keyboard.fnState" = true;
         };
         finder = {
             AppleShowAllExtensions = true;
@@ -162,105 +163,22 @@
         # universalaccess.closeViewScrollWheelToggle = true;
         ActivityMonitor.IconType = 3; # disk activity
 
-        CustomSystemPreferences = {};
+        CustomSystemPreferences = {
+            NSGlobalDomain = {
+                AppleHighlightColor = "0.75 0.498039 1.000000 Other";
+            };
+        };
 
         CustomUserPreferences = {
+            # see extraUserActivation below for "complicated" settings
             "com.apple.desktopservices" = {
                 DSDontWriteNetworkStores = true;
                 # DSDontWriteUSBStores = true;
             };
-            "com.apple.finder" = {
-                ShowExternalHardDrivesOnDesktop = true;
-                ShowHardDrivesOnDesktop = true;
-                ShowMountedServersOnDesktop = true;
-                ShowRecentTags = false;
-                # new windows default to user home
-                NewWindowTarget = "PfHm";
-                _FXSortFoldersFirst = true;
-                # DesktopViewSettings.IconViewSettings = {
-                #     arrangeBy = "kind";
-                    # backgroundType = 0;
-                    # iconSize = 64;
-                    # labelOnBottom = 1;
-                    # showIconPreview = 1;
-                    # showItemInfo = 1;
-                # };
-                WarnOnEmptyTrash = false;
-            };
-            "com.apple.Safari" = {
-                # Privacy: don’t send search queries to Apple
-                UniversalSearchEnabled = false;
-                SuppressSearchSuggestions = true;
-                # Press Tab to highlight each item on a web page
-                # WebKitTabToLinksPreferenceKey = true;
-                ShowFullURLInSmartSearchField = true;
-                # Prevent Safari from opening ‘safe’ files automatically after downloading
-                AutoOpenSafeDownloads = false;
-                # ShowFavoritesBar = false;
-                IncludeInternalDebugMenu = true;
-                IncludeDevelopMenu = true;
-                WebKitDeveloperExtrasEnabledPreferenceKey = true;
-                WebContinuousSpellCheckingEnabled = true;
-                WebAutomaticSpellingCorrectionEnabled = false;
-                AutoFillFromAddressBook = false;
-                AutoFillCreditCardData = false;
-                AutoFillMiscellaneousForms = false;
-                WarnAboutFraudulentWebsites = true;
-                WebKitJavaEnabled = false;
-                WebKitJavaScriptCanOpenWindowsAutomatically = false;
-                "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks" = true;
-                "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
-                "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled" = false;
-                "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled" = false;
-                "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" = false;
-                "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically" = false;
-            };
-            "at.obdev.LaunchBar" = {
-                AbbreviateFilePaths = 1;
-                CalendarEventParser = 1; # Fantastical
-                ClipMergeEnabled = 0;
-                ClipboardHistoryEnabled = 1;
-                ClipboardHistoryIgnoreApplications = [
-                    "com.apple.keychainaccess"
-                    "com.agilebits.onepassword"
-                ];
-                ClipboardHistoryIgnoreApplicationsEnabled = 1;
-                LaunchBarHorizontalPosition = 1;
-                LaunchBarHotKey = "4096@53";
-                LaunchBarHotKeyEnabled = 1;
-                LaunchBarVerticalPosition = 1;
-                LaunchBarWindowWidth = 600;
-                ModifierTapInstantSend = 23;
-                PasteClipboardHistoryHotKeyEnabled = 0;
-                PlayInstantSendSoundEffect = 1;
-                PreferredTerminal = 1; # iTerm
-                RenameConvertsExtensionToLowercase = 1;
-                SelectFromClipboardHistoryHotKeyEnabled = 0;
-                ShowClipboardHistoryHotKeyEnabled = 0;
-                SnippetsHotKey = "6144@53";
-                SnippetsHotKeyEnabled = 1;
-                SoftwareUpdateCheckInterval = 604800;
-                SpotlightHotKeyEnabled = 0;
-                SwitchToCalculatorAutomatically = 0;
-                SwitchToCalculatorWithEqualsSign = 1;
-            };
-            # see extraUserActivation below for "complicated" settings
-            "net.sourceforge.skim-app.skim" = {
-                SKAutoCheckFileUpdate = 1;
-                SKAutoReloadFileUpdate = 1;
-                SKLeftSidePaneWidth = 0;
-                SKRememberLastPageViewed = 1;
-                SKReopenLastOpenFiles = 1;
-                SKRightSidePaneWidth = 0;
-                SKShowBookmarkStatusBar = 0;
-                SKShowStatusBar = 1;
-                SKTeXEditorArguments = "vscode://file\"%urlfile\":%line";
-                SKTeXEditorCommand = "open";
-                SKTeXEditorPreset = "Visual Studio Code";
-                SUEnableAutomaticChecks = 1;
-                SUScheduledCheckInterval = 604800;
-                # SUUpdateRelaunchingMarker = 0;
-            };
+            "com.apple.finder" = import ./apps/finder.nix;
+            "com.apple.Safari" = import ./apps/safari.nix;
+            "at.obdev.LaunchBar" = import ./apps/launchbar.nix;
+            "net.sourceforge.skim-app.skim" = import ./apps/skim.nix;
         };
     };
 

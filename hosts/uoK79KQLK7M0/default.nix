@@ -30,16 +30,29 @@ in {
     # enable Touch ID for sudo in terminal
     security.pam.enableSudoTouchIdAuth = true;
 
-    # enable natural scrolling direction
-    system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = true;
+    system.defaults = {
+        NSGlobalDomain = {
+            # enable natural scrolling direction
+            "com.apple.swipescrolldirection" = true;
+            # disable tap to click - it changes the setting but doesn't seem to activate
+            "com.apple.mouse.tapBehavior" = null;
+        };
+
+        CustomSystemPreferences = {
+            NSGlobalDomain = {
+                # correct key, but doesn't change in System Settings
+                "com.apple.trackpad.forceClick" = 0;
+            };
+        };
+    };
 
     nix-homebrew = {
         # user owning the homebrew prefix
         user = username;
         # apple silicon only: also install homebrew under the default intel prefix for rosetta 2
         enableRosetta = false;
-        # automatically migrate existing homebrew installations - once only?
-        autoMigrate = true;
+        # automatically migrate existing homebrew installations - first time only
+        autoMigrate = false;
     };
 
     home-manager.users."${username}" = {
