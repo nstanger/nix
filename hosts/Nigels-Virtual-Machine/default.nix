@@ -22,6 +22,11 @@ in {
         ];
     };
    
+    environment.systemPath = [
+        "/opt/homebrew/bin"
+        "/opt/homebrew/sbin"
+    ];
+
     # disable natural scrolling direction (for now)
     system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
 

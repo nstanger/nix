@@ -27,8 +27,6 @@
             gnused
         ];
         systemPath = [
-            "/opt/homebrew/bin"
-            "/opt/homebrew/sbin"
             "/usr/local/sbin"
             "/usr/libexec"
         ];

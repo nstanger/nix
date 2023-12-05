@@ -21,9 +21,17 @@ in {
             # ./ssh/home_laptop.pub
         ];
     };
-   
-    # disable natural scrolling direction (for now)
-    system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
+    
+    environment.systemPath = [
+        "/opt/homebrew/bin"
+        "/opt/homebrew/sbin"
+    ];
+
+    # enable Touch ID for sudo in terminal
+    security.pam.enableSudoTouchIdAuth = true;
+
+    # enable natural scrolling direction
+    system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = true;
 
     nix-homebrew = {
         # user owning the homebrew prefix
