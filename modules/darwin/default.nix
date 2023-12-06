@@ -71,7 +71,9 @@
             autoUpdate = false;
             brewfile = true;
         };
-        # masApps = {};
+        masApps = {
+            PCalc = 403504866;
+        };
         onActivation = {
             autoUpdate = false;
             upgrade = false;
@@ -185,6 +187,7 @@
             "com.google.drivefs.settings" = import ./apps/googledrive.nix;
             "com.stclairsoft.DefaultFolderX5" = import ./apps/defaultfolderx.nix;
             "net.sourceforge.skim-app.skim" = import ./apps/skim.nix;
+            "uk.co.tla-systems.pcalc" = import ./apps/pcalc.nix;
         };
     };
 
