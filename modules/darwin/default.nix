@@ -196,6 +196,20 @@
     };
 
     system.activationScripts = {
+        extraActivation = {
+            enable = true;
+            text = ''
+                echo "activating extra system preferences..."
+
+                # Microsoft AutoUpdate daemon check once per week instead of *every 2 hours*.
+                # NOTE: Editing plist files with defaults is officially deprecated and will
+                # be moved to a different tool at some stage.
+                defaults write /Library/LaunchAgents/com.microsoft.update.agent.plist StartInterval -int 604800
+                # For some reason the previous command changes the permissions to 600.
+                chmod 644 /Library/LaunchAgents/com.microsoft.update.agent.plist
+            '';
+        };
+
         extraUserActivation = {
             enable = true;
 
