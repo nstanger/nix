@@ -30,7 +30,8 @@ if [ $enabled -ne 0 ]; then
     defaults write $appdefaults hidePathBar 0
     defaults write $appdefaults hideTitleBar 0
     defaults write $appdefaults infoMode 0
-    defaults write $appdefaults listViewAlternatingBackground 1 # sticks but does nothing?
+    # Sticks but does seems to reset the appearance to non-alternating?
+    # defaults write $appdefaults listViewAlternatingBackground 1
     defaults write $appdefaults pdfAutoScales 0
     defaults write $appdefaults pdfDisplayMode 0
     defaults write $appdefaults pdfScaleFactor 1
