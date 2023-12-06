@@ -180,6 +180,7 @@
             };
             "at.obdev.LaunchBar" = import ./apps/launchbar.nix;
             "com.apple.finder" = import ./apps/finder.nix;
+            "com.apple.Preview" = import ./apps/preview.nix;
             "com.apple.Safari" = import ./apps/safari.nix;
             "com.google.drivefs.settings" = import ./apps/googledrive.nix;
             "com.stclairsoft.DefaultFolderX5" = import ./apps/defaultfolderx.nix;
