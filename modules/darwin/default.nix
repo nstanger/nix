@@ -46,6 +46,7 @@
         casks = [
             "1password"
             "1password-cli"
+            "blockblock"
             "dbeaver-community"
             "default-folder-x"
             # "dropbox"
@@ -53,8 +54,11 @@
             "google-drive"
             "inkscape" # install fails under home-manager
             "iterm2"
+            "knockknock"
             "launchbar"
             "netbeans"
+            "oversight"
+            "ransomwhere"
             "rectangle"
             "skim"
             "synology-drive"
