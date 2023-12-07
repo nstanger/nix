@@ -23,6 +23,7 @@
         systemPackages = with pkgs; [
             curl
             coreutils
+            findutils
             git
             gnused
         ];

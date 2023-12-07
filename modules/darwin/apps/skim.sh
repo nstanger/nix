@@ -34,14 +34,24 @@ if [ $enabled -ne 0 ]; then
     # provided command line options. The only way seems to be to
     # provide a "legacy plist string", which may break at some
     # future point?
-    # Tried: one huge string (bleh); printf | xargs (less bleh); heredoc (failed).
-    printf "'%s; %s; %s; %s; %s;'" \
-        '"TB Display Mode" = 1' \
-        '"TB Icon Size Mode" = 1' \
-        '"TB Is Shown" = 1' \
-        '"TB Size Mode" = 1' \
-        '"TB Item Identifiers" = (SKDocumentToolbarPreviousNextItemIdentifier, SKDocumentToolbarPageNumberItemIdentifier, SKDocumentToolbarBackForwardItemIdentifier, SKDocumentToolbarZoomInActualOutItemIdentifier, SKDocumentToolbarScaleItemIdentifier, SKDocumentToolbarToolModeItemIdentifier, SKDocumentToolbarNewNoteItemIdentifier)' \
-    | xargs defaults write $appdefaults "NSToolbar Configuration SKDocumentToolbar"
+    # cat with heredoc into xargs seems to be the best wrt readability,
+    # but note " must be quoted, and requires xargs from GNU findutils
+    cat <<EOF |
+        \"TB Display Mode\" = 1;
+        \"TB Icon Size Mode\" = 1;
+        \"TB Is Shown\" = 1;
+        \"TB Item Identifiers\" =         (
+            SKDocumentToolbarPreviousNextItemIdentifier,
+            SKDocumentToolbarPageNumberItemIdentifier,
+            SKDocumentToolbarBackForwardItemIdentifier,
+            SKDocumentToolbarZoomInActualOutItemIdentifier,
+            SKDocumentToolbarScaleItemIdentifier,
+            SKDocumentToolbarToolModeItemIdentifier,
+            SKDocumentToolbarNewNoteItemIdentifier
+        );
+        \"TB Size Mode\" = 1;
+EOF
+tr -d '\n' | xargs --replace=PLIST defaults write $appdefaults "NSToolbar Configuration SKDocumentToolbar" 'PLIST'
 
     if [ $quitapp -ne 0 -a $apprunning = "true" ]; then
         open -a $appname
