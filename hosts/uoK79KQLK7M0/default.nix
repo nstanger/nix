@@ -55,6 +55,15 @@ in {
         autoMigrate = false;
     };
 
+    homebrew = {
+        casks = [
+            "ransomwhere"
+        ];
+        masApps = {
+            PCalc = 403504866;
+        };
+    };
+
     home-manager.users."${username}" = {
         imports = [
             ../../modules/home-manager

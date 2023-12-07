@@ -59,7 +59,8 @@
             "launchbar"
             "netbeans"
             "oversight"
-            "ransomwhere"
+            # currently Intel-only
+            # "ransomwhere"
             "rectangle"
             "skim"
             "synology-drive"
@@ -76,9 +77,7 @@
             autoUpdate = false;
             brewfile = true;
         };
-        masApps = {
-            PCalc = 403504866;
-        };
+        # masApps = {};
         onActivation = {
             autoUpdate = false;
             upgrade = false;

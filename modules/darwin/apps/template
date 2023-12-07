@@ -23,6 +23,16 @@ if [ $enabled -ne 0 ]; then
 
     # repeat as needed...
     # defaults write $appdefaults key value
+    #
+    # A more readable way to install a complex plist value (requires
+    # findutils xargs installed as a system package):
+    # cat <<EOF |
+    #     value1 = 1;
+    #     value 2 = {
+    #         value3 = "foo";
+    #     };
+    # EOF
+    # tr -d '\n' | xargs --replace=PLIST write $appdefaults "key" 'PLIST'
 
     if [ $quitapp -ne 0 -a $apprunning = "true" ]; then
         open -a $appname

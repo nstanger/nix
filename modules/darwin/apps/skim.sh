@@ -40,7 +40,7 @@ if [ $enabled -ne 0 ]; then
         \"TB Display Mode\" = 1;
         \"TB Icon Size Mode\" = 1;
         \"TB Is Shown\" = 1;
-        \"TB Item Identifiers\" =         (
+        \"TB Item Identifiers\" = (
             SKDocumentToolbarPreviousNextItemIdentifier,
             SKDocumentToolbarPageNumberItemIdentifier,
             SKDocumentToolbarBackForwardItemIdentifier,
