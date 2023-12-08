@@ -48,20 +48,25 @@
             "1password"
             "1password-cli"
             "blockblock"
-            "dbeaver-community"
+            "calcservice"
+            "cardhop" # not configured
+            "dbeaver-community" # not configured
             "default-folder-x"
             # "dropbox"
+            "flux"
             "forklift"
             "google-drive"
+            "hazel"
             "inkscape" # install fails under home-manager
-            "iterm2"
+            "iterm2" # not configured
             "knockknock"
             "launchbar"
-            "netbeans"
-            "oversight"
+            "muzzle"
+            "netbeans" # not configured
+            "oversight" # not configured
             # currently Intel-only
             # "ransomwhere"
-            "rectangle"
+            "rectangle" # not configured
             "skim"
             "synology-drive"
             # temurin8 requires Rosetta 2 on macOS 13, and isn't supported
@@ -69,8 +74,10 @@
             "temurin11"
             "temurin17"
             "temurin21"
+            "ubersicht" # not configured
             "vivaldi"
             "visual-studio-code"
+            "wordservice"
         ];
         caskArgs.no_quarantine = true;
         global = {
@@ -189,8 +196,12 @@
             "com.apple.Preview" = import ./apps/preview.nix;
             "com.apple.Safari" = import ./apps/safari.nix;
             "com.google.drivefs.settings" = import ./apps/googledrive.nix;
+            "com.incident57.Muzzle" = import ./apps/muzzle.nix;
+            "com.objective-see.oversight" = import ./apps/oversight.nix;
+            "com.noodlesoft.Hazel" = import ./apps/hazel.nix;
             "com.stclairsoft.DefaultFolderX5" = import ./apps/defaultfolderx.nix;
             "net.sourceforge.skim-app.skim" = import ./apps/skim.nix;
+            "org.herf.Flux" = import ./apps/f.lux.nix;
             "uk.co.tla-systems.pcalc" = import ./apps/pcalc.nix;
         };
     };
