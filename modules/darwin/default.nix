@@ -198,6 +198,7 @@
             "com.apple.Safari" = import ./apps/safari.nix;
             "com.google.drivefs.settings" = import ./apps/googledrive.nix;
             "com.incident57.Muzzle" = import ./apps/muzzle.nix;
+            "com.knollsoft.Rectangle" = import ./apps/rectangle.nix;
             "com.objective-see.oversight" = import ./apps/oversight.nix;
             "com.noodlesoft.Hazel" = import ./apps/hazel.nix;
             "com.stclairsoft.DefaultFolderX5" = import ./apps/defaultfolderx.nix;

@@ -32,7 +32,7 @@ if [ $enabled -ne 0 ]; then
     #         value3 = "foo";
     #     };
     # EOF
-    # tr -d '\n' | xargs --replace=PLIST write $appdefaults "key" 'PLIST'
+    # tr -d '\n' | xargs --replace=PLIST defaults write $appdefaults "key" 'PLIST'
 
     if [ $quitapp -ne 0 -a $apprunning = "true" ]; then
         open -a $appname
