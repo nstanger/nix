@@ -191,6 +191,7 @@
                 DSDontWriteNetworkStores = true;
                 # DSDontWriteUSBStores = true;
             };
+            # note: move MAS apps into host-specific
             "at.obdev.LaunchBar" = import ./apps/launchbar.nix;
             "com.apple.finder" = import ./apps/finder.nix;
             "com.apple.Preview" = import ./apps/preview.nix;
@@ -202,7 +203,6 @@
             "com.stclairsoft.DefaultFolderX5" = import ./apps/defaultfolderx.nix;
             "net.sourceforge.skim-app.skim" = import ./apps/skim.nix;
             "org.herf.Flux" = import ./apps/f.lux.nix;
-            "uk.co.tla-systems.pcalc" = import ./apps/pcalc.nix;
         };
     };
 
@@ -225,6 +225,9 @@
             enable = true;
 
             # huh, .source doesn't work...
+            # How to make this host-specific?? Multiple scripts?
+            # Technically it doesn't matter that much but it will create
+            # a bunch of irrelevent PLIST files in ~/Library/Preferences.
             text = ''
                 echo "activating extra user preferences..."
                 # Close any open System Preferences panes, to prevent them from overriding

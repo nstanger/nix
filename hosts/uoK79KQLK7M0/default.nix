@@ -44,6 +44,10 @@ in {
                 "com.apple.trackpad.forceClick" = 0;
             };
         };
+
+        CustomUserPreferences = {
+            "uk.co.tla-systems.pcalc" = import ./apps/pcalc.nix;
+        };
     };
 
     nix-homebrew = {
