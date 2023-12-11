@@ -4,7 +4,7 @@
     CrashActionServiceUrlKey = "https://officeci.azurewebsites.net/api/";
     CulturePreviousPreferredEditing = "en-NZ";
     CustomerLoggingEnabled = 0;
-    DiagnosticDataTypePreference = BasicDiagnosticData;
+    DiagnosticDataTypePreference = "BasicDiagnosticData";
     "FRE.UnifiedConsent" = 1;
     InputDelayDelayCount = 0;
     InputDelayInputCount = 11;
@@ -19,11 +19,11 @@
     OUIShouldEstablishWhatsNewBaseline = 0;
     PMPrintingExpandedStateForPrint2 = 1;
     PersonalMacroBookRestored = 1;
-    RCTDevMenu =     {
-        hotLoadingEnabled = 1;
-        secondClickToShow = 1;
-        shakeToShow = 1;
-    };
+    # RCTDevMenu =     {
+    #     hotLoadingEnabled = 1;
+    #     secondClickToShow = 1;
+    #     shakeToShow = 1;
+    # };
     "RCTI18nUtil_makeRTLFlipLeftAndRightStyles" = 1;
     SendAllTelemetryEnabled = 1;
     TemplateDownload = 1;

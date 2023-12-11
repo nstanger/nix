@@ -4,7 +4,7 @@
     ChangeInstallLanguageState = 1;
     CulturePreviousPreferredEditing = "en-NZ";
     CustomerLoggingEnabled = 0;
-    DiagnosticDataTypePreference = BasicDiagnosticData;
+    DiagnosticDataTypePreference = "BasicDiagnosticData";
     DisableAutoAltText = 0;
     DisableResumeAssistant = 0;
     DocsUIMruHasMarkedFutureAccessTokensForPinnedState = 1;
