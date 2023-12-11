@@ -46,7 +46,9 @@ in {
         };
 
         CustomUserPreferences = {
-            "uk.co.tla-systems.pcalc" = import ./apps/pcalc.nix;
+            "at.EternalStorms.Yoink" = import ../../modules/darwin/apps/yoink.nix; # small screen only?
+            "com.if.Amphetamine" = import ../../modules/darwin/apps/amphetamine.nix; # laptop only
+            "uk.co.tla-systems.pcalc" = import ../../modules/darwin/apps/pcalc.nix;
         };
     };
 
