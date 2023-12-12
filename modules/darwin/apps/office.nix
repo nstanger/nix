@@ -1,15 +1,11 @@
 {
-    ConnectedOfficeExperiencesPreference = 1;
-    CurrentUserConsentGroupKey = 1;
+    ConnectedOfficeExperiencesPreference = 0;
     CustomerLoggingEnabled = 0;
-    DefaultsToLocalOpenSave = 1;
-    DiagnosticDataTypePreference = "FullDiagnosticData";
-    DocsUICustomTemplatesLocationMigrationKey = 1;
-    OfficeExperiencesAnalyzingContentPreference = 1;
-    OfficeExperiencesDownloadingContentPreference = 1;
-    OneAuthEnabledInSuite = 1;
+    "FRE.UnifiedConsent" = 0;
+    OfficeExperiencesAnalyzingContentPreference = 0;
+    OfficeExperiencesDownloadingContentPreference = 0;
     OptionalConnectedExperiencesPreference = 0;
-    SendAllTelemetryEnabled = 1;
+    SendAllTelemetryEnabled = 0;
     ShowDocStageOnLaunch = 0;
     ShowFileExtensions = 1;
 }

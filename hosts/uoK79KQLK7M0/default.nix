@@ -66,7 +66,7 @@ in {
             "ransomwhere"
         ];
         masApps = {
-            Amphetamine = 937984704; # not configured
+            Amphetamine = 937984704;
             "eduVPN client" = 1317704208; # not configured
             Fantastical = 975937182; # not configured
             PCalc = 403504866;
@@ -74,7 +74,7 @@ in {
             "Sim Daltonism" = 693112260; # not configured
             Unicycle = 1472950010; # not configured
             Xcode = 497799835; # not configured
-            Yoink = 457622435; # not configured
+            Yoink = 457622435;
         };
     };
 

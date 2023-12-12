@@ -202,6 +202,7 @@
             "com.microsoft.Excel" = import ./apps/excel.nix;
             "com.microsoft.Word" = import ./apps/word.nix;
             "com.microsoft.office" = import ./apps/office.nix;
+            "com.microsoft.Powerpoint" = import ./apps/powerpoint.nix;
             "com.objective-see.oversight" = import ./apps/oversight.nix;
             "com.noodlesoft.Hazel" = import ./apps/hazel.nix;
             "com.stclairsoft.DefaultFolderX5" = import ./apps/defaultfolderx.nix;
