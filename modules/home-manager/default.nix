@@ -52,6 +52,7 @@ in
             rsync
             silver-searcher
             svgcleaner
+            symbola
             thefuck
             tvnamer
             vimv-rs

@@ -39,7 +39,10 @@
         let
             darwinSystem = system: extraModules: hostName:
                 let
-                    pkgs = import nixpkgs-darwin { inherit system; };
+                    pkgs = import nixpkgs-darwin {
+                        inherit system;
+                        config.allowUnfree = true;
+                    };
                 in
                     darwin.lib.darwinSystem {
                         inherit system;

@@ -79,6 +79,7 @@
             "vivaldi"
             "visual-studio-code"
             "wordservice"
+            # "zoom"
         ];
         caskArgs.no_quarantine = true;
         global = {
