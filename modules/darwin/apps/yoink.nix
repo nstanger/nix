@@ -1,4 +1,5 @@
 {
+    "ess_userWantsToReviewApp" = 0;
     fnToIgnore = 1;
     moveToCursorLocationOnDragInit = 0;
     shouldHideOnLaunch = 0;
