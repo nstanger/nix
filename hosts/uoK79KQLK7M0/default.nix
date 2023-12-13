@@ -31,6 +31,10 @@ in {
     security.pam.enableSudoTouchIdAuth = true;
 
     system.defaults = {
+        trackpad = {
+            Clicking = false;
+            Dragging = false;
+        };
         NSGlobalDomain = {
             # enable natural scrolling direction
             "com.apple.swipescrolldirection" = true;

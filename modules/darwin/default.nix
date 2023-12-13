@@ -191,6 +191,7 @@
                 DSDontWriteNetworkStores = true;
                 # DSDontWriteUSBStores = true;
             };
+            "com.apple.scriptmenu".ScriptMenuEnabled = 1;
             # note: move MAS apps into host-specific
             "at.obdev.LaunchBar" = import ./apps/launchbar.nix;
             "com.apple.finder" = import ./apps/finder.nix;

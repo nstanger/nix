@@ -20,6 +20,11 @@ in
 
         file = {
             ".agignore".source = ./configs/silver-searcher/agignore.nix;
+            # this doesn't seem to register :(
+            "ISO 10646.inputplugin" = {
+                source = ./configs/keyboard/ISO10646.inputplugin;
+                target = "Library/Input Methods/ISO10646.inputplugin";
+            };
         };
 
         packages = with pkgs; [
