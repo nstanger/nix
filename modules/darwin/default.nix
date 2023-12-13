@@ -208,6 +208,7 @@
             "com.stclairsoft.DefaultFolderX5" = import ./apps/defaultfolderx.nix;
             "net.sourceforge.skim-app.skim" = import ./apps/skim.nix;
             "org.herf.Flux" = import ./apps/f.lux.nix;
+            "tracesOf.Uebersicht" = import ./apps/ubersicht.nix;
         };
     };
 
