@@ -67,6 +67,7 @@ in {
 
     homebrew = {
         casks = [
+            "mongodb-compass"
             "ransomwhere"
         ];
         masApps = {
