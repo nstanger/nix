@@ -136,14 +136,14 @@ in
     };
 
     programs.taskwarrior = {
-        enable = false;
+        enable = true;
         colorTheme = "light-256";
         dataLocation = "~/.config/task";
         config = {
             taskd = {
-                certificate = ".config/task/Nigel_Stanger.cert.pem";
-                # key = "/Users/${username}/.config/task/Nigel_Stanger.key.pem";
-                # ca = "/Users/${username}/.config/task/ca.cert.pem";
+                certificate = "~/.config/task/Nigel_Stanger.cert.pem";
+                key = "~/.config/task/Nigel_Stanger.key.pem";
+                ca = "~/.config/task/ca.cert.pem";
                 credentials = "stanger.org.nz/Nigel Stanger/c877003c-d516-4efb-ab5f-e004449c4232";
                 server = "taskd.stanger.org.nz:53589";
             };
@@ -159,8 +159,9 @@ in
                 read = "+nzoug";
                 write = "+nzoug";
             };
+            # suppress "You have more urgent tasks." message
+            nag = "";
         };
-        # extraConfig = builtins.concatStringsSep "\n" [ "nag=" "context=home" ];
     };
 
     programs.yt-dlp = {
