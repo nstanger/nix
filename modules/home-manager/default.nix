@@ -56,6 +56,8 @@ in
             thefuck
             tvnamer
             vimv-rs
+            visidata
+            virtualenv
             watch
             wget
             xq
