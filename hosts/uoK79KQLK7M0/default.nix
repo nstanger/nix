@@ -87,7 +87,13 @@ in {
         imports = [
             ../../modules/home-manager
         ];
-        home.homeDirectory = "/Users/${username}";
+        home = {
+            homeDirectory = "/Users/${username}";
+            packages = with pkgs; [
+                mongodb-tools
+                mongosh
+            ];
+        };
         programs.git = {
             userName = "${username}";
             userEmail = "nigel.stanger@otago.ac.nz";
