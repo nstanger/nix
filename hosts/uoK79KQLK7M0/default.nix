@@ -67,6 +67,7 @@ in {
 
     homebrew = {
         casks = [
+            "docker"
             "mongodb-compass"
             "ransomwhere"
         ];

@@ -52,7 +52,6 @@
             "cardhop" # not configured
             "dbeaver-community" # not configured
             "default-folder-x"
-            "docker"
             # "dropbox"
             "flux"
             "forklift"
