@@ -48,10 +48,5 @@ in {
             userName = "${username}";
             userEmail = "nigel.stanger@otago.ac.nz";
         };
-        programs.taskwarrior.config.taskd = {
-            key = "/Users/${username}/.config/task/Nigel_Stanger.key.pem";
-            ca = "/Users/${username}/.config/task/ca.cert.pem";
-            extraConfig = builtins.concatStringsSep "\n" [ "nag=" "context=home" ];
-        };
     };
 }
