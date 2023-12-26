@@ -215,4 +215,6 @@ in
 
         shellAliases = import ./configs/zsh/aliases.nix;
     };
+
+    launchd.enable = true;
 }

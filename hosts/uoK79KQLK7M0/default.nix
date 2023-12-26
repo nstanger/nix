@@ -102,5 +102,8 @@ in {
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
             "context=work"
         ];
+        launchd.agents = {
+            "task.sync" = import ../../modules/home-manager/configs/launchd/task.sync;
+        };
     };
 }
