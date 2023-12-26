@@ -49,7 +49,7 @@ in {
             userEmail = "nigel.stanger@otago.ac.nz";
         };
         launchd.agents = {
-            "task.sync" = import ../../modules/home-manager/configs/launchd/task.sync;
+            "task.sync" = import ../../modules/home-manager/configs/launchd/task-sync.nix username;
         };
     };
 }
