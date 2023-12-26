@@ -20,6 +20,14 @@ in
 
         file = {
             ".agignore".source = ./configs/silver-searcher/agignore.nix;
+            "logrotate.conf" = {
+                source = ./configs/logrotate/logrotate.nix;
+                target = ".config/logrotate/logrotate.conf";
+            };
+            "logrotate.d" = {
+                text = "";
+                target = ".config/logrotate/logrotate.d/.keep";
+            };
             # this doesn't seem to register :(
             "ISO 10646.inputplugin" = {
                 source = ./configs/keyboard/ISO10646.inputplugin;

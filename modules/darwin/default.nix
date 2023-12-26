@@ -43,7 +43,11 @@
     
     homebrew = {
         enable = true;
-        # brews = [];
+        brews = [
+            # can't install via nix on aarch64-darwin even though the
+            # package is available - missing dependency acl?
+            "logrotate"
+        ];
         casks = [
             "1password"
             "1password-cli"
@@ -238,6 +242,9 @@
             # a bunch of irrelevent PLIST files in ~/Library/Preferences.
             text = ''
                 echo "activating extra user preferences..."
+                # create per-user logrotate status file
+                touch ~/.logrotate.status && chmod 600 ~/.logrotate.status
+
                 # Close any open System Preferences panes, to prevent them from overriding
                 # settings we're about to change
                 osascript -e 'tell application "System Settings" to quit'
