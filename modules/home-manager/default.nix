@@ -28,11 +28,6 @@ in
                 text = "";
                 target = ".config/logrotate/logrotate.d/.keep";
             };
-            # this doesn't seem to register :(
-            "ISO 10646.inputplugin" = {
-                source = ./configs/keyboard/ISO10646.inputplugin;
-                target = "Library/Input Methods/ISO10646.inputplugin";
-            };
         };
 
         packages = with pkgs; [
@@ -79,6 +74,21 @@ in
             LESS="--no-init --raw-control-chars";
             LSCOLORS="ExGxFxDaCxDxDxxbaDacec";
             PAGER = "less";
+        };
+
+        activation = {
+            # Symlinking an input plugin file doesn't seem to register,
+            # so copy the file into place instead. Target file mode seems
+            # to default to 555, which makes overwriting tricky. Don't
+            # rebuild while Keyboard Settings is open?
+            copyIso10646InputPlugin = let
+                target = ''"$HOME/Library/Input Methods/ISO 10646.inputplugin"'';
+                mode = "644";
+            in lib.hm.dag.entryAfter ["writeBoundary"] ''
+                $DRY_RUN_CMD cp $VERBOSE_ARG \
+                    ${builtins.toPath ./configs/keyboard/ISO10646.inputplugin} ${target}
+                $DRY_RUN_CMD chmod $VERBOSE_ARG ${mode} ${target}
+            '';
         };
     };
 
