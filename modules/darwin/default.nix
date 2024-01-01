@@ -240,6 +240,8 @@
             # How to make this host-specific?? Multiple scripts?
             # Technically it doesn't matter that much but it will create
             # a bunch of irrelevent PLIST files in ~/Library/Preferences.
+            # This might make more sense as home manager.activation scripts?
+            # define shell functions write defaults.
             text = ''
                 echo "activating extra user preferences..."
                 # create per-user logrotate status file

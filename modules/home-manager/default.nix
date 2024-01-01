@@ -81,6 +81,7 @@ in
             # so copy the file into place instead. Target file mode seems
             # to default to 555, which makes overwriting tricky. Don't
             # rebuild while Keyboard Settings is open?
+            # See com.apple.HIToolbox for input source defaults.
             copyIso10646InputPlugin = let
                 target = ''"$HOME/Library/Input Methods/ISO 10646.inputplugin"'';
                 mode = "644";
