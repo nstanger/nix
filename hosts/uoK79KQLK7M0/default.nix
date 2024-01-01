@@ -93,6 +93,7 @@ in {
             packages = with pkgs; [
                 mongodb-tools
                 mongosh
+                tart
             ];
         };
         programs.git = {
