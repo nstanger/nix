@@ -244,8 +244,6 @@
             # define shell functions write defaults.
             text = ''
                 echo "activating extra user preferences..."
-                # create per-user logrotate status file
-                touch ~/.logrotate.status && chmod 600 ~/.logrotate.status
 
                 # Close any open System Preferences panes, to prevent them from overriding
                 # settings we're about to change

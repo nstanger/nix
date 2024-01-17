@@ -77,6 +77,11 @@ in
         };
 
         activation = {
+            # Note that some coreutils programs (e.g., cp, chmod, ...)
+            # somehow don't mask macOS provided versions, so use
+            # coreutils --coreutils-prog=xxxx to run them. This is mainly
+            # to make --verbose available (where supported).
+
             # Symlinking an input plugin file doesn't seem to register,
             # so copy the file into place instead. Target file mode seems
             # to default to 555, which makes overwriting tricky. Don't
@@ -86,9 +91,18 @@ in
                 target = ''"$HOME/Library/Input Methods/ISO 10646.inputplugin"'';
                 mode = "644";
             in lib.hm.dag.entryAfter ["writeBoundary"] ''
-                $DRY_RUN_CMD cp $VERBOSE_ARG \
+                $DRY_RUN_CMD coreutils --coreutils-prog=cp $VERBOSE_ARG \
                     ${builtins.toPath ./configs/keyboard/ISO10646.inputplugin} ${target}
-                $DRY_RUN_CMD chmod $VERBOSE_ARG ${mode} ${target}
+                $DRY_RUN_CMD coreutils --coreutils-prog=chmod $VERBOSE_ARG ${mode} ${target}
+            '';
+
+            # Create per-user logrotate status file.
+            createLogRotateDotStatus = let
+                target = ''$HOME/.logrotate.status'';
+                mode = "600";
+            in lib.hm.dag.entryAfter ["writeBoundary"] ''
+                $DRY_RUN_CMD touch ${target}
+                $DRY_RUN_CMD coreutils --coreutils-prog=chmod $VERBOSE_ARG ${mode} ${target}
             '';
         };
     };
