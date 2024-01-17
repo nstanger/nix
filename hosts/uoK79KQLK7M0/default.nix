@@ -50,9 +50,9 @@ in {
         };
 
         CustomUserPreferences = {
-            "at.EternalStorms.Yoink" = import ../../modules/darwin/apps/yoink.nix; # small screen only?
-            "com.if.Amphetamine" = import ../../modules/darwin/apps/amphetamine.nix; # laptop only
-            "uk.co.tla-systems.pcalc" = import ../../modules/darwin/apps/pcalc.nix;
+            "at.EternalStorms.Yoink" = import ../../darwin/apps/yoink.nix; # small screen only?
+            "com.if.Amphetamine" = import ../../darwin/apps/amphetamine.nix; # laptop only
+            "uk.co.tla-systems.pcalc" = import ../../darwin/apps/pcalc.nix;
         };
     };
 
@@ -86,7 +86,7 @@ in {
 
     home-manager.users."${username}" = {
         imports = [
-            ../../modules/home-manager
+            ../../home-manager
         ];
         home = {
             homeDirectory = "/Users/${username}";
@@ -104,7 +104,7 @@ in {
             "context=work"
         ];
         launchd.agents = {
-            "task.sync" = import ../../modules/home-manager/configs/launchd/task-sync.nix username;
+            "task.sync" = import ../../home-manager/configs/launchd/task-sync.nix username;
         };
     };
 }

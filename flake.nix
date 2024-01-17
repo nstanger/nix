@@ -82,7 +82,7 @@
                                 };
 #                                home-manager.users.ragon = hmConfig;
                             }
-                            ./modules/darwin
+                            ./darwin
                             # host-specific configuration
                             ./hosts/${hostName}
                         ] ++ extraModules;

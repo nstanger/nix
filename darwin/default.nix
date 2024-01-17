@@ -261,7 +261,7 @@
                 # defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
 
                 # easiest way to refactor the complicated stuff...
-                for f in modules/darwin/apps/*.sh; do source $f; done
+                for f in darwin/apps/*.sh; do source $f; done
             '';
         };
 

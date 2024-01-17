@@ -41,7 +41,7 @@ in {
 
     home-manager.users."${username}" = {
         imports = [
-            ../../modules/home-manager
+            ../../home-manager
         ];
         home.homeDirectory = "/Users/${username}";
         programs.git = {
@@ -49,7 +49,7 @@ in {
             userEmail = "nigel.stanger@otago.ac.nz";
         };
         launchd.agents = {
-            "task.sync" = import ../../modules/home-manager/configs/launchd/task-sync.nix username;
+            "task.sync" = import ../../home-manager/configs/launchd/task-sync.nix username;
         };
     };
 }
