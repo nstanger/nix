@@ -43,7 +43,11 @@
     
     homebrew = {
         enable = true;
-        # brews = [];
+        brews = [
+            # can't install via nix on aarch64-darwin even though the
+            # package is available - missing dependency acl?
+            "logrotate"
+        ];
         casks = [
             "1password"
             "1password-cli"
@@ -52,7 +56,6 @@
             "cardhop" # not configured
             "dbeaver-community" # not configured
             "default-folder-x"
-            "docker"
             # "dropbox"
             "flux"
             "forklift"
@@ -240,8 +243,11 @@
             # How to make this host-specific?? Multiple scripts?
             # Technically it doesn't matter that much but it will create
             # a bunch of irrelevent PLIST files in ~/Library/Preferences.
+            # This might make more sense as home manager.activation scripts?
+            # define shell functions write defaults.
             text = ''
                 echo "activating extra user preferences..."
+
                 # Close any open System Preferences panes, to prevent them from overriding
                 # settings we're about to change
                 osascript -e 'tell application "System Settings" to quit'
@@ -256,7 +262,7 @@
                 # defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
 
                 # easiest way to refactor the complicated stuff...
-                for f in modules/darwin/apps/*.sh; do source $f; done
+                for f in darwin/apps/*.sh; do source $f; done
             '';
         };
 

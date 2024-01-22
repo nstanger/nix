@@ -20,10 +20,13 @@ in
 
         file = {
             ".agignore".source = ./configs/silver-searcher/agignore.nix;
-            # this doesn't seem to register :(
-            "ISO 10646.inputplugin" = {
-                source = ./configs/keyboard/ISO10646.inputplugin;
-                target = "Library/Input Methods/ISO10646.inputplugin";
+            "logrotate.conf" = {
+                source = ./configs/logrotate/logrotate.nix;
+                target = ".config/logrotate/logrotate.conf";
+            };
+            "logrotate.d" = {
+                text = "";
+                target = ".config/logrotate/logrotate.d/.keep";
             };
         };
 
@@ -71,6 +74,37 @@ in
             LESS="--no-init --raw-control-chars";
             LSCOLORS="ExGxFxDaCxDxDxxbaDacec";
             PAGER = "less";
+        };
+
+        activation = let
+            # Some coreutils programs (e.g., cp, chmod, ...) somehow
+            # don't mask the macOS provided versions, so use
+            # coreutils --coreutils-prog=xxxx to run them. This is mainly
+            # to ensure --verbose is available (where supported).
+            coreutilsCmd = cmd: "coreutils --coreutils-prog=${cmd}";
+        in {
+            # Symlinking an input plugin file doesn't seem to register,
+            # so copy the file into place instead. Target file mode seems
+            # to default to 555, which makes overwriting tricky. Don't
+            # rebuild while Keyboard Settings is open?
+            # See com.apple.HIToolbox for input source defaults.
+            copyIso10646InputPlugin = let
+                target = ''"$HOME/Library/Input Methods/ISO 10646.inputplugin"'';
+                mode = "644";
+            in lib.hm.dag.entryAfter ["writeBoundary"] ''
+                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG \
+                    ${builtins.toPath ./configs/keyboard/ISO10646.inputplugin} ${target}
+                $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
+            '';
+
+            # Create per-user logrotate status file.
+            createLogRotateDotStatus = let
+                target = ''$HOME/.logrotate.status'';
+                mode = "600";
+            in lib.hm.dag.entryAfter ["writeBoundary"] ''
+                $DRY_RUN_CMD touch ${target}
+                $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
+            '';
         };
     };
 
@@ -215,4 +249,6 @@ in
 
         shellAliases = import ./configs/zsh/aliases.nix;
     };
+
+    launchd.enable = true;
 }

@@ -48,18 +48,6 @@
                         inherit system;
                         specialArgs = { inherit pkgs inputs self darwin; };
                         modules = [
-                            home-manager.darwinModules.home-manager
-                            {
-#                                nixpkgs.overlays = overlays;
-                                #system.darwinLabel = "${config.system.darwinLabel}@${rev}";
-                                networking.hostName = hostName;
-                                home-manager = {
-                                    useGlobalPkgs = true;
-                                    useUserPackages = true;
-                                    extraSpecialArgs = { inherit inputs pkgs; };
-                                };
-#                                home-manager.users.ragon = hmConfig;
-                            }
                             nix-homebrew.darwinModules.nix-homebrew {
                                 nix-homebrew = {
                                     # Install Homebrew under the default prefix
@@ -82,7 +70,21 @@
                                     mutableTaps = false;
                                 };
                             }
-                            ./modules/darwin
+                            home-manager.darwinModules.home-manager
+                            {
+#                                nixpkgs.overlays = overlays;
+                                #system.darwinLabel = "${config.system.darwinLabel}@${rev}";
+                                networking.hostName = hostName;
+                                home-manager = {
+                                    useGlobalPkgs = true;
+                                    useUserPackages = true;
+                                    extraSpecialArgs = { inherit inputs pkgs; };
+                                };
+#                                home-manager.users.ragon = hmConfig;
+                            }
+                            ./darwin
+                            # host-specific configuration
+                            ./hosts/${hostName}
                         ] ++ extraModules;
                     };
 
@@ -90,8 +92,8 @@
 
         in {
             darwinConfigurations = processConfigurations {
-                Nigels-Virtual-Machine = darwinSystem "aarch64-darwin" [ ./hosts/Nigels-Virtual-Machine ];
-                uoK79KQLK7M0 = darwinSystem "aarch64-darwin" [ ./hosts/uoK79KQLK7M0 ];
+                Nigels-Virtual-Machine = darwinSystem "aarch64-darwin" [ ];
+                uoK79KQLK7M0 = darwinSystem "aarch64-darwin" [ ];
             };
         };
 }
