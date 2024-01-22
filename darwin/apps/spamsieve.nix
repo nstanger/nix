@@ -5,7 +5,7 @@
     AppleMailLocalSpamMailbox = "YES";
     AppleMailTrainGoodMove = "YES";
     AppleMailTrainGoodUnread = "YES";
-    AppleMailTrainSpamName = "Spam - Exchange";
+    AppleMailTrainSpamName = "SpamSieve - Otago";
     AppleMailTrainSpamRead = "YES";
     AppleMailUsesColors = "YES";
     AutoTrain = 1;

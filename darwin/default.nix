@@ -204,6 +204,7 @@
             "com.apple.finder" = import ./apps/finder.nix;
             "com.apple.Preview" = import ./apps/preview.nix;
             "com.apple.Safari" = import ./apps/safari.nix;
+            "com.atow.msgfiler" = import ./apps/msgfiler.nix;
             "com.c-command.SpamSieve" = import ./apps/spamsieve.nix;
             "com.google.drivefs.settings" = import ./apps/googledrive.nix;
             "com.incident57.Muzzle" = import ./apps/muzzle.nix;

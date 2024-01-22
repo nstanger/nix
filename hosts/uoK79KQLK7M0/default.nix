@@ -77,6 +77,7 @@ in {
             Fantastical = 975937182; # not configured
             PCalc = 403504866;
             Mactracker = 430255202; # not configured
+            MsgFiler = 418778021; # not configured
             "Sim Daltonism" = 693112260; # not configured
             Unicycle = 1472950010; # not configured
             Xcode = 497799835; # not configured
