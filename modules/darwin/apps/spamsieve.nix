@@ -1,0 +1,37 @@
+{
+    AddressBookIsWhitelist = 1;
+    AllowDuplicateGoodMessagesInCorpus = 0;
+    AllowDuplicateSpamMessagesInCorpus = 0;
+    AppleMailLocalSpamMailbox = "YES";
+    AppleMailTrainGoodMove = "YES";
+    AppleMailTrainGoodUnread = "YES";
+    AppleMailTrainSpamName = "Spam - Exchange";
+    AppleMailTrainSpamRead = "YES";
+    AppleMailUsesColors = "YES";
+    AutoTrain = 1;
+    CheckCorpusBeforePredicting = 1;
+    ExcludeMe = 1;
+    FlashPowerMate = 0;
+    FlashPowerMate2 = 0;
+    Growl = 0;
+    GrowlBodies = 0;
+    KeepsBouncing = 0;
+    LogBadPredictions = 1;
+    MJTOwnerName = "Nigel Stanger";
+    MJTSerialNumber = "spamsx1001-PSR6-JW6Q-G4JQ-2PQ2-BW49";
+    PlaySound = 0;
+    QuitWithMailClient = 1;
+    RequestAttention = 0;
+    ShowCountInDock = 1;
+    TrainBayesianClassifier = 1;
+    TrainSpamSieveBlocklist = 1;
+    TrainSpamSieveWhitelist = 1;
+    UseADV = 1;
+    UseBayesianClassifier = 1;
+    UseEncodedHTMLClassifier = 0;
+    UseEntourageAddressBook = 0;
+    UseHabeasWhitelist = 1;
+    UsePhotoIcon = 0;
+    UseSpamSieveBlocklist = 1;
+    UseSpamSieveWhitelist = 1;
+}

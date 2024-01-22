@@ -56,6 +56,7 @@
             # "dropbox"
             "flux"
             "forklift"
+            "free-ruler"
             "google-drive"
             "hazel"
             "inkscape" # install fails under home-manager
@@ -69,6 +70,7 @@
             # "ransomwhere"
             "rectangle" # not configured
             "skim"
+            "spamsieve"
             "synology-drive"
             # temurin8 requires Rosetta 2 on macOS 13, and isn't supported
             # at all on 14+; can enable on x86 hosts
@@ -199,6 +201,7 @@
             "com.apple.finder" = import ./apps/finder.nix;
             "com.apple.Preview" = import ./apps/preview.nix;
             "com.apple.Safari" = import ./apps/safari.nix;
+            "com.c-command.SpamSieve" = import ./apps/spamsieve.nix;
             "com.google.drivefs.settings" = import ./apps/googledrive.nix;
             "com.incident57.Muzzle" = import ./apps/muzzle.nix;
             "com.knollsoft.Rectangle" = import ./apps/rectangle.nix;
