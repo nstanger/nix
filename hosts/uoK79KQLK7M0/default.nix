@@ -74,10 +74,10 @@ in {
         masApps = {
             Amphetamine = 937984704;
             "eduVPN client" = 1317704208; # not configured
-            Fantastical = 975937182; # not configured
+            Fantastical = 975937182;
             PCalc = 403504866;
             Mactracker = 430255202; # not configured
-            MsgFiler = 418778021; # not configured
+            MsgFiler = 418778021;
             "Sim Daltonism" = 693112260; # not configured
             Unicycle = 1472950010; # not configured
             Xcode = 497799835; # not configured

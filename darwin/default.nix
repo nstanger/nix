@@ -208,6 +208,7 @@
             "com.apple.Safari" = import ./apps/safari.nix;
             "com.atow.msgfiler" = import ./apps/msgfiler.nix;
             "com.c-command.SpamSieve" = import ./apps/spamsieve.nix;
+            "com.flexibits.fantastical2.mac" = import ./apps/fantastical2.nix;
             "com.google.drivefs.settings" = import ./apps/googledrive.nix;
             "com.incident57.Muzzle" = import ./apps/muzzle.nix;
             "com.knollsoft.Rectangle" = import ./apps/rectangle.nix;
