@@ -70,6 +70,7 @@ in {
             "docker"
             "mongodb-compass"
             "ransomwhere"
+            "spamsieve"
         ];
         masApps = {
             Amphetamine = 937984704;
