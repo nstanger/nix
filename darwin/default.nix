@@ -66,6 +66,7 @@
             "iterm2" # not configured
             "knockknock"
             "launchbar"
+            "letter-opener"
             "muzzle"
             "netbeans" # not configured
             "oversight" # not configured
