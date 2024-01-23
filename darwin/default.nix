@@ -199,6 +199,8 @@
                 # DSDontWriteUSBStores = true;
             };
             "com.apple.scriptmenu".ScriptMenuEnabled = 1;
+            # always show window proxy icons (where available)
+            "com.apple.universalaccess".showWindowTitlebarIcons = 1;
             # note: move MAS apps into host-specific
             "at.obdev.LaunchBar" = import ./apps/launchbar.nix;
             "com.apple.finder" = import ./apps/finder.nix;
@@ -256,11 +258,6 @@
                 # Show the ~/Library folder
                 # We really only ever need to do this *once*, but you never know...
                 # chflags -f nohidden ~/Library && [[ $(xattr ~/Library) = *com.apple.FinderInfo* ]] && xattr -d com.apple.FinderInfo ~/Library
-
-                # Display emails in threaded mode, sorted by date (newest at the top)
-                # defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
-                # defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "no"
-                # defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
 
                 # easiest way to refactor the complicated stuff...
                 for f in darwin/apps/*.sh; do source $f; done
