@@ -90,6 +90,7 @@
             autoUpdate = false;
             brewfile = true;
         };
+        # No global MAS apps because VMs can't connect to the App Store.
         # masApps = {};
         onActivation = {
             autoUpdate = false;
@@ -201,14 +202,15 @@
             # always show window proxy icons (where available)
             "com.apple.universalaccess".showWindowTitlebarIcons = 1;
             # note: move MAS apps into host-specific
+            "at.EternalStorms.Yoink" = import ./apps/yoink.nix; # small screen only?
             "at.obdev.LaunchBar" = import ./apps/launchbar.nix;
             "com.apple.finder" = import ./apps/finder.nix;
             "com.apple.Preview" = import ./apps/preview.nix;
             "com.apple.Safari" = import ./apps/safari.nix;
             "com.atow.msgfiler" = import ./apps/msgfiler.nix;
-            "com.c-command.SpamSieve" = import ./apps/spamsieve.nix;
             "com.flexibits.fantastical2.mac" = import ./apps/fantastical2.nix;
             "com.google.drivefs.settings" = import ./apps/googledrive.nix;
+            "com.if.Amphetamine" = import ./apps/amphetamine.nix; # laptop only
             "com.incident57.Muzzle" = import ./apps/muzzle.nix;
             "com.knollsoft.Rectangle" = import ./apps/rectangle.nix;
             "com.microsoft.Excel" = import ./apps/excel.nix;
@@ -221,6 +223,7 @@
             "net.sourceforge.skim-app.skim" = import ./apps/skim.nix;
             "org.herf.Flux" = import ./apps/f.lux.nix;
             "tracesOf.Uebersicht" = import ./apps/ubersicht.nix;
+            "uk.co.tla-systems.pcalc" = import ./apps/pcalc.nix;
         };
     };
 

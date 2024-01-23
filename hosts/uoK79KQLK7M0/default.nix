@@ -30,6 +30,28 @@ in {
     # enable Touch ID for sudo in terminal
     security.pam.enableSudoTouchIdAuth = true;
 
+    nix-homebrew = {
+        # user owning the homebrew prefix
+        user = username;
+        # apple silicon only: also install homebrew under the default intel prefix for rosetta 2
+        enableRosetta = false;
+        # automatically migrate existing homebrew installations - first time only
+        autoMigrate = false;
+    };
+
+    homebrew = {
+        casks = [
+            "docker"
+            "mongodb-compass"
+            "ransomwhere"
+            "spamsieve"
+        ];
+        masApps = import ../../darwin/mas-apps-common.nix // {
+            Mactracker = 430255202; # not configured
+            "Sim Daltonism" = 693112260; # not configured
+        };
+    };
+
     system.defaults = {
         trackpad = {
             Clicking = false;
@@ -50,39 +72,7 @@ in {
         };
 
         CustomUserPreferences = {
-            "at.EternalStorms.Yoink" = import ../../darwin/apps/yoink.nix; # small screen only?
-            "com.if.Amphetamine" = import ../../darwin/apps/amphetamine.nix; # laptop only
-            "uk.co.tla-systems.pcalc" = import ../../darwin/apps/pcalc.nix;
-        };
-    };
-
-    nix-homebrew = {
-        # user owning the homebrew prefix
-        user = username;
-        # apple silicon only: also install homebrew under the default intel prefix for rosetta 2
-        enableRosetta = false;
-        # automatically migrate existing homebrew installations - first time only
-        autoMigrate = false;
-    };
-
-    homebrew = {
-        casks = [
-            "docker"
-            "mongodb-compass"
-            "ransomwhere"
-            "spamsieve"
-        ];
-        masApps = {
-            Amphetamine = 937984704;
-            "eduVPN client" = 1317704208; # not configured
-            Fantastical = 975937182;
-            PCalc = 403504866;
-            Mactracker = 430255202; # not configured
-            MsgFiler = 418778021;
-            "Sim Daltonism" = 693112260; # not configured
-            Unicycle = 1472950010; # not configured
-            Xcode = 497799835; # not configured
-            Yoink = 457622435;
+            "com.c-command.SpamSieve" = import ../../darwin/apps/spamsieve.nix;
         };
     };
 
