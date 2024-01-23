@@ -27,4 +27,4 @@ if [ $enabled -ne 0 ]; then
     if [ $quitapp -ne 0 -a $apprunning = "true" ]; then
         open -a $appname
     fi
- fi
+fi

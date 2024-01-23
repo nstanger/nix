@@ -97,4 +97,4 @@ tr -d '\n' | xargs --replace=PLIST defaults write $appdefaults 'PLIST'
     if [ $quitapp -ne 0 -a $apprunning = "true" ]; then
         open -a $appname
     fi
- fi
+fi
