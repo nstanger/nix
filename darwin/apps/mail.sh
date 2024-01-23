@@ -30,8 +30,6 @@ if [ $enabled -ne 0 ]; then
     # The following line will cease to work at some stage, but plugins
     # will probably also be gone by then anyway.
     sudo defaults write "/Library/Preferences/com.apple.mail.plist" EnableBundles 1
-    defaults write com.apple.mail EnableBundles -bool true
-    defaults write com.apple.mail BundleCompatibilityVersion 4
 
     if [ $quitapp -ne 0 -a $apprunning = "true" ]; then
         open -a $appname
