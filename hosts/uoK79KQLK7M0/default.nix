@@ -72,7 +72,7 @@ in {
         };
 
         CustomUserPreferences = {
-            "com.c-command.SpamSieve" = import ../../darwin/apps/spamsieve.nix;
+            "com.c-command.SpamSieve" = import ../../apps/spamsieve.nix;
         };
     };
 
