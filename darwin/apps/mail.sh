@@ -32,6 +32,7 @@ if [ $enabled -ne 0 ]; then
     sudo defaults write "/Library/Preferences/com.apple.mail.plist" EnableBundles 1
 
     if [ $quitapp -ne 0 -a $apprunning = "true" ]; then
+        sleep 2
         open -a $appname
     fi
- fi
+fi
