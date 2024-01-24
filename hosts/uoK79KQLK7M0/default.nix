@@ -63,19 +63,6 @@ in {
             # disable tap to click - it changes the setting but doesn't seem to activate
             "com.apple.mouse.tapBehavior" = null;
         };
-
-        CustomSystemPreferences = {
-            NSGlobalDomain = {
-                "com.apple.sound.beep" = {
-                    sound = "/Users/${username}/Library/Sounds/Eyuuurh.aiff";
-                };
-                # correct key, but doesn't change in System Settings
-                "com.apple.trackpad.forceClick" = 0;
-            };
-        };
-
-        CustomUserPreferences = {
-        };
     };
 
     home-manager.users."${username}" = {
@@ -102,6 +89,11 @@ in {
         };
         targets.darwin = {
             defaults = {
+                NSGlobalDomain = {
+                    "com.apple.sound.beep.sound" = "/Users/${username}/Library/Sounds/Eyuuurh.aiff";
+                    # correct key, but doesn't change in System Settings? (CHECK)
+                    "com.apple.trackpad.forceClick" = 0;
+                };
                 "com.c-command.SpamSieve" = import ../../apps/spamsieve.nix;
                 "com.if.Amphetamine" = {
                     "End Session On Low Battery" = 1;
@@ -109,9 +101,9 @@ in {
                     "Low Battery Percent" = 10;
                 };
             };
-            # currentHostDefaults = {
-            #     "com.apple.controlcenter".BatteryShowPercentage = true;
-            # };
+            currentHostDefaults = {
+                "com.apple.controlcenter".BatteryShowPercentage = true;
+            };
         };
     };
 }

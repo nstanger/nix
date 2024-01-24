@@ -51,5 +51,12 @@ in {
         launchd.agents = {
             "task.sync" = import ../../home-manager/configs/launchd/task-sync.nix username;
         };
+        targets.darwin = {
+            defaults = {
+                NSGlobalDomain = {
+                    "com.apple.sound.beep.sound" = "/System/Library/Sounds/Funk.aiff";
+                };
+            };
+        };
     };
 }
