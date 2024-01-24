@@ -67,12 +67,14 @@
             "knockknock"
             "launchbar"
             "letter-opener"
+            # Muzzle supposedly no longer required after Monterey as there is
+            # a system-wide setting under Notifications.
             "muzzle"
             "netbeans" # not configured
-            "oversight" # not configured
+            "oversight"
             # currently Intel-only
             # "ransomwhere"
-            "rectangle" # not configured
+            "rectangle"
             "skim"
             "synology-drive"
             # temurin8 requires Rosetta 2 on macOS 13, and isn't supported
@@ -80,7 +82,7 @@
             "temurin11"
             "temurin17"
             "temurin21"
-            "ubersicht" # not configured
+            "ubersicht"
             "vivaldi"
             "visual-studio-code"
             "wordservice"
@@ -194,7 +196,7 @@
         };
 
         CustomUserPreferences = {
-            # see extraUserActivation below for "complicated" settings
+            # see home-manager.targets.darwin.defaults for app defaults
             "com.apple.desktopservices" = {
                 DSDontWriteNetworkStores = true;
                 # DSDontWriteUSBStores = true;
@@ -202,29 +204,6 @@
             "com.apple.scriptmenu".ScriptMenuEnabled = 1;
             # always show window proxy icons (where available)
             "com.apple.universalaccess".showWindowTitlebarIcons = 1;
-            # note: move MAS apps into host-specific
-            "at.EternalStorms.Yoink" = import ../apps/yoink.nix; # small screen only?
-            "at.obdev.LaunchBar" = import ../apps/launchbar.nix;
-            "com.apple.finder" = import ../apps/finder.nix;
-            "com.apple.Preview" = import ../apps/preview.nix;
-            "com.apple.Safari" = import ../apps/safari.nix;
-            "com.atow.msgfiler" = import ../apps/msgfiler.nix;
-            "com.flexibits.fantastical2.mac" = import ../apps/fantastical2.nix;
-            "com.google.drivefs.settings" = import ../apps/googledrive.nix;
-            "com.if.Amphetamine" = import ../apps/amphetamine.nix; # laptop only
-            "com.incident57.Muzzle" = import ../apps/muzzle.nix;
-            "com.knollsoft.Rectangle" = import ../apps/rectangle.nix;
-            "com.microsoft.Excel" = import ../apps/excel.nix;
-            "com.microsoft.Word" = import ../apps/word.nix;
-            "com.microsoft.office" = import ../apps/office.nix;
-            "com.microsoft.Powerpoint" = import ../apps/powerpoint.nix;
-            "com.objective-see.oversight" = import ../apps/oversight.nix;
-            "com.noodlesoft.Hazel" = import ../apps/hazel.nix;
-            "com.stclairsoft.DefaultFolderX5" = import ../apps/defaultfolderx.nix;
-            "net.sourceforge.skim-app.skim" = import ../apps/skim.nix;
-            "org.herf.Flux" = import ../apps/f.lux.nix;
-            "tracesOf.Uebersicht" = import ../apps/ubersicht.nix;
-            "uk.co.tla-systems.pcalc" = import ../apps/pcalc.nix;
         };
     };
 
@@ -240,6 +219,11 @@
                 defaults write /Library/LaunchAgents/com.microsoft.update.agent.plist StartInterval -int 604800
                 # For some reason the previous command changes the permissions to 600.
                 chmod 644 /Library/LaunchAgents/com.microsoft.update.agent.plist
+
+                # Enable plugins in Mail.
+                # The following line will cease to work at some stage, but plugins
+                # will probably also be gone by then anyway.
+                sudo defaults write "/Library/Preferences/com.apple.mail.plist" EnableBundles 1
             '';
         };
 
@@ -247,11 +231,6 @@
             enable = true;
 
             # huh, .source doesn't work...
-            # How to make this host-specific?? Multiple scripts?
-            # Technically it doesn't matter that much but it will create
-            # a bunch of irrelevent PLIST files in ~/Library/Preferences.
-            # This might make more sense as home manager.activation scripts?
-            # define shell functions write defaults.
             text = ''
                 echo "activating extra user preferences..."
 
@@ -261,10 +240,7 @@
 
                 # Show the ~/Library folder
                 # We really only ever need to do this *once*, but you never know...
-                # chflags -f nohidden ~/Library && [[ $(xattr ~/Library) = *com.apple.FinderInfo* ]] && xattr -d com.apple.FinderInfo ~/Library
-
-                # easiest way to refactor the complicated stuff...
-                for f in apps/*.sh; do source $f; done
+                chflags -f nohidden ~/Library && [[ $(xattr ~/Library) = *com.apple.FinderInfo* ]] && xattr -d com.apple.FinderInfo ~/Library
             '';
         };
 

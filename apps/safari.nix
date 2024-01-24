@@ -19,8 +19,8 @@
     WarnAboutFraudulentWebsites = true;
     WebKitJavaEnabled = false;
     WebKitJavaScriptCanOpenWindowsAutomatically = false;
+    "WebKitPreferences.developerExtrasEnabled" = true;
     "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks" = true;
-    "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
     "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled" = false;
     "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled" = false;
     "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" = false;

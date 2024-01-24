@@ -72,7 +72,6 @@ in {
         };
 
         CustomUserPreferences = {
-            "com.c-command.SpamSieve" = import ../../apps/spamsieve.nix;
         };
     };
 
@@ -97,6 +96,28 @@ in {
         ];
         launchd.agents = {
             "task.sync" = import ../../home-manager/configs/launchd/task-sync.nix username;
+        };
+        targets.darwin.defaults = {
+            "com.c-command.SpamSieve" = import ../../apps/spamsieve.nix;
+            "com.if.Amphetamine" = {
+                "End Session On Low Battery" = 1;
+                "Ignore Battery on AC" = 1;
+                "Low Battery Percent" = 10;
+            };
+            # "foo.bar.baz" = {
+            #     FooValue = 1;
+            #     BarValue = 2;
+            #     SomeList = [ 1 2 3 4 ];
+            #     wibble = {
+            #         argle = "bargle";
+            #         foobie = "bletch";
+            #         nested = {
+            #             n1 = 1;
+            #             n2 = 2;
+            #             bleh = [ "argle" "bargle" ];
+            #         };
+            #     };
+            # };
         };
     };
 }

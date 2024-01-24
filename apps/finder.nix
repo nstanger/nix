@@ -6,13 +6,17 @@
     # new windows default to user home
     NewWindowTarget = "PfHm";
     _FXSortFoldersFirst = true;
-    # DesktopViewSettings.IconViewSettings = {
-    #     arrangeBy = "kind";
-        # backgroundType = 0;
-        # iconSize = 64;
-        # labelOnBottom = 1;
-        # showIconPreview = 1;
-        # showItemInfo = 1;
-    # };
+    # doesn't seem to stick :(
+    DesktopViewSettings = {
+        IconViewSettings = {
+            arrangeBy = "kind";
+            backgroundType = 0;
+            iconSize = 64;
+            labelOnBottom = 1;
+            showIconPreview = 1;
+            showItemInfo = 1;
+            textSize = 12;
+        };
+    };
     WarnOnEmptyTrash = false;
 }

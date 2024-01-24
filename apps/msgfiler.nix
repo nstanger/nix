@@ -6,4 +6,9 @@
     MsgFilerMarkAsRead = 1;
     # Note: manually install engine from https://msgfiler.com/support/engine/
     MsgFilerUseEngine = 1;
+    MsgFilerShortcut = {
+        characters = "";
+        keyCode = 99;
+        modifierFlags = 8650752;
+    };
 }
