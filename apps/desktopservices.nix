@@ -1,0 +1,4 @@
+{
+    DSDontWriteNetworkStores = true;
+    DSDontWriteUSBStores = true;
+}
