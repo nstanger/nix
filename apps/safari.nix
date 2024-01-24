@@ -1,28 +1,28 @@
 {
-    # Privacy: don’t send search queries to Apple
-    UniversalSearchEnabled = false;
-    SuppressSearchSuggestions = true;
-    # Press Tab to highlight each item on a web page
-    # WebKitTabToLinksPreferenceKey = true;
-    ShowFullURLInSmartSearchField = true;
+    AutoFillCreditCardData = false;
+    AutoFillFromAddressBook = false;
+    AutoFillMiscellaneousForms = false;
+    AutoFillPasswords = false;
     # Prevent Safari from opening ‘safe’ files automatically after downloading
     AutoOpenSafeDownloads = false;
-    # ShowFavoritesBar = false;
-    IncludeInternalDebugMenu = true;
     IncludeDevelopMenu = true;
-    WebKitDeveloperExtrasEnabledPreferenceKey = true;
-    WebContinuousSpellCheckingEnabled = true;
-    WebAutomaticSpellingCorrectionEnabled = false;
-    AutoFillFromAddressBook = false;
-    AutoFillCreditCardData = false;
-    AutoFillMiscellaneousForms = false;
+    IncludeInternalDebugMenu = true;
+    SuppressSearchSuggestions = true;
+    # ShowFavoritesBar = false;
+    ShowFullURLInSmartSearchField = true;
+    ShowOverlayStatusBar = true;
+    # Privacy: don’t send search queries to Apple
+    UniversalSearchEnabled = false;
     WarnAboutFraudulentWebsites = true;
+    WebAutomaticSpellingCorrectionEnabled = false;
+    WebContinuousSpellCheckingEnabled = true;
     WebKitJavaEnabled = false;
     WebKitJavaScriptCanOpenWindowsAutomatically = false;
-    "WebKitPreferences.developerExtrasEnabled" = true;
-    "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks" = true;
-    "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled" = false;
-    "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled" = false;
-    "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" = false;
-    "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically" = false;
+    # Press Tab to highlight each item on a web page
+    # WebKitTabToLinksPreferenceKey = true;
+    # "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks" = true;
+    # "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled" = false;
+    # "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled" = false;
+    # "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" = false;
+    # "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically" = false;
 }

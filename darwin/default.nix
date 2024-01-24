@@ -126,12 +126,19 @@
     # system.keyboard.enableKeyMapping = true;
     
     system.defaults = {
+        # also see CustomSystemPreferences.NSGlobalDomain below
         NSGlobalDomain = {
+            AppleMeasurementUnits = "Centimeters";
+            AppleMetricUnits = 1;
             AppleShowAllExtensions = true;
             AppleShowScrollBars = "Always";
+            AppleTemperatureUnit = "Celsius";
             # automatic substitutions
+            NSAutomaticCapitalizationEnabled = false;
             NSAutomaticDashSubstitutionEnabled = false; # otherwise "--" => em dash (bleh)
             NSAutomaticPeriodSubstitutionEnabled = false; # on double-space
+            NSAutomaticQuoteSubstitutionEnabled = true;
+            NSAutomaticSpellingCorrectionEnabled = true;
             # keep apps alive even when inactive
             NSDisableAutomaticTermination = true;
             # just say no to iCloud
@@ -141,10 +148,12 @@
             NSNavPanelExpandedStateForSaveMode2 = true;
             PMPrintingExpandedStateForPrint = true;
             PMPrintingExpandedStateForPrint2 = true;
-            # disable natural scrolling direction (for now)
+            # scroll direction is host specific
             # "com.apple.swipescrolldirection" = false;
+            # F1, F2, etc. keys are standard function keys
             "com.apple.keyboard.fnState" = true;
         };
+        # also see home-manager.targets.darwin.defaults
         finder = {
             AppleShowAllExtensions = true;
             # CreateDesktop = true;
@@ -191,19 +200,120 @@
 
         CustomSystemPreferences = {
             NSGlobalDomain = {
-                AppleHighlightColor = "0.75 0.498039 1.000000 Other";
+                AppleFirstWeekday.gregorian = 1;
+                AppleHighlightColor = "1.000000 0.498039 1.000000 Other";
+                AppleLanguages = [
+                    "en-NZ"
+                    "en-AU"
+                    "en-GB"
+                    "en-US"
+                ];
+                AppleICUDateFormatStrings = {
+                    "1" = "y-MM-dd";
+                    "2" = "y-MM-dd";
+                };
+                AppleLocale = "en-NZ";
+                Country = "NZ";
+                # unclear how this relates to the same key in
+                # com.apple.desktopservices
+                DSDontWriteNetworkStores = 1;
+                NSUserDictionaryReplacementItems = [
+                    {
+                        on = 1;
+                        replace = "&shrug;";
+                        "with" = "¯\_(ツ)_/¯";
+                    }
+                    {
+                        on = 1;
+                        replace = "1/2";
+                        "with" = "½";
+                    }
+                    {
+                        on = 1;
+                        replace = "1/3";
+                        "with" = "⅓";
+                    }
+                    {
+                        on = 1;
+                        replace = "1/4";
+                        "with" = "¼";
+                    }
+                    {
+                        on = 1;
+                        replace = "1/8";
+                        "with" = "⅛";
+                    }
+                    {
+                        on = 1;
+                        replace = "2/3";
+                        "with" = "⅔";
+                    }
+                    {
+                        on = 1;
+                        replace = "3/4";
+                        "with" = "¾";
+                    }
+                    {
+                        on = 1;
+                        replace = "3/8";
+                        "with" = "⅜";
+                    }
+                    {
+                        on = 1;
+                        replace = "5/8";
+                        "with" = "⅝";
+                    }
+                    {
+                        on = 1;
+                        replace = "7/8";
+                        "with" = "⅞";
+                    }
+                    {
+                        on = 1;
+                        replace = "c/o";
+                        "with" = "℅";
+                    }
+                    {
+                        on = 1;
+                        replace = "clahs";
+                        "with" = "clash";
+                    }
+                    {
+                        on = 1;
+                        replace = "clahses";
+                        "with" = "clashes";
+                    }
+                    {
+                        on = 1;
+                        replace = "Ngiel";
+                        "with" = "Nigel";
+                    }
+                    {
+                        on = 1;
+                        replace = "Nigle";
+                        "with" = "Nigel";
+                    }
+                    {
+                        on = 1;
+                        replace = "Nilge";
+                        "with" = "Nigel";
+                    }
+                    {
+                        on = 1;
+                        replace = "teh";
+                        "with" = "the";
+                    }
+                    {
+                        on = 1;
+                        replace = "TM";
+                        "with" = "™";
+                    }
+                ];
             };
-        };
-
-        CustomUserPreferences = {
-            # see home-manager.targets.darwin.defaults for app defaults
-            "com.apple.desktopservices" = {
-                DSDontWriteNetworkStores = true;
-                # DSDontWriteUSBStores = true;
+            "com.apple.sound.beep" = {
+                feedback = 1;
+                flash = 0;
             };
-            "com.apple.scriptmenu".ScriptMenuEnabled = 1;
-            # always show window proxy icons (where available)
-            "com.apple.universalaccess".showWindowTitlebarIcons = 1;
         };
     };
 

@@ -252,33 +252,44 @@ in
 
     launchd.enable = true;
 
-    targets.darwin.defaults = {
-        "at.EternalStorms.Yoink" = import ../apps/yoink.nix; # small screen only?
-        "at.obdev.LaunchBar" = import ../apps/launchbar.nix;
-        "com.apple.finder" = import ../apps/finder.nix;
-        "com.apple.mail" = import ../apps/mail.nix;
-        "com.apple.Preview" = import ../apps/preview.nix;
-        "com.apple.Safari" = import ../apps/safari.nix;
-        "com.apple.Spotlight" = import ../apps/spotlight.nix;
-        "com.atow.msgfiler" = import ../apps/msgfiler.nix;
-        "com.binarynights.ForkLift" = import ../apps/forklift.nix;
-        "com.flexibits.fantastical2.mac" = import ../apps/fantastical2.nix;
-        "com.google.drivefs.settings" = import ../apps/googledrive.nix;
-        "com.if.Amphetamine" = import ../apps/amphetamine.nix;
-        # Muzzle supposedly no longer required after Monterey as there is
-        # a system-wide setting under Notifications.
-        "com.incident57.Muzzle" = import ../apps/muzzle.nix;
-        "com.knollsoft.Rectangle" = import ../apps/rectangle.nix;
-        "com.microsoft.Excel" = import ../apps/excel.nix;
-        "com.microsoft.Word" = import ../apps/word.nix;
-        "com.microsoft.office" = import ../apps/office.nix;
-        "com.microsoft.Powerpoint" = import ../apps/powerpoint.nix;
-        "com.objective-see.oversight" = import ../apps/oversight.nix;
-        "com.noodlesoft.Hazel" = import ../apps/hazel.nix;
-        "com.stclairsoft.DefaultFolderX5" = import ../apps/defaultfolderx.nix;
-        "net.sourceforge.skim-app.skim" = import ../apps/skim.nix;
-        "org.herf.Flux" = import ../apps/f.lux.nix;
-        "tracesOf.Uebersicht" = import ../apps/ubersicht.nix;
-        "uk.co.tla-systems.pcalc" = import ../apps/pcalc.nix;
+    targets.darwin = {
+        defaults = {
+            "at.EternalStorms.Yoink" = import ../apps/yoink.nix; # small screen only?
+            "at.obdev.LaunchBar" = import ../apps/launchbar.nix;
+            "com.apple.desktopservices" = {
+                DSDontWriteNetworkStores = true;
+                DSDontWriteUSBStores = true;
+            };
+            "com.apple.dock".size-immutable = true;
+            "com.apple.finder" = import ../apps/finder.nix;
+            "com.apple.mail" = import ../apps/mail.nix;
+            "com.apple.scriptmenu".ScriptMenuEnabled = 1;
+            # always show window proxy icons (where available)
+            "com.apple.universalaccess".showWindowTitlebarIcons = 1;
+            "com.apple.Preview" = import ../apps/preview.nix;
+            "com.apple.Safari" = import ../apps/safari.nix;
+            "com.apple.Spotlight" = import ../apps/spotlight.nix;
+            "com.atow.msgfiler" = import ../apps/msgfiler.nix;
+            "com.binarynights.ForkLift" = import ../apps/forklift.nix;
+            "com.flexibits.fantastical2.mac" = import ../apps/fantastical2.nix;
+            "com.google.drivefs.settings" = import ../apps/googledrive.nix;
+            "com.if.Amphetamine" = import ../apps/amphetamine.nix;
+            # Muzzle supposedly no longer required after Monterey as there is
+            # a system-wide setting under Notifications.
+            "com.incident57.Muzzle" = import ../apps/muzzle.nix;
+            "com.knollsoft.Rectangle" = import ../apps/rectangle.nix;
+            "com.microsoft.Excel" = import ../apps/excel.nix;
+            "com.microsoft.Word" = import ../apps/word.nix;
+            "com.microsoft.office" = import ../apps/office.nix;
+            "com.microsoft.Powerpoint" = import ../apps/powerpoint.nix;
+            "com.objective-see.oversight" = import ../apps/oversight.nix;
+            "com.noodlesoft.Hazel" = import ../apps/hazel.nix;
+            "com.stclairsoft.DefaultFolderX5" = import ../apps/defaultfolderx.nix;
+            "net.sourceforge.skim-app.skim" = import ../apps/skim.nix;
+            "org.herf.Flux" = import ../apps/f.lux.nix;
+            "tracesOf.Uebersicht" = import ../apps/ubersicht.nix;
+            "uk.co.tla-systems.pcalc" = import ../apps/pcalc.nix;
+        };
+        search = "Google";
     };
 }
