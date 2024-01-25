@@ -4,6 +4,11 @@
     ...
 }:
 let
+    mkITermDynamicProfile = name: {
+        source = ../apps/iterm/dynamic-profiles/${name};
+        target = "Library/Application Support/iTerm2/DynamicProfiles/${name}";
+    };
+
     quietlight = pkgs.vimUtils.buildVimPlugin {
         name = "quietlight";
         src = pkgs.fetchFromGitHub {
@@ -28,6 +33,13 @@ in
                 text = "";
                 target = ".config/logrotate/logrotate.d/.keep";
             };
+            # iTerm profiles - surely there must be a cleaner way to do this?
+            # The mapAttrs trick doesn't seem to work here.
+            "console.json" = mkITermDynamicProfile "console.json";
+            "home-ssh.json" = mkITermDynamicProfile "home-ssh.json";
+            "other-ssh.json" = mkITermDynamicProfile "other-ssh.json";
+            "teaching.json" = mkITermDynamicProfile "teaching.json";
+            "work-ssh.json" = mkITermDynamicProfile "work-ssh.json";
         };
 
         packages = with pkgs; [
@@ -105,6 +117,15 @@ in
                 $DRY_RUN_CMD touch ${target}
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
             '';
+
+            # # Install iTerm dynamic profiles.
+            # installITermDynamicProfiles = let
+            #     target = ''$HOME/Library/Application Support/iTerm2/DynamicProfiles'';
+            #     mode = "644";
+            # in lib.hm.dag.entryAfter ["writeBoundary"] ''
+            #     $DRY_RUN_CMD touch ${target}
+            #     $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
+            # '';
         };
     };
 
