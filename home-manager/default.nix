@@ -274,6 +274,7 @@ in
             "com.binarynights.ForkLift" = import ../apps/forklift.nix;
             "com.flexibits.fantastical2.mac" = import ../apps/fantastical2.nix;
             "com.google.drivefs.settings" = import ../apps/googledrive.nix;
+            "com.googlecode.iterm2" = import ../apps/iterm;
             "com.if.Amphetamine" = import ../apps/amphetamine.nix;
             # Muzzle supposedly no longer required after Monterey as there is
             # a system-wide setting under Notifications.

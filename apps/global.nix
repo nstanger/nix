@@ -18,6 +18,8 @@
     # com.apple.desktopservices
     DSDontWriteNetworkStores = 1;
     NSRecentDocumentsLimit = 15;
+    # don't close windows when quitting an app
+    NSQuitAlwaysKeepsWindows = 1;
     # Text replacements apear in defaults but not in System
     # Settings :(. A logout/login cycle doesn't help.
     # This is a usable workaround: https://support.apple.com/en-nz/guide/mac-help/mchl2a7bd795/mac

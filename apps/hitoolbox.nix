@@ -39,4 +39,4 @@
     #         "KeyboardLayout Name" = "Australian";
     #     }
     # ];
-};
+}
