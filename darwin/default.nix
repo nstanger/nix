@@ -53,7 +53,7 @@
             "1password-cli"
             "blockblock"
             "calcservice"
-            "cardhop" # not configured
+            "cardhop"
             "dbeaver-community" # not configured
             "default-folder-x"
             # "dropbox"
@@ -63,7 +63,7 @@
             "google-drive"
             "hazel"
             "inkscape" # install fails under home-manager
-            "iterm2" # not configured
+            "iterm2"
             "knockknock"
             "launchbar"
             "letter-opener"
