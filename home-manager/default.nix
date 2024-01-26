@@ -4,6 +4,7 @@
     ...
 }:
 let
+    processITermDynamicProfiles = builtins.mapAttrs (name: fn: fn name);
     mkITermDynamicProfile = name: {
         source = ../apps/iterm/dynamic-profiles/${name};
         target = "Library/Application Support/iTerm2/DynamicProfiles/${name}";
@@ -33,13 +34,13 @@ in
                 text = "";
                 target = ".config/logrotate/logrotate.d/.keep";
             };
-            # iTerm profiles - surely there must be a cleaner way to do this?
-            # The mapAttrs trick doesn't seem to work here.
-            "console.json" = mkITermDynamicProfile "console.json";
-            "home-ssh.json" = mkITermDynamicProfile "home-ssh.json";
-            "other-ssh.json" = mkITermDynamicProfile "other-ssh.json";
-            "teaching.json" = mkITermDynamicProfile "teaching.json";
-            "work-ssh.json" = mkITermDynamicProfile "work-ssh.json";
+        } // processITermDynamicProfiles {
+            # iTerm profiles using the mapAttrs trick
+            "console.json" = mkITermDynamicProfile;
+            "home-ssh.json" = mkITermDynamicProfile;
+            "other-ssh.json" = mkITermDynamicProfile;
+            "teaching.json" = mkITermDynamicProfile;
+            "work-ssh.json" = mkITermDynamicProfile;
         };
 
         packages = with pkgs; [
