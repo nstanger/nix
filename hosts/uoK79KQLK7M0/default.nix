@@ -43,7 +43,7 @@ in {
         casks = [
             "docker"
             "mongodb-compass"
-            "ransomwhere"
+            # "ransomwhere"
             "spamsieve"
         ];
         masApps = import ../../darwin/mas-apps-common.nix // {

@@ -58,6 +58,42 @@
             "default-folder-x"
             # "dropbox"
             "flux"
+            "font-academicons"
+            "font-bitstream-vera"
+            "font-cinzel"
+            "font-cinzel-decorative"
+            "font-computer-modern"
+            "font-crimson-pro"
+            "font-dejavu"
+            "font-gentium-plus"
+            "font-hack"
+            # see fonts.fonts below for nerd font
+            # "font-hack-nerd-font"
+            "font-inconsolata"
+            "font-iosevka"
+            "font-linux-biolinum"
+            "font-linux-libertine"
+            "font-lora"
+            "font-noto-sans"
+            # installs but doesn't appear in Font Book?
+            "font-open-iconic"
+            # missing?
+            # "font-open-sans-condensed"
+            # "font-stix"
+            "font-tex-gyre-adventor"
+            "font-tex-gyre-bonum"
+            "font-tex-gyre-bonum-math"
+            "font-tex-gyre-chorus"
+            "font-tex-gyre-cursor"
+            "font-tex-gyre-heros"
+            "font-tex-gyre-pagella"
+            "font-tex-gyre-pagella-math"
+            "font-tex-gyre-schola"
+            "font-tex-gyre-schola-math"
+            "font-tex-gyre-termes"
+            "font-tex-gyre-termes-math"
+            "font-xits"
+            "font-xkcd-script"
             "forklift"
             "free-ruler"
             "google-drive"
@@ -111,10 +147,16 @@
 
     fonts = {
         fontDir.enable = true;
+        # Note that the Homebrew versions of fonts often come as scalable
+        # [wght] rather than discrete font files, which is a pain if
+        # you want to use then with LaTeX. The nix font packages appear
+        # to mostly provide discrete files.
         fonts = with pkgs; [
-            iosevka
+            # terminal nerd font
             (nerdfonts.override { fonts = [ "Hack" ]; })
-            open-sans
+            # Open Sans is automatically provided on University managed
+            # machines, so it has to be installed per host.
+            # The Homebrew cask for Roboto actually breaks?
             roboto
         ];
     };
