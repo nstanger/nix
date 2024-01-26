@@ -47,8 +47,8 @@ in {
             "spamsieve"
         ];
         masApps = import ../../darwin/mas-apps-common.nix // {
-            Mactracker = 430255202; # not configured
-            "Sim Daltonism" = 693112260; # not configured
+            Mactracker = 430255202;
+            "Sim Daltonism" = 693112260;
         };
     };
 
@@ -100,9 +100,9 @@ in {
                     "Ignore Battery on AC" = 1;
                     "Low Battery Percent" = 10;
                 };
-                "org.cups.PrintingPrefs" = {
-                    UseLastPrinter = 0;
-                };
+                "com.mactrackerapp.Mactracker" = import ../../apps/mactracker.nix;
+                "com.michelf.sim-daltonism" = import ../../apps/sim-daltonism.nix;
+                "org.cups.PrintingPrefs".UseLastPrinter = 0;
             };
             currentHostDefaults = {
                 "com.apple.controlcenter".BatteryShowPercentage = true;
