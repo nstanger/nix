@@ -100,6 +100,9 @@ in {
                     "Ignore Battery on AC" = 1;
                     "Low Battery Percent" = 10;
                 };
+                "org.cups.PrintingPrefs" = {
+                    UseLastPrinter = 0;
+                };
             };
             currentHostDefaults = {
                 "com.apple.controlcenter".BatteryShowPercentage = true;
