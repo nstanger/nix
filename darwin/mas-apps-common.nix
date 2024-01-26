@@ -4,7 +4,7 @@
     Fantastical = 975937182;
     MsgFiler = 418778021;
     PCalc = 403504866;
-    Unicycle = 1472950010; # not configured
-    Xcode = 497799835; # not configured
+    Unicycle = 1472950010;
+    Xcode = 497799835;
     Yoink = 457622435;
 }

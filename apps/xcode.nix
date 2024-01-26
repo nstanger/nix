@@ -1,0 +1,3 @@
+{
+    XCShowWelcomeWindow = 0;
+}

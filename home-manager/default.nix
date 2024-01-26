@@ -281,6 +281,7 @@ in
             "at.obdev.LaunchBar" = import ../apps/launchbar.nix;
             "com.apple.desktopservices" = import ../apps/desktopservices.nix;
             "com.apple.dock" = import ../apps/dock.nix;
+            "com.apple.dt.Xcode" = import ../apps/xcode.nix;
             "com.apple.finder" = import ../apps/finder.nix;
             "com.apple.inputsources" = import ../apps/inputsources.nix;
             "com.apple.mail" = import ../apps/mail.nix;
