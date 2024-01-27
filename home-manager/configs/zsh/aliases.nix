@@ -11,7 +11,8 @@ in {
     lr = "eza ${ezaBasicOptions} ${ezaLongOptions} --tree";
     ll = "eza ${ezaBasicOptions} ${ezaLongOptions} --all";
     llr = "eza ${ezaBasicOptions} ${ezaLongOptions} --all --tree";
-    # man = "/usr/local/bin/openman";
+    # requires manual install of ManOpen.app and /usr/local/bin/openman
+    man = "/usr/local/bin/openman";
     nixswitch = "darwin-rebuild switch --flake ~/Documents/Development/nix/.#";
     nixupdate = "pushd ~/Documents/Development/nix; nix flake update; nixswitch; popd";
     rm = "/bin/rm -i";

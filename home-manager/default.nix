@@ -318,6 +318,7 @@ in
             "com.noodlesoft.Hazel" = import ../apps/hazel.nix;
             "com.stclairsoft.DefaultFolderX5" = import ../apps/defaultfolderx.nix;
             "net.sourceforge.skim-app.skim" = import ../apps/skim.nix;
+            "org.clindberg.ManOpen" = import ../apps/manopen.nix;
             "org.herf.Flux" = import ../apps/f.lux.nix;
             "tracesOf.Uebersicht" = import ../apps/ubersicht.nix;
             "uk.co.tla-systems.pcalc" = import ../apps/pcalc.nix;
