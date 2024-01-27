@@ -306,9 +306,6 @@ in
             "com.google.drivefs.settings" = import ../apps/googledrive.nix;
             "com.googlecode.iterm2" = import ../apps/iterm;
             "com.if.Amphetamine" = import ../apps/amphetamine.nix;
-            # Muzzle supposedly no longer required after Monterey as there is
-            # a system-wide setting under Notifications.
-            "com.incident57.Muzzle" = import ../apps/muzzle.nix;
             "com.knollsoft.Rectangle" = import ../apps/rectangle.nix;
             "com.microsoft.Excel" = import ../apps/excel.nix;
             "com.microsoft.Word" = import ../apps/word.nix;

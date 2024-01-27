@@ -68,9 +68,6 @@
             "knockknock"
             "launchbar"
             "letter-opener"
-            # Muzzle supposedly no longer required after Monterey as there is
-            # a system-wide setting under Notifications.
-            "muzzle"
             "netbeans" # not configured
             "oversight"
             # currently Intel-only

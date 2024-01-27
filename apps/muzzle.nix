@@ -1,3 +1,0 @@
-{
-    suppressZoomWarning = 1;
-}
