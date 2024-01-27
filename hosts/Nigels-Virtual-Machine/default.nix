@@ -30,11 +30,6 @@ in {
     # disable natural scrolling direction (for now)
     system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
 
-    fonts.fonts = with pkgs; [
-        open-sans
-    ];
-
-
     nix-homebrew = {
         # user owning the homebrew prefix
         user = username;
@@ -48,7 +43,12 @@ in {
         imports = [
             ../../home-manager
         ];
-        home.homeDirectory = "/Users/${username}";
+        home = {
+            homeDirectory = "/Users/${username}";
+            packages = with pkgs; [
+                open-sans
+            ];
+        };
         programs.git = {
             userName = "${username}";
             userEmail = "nigel.stanger@otago.ac.nz";

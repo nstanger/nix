@@ -49,6 +49,7 @@
             "logrotate"
         ];
         casks = [
+            # SOFTWARE
             "1password"
             "1password-cli"
             "blockblock"
@@ -58,42 +59,6 @@
             "default-folder-x"
             # "dropbox"
             "flux"
-            "font-academicons"
-            "font-bitstream-vera"
-            "font-cinzel"
-            "font-cinzel-decorative"
-            "font-computer-modern"
-            "font-crimson-pro"
-            "font-dejavu"
-            "font-gentium-plus"
-            "font-hack"
-            # see fonts.fonts below for nerd font
-            # "font-hack-nerd-font"
-            "font-inconsolata"
-            "font-iosevka"
-            "font-linux-biolinum"
-            "font-linux-libertine"
-            "font-lora"
-            "font-noto-sans"
-            # installs but doesn't appear in Font Book?
-            "font-open-iconic"
-            # missing?
-            # "font-open-sans-condensed"
-            # "font-stix"
-            "font-tex-gyre-adventor"
-            "font-tex-gyre-bonum"
-            "font-tex-gyre-bonum-math"
-            "font-tex-gyre-chorus"
-            "font-tex-gyre-cursor"
-            "font-tex-gyre-heros"
-            "font-tex-gyre-pagella"
-            "font-tex-gyre-pagella-math"
-            "font-tex-gyre-schola"
-            "font-tex-gyre-schola-math"
-            "font-tex-gyre-termes"
-            "font-tex-gyre-termes-math"
-            "font-xits"
-            "font-xkcd-script"
             "forklift"
             "free-ruler"
             "google-drive"
@@ -123,6 +88,55 @@
             "visual-studio-code"
             "wordservice"
             "zoom"
+
+            # FONTS
+            # These may come as OpenType variable fonts, i.e., a single file
+            # covering all variants instead of discrete files for different
+            # weights/styles. Variable fonts aren't generally supported by
+            # LaTeX (maybe LuaLaTeX but definitely not XeLaTeX). The nix font
+            # packages appear to mostly provide non-varibale fonts, so if a
+            # font really needs to work with XeLaTeX, prefer a nix version
+            # if available (see fonts.fonts and home-manager.home.packages).
+            "font-academicons"
+            "font-arimo"
+            "font-bitstream-vera"
+            # "font-bitter" # variable
+            "font-cinzel" # variable
+            "font-cinzel-decorative"
+            "font-computer-modern"
+            "font-crimson-pro" # variable
+            "font-dejavu"
+            # "font-fontaweome" # needed? also version 6
+            "font-gentium-plus"
+            "font-hack" # see fonts.fonts below for nerd font
+            "font-inconsolata" # variable
+            "font-iosevka"
+            # Letter Gothic 12 Pitch: manual install
+            "font-linux-biolinum"
+            "font-linux-libertine"
+            "font-lora" # variable
+            # Minion Pro: manual install
+            "font-noto-sans"
+            "font-open-iconic" # appears in Font Book as "Icons"
+            # "font-outfit" # variable
+            # "font-roboto" # breaks during install?
+            # Segoe UI: manual install
+            "font-stix" # provided by macOS Ventura, but variable only
+            "font-tex-gyre-adventor"
+            "font-tex-gyre-bonum"
+            "font-tex-gyre-bonum-math"
+            "font-tex-gyre-chorus"
+            "font-tex-gyre-cursor"
+            "font-tex-gyre-heros"
+            "font-tex-gyre-pagella"
+            "font-tex-gyre-pagella-math"
+            "font-tex-gyre-schola"
+            "font-tex-gyre-schola-math"
+            "font-tex-gyre-termes"
+            "font-tex-gyre-termes-math"
+            "font-xits"
+            "font-xkcd-script"
+            # YouTube Sans & YouTube Sans Dark: manual install
         ];
         caskArgs.no_quarantine = true;
         global = {
@@ -147,17 +161,9 @@
 
     fonts = {
         fontDir.enable = true;
-        # Note that the Homebrew versions of fonts often come as scalable
-        # [wght] rather than discrete font files, which is a pain if
-        # you want to use then with LaTeX. The nix font packages appear
-        # to mostly provide discrete files.
         fonts = with pkgs; [
             # terminal nerd font
             (nerdfonts.override { fonts = [ "Hack" ]; })
-            # Open Sans is automatically provided on University managed
-            # machines, so it has to be installed per host.
-            # The Homebrew cask for Roboto actually breaks?
-            roboto
         ];
     };
 

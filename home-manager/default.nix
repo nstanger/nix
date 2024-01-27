@@ -44,6 +44,7 @@ in
         };
 
         packages = with pkgs; [
+            # SOFTWARE
             bfg-repo-cleaner
             blackbox
             entr
@@ -68,7 +69,6 @@ in
             rsync
             silver-searcher
             svgcleaner
-            symbola
             thefuck
             tvnamer
             vimv-rs
@@ -79,6 +79,12 @@ in
             xq
             zsh-completions
             zsh-you-should-use
+
+            # FONTS
+            # Open Sans is automatically provided on University managed
+            # machines, so it has to be installed per host.
+            roboto # Homebrew package breaks?
+            symbola # not in Homebrew
         ];
 
         sessionVariables = {
@@ -283,6 +289,7 @@ in
             "com.apple.dock" = import ../apps/dock.nix;
             "com.apple.dt.Xcode" = import ../apps/xcode.nix;
             "com.apple.finder" = import ../apps/finder.nix;
+            "com.apple.FontBook" = import ../apps/fontbook.nix;
             "com.apple.inputsources" = import ../apps/inputsources.nix;
             "com.apple.mail" = import ../apps/mail.nix;
             "com.apple.scriptmenu".ScriptMenuEnabled = 1;
