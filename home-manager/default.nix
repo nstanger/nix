@@ -311,6 +311,7 @@ in
             "com.microsoft.Word" = import ../apps/word.nix;
             "com.microsoft.office" = import ../apps/office.nix;
             "com.microsoft.Powerpoint" = import ../apps/powerpoint.nix;
+            "com.modesittsoftware.Photo-GeoTag" = import ../apps/photo-geotag.nix;
             "com.objective-see.oversight" = import ../apps/oversight.nix;
             "com.noodlesoft.Hazel" = import ../apps/hazel.nix;
             "com.stclairsoft.DefaultFolderX5" = import ../apps/defaultfolderx.nix;

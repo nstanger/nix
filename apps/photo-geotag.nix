@@ -1,0 +1,3 @@
+{
+    drawerOpenAtStartup = 1;
+}

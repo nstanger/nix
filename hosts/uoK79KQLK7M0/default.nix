@@ -47,8 +47,12 @@ in {
             "spamsieve"
         ];
         masApps = import ../../darwin/mas-apps-common.nix // {
+            # "Apple Configurator" = 1289583905; # not configured
+            # "Final Cut Pro" = 424389933; # not configured
             Mactracker = 430255202;
+            # "Pixelmator Pro" = 1289583905; # not configured
             "Sim Daltonism" = 693112260;
+            # "Slack for Desktop" = 803453959; # not configured
         };
     };
 
