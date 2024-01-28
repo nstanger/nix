@@ -81,7 +81,7 @@ in
             zsh-you-should-use
 
             # FONTS
-            # Open Sans is automatically provided on University managed
+        # Open Sans is automatically provided on University managed
             # machines, so it has to be installed per host.
             roboto # Homebrew package breaks?
             symbola # not in Homebrew

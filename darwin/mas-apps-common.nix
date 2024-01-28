@@ -1,5 +1,6 @@
 {
     Amphetamine = 937984704;
+    CardHop = 1290358394;
     "eduVPN client" = 1317704208;
     Fantastical = 975937182;
     MsgFiler = 418778021;

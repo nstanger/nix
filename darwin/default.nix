@@ -54,7 +54,6 @@
             "1password-cli"
             "blockblock"
             "calcservice"
-            "cardhop"
             "dbeaver-community" # not configured
             "default-folder-x"
             # "dropbox"
