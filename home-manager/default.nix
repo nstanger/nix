@@ -67,9 +67,9 @@ in
             R
             rlwrap
             rsync
+            saxonb
             silver-searcher
             svgcleaner
-            thefuck
             tvnamer
             vimv-rs
             visidata
@@ -235,6 +235,11 @@ in
         };
     };
 
+    programs.thefuck = {
+        enable = true;
+        enableZshIntegration = true;
+    };
+
     programs.yt-dlp = {
         enable = true;
         extraConfig = import ./configs/yt-dlp/config;
@@ -270,13 +275,57 @@ in
             share = false;
         };
 
-        initExtraBeforeCompInit = import ./configs/zsh/initExtraBeforeCompInit.nix;
-        completionInit = import ./configs/zsh/completionInit.nix;
-        initExtra = import ./configs/zsh/initExtra.nix;
+        initExtraBeforeCompInit = builtins.readFile ./configs/zsh/initExtraBeforeCompInit.sh;
+        completionInit = builtins.readFile ./configs/zsh/completionInit.sh;
+        initExtra = let
+            preExtra = builtins.readFile ./configs/zsh/initExtra.sh;
+            pluginFiles = [
+                # additional plugins not already loaded above
+                "${pkgs.zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh"
+            ];
+            pluginSources = map (x: "source " + x) pluginFiles;
+            plugins = builtins.concatStringsSep "\n" (pluginSources);
+            # for anything that must be run AFTER a plugin loads
+            postExtra = ''
+                # automatic completion suggestions: use a slightly lighter shade of grey
+                export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=246";
+            '';
+        in ''
+            ${preExtra}
+            ${plugins}
+            ${postExtra}
+        '';
 
         syntaxHighlighting.enable = true;
 
-        shellAliases = import ./configs/zsh/aliases.nix;
+        # shellAliases = import ./configs/zsh/aliases.nix pkgs;
+        shellAliases = let
+    ezaBasicOptions = "--icons --classify --color=auto --group-directories-first";
+    ezaLongOptions = "--long --group";
+in {
+    empty = "${pkgs.coreutils}/bin/rm -rf ~/.Trash/*";
+    # java_home = "/usr/libexec/java_home";
+    # unlocktrash = "/usr/bin/sudo /usr/sbin/chown -R ${USER}:${GROUP} ~/.Trash/*";
+    ls = "${pkgs.eza}/bin/eza ${ezaBasicOptions}";
+    lsr = "${pkgs.eza}/bin/eza ${ezaBasicOptions} --tree";
+    l = "${pkgs.eza}/bin/eza ${ezaBasicOptions} ${ezaLongOptions}";
+    lr = "${pkgs.eza}/bin/eza ${ezaBasicOptions} ${ezaLongOptions} --tree";
+    ll = "${pkgs.eza}/bin/eza ${ezaBasicOptions} ${ezaLongOptions} --all";
+    llr = "${pkgs.eza}/bin/eza ${ezaBasicOptions} ${ezaLongOptions} --all --tree";
+    # requires manual install of ManOpen.app and /usr/local/bin/openman
+    man = "/usr/local/bin/openman";
+    nixswitch = "darwin-rebuild switch --flake ~/Documents/Development/nix/.#";
+    nixupdate = "pushd ~/Documents/Development/nix; nix flake update; nixswitch; popd";
+    rm = "${pkgs.coreutils}/bin/rm -i";
+    # locate = "${BREW_PREFIX}/bin/glocate -d /var/db/locate.database";
+    # smbclient = "rlwrap /opt/local/bin/smbclient";
+    beep = "/usr/bin/tput bel";
+    # grep = "${BREW_PREFIX}/bin/ggrep --color=auto";
+
+    # Set Terminal window and tab title
+    winname = "printf \"\\033]2;%s\\a\"";
+    tabname = "printf \"\\033]1;%s\\a\"";
+};
     };
 
     launchd.enable = true;
