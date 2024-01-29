@@ -77,7 +77,7 @@ in {
         ];
         home = {
             homeDirectory = "/Users/${username}";
-            packages = with pkgs; import ../../home-manager/packages-common.nix ++ [
+            packages = with pkgs; import ../../home-manager/packages-common.nix pkgs ++ [
                 camunda-modeler
                 mongodb-tools
                 mongosh
@@ -91,7 +91,7 @@ in {
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
             "context=work"
         ];
-        programs.zsh.shellAliases = import ./configs/zsh/aliases-common.nix pkgs // {
+        programs.zsh.shellAliases = import ../../home-manager/configs/zsh/aliases-common.nix pkgs // {
         };
         launchd.agents = {
             "task.sync" = import ../../home-manager/configs/launchd/task-sync.nix username;

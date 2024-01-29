@@ -1,4 +1,4 @@
-casks = [
+[
     # SOFTWARE
     "bibdesk" # not configured
     "calcservice"

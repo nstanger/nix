@@ -1,4 +1,4 @@
-[
+pkgs: with pkgs; [
     # SOFTWARE
     entr
     ffmpeg
@@ -21,4 +21,4 @@
 
     # FONTS
     symbola # not in Homebrew
-];
+]
