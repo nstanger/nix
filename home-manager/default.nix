@@ -77,6 +77,7 @@ in
             watch
             wget
             xq
+            yq-go
             zsh-completions
             zsh-you-should-use
 

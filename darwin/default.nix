@@ -52,11 +52,15 @@
             # SOFTWARE
             "1password"
             "1password-cli"
+            "bibdesk" # not configured
             "blockblock"
             "calcservice"
+            "calibre"
+            "color-oracle"
             "dbeaver-community" # not configured
             "default-folder-x"
-            # "dropbox"
+            # "dropbox" # reached max number of devices
+            "firefox" # not configured
             "flux"
             "forklift"
             "free-ruler"
@@ -69,9 +73,9 @@
             "letter-opener"
             "netbeans" # not configured
             "oversight"
-            # currently Intel-only
-            # "ransomwhere"
+            # "ransomwhere" # currently Intel-only
             "rectangle"
+            "rstudio" # not configured
             "skim"
             "synology-drive"
             # temurin8 requires Rosetta 2 on macOS 13, and isn't supported
@@ -82,8 +86,10 @@
             "ubersicht"
             "vivaldi"
             "visual-studio-code"
+            "vlc" # not configured
             "wordservice"
             "zoom"
+            "zotero" # not configured
 
             # FONTS
             # These may come as OpenType variable fonts, i.e., a single file

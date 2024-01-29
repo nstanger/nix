@@ -76,6 +76,7 @@ in {
         home = {
             homeDirectory = "/Users/${username}";
             packages = with pkgs; [
+                camunda-modeler
                 mongodb-tools
                 mongosh
                 tart
