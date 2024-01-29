@@ -16,7 +16,6 @@ casks = [
     # temurin8 requires Rosetta 2 on macOS 13, and isn't supported
     # at all on 14+; can enable on x86 hosts
     "temurin11"
-    "temurin17"
     "temurin21"
     "vlc" # not configured
     "wordservice"
