@@ -32,7 +32,11 @@ in
             };
             "logrotate.d" = {
                 text = "";
-                target = ".config/logrotate/logrotate.d/.keep";
+                target = ".config/logrotate/logrotate.d/.nix-keep";
+            };
+            "tmp" = {
+                text = "";
+                target = "tmp/.nix-keep";
             };
         } // processITermDynamicProfiles {
             # iTerm profiles using the mapAttrs trick
