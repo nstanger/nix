@@ -24,6 +24,7 @@
             curl
             coreutils
             findutils
+            findutils.locate # yes, both are required
             git
             gnused
         ];
