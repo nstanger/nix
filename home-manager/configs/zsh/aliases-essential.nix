@@ -1,4 +1,8 @@
-let
+# Essential aliases that ALL hosts must have.
+# Common aliases shared across several hosts go in
+# aliases-common.nix.
+# Host specific aliases go in each host module.
+pkgs: let
     ezaBasicOptions = "--icons --classify --color=auto --group-directories-first";
     ezaLongOptions = "--long --group";
 in {
@@ -19,9 +23,9 @@ in {
     # locate = "${BREW_PREFIX}/bin/glocate -d /var/db/locate.database";
     # smbclient = "rlwrap /opt/local/bin/smbclient";
     beep = "/usr/bin/tput bel";
-    # grep = "${BREW_PREFIX}/bin/ggrep --color=auto";
+    grep = "${pkgs.gnugrep}/bin/grep --color=auto";
 
-    # Set Terminal window and tab title
+    # set terminal window and tab title
     winname = "printf \"\\033]2;%s\\a\"";
     tabname = "printf \"\\033]1;%s\\a\"";
 }

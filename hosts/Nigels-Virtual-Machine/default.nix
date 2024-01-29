@@ -55,7 +55,7 @@ in {
             packages = with pkgs; [
                 # SOFTWARE
                 proselint # to stop VS Code plugin complaining
-                tvnamer
+                tvnamer #TESTING
 
                 # FONTS
                 open-sans
@@ -64,6 +64,8 @@ in {
         programs.git = {
             userName = "${username}";
             userEmail = "nigel.stanger@otago.ac.nz";
+        };
+        programs.zsh.shellAliases = {
         };
         launchd.agents = {
             "task.sync" = import ../../home-manager/configs/launchd/task-sync.nix username;

@@ -113,15 +113,6 @@ in
                 $DRY_RUN_CMD touch ${target}
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
             '';
-
-            # # Install iTerm dynamic profiles.
-            # installITermDynamicProfiles = let
-            #     target = ''$HOME/Library/Application Support/iTerm2/DynamicProfiles'';
-            #     mode = "644";
-            # in lib.hm.dag.entryAfter ["writeBoundary"] ''
-            #     $DRY_RUN_CMD touch ${target}
-            #     $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
-            # '';
         };
     };
 
@@ -286,34 +277,7 @@ in
 
         syntaxHighlighting.enable = true;
 
-        # shellAliases = import ./configs/zsh/aliases.nix pkgs;
-        shellAliases = let
-    ezaBasicOptions = "--icons --classify --color=auto --group-directories-first";
-    ezaLongOptions = "--long --group";
-in {
-    empty = "${pkgs.coreutils}/bin/rm -rf ~/.Trash/*";
-    # java_home = "/usr/libexec/java_home";
-    # unlocktrash = "/usr/bin/sudo /usr/sbin/chown -R ${USER}:${GROUP} ~/.Trash/*";
-    ls = "${pkgs.eza}/bin/eza ${ezaBasicOptions}";
-    lsr = "${pkgs.eza}/bin/eza ${ezaBasicOptions} --tree";
-    l = "${pkgs.eza}/bin/eza ${ezaBasicOptions} ${ezaLongOptions}";
-    lr = "${pkgs.eza}/bin/eza ${ezaBasicOptions} ${ezaLongOptions} --tree";
-    ll = "${pkgs.eza}/bin/eza ${ezaBasicOptions} ${ezaLongOptions} --all";
-    llr = "${pkgs.eza}/bin/eza ${ezaBasicOptions} ${ezaLongOptions} --all --tree";
-    # requires manual install of ManOpen.app and /usr/local/bin/openman
-    man = "/usr/local/bin/openman";
-    nixswitch = "darwin-rebuild switch --flake ~/Documents/Development/nix/.#";
-    nixupdate = "pushd ~/Documents/Development/nix; nix flake update; nixswitch; popd";
-    rm = "${pkgs.coreutils}/bin/rm -i";
-    # locate = "${BREW_PREFIX}/bin/glocate -d /var/db/locate.database";
-    # smbclient = "rlwrap /opt/local/bin/smbclient";
-    beep = "/usr/bin/tput bel";
-    # grep = "${BREW_PREFIX}/bin/ggrep --color=auto";
-
-    # Set Terminal window and tab title
-    winname = "printf \"\\033]2;%s\\a\"";
-    tabname = "printf \"\\033]1;%s\\a\"";
-};
+        shellAliases = import ./configs/zsh/aliases-essential.nix pkgs;
     };
 
     launchd.enable = true;

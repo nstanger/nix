@@ -11,7 +11,7 @@
     proselint
     ps2eps
     R
-    saxonb
+    saxonb_9_1
     svgcleaner
     vimv-rs
     visidata
