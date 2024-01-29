@@ -23,8 +23,8 @@
         systemPackages = with pkgs; [
             curl
             coreutils
-            findutils
-            findutils.locate # yes, both are required
+            findutils # => GNU find, xargs
+            findutils.locate # => GNU locate, updatedb
             git
             gnused
         ];
@@ -44,53 +44,32 @@
     
     homebrew = {
         enable = true;
+        # Essential brews and casks that ALL hosts must have.
+        # Common packages shared across several hosts go in
+        # homebrew-{brews,casks}-common.nix.
+        # Host specific packages go in each host module.
         brews = [
-            # can't install via nix on aarch64-darwin even though the
-            # package is available - missing dependency acl?
-            "logrotate"
         ];
         casks = [
             # SOFTWARE
             "1password"
             "1password-cli"
-            "bibdesk" # not configured
             "blockblock"
-            "calcservice"
-            "calibre"
-            "color-oracle"
-            "dbeaver-community" # not configured
             "default-folder-x"
             # "dropbox" # reached max number of devices
-            "firefox" # not configured
-            "flux"
             "forklift"
-            "free-ruler"
             "google-drive"
             "hazel"
-            "inkscape" # install fails under home-manager
             "iterm2"
             "knockknock"
             "launchbar"
-            "letter-opener"
-            "netbeans" # not configured
             "oversight"
             # "ransomwhere" # currently Intel-only
             "rectangle"
-            "rstudio" # not configured
-            "skim"
             "synology-drive"
-            # temurin8 requires Rosetta 2 on macOS 13, and isn't supported
-            # at all on 14+; can enable on x86 hosts
-            "temurin11"
-            "temurin17"
-            "temurin21"
             "ubersicht"
             "vivaldi"
             "visual-studio-code"
-            "vlc" # not configured
-            "wordservice"
-            "zoom"
-            "zotero" # not configured
 
             # FONTS
             # These may come as OpenType variable fonts, i.e., a single file
@@ -100,46 +79,9 @@
             # packages appear to mostly provide non-varibale fonts, so if a
             # font really needs to work with XeLaTeX, prefer a nix version
             # if available (see fonts.fonts and home-manager.home.packages).
-            "font-academicons"
-            "font-arimo"
-            "font-bitstream-vera"
-            # "font-bitter" # variable
-            "font-cinzel" # variable
-            "font-cinzel-decorative"
-            "font-computer-modern"
-            "font-crimson-pro" # variable
-            "font-dejavu"
-            # "font-fontaweome" # needed? also version 6
-            "font-gentium-plus"
             "font-hack" # see fonts.fonts below for nerd font
             "font-inconsolata" # variable
             "font-iosevka"
-            # Letter Gothic 12 Pitch: manual install
-            "font-linux-biolinum"
-            "font-linux-libertine"
-            "font-lora" # variable
-            # Minion Pro: manual install
-            "font-noto-sans"
-            "font-open-iconic" # appears in Font Book as "Icons"
-            # "font-outfit" # variable
-            # "font-roboto" # breaks during install?
-            # Segoe UI: manual install
-            "font-stix" # provided by macOS Ventura, but variable only
-            "font-tex-gyre-adventor"
-            "font-tex-gyre-bonum"
-            "font-tex-gyre-bonum-math"
-            "font-tex-gyre-chorus"
-            "font-tex-gyre-cursor"
-            "font-tex-gyre-heros"
-            "font-tex-gyre-pagella"
-            "font-tex-gyre-pagella-math"
-            "font-tex-gyre-schola"
-            "font-tex-gyre-schola-math"
-            "font-tex-gyre-termes"
-            "font-tex-gyre-termes-math"
-            "font-xits"
-            "font-xkcd-script"
-            # YouTube Sans & YouTube Sans Dark: manual install
         ];
         caskArgs.no_quarantine = true;
         global = {

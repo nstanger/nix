@@ -40,7 +40,9 @@ in {
     };
 
     homebrew = {
-        casks = [
+        brews = import ../../darwin/homebrew-brews-common.nix ++ [
+        ];
+        casks = import ../../darwin/homebrew-casks-common.nix ++ [
             "docker"
             "mongodb-compass"
             # "ransomwhere"
@@ -75,7 +77,7 @@ in {
         ];
         home = {
             homeDirectory = "/Users/${username}";
-            packages = with pkgs; [
+            packages = with pkgs; import ../../home-manager/packages-common.nix ++ [
                 camunda-modeler
                 mongodb-tools
                 mongosh

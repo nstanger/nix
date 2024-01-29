@@ -43,49 +43,33 @@ in
             "work-ssh.json" = mkITermDynamicProfile;
         };
 
+        # Essential packages that ALL hosts must have.
+        # Common packages shared across several hosts go in
+        # packages-common.nix.
+        # Host specific packages go in each host module.
         packages = with pkgs; [
             # SOFTWARE
             bfg-repo-cleaner
             blackbox
-            entr
             eza
-            ffmpeg
             git-extras
             gnugrep
             gnumake
             gnutar
-            gron
             gzip
-            imagemagick
-            mkcert
-            # neovide
             openssl
-            p7zip
-            plantuml
-            proselint
-            ps2eps
-            R
             rlwrap
             rsync
-            saxonb
             silver-searcher
-            svgcleaner
-            tvnamer
-            vimv-rs
-            visidata
             virtualenv
-            watch
             wget
-            xq
-            yq-go
             zsh-completions
             zsh-you-should-use
 
             # FONTS
-        # Open Sans is automatically provided on University managed
+            # Open Sans is automatically provided on University managed
             # machines, so it has to be installed per host.
             roboto # Homebrew package breaks?
-            symbola # not in Homebrew
         ];
 
         sessionVariables = {

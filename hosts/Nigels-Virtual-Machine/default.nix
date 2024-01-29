@@ -39,6 +39,13 @@ in {
         autoMigrate = false;
     };
 
+    homebrew = {
+        # Don't import the common packages to avoid filling up the VM!
+        # Add individual packages for testing as necessary.
+        brews = [];
+        casks = [];
+    };
+
     home-manager.users."${username}" = {
         imports = [
             ../../home-manager
@@ -46,6 +53,11 @@ in {
         home = {
             homeDirectory = "/Users/${username}";
             packages = with pkgs; [
+                # SOFTWARE
+                proselint # to stop VS Code plugin complaining
+                tvnamer
+
+                # FONTS
                 open-sans
             ];
         };
