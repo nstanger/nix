@@ -4,10 +4,21 @@
     ...
 }:
 let
-    processITermDynamicProfiles = builtins.mapAttrs (name: fn: fn name);
+    processTargetedFiles = builtins.mapAttrs (name: fn: fn name);
+    
+    # Add iTerm dynamic profiles (JSON)
     mkITermDynamicProfile = name: {
         source = ../apps/iterm/dynamic-profiles/${name};
         target = "Library/Application Support/iTerm2/DynamicProfiles/${name}";
+    };
+
+    # Add shell scripts in specified location
+    # see https://nixos.org/manual/nixpkgs/stable/#trivial-builder-writeText
+    # and https://discourse.nixos.org/t/how-to-invoke-script-installed-with-writescriptbin-inside-other-config-file/8795/2
+    # writeShellScript insert a shebang line automatically
+    mkShellScript = location: name: {
+        source = pkgs.writeShellScript "${name}" (builtins.readFile ./binfiles/${name});
+        target = "${location}/${name}";
     };
 
     quietlight = pkgs.vimUtils.buildVimPlugin {
@@ -38,7 +49,11 @@ in
                 text = "";
                 target = "tmp/.nix-keep";
             };
-        } // processITermDynamicProfiles {
+        } // processTargetedFiles {
+            # scripts to go in various bin locations
+            "die-safari" = mkShellScript "bin";
+            "preview" = mkShellScript "bin";
+
             # iTerm profiles using the mapAttrs trick
             "console.json" = mkITermDynamicProfile;
             "home-ssh.json" = mkITermDynamicProfile;
@@ -74,6 +89,12 @@ in
             # Open Sans is automatically provided on University managed
             # machines, so it has to be installed per host.
             roboto # Homebrew package breaks?
+        ];
+
+        sessionPath = [
+            "$HOME/bin"
+            "$HOME/.local/bin"
+            "/Users/Shared/bin"
         ];
 
         sessionVariables = {
