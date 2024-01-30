@@ -1,8 +1,8 @@
 {
     DimBackgroundWindows = 1;
+    DisableWindowSizeSnap = 1;
     EnableProxyIcon = 1;
-    # always show tab bar
-    HideTab = 0;
+    HideTab = 0; # always show tab bar
     NoSyncSuppressDownloadConfirmation = 1;
     "NoSyncSuppressDownloadConfirmation_selection" = 0;
     NoSyncTurnOffBracketedPasteOnHostChange = 1;

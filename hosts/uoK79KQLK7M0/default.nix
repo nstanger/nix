@@ -104,6 +104,7 @@ in {
                     "com.apple.trackpad.forceClick" = 0;
                 };
                 "com.c-command.SpamSieve" = import ../../apps/spamsieve.nix;
+                "com.googlecode.iterm2".BootstrapDaemon = 0; # theoretically permits Touch ID for sudo
                 "com.if.Amphetamine" = {
                     "End Session On Low Battery" = 1;
                     "Ignore Battery on AC" = 1;
