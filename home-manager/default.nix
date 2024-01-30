@@ -113,6 +113,13 @@ in
                 $DRY_RUN_CMD touch ${target}
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
             '';
+
+            # Relaunch the Finder to update view settings. (Sneaky naming hack
+            # so that this runs after setDarwinDefaults.)
+            updateFinderSettings = ''
+                $DRY_RUN_CMD /usr/bin/osascript -e 'tell application "Finder" to quit'
+                $DRY_RUN_CMD /usr/bin/open -g -a Finder
+            '';
         };
     };
 
