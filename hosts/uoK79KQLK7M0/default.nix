@@ -47,6 +47,7 @@ in {
             "mongodb-compass"
             # "ransomwhere"
             "spamsieve"
+            "zed" # basic text editor for now
         ];
         masApps = import ../../darwin/mas-apps-common.nix // {
             # "Apple Configurator" = 1289583905; # not configured
