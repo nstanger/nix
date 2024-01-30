@@ -16,6 +16,13 @@
             "Custom Window Title": "COMP 210"
         },
         {
+            "Name": "COSC 344",
+            "Guid": "55b09e8f-1060-4d4c-9aec-06c348e74f16",
+            "Dynamic Profile Parent Name": "Teaching",
+            "Use Custom Window Title": true,
+            "Custom Window Title": "COSC 344"
+        },
+        {
             "Name": "INFO 201",
             "Guid": "b0353294-43b7-5874-88cb-a00312650e47",
             "Dynamic Profile Parent Name": "Teaching",
