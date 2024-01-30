@@ -5,7 +5,7 @@
     "calibre"
     "color-oracle"
     "dbeaver-community" # not configured
-    "firefox" # not configured
+    "firefox" # no defaults configuration?
     "flux"
     "free-ruler"
     "inkscape" # install fails under home-manager
@@ -17,7 +17,7 @@
     # at all on 14+; can enable on x86 hosts
     "temurin11"
     "temurin21"
-    "vlc" # not configured
+    "vlc"
     "wordservice"
     "zoom"
     "zotero" # not configured

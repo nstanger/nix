@@ -317,9 +317,14 @@ in
             "com.objective-see.oversight" = import ../apps/oversight.nix;
             "com.noodlesoft.Hazel" = import ../apps/hazel.nix;
             "com.stclairsoft.DefaultFolderX5" = import ../apps/defaultfolderx.nix;
+            # where on earth are the rest of Vivaldi's settings???
+            # (similar for Chrome and Firefox)
+            "com.vivaldi.Vivaldi".SUAutomaticallyUpdate = 0;
             "net.sourceforge.skim-app.skim" = import ../apps/skim.nix;
             "org.clindberg.ManOpen" = import ../apps/manopen.nix;
             "org.herf.Flux" = import ../apps/f.lux.nix;
+            # not a hell of a lot else exposed via defaults :/
+            "org.videolan.vlc".SUEnableAutomaticChecks = 1;
             "tracesOf.Uebersicht" = import ../apps/ubersicht.nix;
             "uk.co.tla-systems.pcalc" = import ../apps/pcalc.nix;
         };

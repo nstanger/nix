@@ -2,7 +2,8 @@
     SUAutomaticallyUpdate = 0;
     SUEnableAutomaticChecks = 1;
     SUScheduledCheckInterval = 604800;
-    askedToLaunchAtLogin = 1;
+    # setting this up front seems to break adding to login items?
+    # askedToLaunchAtLogin = 1;
     cloudServicesToIncludeInHistory = 14;
     defaultToDocumentFolder = 1;
     favoritesStaySorted = 0;
