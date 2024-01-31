@@ -4,7 +4,19 @@
     ...
 }:
 let
-    processTargetedFiles = builtins.mapAttrs (name: fn: fn name);
+    processHomeFiles = builtins.mapAttrs (name: fn: fn name);
+
+    # Add a text-based config file
+    mkConfigFile = sourcePath: targetPath: name: {
+        text = builtins.readFile ./${sourcePath}/${name};
+        target = "${targetPath}/${name}";
+    };
+
+    # Add a required directory using the invisible file trick
+    mkDir = targetPath: name: {
+        text = "";
+        target = "${targetPath}/${name}/.nix-keep";
+    };
     
     # Add iTerm dynamic profiles (JSON)
     mkITermDynamicProfile = name: {
@@ -15,10 +27,10 @@ let
     # Add shell scripts in specified location
     # see https://nixos.org/manual/nixpkgs/stable/#trivial-builder-writeText
     # and https://discourse.nixos.org/t/how-to-invoke-script-installed-with-writescriptbin-inside-other-config-file/8795/2
-    # writeShellScript insert a shebang line automatically
-    mkShellScript = location: name: {
+    # writeShellScript automatically inserts a shebang line
+    mkShellScript = targetPath: name: {
         source = pkgs.writeShellScript "${name}" (builtins.readFile ./binfiles/${name});
-        target = "${location}/${name}";
+        target = "${targetPath}/${name}";
     };
 
     quietlight = pkgs.vimUtils.buildVimPlugin {
@@ -35,21 +47,16 @@ in
     home = {
         stateVersion = "23.11";
 
-        file = {
-            ".agignore".source = ./configs/silver-searcher/agignore.nix;
-            "logrotate.conf" = {
-                source = ./configs/logrotate/logrotate.nix;
-                target = ".config/logrotate/logrotate.conf";
-            };
-            "logrotate.d" = {
-                text = "";
-                target = ".config/logrotate/logrotate.d/.nix-keep";
-            };
-            "tmp" = {
-                text = "";
-                target = "tmp/.nix-keep";
-            };
-        } // processTargetedFiles {
+        # append anything weird using //
+        file = processHomeFiles {
+            # text-based config files
+            ".agignore" = mkConfigFile "./configs/silver-searcher" "";
+            "logrotate.conf" = mkConfigFile "./configs/logrotate" ".config/logrotate";
+
+            # directories
+            "logrotate.d" = mkDir ".config/logrotate";
+            "tmp" = mkDir "";
+
             # scripts to go in various bin locations
             "die-safari" = mkShellScript "bin";
             "preview" = mkShellScript "bin";
