@@ -1,4 +1,4 @@
-#!/bin/sh
+
 # Nope, this seems to work more effectively.
 ps ax | grep Safari | grep -v grep | cut -c1-5 | xargs kill -9
 
