@@ -341,7 +341,7 @@ in
             "com.atow.msgfiler" = import ../apps/msgfiler.nix;
             "com.binarynights.ForkLift" = import ../apps/forklift.nix;
             "com.flexibits.fantastical2.mac" = import ../apps/fantastical2.nix;
-            "com.google.drivefs.settings" = import ../apps/googledrive.nix;
+            "com.google.drivefs.settings" = import ../apps/google-drive.nix;
             "com.googlecode.iterm2" = import ../apps/iterm;
             "com.if.Amphetamine" = import ../apps/amphetamine.nix;
             "com.knollsoft.Rectangle" = import ../apps/rectangle.nix;
@@ -352,7 +352,7 @@ in
             "com.modesittsoftware.Photo-GeoTag" = import ../apps/photo-geotag.nix;
             "com.objective-see.oversight" = import ../apps/oversight.nix;
             "com.noodlesoft.Hazel" = import ../apps/hazel.nix;
-            "com.stclairsoft.DefaultFolderX5" = import ../apps/defaultfolderx.nix;
+            "com.stclairsoft.DefaultFolderX5" = import ../apps/default-folder-x.nix;
             # where on earth are the rest of Vivaldi's settings???
             # (similar for Chrome and Firefox)
             "com.vivaldi.Vivaldi".SUAutomaticallyUpdate = 0;
