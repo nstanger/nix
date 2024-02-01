@@ -327,16 +327,17 @@ in
             "com.apple.dt.Xcode" = import ../apps/xcode.nix;
             "com.apple.finder" = import ../apps/finder.nix;
             "com.apple.FontBook" = import ../apps/fontbook.nix;
+            "com.apple.HIToolbox" = import ../apps/hitoolbox.nix;
             "com.apple.inputsources" = import ../apps/inputsources.nix;
             "com.apple.mail" = import ../apps/mail.nix;
-            "com.apple.scriptmenu".ScriptMenuEnabled = 1;
-            # always show window proxy icons (where available)
-            "com.apple.universalaccess".showWindowTitlebarIcons = 1;
-            "com.apple.HIToolbox" = import ../apps/hitoolbox.nix;
+            "com.apple.Music".showStatusBar = 1;
             "com.apple.Preview" = import ../apps/preview.nix;
             "com.apple.Safari" = import ../apps/safari.nix;
+            "com.apple.scriptmenu".ScriptMenuEnabled = 1;
             "com.apple.Spotlight" = import ../apps/spotlight.nix;
+            # always show window proxy icons (where available)
             "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = 1;
+            "com.apple.universalaccess".showWindowTitlebarIcons = 1;
             "com.atow.msgfiler" = import ../apps/msgfiler.nix;
             "com.binarynights.ForkLift" = import ../apps/forklift.nix;
             "com.flexibits.fantastical2.mac" = import ../apps/fantastical2.nix;
