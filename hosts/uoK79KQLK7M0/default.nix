@@ -28,6 +28,7 @@ in {
     ];
 
     # enable Touch ID for sudo in terminal
+    # (but also see targets.darwin.defaults below for additional hackery)
     security.pam.enableSudoTouchIdAuth = true;
 
     nix-homebrew = {
@@ -105,6 +106,11 @@ in {
                     # correct key, but doesn't change in System Settings? (CHECK)
                     "com.apple.trackpad.forceClick" = 0;
                 };
+                # Dodgy hack to make Touch ID work for sudo with a DisplayLink
+                # dock (see https://apple.stackexchange.com/a/444202). No-one
+                # seems to know what this actually does or what other effects
+                # this might have. "Ard" perhaps refers to Apple Remote Desktop?
+                "com.apple.security.authorization".ignoreArd = true;
                 "com.c-command.SpamSieve" = import ../../apps/spamsieve.nix;
                 "com.googlecode.iterm2".BootstrapDaemon = 0; # theoretically permits Touch ID for sudo
                 "com.if.Amphetamine" = {
