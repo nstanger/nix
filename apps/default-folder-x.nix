@@ -258,7 +258,7 @@
             context = 1;
             key = {
             };
-            name = "Set Default Folder for Application & File Type";
+            name = "Set Default Folder for Application &amp; File Type";
         }
         {
             action = "setDefaultFolderForType:";
