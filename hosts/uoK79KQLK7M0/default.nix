@@ -44,6 +44,7 @@ in {
         ];
         casks = import ../../darwin/homebrew-casks-common.nix ++ [
             "docker"
+            "dropbox" # settings are in the cloud
             "mongodb-compass"
             # "ransomwhere"
             "spamsieve"
