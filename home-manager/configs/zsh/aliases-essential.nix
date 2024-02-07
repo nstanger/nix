@@ -15,6 +15,7 @@ in {
     lr = "${pkgs.eza}/bin/eza ${ezaBasicOptions} ${ezaLongOptions} --tree";
     ll = "${pkgs.eza}/bin/eza ${ezaBasicOptions} ${ezaLongOptions} --all";
     llr = "${pkgs.eza}/bin/eza ${ezaBasicOptions} ${ezaLongOptions} --all --tree";
+    lsregister = "/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister"
     # requires manual install of ManOpen.app and /usr/local/bin/openman
     man = "/usr/local/bin/openman";
     nixswitch = "darwin-rebuild switch --flake ~/Documents/Development/nix/.#";

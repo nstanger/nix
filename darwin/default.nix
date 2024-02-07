@@ -23,6 +23,7 @@
         systemPackages = with pkgs; [
             curl
             coreutils
+            duti # file type mappings
             findutils # => GNU find, xargs
             findutils.locate # => GNU locate, updatedb
             git
@@ -240,6 +241,12 @@
             text = ''
                 # Following line should allow us to avoid a logout/login cycle
                 /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+
+                # default file type (UTI) mappings; **requires duti package** (systemPackages)
+                # is this better elsewhere?
+                duti -s com.microsoft.Excel csv all
+                duti -s com.microsoft.Excel tsv all
+                duti -s com.microsoft.VSCode net.daringfireball.markdown all
             '';
         };
     };
