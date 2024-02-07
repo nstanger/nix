@@ -27,20 +27,20 @@ in {
             "auto_shares" = {
                 enable = true;
                 text = ''
-                    stani07p	-fstype=smbfs,soft ://stani07p@registry.otago.ac.nz/obs/obsuser/stani07p
+                    ${username}	-fstype=smbfs,soft ://${username}@registry.otago.ac.nz/obs/obsuser/${username}
 
-                    infosci-shared	-fstype=smbfs,soft ://stani07p@registry.otago.ac.nz/obs/obsdept/infosci/shared
-                    infosci-software	-fstype=smbfs,soft ://stani07p@registry.otago.ac.nz/obs/obsdept/infosci/software
-                    calt-course-advising	-fstype=smbfs,soft ://stani07p@registry.otago.ac.nz/obs/obsdept/shared_projects/caltcourseadvising
-                    staff-desktop	-fstype=smbfs,soft ://stani07p@registry.otago.ac.nz/mdr/Profiles-V2/s/stani07p
-                    #course-outlines	-fstype=smbfs,soft ://stani07p@registry.otago.ac.nz/obs/obsdept/infosci/shared/AdminStaff/Course%20Outlines
+                    infosci-shared	-fstype=smbfs,soft ://${username}@registry.otago.ac.nz/obs/obsdept/infosci/shared
+                    infosci-software	-fstype=smbfs,soft ://${username}@registry.otago.ac.nz/obs/obsdept/infosci/software
+                    calt-course-advising	-fstype=smbfs,soft ://${username}@registry.otago.ac.nz/obs/obsdept/shared_projects/caltcourseadvising
+                    staff-desktop	-fstype=smbfs,soft ://${username}@registry.otago.ac.nz/mdr/Profiles-V2/s/${username}
+                    #course-outlines	-fstype=smbfs,soft ://${username}@registry.otago.ac.nz/obs/obsdept/infosci/shared/AdminStaff/Course%20Outlines
 
-                    infosci-python	-fstype=smbfs,soft ://stani07p@storage.hcs-p01.otago.ac.nz/infosci-python
-                    its-software	-fstype=smbfs,soft ://stani07p@storage.hcs-p01.otago.ac.nz/its-software
-                    lecture-dropboxes	-fstype=smbfs,soft ://stani07p@storage.hcs-p01.otago.ac.nz/its-alldropboxes
-                    student-teaching	-fstype=smbfs,soft ://stani07p@storage.hcs-p01.otago.ac.nz/stud-shared
+                    infosci-python	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/infosci-python
+                    its-software	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/its-software
+                    lecture-dropboxes	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/its-alldropboxes
+                    student-teaching	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/stud-shared
 
-                    water-quality	-fstype=smbfs,soft ://stani07p@storage.hcs-wlg.otago.ac.nz/uow-ph-drinkingwater
+                    water-quality	-fstype=smbfs,soft ://${username}@storage.hcs-wlg.otago.ac.nz/uow-ph-drinkingwater
                 '';
             };
         };
