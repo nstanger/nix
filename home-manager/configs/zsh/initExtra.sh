@@ -63,28 +63,5 @@ fi
 
 #####################################################################
 # Lazy-load the Python virtualenv wrapper so that it doesn't slow down
-# shell initialisation. "workon" is probably the most obvious hook as
-# it's the most likely thing to want to do first, but there are wrappers
-# for all the commands.
-function _my_virtualenvwrapper_init() {
-    # source virtualenvwrapper.sh && workon
-    # workaround to hide "egrep: warning: egrep is obsolescent; using ggrep -E"
-    # (warning in GNU egrep wrapper at /usr/local/opt/grep/bin/gegrep)
-    source virtualenvwrapper.sh > /dev/null 2>&1 && $($1) $@
-}
-function allvirtualenv() { _my_virtualenvwrapper_init $0 }
-function cdproject () { _my_virtualenvwrapper_init $0 }
-function cdsitepackages () { _my_virtualenvwrapper_init $0 }
-function cdvirtualenv () { _my_virtualenvwrapper_init $0 }
-function cpvirtualenv() { _my_virtualenvwrapper_init $0 }
-function lssitepackages () { _my_virtualenvwrapper_init $0 }
-function lsvirtualenv() { _my_virtualenvwrapper_init $0 }
-function mkproject () { _my_virtualenvwrapper_init $0 }
-function mktmpenv() { _my_virtualenvwrapper_init $0 }
-function mkvirtualenv() { _my_virtualenvwrapper_init $0 }
-function rmvirtualenv() { _my_virtualenvwrapper_init $0 }
-function setvirtualenvproject () { _my_virtualenvwrapper_init $0 }
-function showvirtualenv() { _my_virtualenvwrapper_init $0 }
-function virtualenvwrapper () { _my_virtualenvwrapper_init $0 }
-function wipeenv () { _my_virtualenvwrapper_init $0 }
-function workon() { _my_virtualenvwrapper_init $0 }
+# shell initialisation.
+zsh-defer source virtualenvwrapper.sh

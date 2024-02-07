@@ -101,6 +101,7 @@ in {
         enable = true;
         text = ''
             # reload automount configuration
+            echo "mounting shared volumes..."
             sudo automount -vc
         '';
     };

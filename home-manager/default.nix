@@ -90,6 +90,7 @@ in
             virtualenv
             wget
             zsh-completions
+            zsh-defer
             zsh-you-should-use
 
             # FONTS
@@ -291,13 +292,16 @@ in
 
         initExtraBeforeCompInit = builtins.readFile ./configs/zsh/initExtraBeforeCompInit.sh;
         completionInit = builtins.readFile ./configs/zsh/completionInit.sh;
+        initExtraFirst = ''
+            source ${pkgs.zsh-defer}/share/zsh-defer/zsh-defer.plugin.zsh
+        '';
         initExtra = let
             preExtra = builtins.readFile ./configs/zsh/initExtra.sh;
             pluginFiles = [
-                # additional plugins not already loaded above
+                # additional plugins not already loaded elsewhere
                 "${pkgs.zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh"
             ];
-            pluginSources = map (x: "source " + x) pluginFiles;
+            pluginSources = map (x: "zsh-defer source " + x) pluginFiles;
             plugins = builtins.concatStringsSep "\n" (pluginSources);
             # for anything that must be run AFTER a plugin loads
             postExtra = ''
