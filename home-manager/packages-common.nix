@@ -19,6 +19,16 @@ pkgs: with pkgs; [
     xq
     yq-go
 
+    # PYTHON
+    # Package names are not interpolatable, so it's not possible to
+    # factor out things like the Python version. However, given that
+    # Nix only provides Python "applications" as packages and not
+    # modules, this probably isn't an issue. It is a bit annoying,
+    # however that there is only a "python3xxPackages" (specfic
+    # Python version, e.g., "311"), not a "python3Packages".
+    python311Full
+    python311Packages.virtualenvwrapper
+
     # FONTS
     symbola # not in Homebrew
 ]
