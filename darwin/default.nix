@@ -246,7 +246,19 @@
                 # is this better elsewhere?
                 duti -s com.microsoft.Excel csv all
                 duti -s com.microsoft.Excel tsv all
+                duti -s com.microsoft.VSCode plantuml all
+                duti -s com.microsoft.VSCode pu all
+                
                 duti -s com.microsoft.VSCode net.daringfireball.markdown all
+                duti -s com.microsoft.VSCode public.css all
+                duti -s com.microsoft.VSCode public.json all
+                duti -s com.microsoft.VSCode public.make-source all
+                duti -s com.microsoft.VSCode public.perl-script all
+                duti -s com.microsoft.VSCode public.php-script all
+                duti -s com.microsoft.VSCode public.python-script all
+                duti -s com.microsoft.VSCode public.ruby-script all
+                duti -s com.microsoft.VSCode public.xml all
+                duti -s com.microsoft.VSCode public.yaml all
             '';
         };
     };
