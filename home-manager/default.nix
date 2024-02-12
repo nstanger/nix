@@ -33,6 +33,19 @@ let
         target = "${targetPath}/${name}";
     };
 
+    hashdiff = pkgs.stdenv.mkDerivation rec {
+        name = "hashdiff";
+        src = pkgs.fetchgit {
+            url = "https://isgb.otago.ac.nz/infosci/git/nigel.stanger/hashdiff.git";
+            rev = "refs/tags/1.0";
+            hash = "sha256-WxHe8IYuExJqfP57lzWL7KWhHuJlt90FV4v70pnyeNs=";
+        };
+        installPhase = ''
+            mkdir -p $out/bin
+            cp hashdiff $out/bin
+        '';
+    };
+
     quietlight = pkgs.vimUtils.buildVimPlugin {
         name = "quietlight";
         src = pkgs.fetchFromGitHub {
@@ -83,6 +96,7 @@ in
             gnumake
             gnutar
             gzip
+            hashdiff # not *that* essential, but easier to add here
             openssl
             rlwrap
             rsync
