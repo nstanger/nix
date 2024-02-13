@@ -73,6 +73,8 @@ in
             # scripts to go in various bin locations
             "die-safari" = mkShellScript "bin";
             "preview" = mkShellScript "bin";
+            "pu2pdf" = mkShellScript "bin";
+            "svg2pdf" = mkShellScript "bin";
 
             # iTerm profiles using the mapAttrs trick
             "console.json" = mkITermDynamicProfile;
