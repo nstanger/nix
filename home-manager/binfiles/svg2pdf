@@ -1,4 +1,4 @@
-#!/bin/sh
+
 #
 # Quickly convert SVG to PDF.
 # WARNING: binaries are currently hard-coded. Need to hook this into some sort of more general configuration thing.
