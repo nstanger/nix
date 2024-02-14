@@ -78,7 +78,7 @@
             # covering all variants instead of discrete files for different
             # weights/styles. Variable fonts aren't generally supported by
             # LaTeX (maybe LuaLaTeX but definitely not XeLaTeX). The nix font
-            # packages appear to mostly provide non-varibale fonts, so if a
+            # packages appear to mostly provide non-variable fonts, so if a
             # font really needs to work with XeLaTeX, prefer a nix version
             # if available (see fonts.fonts and home-manager.home.packages).
             "font-hack" # see fonts.fonts below for nerd font

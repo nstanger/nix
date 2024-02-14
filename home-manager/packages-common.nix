@@ -1,8 +1,12 @@
 pkgs: with pkgs; [
     # SOFTWARE
+    dmg2img
     entr
     ffmpeg
+    gawk
+    # gnumeric # marked as broken on Darwin + aarch64
     gron
+    imgcat
     imagemagick
     mkcert
     # neovide

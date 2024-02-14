@@ -33,7 +33,7 @@
 * [ ] cairo
 * [ ] cffi
 * [ ] cjson
-* [ ] clamav
+* [ ] ~~clamav~~
 * [ ] clog
 * [ ] cmake
 * [ ] cmocka
@@ -42,16 +42,16 @@
 * [x] curl
 * [ ] dav1d
 * [ ] default.profraw
-* [ ] dmg2img
+* [x] dmg2img
 * [ ] docbook
 * [ ] docbook-xsl
-* [ ] dos2unix
+* [x] dos2unix
 * [ ] duckdb
-* [ ] duti
+* [x] duti
 * [ ] enchant
 * [x] entr
 * [ ] epstool
-* [ ] exiftool
+* [x] exiftool
 * [ ] exiv2
 * [ ] fdupes
 * [x] ffmpeg
@@ -67,7 +67,7 @@
 * [ ] frei0r
 * [ ] fribidi
 * [ ] fzf
-* [ ] gawk
+* [x] gawk
 * [ ] gcc
 * [ ] gd
 * [ ] gdbm
@@ -76,8 +76,8 @@
 * [ ] ghostscript
 * [ ] giflib
 * [x] git
-* [ ] git-extras
-* [ ] git-lfs
+* [x] git-extras
+* [x] git-lfs
 * [ ] gitg
 * [ ] glib
 * [ ] gmime
@@ -85,7 +85,7 @@
 * [ ] gnu-getopt
 * [x] gnu-sed
 * [x] gnu-tar
-* [ ] gnumeric
+* [x] gnumeric
 * [x] gnupg
 * [ ] gnutls
 * [ ] gobject-introspection
@@ -115,7 +115,7 @@
 * [ ] icu4c
 * [x] imagemagick
 * [ ] imath
-* [ ] imgcat
+* [x] imgcat
 * [ ] inetutils
 * [ ] ipython
 * [ ] isl
@@ -211,7 +211,7 @@
 * [ ] lmdb
 * [x] logrotate
 * [ ] lorem
-* [ ] lsd
+* [ ] ~~lsd~~
 * [ ] lua
 * [ ] luajit
 * [ ] luv
@@ -260,11 +260,11 @@
 * [x] openjdk@17
 * [ ] openjpeg
 * [ ] openldap
-* [ ] openssl@1.1
+* [ ] ~~openssl@1.1~~
 * [x] openssl@3
 * [ ] openvpn
 * [ ] opus
-* [ ] osxutils
+* [x] osxutils
 * [ ] oxipng
 * [ ] p11-kit
 * [x] p7zip
@@ -357,16 +357,16 @@
 * [ ] tidy-html5
 * [ ] tinyxml
 * [ ] tokyo-cabinet
-* [ ] tree
+* [ ] ~~tree~~
 * [ ] tree-sitter
 * [ ] unar
 * [ ] unbound
 * [ ] unibilium
 * [ ] unixodbc
 * [ ] utf8proc
-* [ ] vim
+* [ ] ~~vim~~
 * [x] virtualenv
-* [ ] virtualenvwrapper
+* [x] virtualenvwrapper
 * [x] visidata
 * [ ] vramsteg
 * [x] watch
@@ -407,7 +407,7 @@
 * [ ] android-platform-tools
 * [ ] android-studio
 * [ ] audacity
-* [ ] bbedit
+* [ ] ~~bbedit~~
 * [x] bibdesk
 * [x] blockblock
 * [x] calibre
@@ -459,7 +459,7 @@
 * [ ] github
 * [ ] gpower
 * [ ] grandperspective
-* [ ] graphicconverter
+* [x] graphicconverter
 * [ ] hex-fiend
 * [ ] hugin
 * [ ] iina
