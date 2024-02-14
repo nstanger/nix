@@ -61,10 +61,6 @@ in {
                 open-sans
             ];
         };
-        programs.git = {
-            userName = "${username}";
-            userEmail = "nigel.stanger@otago.ac.nz";
-        };
         programs.zsh.shellAliases = {
         };
         launchd.agents = {

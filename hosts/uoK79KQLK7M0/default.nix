@@ -120,10 +120,6 @@ in {
                 tart
             ];
         };
-        programs.git = {
-            userName = "${username}";
-            userEmail = "nigel.stanger@otago.ac.nz";
-        };
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
             "context=work"
         ];

@@ -198,11 +198,13 @@ in
 
     programs.git = {
         enable = true;
-        lfs.enable = true;
-        package = pkgs.gitAndTools.gitFull;
         aliases = import ./configs/git/aliases.nix;
         extraConfig = import ./configs/git/extraConfig.nix;
         ignores = import ./configs/git/gitignore.nix;
+        lfs.enable = true;
+        package = pkgs.gitAndTools.gitFull;
+        userName = "Nigel Stanger";
+        userEmail = "nigel.stanger@otago.ac.nz";
     };
 
     programs.gpg = {
