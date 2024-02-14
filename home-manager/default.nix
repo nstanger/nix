@@ -92,6 +92,8 @@ in
             # SOFTWARE
             bfg-repo-cleaner
             blackbox
+            dos2unix
+            exiftool
             eza
             git-extras
             gnugrep
