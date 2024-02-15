@@ -69,6 +69,7 @@ in
             # directories
             "logrotate.d" = mkDir ".config/logrotate";
             "tmp" = mkDir "";
+            ".zshrc.d" = mkDir "";
 
             # scripts to go in various bin locations
             "die-safari" = mkShellScript "bin";
@@ -124,11 +125,45 @@ in
         ];
 
         sessionVariables = {
+            # TEXMF paths
+            # TEXMFCONFIG = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFCONFIG')";
+            # TEXMFDIST = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFDIST')";
+            # TEXMFHOME = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFHOME')";
+            # TEXMFLOCAL = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFLOCAL')";
+            # TEXMFMAIN = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFMAIN')";
+            # TEXMFSYSCONFIG = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFSYSCONFIG')";
+            # TEXMFSYSVAR = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFSYSVAR')";
+            # TEXMFVAR = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFVAR')";
+
+            # directory paths
+            ALL_PAPERS_ROOT = "$HOME/Documents/Teaching";
+            TEACHING_SHARED = "$HOME/Documents/Teaching/Shared";
+
+            # tool paths
+            EDITOR = "code --wait --new-window";
+            # GIT_EDITOR = "code --wait --new-window";
+            # GRAPHVIZ_DOT = "${BREW_PREFIX}/bin/dot";
+            # JAVA_HOME = $(/usr/libexec/java_home -v 17);
+            # R_GSCMD = "${BREW_PREFIX}/bin/gs";
+            # RSTUDIO_WHICH_R = "${BREW_PREFIX}/bin/R";
+            TEXDOCVIEW_pdf = "$HOME/bin/preview %s";
+            TEXEDIT = "code --wait --goto %s:%d";
+
+            # library paths
+            CLASSPATH = "$HOME/Library/Java:.";
+            # PERL5LIB = "${BREW_PREFIX}/lib/perl5";
+            # export R_LIBS_SITE="${BREW_PREFIX}/lib/R/library"
+            TCLLIBPATH = "/usr/lib";
+
+            # misc configuration
             EXA_COLORS = import ./configs/eza/colours.nix;
             ISPMS_HOST = "sobmac0011.staff.uod.otago.ac.nz";
             LESS="--no-init --raw-control-chars";
             LSCOLORS="ExGxFxDaCxDxDxxbaDacec";
-            PAGER = "less";
+            PAGER = "bat";
+            XSLT="saxon-b";
+            # automatic completion suggestions: use a slightly lighter shade of grey
+            ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=246";
         };
 
         activation = let
@@ -158,6 +193,14 @@ in
                 mode = "600";
             in lib.hm.dag.entryAfter ["writeBoundary"] ''
                 $DRY_RUN_CMD touch ${target}
+                $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
+            '';
+
+            installIterm2ShellIntegration = let
+                target = ''$HOME/.zshrc.d/iterm2_shell_integration.zsh'';
+                mode = "644";
+            in lib.hm.dag.entryAfter ["writeBoundary"] ''
+                $DRY_RUN_CMD /usr/bin/curl $VERBOSE_ARG -L https://iterm2.com/shell_integration/zsh -o ${target}
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
             '';
 
@@ -218,7 +261,7 @@ in
 
     programs.jq.enable = true;
     programs.less.enable = true;
-    programs.lesspipe.enable = true;
+    # programs.lesspipe.enable = true; # way less reliable than bat
 
     programs.neovim = {
         enable = true;
@@ -325,8 +368,6 @@ in
             plugins = builtins.concatStringsSep "\n" (pluginSources);
             # for anything that must be run AFTER a plugin loads
             postExtra = ''
-                # automatic completion suggestions: use a slightly lighter shade of grey
-                export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=246";
             '';
         in ''
             ${preExtra}

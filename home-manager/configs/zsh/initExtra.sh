@@ -38,6 +38,7 @@ setopt INTERACTIVE_COMMENTS
 # Force prompts to be re-evaluated <https://unix.stackexchange.com/a/40646>.
 setopt PROMPT_SUBST
 
+
 #####################################################################
 # Key bindings.
 # backspace should be bound by default, being careful
@@ -54,6 +55,7 @@ bindkey "\e(" kill-word
 # control U should be bound by default, being careful
 bindkey "^U" backward-kill-line
 
+
 #####################################################################
 # Python 2 and the "python" executable disappear in more recent macOS, but some
 # things still look for "python", e.g., zsh-git-prompt.
@@ -62,7 +64,48 @@ then
     alias python="python3"
 fi
 
+
 #####################################################################
 # Lazy-load the Python virtualenv wrapper so that it doesn't slow down
 # shell initialisation.
 zsh-defer source virtualenvwrapper.sh
+
+
+#####################################################################
+# Source any local scripts in ~/.zshrc.d
+function () {
+    # null_glob prevents an error if the directory is empty
+    # (see <https://unix.stackexchange.com/a/504718>)
+    setopt null_glob local_options
+    if [[ -d "$HOME/.zshrc.d" ]]; then
+        for FILE in $HOME/.zshrc.d/*; do
+            source "$FILE"
+        done
+        unsetopt null_glob
+    fi
+}
+
+
+#####################################################################
+# Function to set working directory. Only activates when you start a
+# new session in $HOME, to avoid stomping on restored sessions. If
+# no argument is provided, default to either $ALL_PAPERS_ROOT
+# (Terminal) or the profile name (iTerm) Takes advantage of cdpath
+# and assumes directory names contain no blanks.
+function set_working_dir() {
+    if [[ "$PWD" = "$HOME" ]]
+    then
+        if [[ -z "$1" ]]
+        then
+            if [[ "$TERM_PROGRAM" = "iTerm.app" ]]
+            then
+                target=$(echo "$ITERM_PROFILE" | tr -d ' ')
+            else
+                target="$ALL_PAPERS_ROOT"
+            fi
+        else
+            target=$(echo "$1" | tr -d ' ')
+        fi
+        cd "$target"
+    fi
+}
