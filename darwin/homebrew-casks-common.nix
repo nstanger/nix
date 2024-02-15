@@ -8,6 +8,7 @@
     "firefox" # no defaults configuration?
     "flux"
     "free-ruler"
+    "google-chrome" # no defaults configuration?
     "graphicconverter" # boo, it upgraded to 12 when I wasn't looking
     "inkscape" # install fails under home-manager
     "letter-opener"
