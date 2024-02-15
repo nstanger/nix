@@ -46,7 +46,8 @@ bindkey "^H" backward-delete-char
 bindkey "\e[3~" delete-char
 
 # option backspace should be bound by default, being careful
-bindkey "\e^?" backward-kill-word
+bindkey "\e^?" backward-kill-word # works on Monterey but not Ventura
+bindkey "\e177" backward-kill-word # works on Ventura but not Monterey
 # option forward delete
 bindkey "\e(" kill-word
 
