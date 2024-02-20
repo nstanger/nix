@@ -1,0 +1,35 @@
+#!/bin/bash
+
+BREW=${BREW_PREFIX}/bin/brew
+LOGGER=${BREW_PREFIX}/bin/glogger
+SLEEP=${BREW_PREFIX}/bin/gsleep
+GREP=${BREW_PREFIX}/bin/ggrep
+AWK=${BREW_PREFIX}/bin/gawk
+PS=/bin/ps
+
+if [ -z $1 ]
+then
+    delay=180
+else
+    delay=$1
+fi
+
+servers=$(${BREW} services list | ${GREP} started | ${GREP} 'mariadb\|postgres\|mongo' | ${AWK} '{print $1}')
+
+$LOGGER Will restart $servers in $delay seconds...
+$SLEEP $delay
+
+for s in $servers
+do
+    $LOGGER Restarting $s...
+    $BREW services restart $s
+
+    # $SLEEP 10
+    process=$(${BREW} services | ${GREP} $s | ${GREP} started)
+    if [ -z "$process" ]
+    then
+        $LOGGER Failed to restart $s!
+    else
+        $LOGGER Restarted $s successfully.
+    fi
+done

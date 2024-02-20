@@ -41,6 +41,9 @@ in {
                     student-teaching	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/stud-shared
 
                     water-quality	-fstype=smbfs,soft ://${username}@storage.hcs-wlg.otago.ac.nz/uow-ph-drinkingwater
+
+                    warpdrive	-fstype=smbfs,soft ://${username}@inf-ufs-p02.registry.otago.ac.nz/sci-shared/Users/${username}
+                    coursework	-fstype=smbfs,soft ://${username}@inf-ufs-p02.registry.otago.ac.nz/sci-shared/Coursework
                 '';
             };
         };
