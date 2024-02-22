@@ -73,6 +73,7 @@ in {
             "docker"
             "dropbox" # settings are in the cloud
             "mongodb-compass"
+            "mysqlworkbench"
             # "ransomwhere"
             "spamsieve"
             "zed" # basic text editor for now
