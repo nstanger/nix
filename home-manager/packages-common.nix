@@ -20,7 +20,7 @@ pkgs: with pkgs; [
     vimv-rs
     visidata
     watch
-    xq
+    xq-xml
     yq-go
 
     # PYTHON
