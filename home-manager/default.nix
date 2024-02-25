@@ -239,6 +239,11 @@ in
         nix-direnv.enable = true;
     };
 
+    programs.fzf = {
+        enable = true;
+        enableZshIntegration = true;
+    };
+
     programs.git = {
         enable = true;
         aliases = import ./configs/git/aliases.nix;
@@ -378,6 +383,11 @@ in
         syntaxHighlighting.enable = true;
 
         shellAliases = import ./configs/zsh/aliases-essential.nix pkgs;
+    };
+
+    programs.zoxide = {
+        enable = true;
+        enableZshIntegration = true;
     };
 
     launchd.enable = true;
