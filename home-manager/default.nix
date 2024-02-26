@@ -122,6 +122,7 @@ in
             "$HOME/bin"
             "$HOME/.local/bin"
             "/Users/Shared/bin"
+            "/Library/TeX/texbin" # MacTeX installs in a weird place...
         ];
 
         sessionVariables = {

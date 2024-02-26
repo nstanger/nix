@@ -12,6 +12,7 @@
     "graphicconverter" # boo, it upgraded to 12 when I wasn't looking
     "inkscape" # install fails under home-manager
     "letter-opener"
+    "mactex-no-gui" # this appears to be ... complicated with nixpkgs
     "netbeans" # not configured
     "rstudio" # not configured
     "skim"

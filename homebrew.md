@@ -469,7 +469,7 @@
 * [x] iterm2
 * [ ] keepassxc
 * [ ] libreoffice
-* [ ] mactex-no-gui
+* [x] mactex-no-gui
 * [ ] meld
 * [ ] miniconda
 * [x] mongodb-compass
