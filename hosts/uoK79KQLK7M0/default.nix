@@ -75,6 +75,7 @@ in {
             "mongodb-compass"
             "mysqlworkbench"
             # "ransomwhere"
+            "scroll" # not configured
             "spamsieve"
             "zed" # basic text editor for now
         ];
@@ -144,9 +145,12 @@ in {
                 # dock (see https://apple.stackexchange.com/a/444202). No-one
                 # seems to know what this actually does or what other effects
                 # this might have. "Ard" perhaps refers to Apple Remote Desktop?
+                # This makes sense given that the laptop dock appears emulate
+                # a remote desktop connection.
                 "com.apple.security.authorization".ignoreArd = true;
                 "com.c-command.SpamSieve" = import ../../apps/spamsieve.nix;
-                "com.googlecode.iterm2".BootstrapDaemon = 0; # theoretically permits Touch ID for sudo
+                "com.googlecode.iterm2".BootstrapDaemon = 0; # permits Touch ID for sudo
+                "com.knollsoft.Scroll" = import ../../apps/scroll.nix;
                 "com.if.Amphetamine" = {
                     "End Session On Low Battery" = 1;
                     "Ignore Battery on AC" = 1;
