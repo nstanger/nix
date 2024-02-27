@@ -145,8 +145,8 @@ in {
                 # dock (see https://apple.stackexchange.com/a/444202). No-one
                 # seems to know what this actually does or what other effects
                 # this might have. "Ard" perhaps refers to Apple Remote Desktop?
-                # This makes sense given that the laptop dock appears emulate
-                # a remote desktop connection.
+                # Update: this turns out to make sense given that the DisplayLink
+                # appears to emulate a remote desktop connection.
                 "com.apple.security.authorization".ignoreArd = true;
                 "com.c-command.SpamSieve" = import ../../apps/spamsieve.nix;
                 "com.googlecode.iterm2".BootstrapDaemon = 0; # permits Touch ID for sudo
