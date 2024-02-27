@@ -201,7 +201,11 @@ in
                 target = ''$HOME/.zshrc.d/iterm2_shell_integration.zsh'';
                 mode = "644";
             in lib.hm.dag.entryAfter ["writeBoundary"] ''
-                $DRY_RUN_CMD /usr/bin/curl $VERBOSE_ARG -L https://iterm2.com/shell_integration/zsh -o ${target}
+                if [ -e ${target} ]
+                then TC_FLAG=(--time-cond ${target})
+                else TC_FLAG=()
+                fi
+                $DRY_RUN_CMD /usr/bin/curl $VERBOSE_ARG --location https://iterm2.com/shell_integration/zsh $TC_FLAG --silent --create-dirs --output ${target}
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
             '';
 
