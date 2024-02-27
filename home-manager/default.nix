@@ -122,19 +122,19 @@ in
             "$HOME/bin"
             "$HOME/.local/bin"
             "/Users/Shared/bin"
-            "/Library/TeX/texbin" # MacTeX installs in a weird place...
+            "/Library/TeX/Distributions/Programs/texbin" # MacTeX installs in a weird place...
         ];
 
         sessionVariables = {
             # TEXMF paths
-            # TEXMFCONFIG = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFCONFIG')";
-            # TEXMFDIST = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFDIST')";
-            # TEXMFHOME = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFHOME')";
-            # TEXMFLOCAL = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFLOCAL')";
-            # TEXMFMAIN = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFMAIN')";
-            # TEXMFSYSCONFIG = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFSYSCONFIG')";
-            # TEXMFSYSVAR = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFSYSVAR')";
-            # TEXMFVAR = "$(/Library/TeX/texbin/kpsewhich -expand-var '$TEXMFVAR')";
+            TEXMFCONFIG = "$(/Library/TeX/Distributions/Programs/texbin/kpsewhich -expand-var '$TEXMFCONFIG')";
+            TEXMFDIST = "$(/Library/TeX/Distributions/Programs/texbin/kpsewhich -expand-var '$TEXMFDIST')";
+            TEXMFHOME = "$(/Library/TeX/Distributions/Programs/texbin/kpsewhich -expand-var '$TEXMFHOME')";
+            TEXMFLOCAL = "$(/Library/TeX/Distributions/Programs/texbin/kpsewhich -expand-var '$TEXMFLOCAL')";
+            TEXMFMAIN = "$(/Library/TeX/Distributions/Programs/texbin/kpsewhich -expand-var '$TEXMFMAIN')";
+            TEXMFSYSCONFIG = "$(/Library/TeX/Distributions/Programs/texbin/kpsewhich -expand-var '$TEXMFSYSCONFIG')";
+            TEXMFSYSVAR = "$(/Library/TeX/Distributions/Programs/texbin/kpsewhich -expand-var '$TEXMFSYSVAR')";
+            TEXMFVAR = "$(/Library/TeX/Distributions/Programs/texbin/kpsewhich -expand-var '$TEXMFVAR')";
 
             # directory paths
             ALL_PAPERS_ROOT = "$HOME/Documents/Teaching";
