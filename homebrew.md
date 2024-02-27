@@ -59,21 +59,21 @@
 * [x] findutils
 * [ ] flac
 * [ ] flake8
-* [ ] fontconfig
+* [x] fontconfig
 * [ ] fontforge
 * [ ] fop
 * [ ] freetds
-* [ ] freetype
+* [x] freetype
 * [ ] frei0r
 * [ ] fribidi
-* [ ] fzf
+* [x] fzf
 * [x] gawk
 * [ ] gcc
 * [ ] gd
 * [ ] gdbm
 * [ ] gdk-pixbuf
 * [ ] gettext
-* [ ] ghostscript
+* [x] ghostscript
 * [ ] giflib
 * [x] git
 * [x] git-extras
@@ -123,9 +123,9 @@
 * [ ] itstool
 * [ ] jansson
 * [ ] jasper
-* [ ] jbig2dec
+* [x] jbig2dec
 * [ ] jpeg
-* [ ] jpeg-turbo
+* [x] jpeg-turbo
 * [ ] jpeg-xl
 * [x] jq
 * [ ] json-c
@@ -155,7 +155,7 @@
 * [ ] libheif
 * [ ] libice
 * [ ] libiconv
-* [ ] libidn
+* [x] libidn
 * [ ] libidn2
 * [ ] libksba
 * [ ] liblqr
@@ -166,7 +166,7 @@
 * [ ] libomp
 * [ ] libpaper
 * [ ] libpeas
-* [ ] libpng
+* [x] libpng
 * [ ] libpq
 * [ ] libpthread-stubs
 * [ ] libpython-tabulate
@@ -185,7 +185,7 @@
 * [ ] libssh2
 * [ ] libtasn1
 * [ ] libtermkey
-* [ ] libtiff
+* [x] libtiff
 * [ ] libtool
 * [ ] libunibreak
 * [ ] libuninameslist
@@ -207,7 +207,7 @@
 * [ ] libxt
 * [ ] libyaml
 * [ ] libzip
-* [ ] little-cms2
+* [x] little-cms2
 * [ ] lmdb
 * [x] logrotate
 * [ ] lorem
@@ -215,7 +215,7 @@
 * [ ] lua
 * [ ] luajit
 * [ ] luv
-* [ ] lz4
+* [x] lz4
 * [ ] lzo
 * [ ] m4
 * [ ] macos-term-size
@@ -258,7 +258,7 @@
 * [x] openjdk
 * [ ] ~~openjdk@11~~
 * [x] openjdk@17
-* [ ] openjpeg
+* [x] openjpeg
 * [ ] openldap
 * [ ] ~~openssl@1.1~~
 * [x] openssl@3
@@ -384,7 +384,7 @@
 * [x] xq
 * [ ] xvid
 * [ ] xxhash
-* [ ] xz
+* [x] xz
 * [ ] yapf
 * [ ] yara
 * [ ] ~~youtube-dl~~
@@ -397,7 +397,7 @@
 * [x] zsh-syntax-highlighting
 * [ ] ~~zsh-vi-mode~~
 * [x] zsh-you-should-use
-* [ ] zstd
+* [x] zstd
 
 ## Casks
 
@@ -411,7 +411,7 @@
 * [x] bibdesk
 * [x] blockblock
 * [x] calibre
-* [x] camunda-modeler
+* [ ] camunda-modeler
 * [x] color-oracle
 * [x] dbeaver-community
 * [x] docker
@@ -464,10 +464,10 @@
 * [ ] hugin
 * [ ] iina
 * [x] inkscape
-* [ ] insomnia
+* [x] insomnia
 * [ ] intellij-idea-ce
 * [x] iterm2
-* [ ] keepassxc
+* [x] keepassxc
 * [ ] libreoffice
 * [x] mactex-no-gui
 * [ ] meld
@@ -480,19 +480,19 @@
 * [ ] openrefine
 * [ ] orca
 * [x] oversight
-* [ ] pacifist
+* [x] pacifist
 * [ ] powershell
 * [ ] qlmarkdown
 * [ ] qlstephen
 * [ ] ransomwhere
 * [x] rectangle
 * [x] rstudio
-* [ ] screenflick
-* [ ] silentknight
+* [x] screenflick
+* [x] silentknight
 * [ ] skitch
 * [ ] skype
 * [ ] smartreporter-free
-* [ ] smcfancontrol
+* [ ] ~~smcfancontrol~~
 * [ ] ssdreporter-free
 * [x] temurin11
 * [x] temurin17

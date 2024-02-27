@@ -11,10 +11,16 @@
     "google-chrome" # no defaults configuration?
     "graphicconverter" # boo, it upgraded to 12 when I wasn't looking
     "inkscape" # install fails under home-manager
+    "insomnia" # not configured
+    "keepassxc" # not configured
     "letter-opener"
+    # 404 "libreoffice" # not configured
     "mactex-no-gui" # this appears to be ... complicated with nixpkgs
     "netbeans" # not configured
+    "pacifist" # not configured
     "rstudio" # not configured
+    "screenflick" # not configured
+    "silentknight" # not configured
     "skim"
     # temurin8 requires Rosetta 2 on macOS 13, and isn't supported
     # at all on 14+; can enable on x86 hosts
