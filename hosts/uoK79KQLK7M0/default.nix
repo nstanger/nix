@@ -141,6 +141,15 @@ in {
                     # correct key, but doesn't change in System Settings? (CHECK)
                     "com.apple.trackpad.forceClick" = 0;
                 };
+                # switch off all the infuriating Multitouch Mouse gestures
+                "com.apple.AppleMultitouchMouse" = {
+                    # This is currently disabled by Scroll but it probably just
+                    # sets this anyway!
+                    # MouseHorizontalScroll = 0;
+                    MouseOneFingerDoubleTapGesture = 0;
+                    MouseTwoFingerDoubleTapGesture = 0;
+                    MouseTwoFingerHorizSwipeGesture = 0;
+                };
                 # Dodgy hack to make Touch ID work for sudo with a DisplayLink
                 # dock (see https://apple.stackexchange.com/a/444202). No-one
                 # seems to know what this actually does or what other effects
