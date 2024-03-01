@@ -32,7 +32,7 @@ pkgs: with pkgs; [
     # Python version, e.g., "311"), not a "python3Packages".
     python311Full
     python311Packages.virtualenvwrapper
-    python311Packages.pygmentize
+    python311Packages.pygments
 
     # FONTS
     symbola # not in Homebrew
