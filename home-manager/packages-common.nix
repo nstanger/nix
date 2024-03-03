@@ -5,6 +5,7 @@ pkgs: with pkgs; [
     ffmpeg
     gawk
     # gnumeric # marked as broken on Darwin + aarch64
+    gradle_7
     gron
     imgcat
     imagemagick
