@@ -27,6 +27,7 @@
     "temurin11"
     "temurin21"
     "vlc"
+    # 500 "whatsapp" # not configured
     "wordservice"
     "zoom"
     "zotero" # not configured
