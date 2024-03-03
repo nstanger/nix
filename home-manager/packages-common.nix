@@ -6,6 +6,7 @@ pkgs: with pkgs; [
     gawk
     # gnumeric # marked as broken on Darwin + aarch64
     gradle_7
+    graphviz-nox
     gron
     imgcat
     imagemagick
