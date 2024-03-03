@@ -91,9 +91,9 @@
 * [ ] gobject-introspection
 * [ ] goffice
 * [ ] gpgme
-* [ ] gradle
+* [x] gradle
 * [ ] graphite2
-* [ ] graphviz@7.0.6
+* [x] graphviz@7.0.6
 * [x] grep
 * [x] gron
 * [ ] groonga
