@@ -7,7 +7,7 @@
 if [ $# -eq 0 ] ; then echo "Usage: pu2pdf <input file> [<output file>]" ; exit 1 ; fi
 
 PLANTUML=$(which plantuml)
-INKSCAPE=$(WHICH inkscape)
+INKSCAPE=$(which inkscape)
 
 inlocation=$(dirname "$1")
 inputfile=$(basename "$1")
