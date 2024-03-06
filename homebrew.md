@@ -319,7 +319,7 @@
 * [ ] rdfind
 * [x] readline
 * [ ] recode
-* [ ] rename
+* [x] rename
 * [ ] renameutils
 * [x] rlwrap
 * [x] rsync

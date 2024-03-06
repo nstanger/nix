@@ -3,4 +3,5 @@
     # package is available - missing dependency acl?
     "logrotate"
     "osxutils"
+    "rename" # not available in nixpkgs
 ]
