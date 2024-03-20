@@ -12,6 +12,7 @@ pkgs: with pkgs; [
     imagemagick
     mkcert
     # neovide
+    nodePackages.tiddlywiki
     p7zip
     plantuml
     proselint
