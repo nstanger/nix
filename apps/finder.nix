@@ -20,7 +20,16 @@
             viewOptionsVersion = 1;
         };
     };
-    # show tab bar
+    FavoriteTagNames = [
+        ""
+        "Broken"
+        "Alert"
+        "Note"
+        "Good"
+        "Completed"
+        "Purple"
+        "Ignore"
+    ];    # show tab bar
     "NSWindowTabbingShoudShowTabBarKey-com.apple.finder.TBrowserWindow" = 1;
     # new windows default to user home
     NewWindowTarget = "PfHm";
