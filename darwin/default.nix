@@ -21,8 +21,8 @@
         ];
         
         systemPackages = with pkgs; [
-            curl
             coreutils
+            curl
             duti # file type mappings
             findutils # => GNU find, xargs
             findutils.locate # => GNU locate, updatedb
@@ -70,8 +70,8 @@
             "synology-drive"
             "temurin17"
             "ubersicht"
-            "vivaldi"
             "visual-studio-code"
+            "vivaldi"
 
             # FONTS
             # These may come as OpenType variable fonts, i.e., a single file
