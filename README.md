@@ -30,6 +30,15 @@
    ./result/sw/bin/darwin-rebuild switch --flake /path/to/flake/repo
    ```
 
-   If there is a “Problem with the SSL CA cert”, during the initial `nix build`, check the solutions in this issue: <https://github.com/nixos/nix/issues/2899>. this usually happens if starting again after wiping a previous `nix` installation, which can leave dangling links as per <https://github.com/nixos/nix/issues/2899#issuecomment-1669501326>. You need to `sudo rm /etc/ssl/certs/ca-vertificates.crt` again before `darwin-rebuild switch` as otherwise it complains about the file being in the way.
+   If there is a “Problem with the SSL CA cert”, during the initial `nix build`, check the solutions in this issue: <https://github.com/nixos/nix/issues/2899>. this usually happens if starting again after wiping a previous `nix` installation, which can leave dangling links as per <https://github.com/nixos/nix/issues/2899#issuecomment-1669501326>. You need to `sudo rm /etc/ssl/certs/ca-certificates.crt` again before `darwin-rebuild switch` as otherwise it complains about the file being in the way.
 
 1. Profit!
+
+
+# nix-darwin bootstrap on an existing machine
+
+As above, but before cloning and bootstrapping the flake, remove all installed Homebrew packages:
+
+   ```sh
+   brew remove --force $(brew list --formula) --ignore-dependencies
+   ```
