@@ -301,7 +301,7 @@
 * [ ] py3cairo
 * [ ] pycparser
 * [ ] pydocstyle
-* [ ] pygments
+* [x] pygments
 * [ ] pygobject3
 * [ ] pylint
 * [ ] python-certifi
@@ -309,7 +309,7 @@
 * [ ] python-tabulate
 * [ ] python-typing-extensions
 * [ ] python@3.10
-* [ ] python@3.11
+* [x] python@3.11
 * [ ] python@3.9
 * [ ] pyyaml
 * [x] r

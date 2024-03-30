@@ -40,12 +40,12 @@
 * [x] dos2unix
 * [ ] dtc
 * [x] duti
-* [ ] entr
+* [x] entr
 * [ ] epstool
 * [ ] exa
 * [x] exiftool
 * [ ] exiv2
-* [ ] ffmpeg
+* [x] ffmpeg
 * [ ] file-formula
 * [x] findutils
 * [ ] flac
@@ -56,7 +56,7 @@
 * [ ] frei0r
 * [ ] fribidi
 * [x] fzf
-* [ ] gawk
+* [x] gawk
 * [ ] gcc
 * [ ] gd
 * [ ] gdbm
@@ -78,12 +78,12 @@
 * [ ] gobject-introspection
 * [ ] goffice
 * [ ] gpgme
-* [ ] gradle
+* [x] gradle
 * [ ] gradle@7
 * [ ] graphite2
-* [ ] graphviz
+* [x] graphviz
 * [x] grep
-* [ ] gron
+* [x] gron
 * [ ] groonga
 * [ ] gsettings-desktop-schemas
 * [ ] gtk+3
@@ -99,7 +99,7 @@
 * [ ] hunspell
 * [ ] hwloc
 * [ ] icu4c
-* [ ] imagemagick
+* [x] imagemagick
 * [ ] imap-uw
 * [ ] imath
 * [ ] inetutils
@@ -189,7 +189,7 @@
 * [ ] lmdb
 * [x] logrotate
 * [ ] lorem
-* [ ] lsd
+* [ ] ~~lsd~~
 * [ ] lua
 * [ ] luajit
 * [ ] luv
@@ -202,7 +202,7 @@
 * [ ] mbedtls
 * [ ] mecab
 * [ ] mecab-ipadic
-* [ ] mkcert
+* [x] mkcert
 * [ ] mongosh
 * [ ] mpdecimal
 * [ ] mpfr
@@ -229,18 +229,18 @@
 * [ ] opencore-amr
 * [ ] openexr
 * [ ] openjdk
-* [ ] openjdk@11
+* [ ] ~~openjdk@11~~
 * [ ] openjdk@17
 * [ ] openjpeg
 * [ ] openldap
-* [ ] openssl@1.1
+* [ ] ~~openssl@1.1~~
 * [x] openssl@3
 * [ ] openvino
 * [ ] openvpn
 * [ ] opus
 * [x] osxutils
 * [ ] p11-kit
-* [ ] p7zip
+* [x] p7zip
 * [x] pandoc
 * [ ] pango
 * [ ] pcalc
@@ -255,18 +255,18 @@
 * [ ] pixman
 * [ ] pkcs11-helper
 * [ ] pkg-config
-* [ ] plantuml
+* [x] plantuml
 * [ ] plantuml@1.2022.1
 * [ ] poppler
 * [ ] popt
 * [ ] postgresql@14
-* [ ] proselint
-* [ ] ps2eps
+* [x] proselint
+* [x] ps2eps
 * [ ] psutils
 * [ ] pugixml
 * [ ] pycparser
 * [ ] pydocstyle
-* [ ] pygments
+* [x] pygments
 * [ ] pylint
 * [ ] python-brotli
 * [ ] python-certifi
@@ -274,11 +274,11 @@
 * [ ] python-setuptools
 * [ ] python-typing-extensions
 * [ ] python@3.10
-* [ ] python@3.11
+* [x] python@3.11
 * [ ] python@3.12
 * [ ] python@3.9
 * [ ] qemu
-* [ ] r
+* [x] r
 * [ ] rav1e
 * [ ] rdfind
 * [x] readline
@@ -293,7 +293,7 @@
 * [ ] ruby
 * [ ] rust
 * [ ] sassc
-* [ ] saxon-b
+* [x] saxon-b
 * [ ] sdl2
 * [ ] shared-mime-info
 * [ ] six
@@ -305,7 +305,7 @@
 * [x] starship
 * [ ] stoken
 * [ ] subversion
-* [ ] svgcleaner
+* [x] svgcleaner
 * [ ] svt-av1
 * [ ] talloc
 * [x] task
@@ -318,7 +318,7 @@
 * [ ] theora
 * [ ] tidy-html5
 * [ ] tokyo-cabinet
-* [ ] tree
+* [ ] ~~tree~~
 * [ ] tree-sitter
 * [ ] tvnamer
 * [ ] unbound
@@ -326,13 +326,13 @@
 * [ ] unixodbc
 * [ ] utf8proc
 * [ ] vde
-* [ ] vim
+* [ ] ~~vim~~
 * [x] virtualenv
-* [ ] virtualenvwrapper
-* [ ] visidata
+* [x] virtualenvwrapper
+* [x] visidata
 * [ ] vpn-slice
 * [ ] wakeonlan
-* [ ] watch
+* [x] watch
 * [ ] webp
 * [x] wget
 * [ ] x264
@@ -341,12 +341,12 @@
 * [ ] xmlcatmgr
 * [ ] xmlto
 * [ ] xorgproto
-* [ ] xq
+* [x] xq
 * [ ] xvid
 * [ ] xxhash
 * [ ] xz
-* [ ] youtube-dl
-* [ ] yq
+* [ ] ~~youtube-dl~~
+* [x] yq
 * [x] yt-dlp
 * [ ] z3
 * [ ] zeromq
@@ -364,7 +364,7 @@
 * [ ] adobe-acrobat-reader
 * [ ] android-file-transfer
 * [ ] arq
-* [ ] bbedit
+* [ ] ~~bbedit~~
 * [x] bibdesk
 * [x] blockblock
 * [ ] blueharvest
@@ -386,7 +386,7 @@
 * [x] font-computer-modern
 * [x] font-crimson-pro
 * [x] font-dejavu
-* [ ] font-gentium-book-plus
+* [ ] ~~font-gentium-book-plus~~
 * [x] font-gentium-plus
 * [x] font-hack
 * [x] font-hack-nerd-font
@@ -397,7 +397,7 @@
 * [x] font-lora
 * [x] font-open-iconic
 * [ ] font-open-sans
-* [ ] font-open-sans-condensed
+* [ ] ~~font-open-sans-condensed~~
 * [x] font-roboto
 * [x] font-stix
 * [x] font-tex-gyre-adventor
@@ -437,7 +437,7 @@
 * [ ] moneydance
 * [ ] mongodb-compass
 * [ ] monitorcontrol
-* [ ] muzzle
+* [ ] ~~muzzle~~
 * [ ] mysqlworkbench
 * [x] netbeans
 * [ ] onedrive
@@ -454,7 +454,7 @@
 * [x] synology-drive
 * [x] temurin11
 * [x] temurin17
-* [ ] temurin8
+* [ ] ~~temurin8~~
 * [ ] textmate
 * [ ] transcribe
 * [x] ubersicht
