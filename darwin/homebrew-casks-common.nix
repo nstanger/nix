@@ -1,6 +1,6 @@
 [
     # SOFTWARE
-    "bibdesk" # not configured
+    "bibdesk"
     "calcservice"
     "calibre"
     "color-oracle"

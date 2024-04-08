@@ -433,6 +433,7 @@ in
             "com.objective-see.oversight" = import ../apps/oversight.nix;
             "com.noodlesoft.Hazel" = import ../apps/hazel.nix;
             "com.stclairsoft.DefaultFolderX5" = import ../apps/default-folder-x.nix;
+            "edu.ucsd.cs.mmccrack.bibdesk" = import ../apps/bibdesk.nix;
             # where on earth are the rest of Vivaldi's settings???
             # (similar for Chrome and Firefox)
             "com.vivaldi.Vivaldi".SUAutomaticallyUpdate = 0;
