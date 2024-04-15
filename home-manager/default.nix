@@ -303,7 +303,7 @@ in
                 certificate = "~/.config/task/Nigel_Stanger.cert.pem";
                 key = "~/.config/task/Nigel_Stanger.key.pem";
                 ca = "~/.config/task/ca.cert.pem";
-                credentials = "stanger.org.nz/Nigel Stanger/c877003c-d516-4efb-ab5f-e004449c4232";
+                credentials = "stanger.org.nz/Nigel Stanger/ffce3667-319b-456f-ad9f-ce815131db35";
                 server = "taskd.stanger.org.nz:53589";
             };
             context.home = {
