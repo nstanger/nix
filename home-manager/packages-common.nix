@@ -20,6 +20,7 @@ pkgs: with pkgs; [
     R
     saxonb_9_1
     svgcleaner
+    tmux
     vimv-rs
     visidata
     watch
