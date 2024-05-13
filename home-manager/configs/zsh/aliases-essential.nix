@@ -28,5 +28,6 @@ in {
 
     # set terminal window and tab title
     winname = "printf \"\\033]2;%s\\a\"";
-    tabname = "printf \"\\033]1;%s\\a\"";
+    # OSC 1 works for iTerm tabs but not panes, OSC 0 works for both
+    tabname = "printf \"\\033]0;%s\\a\"";
 }
