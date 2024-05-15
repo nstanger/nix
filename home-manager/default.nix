@@ -29,6 +29,7 @@ let
     # and https://discourse.nixos.org/t/how-to-invoke-script-installed-with-writescriptbin-inside-other-config-file/8795/2
     # writeShellScript automatically inserts a shebang line
     mkShellScript = targetPath: name: {
+        executable = true;
         source = pkgs.writeShellScript "${name}" (builtins.readFile ./binfiles/${name});
         target = "${targetPath}/${name}";
     };
