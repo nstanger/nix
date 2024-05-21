@@ -332,6 +332,7 @@
         "Green Component" = 0.3591529726982117;
         "Red Component" = 0;
     };
+    "Load Shell Integration Automatically" = true;
     "Minimum Contrast" = 0;
     "Mouse Reporting" = 1;
     "Movement Keys Scroll Outside Interactive Apps" = 1;
