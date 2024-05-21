@@ -13,6 +13,19 @@
 # in
 let
     username = "stani07p";
+
+    # these need to be refactored into some kind of utility library
+    processHomeFiles = builtins.mapAttrs (name: fn: fn name);
+
+    # Add shell scripts in specified location
+    # see https://nixos.org/manual/nixpkgs/stable/#trivial-builder-writeText
+    # and https://discourse.nixos.org/t/how-to-invoke-script-installed-with-writescriptbin-inside-other-config-file/8795/2
+    # writeShellScript automatically inserts a shebang line
+    mkShellScript = targetPath: name: {
+        executable = true;
+        source = pkgs.writeShellScript "${name}" (builtins.readFile ../../home-manager/binfiles/${name});
+        target = "${targetPath}/${name}";
+    };
 in {
     users.users."${username}" = {
         home = "/Users/${username}";
@@ -117,6 +130,10 @@ in {
             ../../home-manager
         ];
         home = {
+            file = processHomeFiles {
+                # This really should be bundled into the activation.
+                "fix-automount" = mkShellScript "bin";
+            };
             homeDirectory = "/Users/${username}";
             packages = with pkgs; import ../../home-manager/packages-common.nix pkgs ++ [
                 camunda-modeler

@@ -4,6 +4,7 @@
     ...
 }:
 let
+    # these need to be refactored into some kind of utility library
     processHomeFiles = builtins.mapAttrs (name: fn: fn name);
 
     # Add a text-based config file
