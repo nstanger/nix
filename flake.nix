@@ -74,7 +74,9 @@
                             {
 #                                nixpkgs.overlays = overlays;
                                 #system.darwinLabel = "${config.system.darwinLabel}@${rev}";
-                                networking.hostName = hostName;
+                                # This forces hostname -f to be just the short name, not the FQDN.
+                                # Should it be localHostName or computerName instead? Or just not bother?
+                                # networking.hostName = hostName;
                                 home-manager = {
                                     useGlobalPkgs = true;
                                     useUserPackages = true;
