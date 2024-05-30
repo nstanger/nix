@@ -1,6 +1,8 @@
 {
+    paths,
     pkgs,
     inputs,
+    lib,
     ...
 }: 
 # let
@@ -13,19 +15,6 @@
 # in
 let
     username = "stani07p";
-
-    # these need to be refactored into some kind of utility library
-    processHomeFiles = builtins.mapAttrs (name: fn: fn name);
-
-    # Add shell scripts in specified location
-    # see https://nixos.org/manual/nixpkgs/stable/#trivial-builder-writeText
-    # and https://discourse.nixos.org/t/how-to-invoke-script-installed-with-writescriptbin-inside-other-config-file/8795/2
-    # writeShellScript automatically inserts a shebang line
-    mkShellScript = targetPath: name: {
-        executable = true;
-        source = pkgs.writeShellScript "${name}" (builtins.readFile ../../home-manager/binfiles/${name});
-        target = "${targetPath}/${name}";
-    };
 in {
     users.users."${username}" = {
         home = "/Users/${username}";
@@ -80,9 +69,9 @@ in {
     };
 
     homebrew = {
-        brews = import ../../darwin/homebrew-brews-common.nix ++ [
+        brews = import (paths.darwin + "/homebrew-brews-common.nix") ++ [
         ];
-        casks = import ../../darwin/homebrew-casks-common.nix ++ [
+        casks = import (paths.darwin + "/homebrew-casks-common.nix") ++ [
             "docker"
             "dropbox" # settings are in the cloud
             "mongodb-compass"
@@ -92,7 +81,7 @@ in {
             "spamsieve"
             "zed" # basic text editor for now
         ];
-        masApps = import ../../darwin/mas-apps-common.nix // {
+        masApps = import (paths.darwin + "/mas-apps-common.nix") // {
             # "Apple Configurator" = 1289583905; # not configured
             # "Final Cut Pro" = 424389933; # not configured
             Klack = 6446206067; # not configured, but pretty simple
@@ -127,15 +116,15 @@ in {
 
     home-manager.users."${username}" = {
         imports = [
-            ../../home-manager
+            paths.home-manager
         ];
         home = {
-            file = processHomeFiles {
+            file = with lib.my; with paths; processHomeFiles {
                 # This really should be bundled into the activation.
-                "fix-automount" = mkShellScript "bin";
+                "fix-automount" = mkShellScript (paths.home-manager + "/binfiles") "bin";
             };
             homeDirectory = "/Users/${username}";
-            packages = with pkgs; import ../../home-manager/packages-common.nix pkgs ++ [
+            packages = with pkgs; import (paths.home-manager + "/packages-common.nix") pkgs ++ [
                 camunda-modeler
                 mongodb-tools
                 mongosh
@@ -147,13 +136,13 @@ in {
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
             "context=work"
         ];
-        programs.zsh.shellAliases = import ../../home-manager/configs/zsh/aliases-common.nix pkgs // {
+        programs.zsh.shellAliases = with paths; import (home-manager + "/configs/zsh/aliases-common.nix") pkgs // {
         };
-        launchd.agents = {
-            "task.sync" = import ../../home-manager/configs/launchd/task-sync.nix username;
+        launchd.agents = with paths; {
+            "task.sync" = import (home-manager + "/configs/launchd/task-sync.nix") username;
         };
         targets.darwin = {
-            defaults = {
+            defaults = with paths; {
                 NSGlobalDomain = {
                     "com.apple.sound.beep.sound" = "/Users/${username}/Library/Sounds/Eyuuurh.aiff";
                     # correct key, but doesn't change in System Settings? (CHECK)
@@ -175,16 +164,16 @@ in {
                 # Update: this turns out to make sense given that the DisplayLink
                 # appears to emulate a remote desktop connection.
                 "com.apple.security.authorization".ignoreArd = true;
-                "com.c-command.SpamSieve" = import ../../apps/spamsieve.nix;
+                "com.c-command.SpamSieve" = import (apps + "/spamsieve.nix");
                 "com.googlecode.iterm2".BootstrapDaemon = 0; # permits Touch ID for sudo
-                "com.knollsoft.Scroll" = import ../../apps/scroll.nix;
+                "com.knollsoft.Scroll" = import (apps + "/scroll.nix");
                 "com.if.Amphetamine" = {
                     "End Session On Low Battery" = 1;
                     "Ignore Battery on AC" = 1;
                     "Low Battery Percent" = 10;
                 };
-                "com.mactrackerapp.Mactracker" = import ../../apps/mactracker.nix;
-                "com.michelf.sim-daltonism" = import ../../apps/sim-daltonism.nix;
+                "com.mactrackerapp.Mactracker" = import (apps + "/mactracker.nix");
+                "com.michelf.sim-daltonism" = import (apps + "/sim-daltonism.nix");
                 "org.cups.PrintingPrefs".UseLastPrinter = 0;
             };
             currentHostDefaults = {

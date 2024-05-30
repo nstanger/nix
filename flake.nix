@@ -47,10 +47,19 @@
                     lib = pkgs.lib.extend (self: super: {
                         my = import ./lib { inherit inputs pkgs; lib = self; };
                     });
+
+                    # Easiest way to fix the major module paths so that we can
+                    # access them from anywhere.
+                    paths = {
+                        apps = ./. + "/apps";
+                        darwin = ./. + "/darwin";
+                        home-manager = ./. + "/home-manager";
+                        hosts = ./. + "/hosts";
+                    };
                 in
                     darwin.lib.darwinSystem {
                         inherit system;
-                        specialArgs = { inherit pkgs lib inputs self darwin; };
+                        specialArgs = { inherit paths pkgs lib inputs self darwin; };
                         modules = [
                             nix-homebrew.darwinModules.nix-homebrew {
                                 nix-homebrew = {
@@ -84,13 +93,13 @@
                                 home-manager = {
                                     useGlobalPkgs = true;
                                     useUserPackages = true;
-                                    extraSpecialArgs = { inherit inputs pkgs; };
+                                    extraSpecialArgs = { inherit inputs pkgs paths; };
                                 };
 #                                home-manager.users.ragon = hmConfig;
                             }
-                            ./darwin
+                            paths.darwin
                             # host-specific configuration
-                            ./hosts/${hostName}
+                            (paths.hosts + "/${hostName}")
                         ] ++ extraModules;
                     };
 

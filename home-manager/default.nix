@@ -1,4 +1,5 @@
 {
+    paths,
     pkgs,
     lib,
     ...
@@ -38,10 +39,10 @@ in
         stateVersion = "23.11";
 
         # append anything weird using //
-        file = with lib.my; processHomeFiles {
+        file = with lib.my; with paths; processHomeFiles {
             # text-based config files
-            ".agignore" = mkConfigFile (./. + "/configs/silver-searcher") "";
-            "logrotate.conf" = mkConfigFile (./. + "/configs/logrotate") ".config/logrotate";
+            ".agignore" = mkConfigFile (home-manager + "/configs/silver-searcher") "";
+            "logrotate.conf" = mkConfigFile (home-manager + "/configs/logrotate") ".config/logrotate";
 
             # directories
             "logrotate.d" = mkDir ".config/logrotate";
@@ -49,10 +50,10 @@ in
             ".zshrc.d" = mkDir "";
 
             # scripts to go in various bin locations
-            "die-safari" = mkShellScript (./. + "/binfiles") "bin";
-            "preview" = mkShellScript (./. + "/binfiles") "bin";
-            "pu2pdf" = mkShellScript (./. + "/binfiles") "bin";
-            "svg2pdf" = mkShellScript (./. + "/binfiles") "bin";
+            "die-safari" = mkShellScript (home-manager + "/binfiles") "bin";
+            "preview" = mkShellScript (home-manager + "/binfiles") "bin";
+            "pu2pdf" = mkShellScript (home-manager + "/binfiles") "bin";
+            "svg2pdf" = mkShellScript (home-manager + "/binfiles") "bin";
 
             # iTerm profiles using the mapAttrs trick
             "console.json" = mkITermDynamicProfile;
