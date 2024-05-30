@@ -4,35 +4,10 @@
     ...
 }:
 let
-    # these need to be refactored into some kind of utility library
-    processHomeFiles = builtins.mapAttrs (name: fn: fn name);
-
-    # Add a text-based config file
-    mkConfigFile = sourcePath: targetPath: name: {
-        text = builtins.readFile ./${sourcePath}/${name};
-        target = "${targetPath}/${name}";
-    };
-
-    # Add a required directory using the invisible file trick
-    mkDir = targetPath: name: {
-        text = "";
-        target = "${targetPath}/${name}/.nix-keep";
-    };
-    
     # Add iTerm dynamic profiles (JSON)
     mkITermDynamicProfile = name: {
         source = ../apps/iterm/dynamic-profiles/${name};
         target = "Library/Application Support/iTerm2/DynamicProfiles/${name}";
-    };
-
-    # Add shell scripts in specified location
-    # see https://nixos.org/manual/nixpkgs/stable/#trivial-builder-writeText
-    # and https://discourse.nixos.org/t/how-to-invoke-script-installed-with-writescriptbin-inside-other-config-file/8795/2
-    # writeShellScript automatically inserts a shebang line
-    mkShellScript = targetPath: name: {
-        executable = true;
-        source = pkgs.writeShellScript "${name}" (builtins.readFile ./binfiles/${name});
-        target = "${targetPath}/${name}";
     };
 
     hashdiff = pkgs.stdenv.mkDerivation rec {
@@ -63,10 +38,10 @@ in
         stateVersion = "23.11";
 
         # append anything weird using //
-        file = processHomeFiles {
+        file = with lib.my; processHomeFiles {
             # text-based config files
-            ".agignore" = mkConfigFile "./configs/silver-searcher" "";
-            "logrotate.conf" = mkConfigFile "./configs/logrotate" ".config/logrotate";
+            ".agignore" = mkConfigFile (./. + "/configs/silver-searcher") "";
+            "logrotate.conf" = mkConfigFile (./. + "/configs/logrotate") ".config/logrotate";
 
             # directories
             "logrotate.d" = mkDir ".config/logrotate";
@@ -74,10 +49,10 @@ in
             ".zshrc.d" = mkDir "";
 
             # scripts to go in various bin locations
-            "die-safari" = mkShellScript "bin";
-            "preview" = mkShellScript "bin";
-            "pu2pdf" = mkShellScript "bin";
-            "svg2pdf" = mkShellScript "bin";
+            "die-safari" = mkShellScript (./. + "/binfiles") "bin";
+            "preview" = mkShellScript (./. + "/binfiles") "bin";
+            "pu2pdf" = mkShellScript (./. + "/binfiles") "bin";
+            "svg2pdf" = mkShellScript (./. + "/binfiles") "bin";
 
             # iTerm profiles using the mapAttrs trick
             "console.json" = mkITermDynamicProfile;

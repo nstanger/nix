@@ -43,10 +43,14 @@
                         inherit system;
                         config.allowUnfree = true;
                     };
+
+                    lib = pkgs.lib.extend (self: super: {
+                        my = import ./lib { inherit inputs pkgs; lib = self; };
+                    });
                 in
                     darwin.lib.darwinSystem {
                         inherit system;
-                        specialArgs = { inherit pkgs inputs self darwin; };
+                        specialArgs = { inherit pkgs lib inputs self darwin; };
                         modules = [
                             nix-homebrew.darwinModules.nix-homebrew {
                                 nix-homebrew = {
@@ -93,6 +97,7 @@
             processConfigurations = builtins.mapAttrs (n: v: v n);
 
         in {
+            # lib = lib.my;
             darwinConfigurations = processConfigurations {
                 Nigels-Virtual-Machine = darwinSystem "aarch64-darwin" [ ];
                 uoK79KQLK7M0 = darwinSystem "aarch64-darwin" [ ];
