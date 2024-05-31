@@ -5,12 +5,6 @@
     ...
 }:
 let
-    # Add iTerm dynamic profiles (JSON)
-    mkITermDynamicProfile = name: {
-        source = ../apps/iterm/dynamic-profiles/${name};
-        target = "Library/Application Support/iTerm2/DynamicProfiles/${name}";
-    };
-
     hashdiff = pkgs.stdenv.mkDerivation rec {
         name = "hashdiff";
         src = pkgs.fetchgit {

@@ -29,4 +29,10 @@ rec {
         source = pkgs.writeShellScript "${name}" (readFile (home-manager + "/binfiles/${name}"));
         target = "${targetPath}/${name}";
     };
+
+    # Add iTerm dynamic profiles (JSON)
+    mkITermDynamicProfile = name: {
+        source = apps + "/iterm/dynamic-profiles/${name}";
+        target = "Library/Application Support/iTerm2/DynamicProfiles/${name}";
+    };
 }
