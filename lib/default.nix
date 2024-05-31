@@ -1,6 +1,6 @@
 # Based on <https://github.com/thexyno/nixos-config>
 
-{ inputs, pkgs, lib, ... }:
+{ inputs, lib, paths, pkgs, ... }:
 
 let
     inherit (lib) makeExtensible attrValues foldr;
@@ -12,13 +12,14 @@ let
     };
 
     files = import ./files.nix {
-        inherit pkgs;
+        inherit paths pkgs;
     #     self.attrs = import ./attrs.nix { inherit lib; self = { }; };
     };
 
     mylib = makeExtensible (self:
         with self; mapModules ./.
-            (file: import file { inherit self pkgs lib inputs; }));
+            # ALSO ADD ATTRIBUTES INHERITED BY ANY OF THE ABOVE HERE!
+            (file: import file { inherit self paths pkgs lib inputs; }));
 in
     mylib.extend (self: super:
         foldr (a: b: a // b) { } (attrValues super))

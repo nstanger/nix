@@ -119,9 +119,9 @@ in {
             paths.home-manager
         ];
         home = {
-            file = with lib.my; with paths; processHomeFiles {
+            file = with lib.my; processHomeFiles {
                 # This really should be bundled into the activation.
-                "fix-automount" = mkShellScript (paths.home-manager + "/binfiles") "bin";
+                "fix-automount" = mkShellScript "bin";
             };
             homeDirectory = "/Users/${username}";
             packages = with pkgs; import (paths.home-manager + "/packages-common.nix") pkgs ++ [

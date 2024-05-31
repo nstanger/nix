@@ -44,10 +44,6 @@
                         config.allowUnfree = true;
                     };
 
-                    lib = pkgs.lib.extend (self: super: {
-                        my = import ./lib { inherit inputs pkgs; lib = self; };
-                    });
-
                     # Easiest way to fix the major module paths so that we can
                     # access them from anywhere.
                     paths = {
@@ -56,10 +52,14 @@
                         home-manager = ./. + "/home-manager";
                         hosts = ./. + "/hosts";
                     };
+
+                    lib = pkgs.lib.extend (self: super: {
+                        my = import ./lib { inherit inputs paths pkgs; lib = self; };
+                    });
                 in
                     darwin.lib.darwinSystem {
                         inherit system;
-                        specialArgs = { inherit paths pkgs lib inputs self darwin; };
+                        specialArgs = { inherit darwin inputs lib paths pkgs self; };
                         modules = [
                             nix-homebrew.darwinModules.nix-homebrew {
                                 nix-homebrew = {
@@ -93,7 +93,7 @@
                                 home-manager = {
                                     useGlobalPkgs = true;
                                     useUserPackages = true;
-                                    extraSpecialArgs = { inherit inputs pkgs paths; };
+                                    extraSpecialArgs = { inherit inputs paths pkgs; };
                                 };
 #                                home-manager.users.ragon = hmConfig;
                             }

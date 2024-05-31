@@ -1,8 +1,9 @@
 # Based on <https://github.com/thexyno/nixos-config>
 
-{ pkgs, ... }:
+{ paths, pkgs, ... }:
 
 with builtins;
+with paths;
 rec {
     # processHomeFiles: Add various kinds of file using the mapAttrs trick
     processHomeFiles = mapAttrs (name: fn: fn name);
@@ -23,9 +24,9 @@ rec {
     # see https://nixos.org/manual/nixpkgs/stable/#trivial-builder-writeText
     # and https://discourse.nixos.org/t/how-to-invoke-script-installed-with-writescriptbin-inside-other-config-file/8795/2
     # writeShellScript automatically inserts a shebang line
-    mkShellScript = sourcePath: targetPath: name: {
+    mkShellScript = targetPath: name: {
         executable = true;
-        source = pkgs.writeShellScript "${name}" (readFile (sourcePath + "/${name}"));
+        source = pkgs.writeShellScript "${name}" (readFile (home-manager + "/binfiles/${name}"));
         target = "${targetPath}/${name}";
     };
 }
