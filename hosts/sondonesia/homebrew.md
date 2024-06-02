@@ -42,7 +42,7 @@
 * [x] duti
 * [x] entr
 * [ ] epstool
-* [ ] exa
+* [ ] ~~exa~~
 * [x] exiftool
 * [ ] exiv2
 * [x] ffmpeg
@@ -112,7 +112,7 @@
 * [ ] jpeg
 * [ ] jpeg-turbo
 * [ ] jpeg-xl
-* [ ] jq
+* [x] jq
 * [ ] krb5
 * [ ] lame
 * [ ] leptonica
@@ -225,7 +225,7 @@
 * [ ] numpy
 * [ ] oniguruma
 * [ ] openblas
-* [ ] openconnect
+* [ ] ~~openconnect~~
 * [ ] opencore-amr
 * [ ] openexr
 * [ ] openjdk
@@ -243,7 +243,6 @@
 * [x] p7zip
 * [x] pandoc
 * [ ] pango
-* [ ] pcalc
 * [ ] pcre
 * [ ] pcre2
 * [ ] pdftk-java
@@ -256,7 +255,7 @@
 * [ ] pkcs11-helper
 * [ ] pkg-config
 * [x] plantuml
-* [ ] plantuml@1.2022.1
+* [x] plantuml@1.2022.1
 * [ ] poppler
 * [ ] popt
 * [ ] postgresql@14
@@ -320,7 +319,7 @@
 * [ ] tokyo-cabinet
 * [ ] ~~tree~~
 * [ ] tree-sitter
-* [ ] tvnamer
+* [x] tvnamer
 * [ ] unbound
 * [ ] unibilium
 * [ ] unixodbc
@@ -330,8 +329,8 @@
 * [x] virtualenv
 * [x] virtualenvwrapper
 * [x] visidata
-* [ ] vpn-slice
-* [ ] wakeonlan
+* [ ] ~~vpn-slice~~
+* [x] wakeonlan
 * [x] watch
 * [ ] webp
 * [x] wget
@@ -363,19 +362,19 @@
 * [x] 1password-cli
 * [ ] adobe-acrobat-reader
 * [ ] android-file-transfer
-* [ ] arq
+* [x] arq
 * [ ] ~~bbedit~~
 * [x] bibdesk
 * [x] blockblock
-* [ ] blueharvest
+* [x] blueharvest
 * [x] calibre
 * [ ] crystalfetch
 * [x] dbeaver-community
 * [x] default-folder-x
 * [ ] diffusionbee
-* [ ] docker
-* [ ] dropbox
-* [ ] ears
+* [x] docker
+* [x] dropbox
+* [x] ears
 * [ ] epic-games
 * [x] firefox
 * [x] flux
@@ -396,7 +395,7 @@
 * [x] font-linux-libertine
 * [x] font-lora
 * [x] font-open-iconic
-* [ ] font-open-sans
+* [x] font-open-sans
 * [ ] ~~font-open-sans-condensed~~
 * [x] font-roboto
 * [x] font-stix
@@ -415,14 +414,14 @@
 * [x] font-xits
 * [x] font-xkcd-script
 * [x] forklift
-* [ ] free-ruler
+* [x] free-ruler
 * [ ] gimp
 * [x] google-chrome
 * [x] google-drive
 * [x] graphicconverter
 * [x] hazel
 * [ ] hugin
-* [ ] iina
+* [x] iina
 * [x] inkscape
 * [x] insomnia
 * [ ] intellij-idea-ce
@@ -434,11 +433,11 @@
 * [x] mactex-no-gui
 * [ ] makemkv
 * [ ] miniconda
-* [ ] moneydance
-* [ ] mongodb-compass
-* [ ] monitorcontrol
+* [x] moneydance
+* [x] mongodb-compass
+* [x] monitorcontrol
 * [ ] ~~muzzle~~
-* [ ] mysqlworkbench
+* [x] mysqlworkbench
 * [x] netbeans
 * [ ] onedrive
 * [x] oversight
@@ -450,24 +449,24 @@
 * [x] screenflick
 * [x] silentknight
 * [x] skim
-* [ ] steam
+* [x] steam
 * [x] synology-drive
 * [x] temurin11
 * [x] temurin17
 * [ ] ~~temurin8~~
 * [ ] textmate
-* [ ] transcribe
+* [x] transcribe
 * [x] ubersicht
 * [ ] ukelele
-* [ ] unicodechecker
+* [x] unicodechecker
 * [ ] uninstallpkg
-* [ ] utm
+* [x] utm
 * [x] visual-studio-code
 * [x] vivaldi
 * [x] vlc
-* [ ] vuescan
+* [x] vuescan
 * [ ] warp
 * [ ] whatsapp
-* [ ] zed
+* [x] zed
 * [x] zoom
 * [x] zotero

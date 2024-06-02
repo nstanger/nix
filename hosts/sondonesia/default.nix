@@ -44,13 +44,27 @@ in {
         brews = import (paths.darwin + "/homebrew-brews-common.nix") ++ [
         ];
         casks = import (paths.darwin + "/homebrew-casks-common.nix") ++ [
+            "arq"
+            "blueharvest"
             "docker"
             "dropbox" # settings are in the cloud
+            "ears"
+            # "hugin" # wedges?
+            "iina"
+            # "makemkv" # borked
+            "moneydance"
             "mongodb-compass"
+            "monitorcontrol"
             "mysqlworkbench"
             # "ransomwhere"
             # "scroll" # not configured
             # "spamsieve"
+            "steam"
+            "transcribe"
+            "utm"
+            "unicodechecker"
+            "vuescan"
+            # "whatsapp" # borked
             "zed" # basic text editor for now
         ];
         masApps = import (paths.darwin + "/mas-apps-common.nix") // {
@@ -73,6 +87,7 @@ in {
                 # SOFTWARE
                 tart
                 tvnamer #TESTING
+                wakeonlan
 
                 # FONTS
                 open-sans
