@@ -110,6 +110,7 @@
             darwinConfigurations = processConfigurations {
                 Nigels-Virtual-Machine = darwinSystem "aarch64-darwin" [ ];
                 uoK79KQLK7M0 = darwinSystem "aarch64-darwin" [ ];
+                sondonesia = darwinSystem "aarch64-darwin" [ ];
             };
         };
 }

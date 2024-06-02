@@ -1,4 +1,5 @@
 {
+    paths,
     pkgs,
     inputs,
     ...
@@ -36,13 +37,13 @@ in {
         # apple silicon only: also install homebrew under the default intel prefix for rosetta 2
         enableRosetta = false;
         # automatically migrate existing homebrew installations - once only?
-        autoMigrate = true;
+        autoMigrate = false;
     };
 
     homebrew = {
-        brews = import ../../darwin/homebrew-brews-common.nix ++ [
+        brews = import (paths.darwin + "/homebrew-brews-common.nix") ++ [
         ];
-        casks = import ../../darwin/homebrew-casks-common.nix ++ [
+        casks = import (paths.darwin + "/homebrew-casks-common.nix") ++ [
             "docker"
             "dropbox" # settings are in the cloud
             "mongodb-compass"
@@ -52,7 +53,7 @@ in {
             # "spamsieve"
             "zed" # basic text editor for now
         ];
-        masApps = import ../../darwin/mas-apps-common.nix // {
+        masApps = import (paths.darwin + "/mas-apps-common.nix") // {
             # "Apple Configurator" = 1289583905; # not configured
             # "Final Cut Pro" = 424389933; # not configured
             Mactracker = 430255202;
@@ -64,11 +65,11 @@ in {
 
     home-manager.users."${username}" = {
         imports = [
-            ../../home-manager
+            paths.home-manager
         ];
         home = {
             homeDirectory = "/Users/${username}";
-            packages = with pkgs; [
+            packages = with pkgs; import (paths.home-manager + "/packages-common.nix") pkgs ++ [
                 # SOFTWARE
                 tart
                 tvnamer #TESTING
@@ -77,18 +78,22 @@ in {
                 open-sans
             ];
         };
-        programs.zsh.shellAliases = import ../../home-manager/configs/zsh/aliases-common.nix pkgs // {
+        programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
+            "context=home"
+        ];
+        programs.zsh.shellAliases = with paths; import (home-manager + "/configs/zsh/aliases-common.nix") pkgs // {
         };
-        launchd.agents = {
-            "task.sync" = import ../../home-manager/configs/launchd/task-sync.nix username;
+        launchd.agents = with paths; {
+            "task.sync" = import (home-manager + "/configs/launchd/task-sync.nix") username;
         };
         targets.darwin = {
-            defaults = {
+            defaults = with paths; {
                 NSGlobalDomain = {
                     "com.apple.sound.beep.sound" = "/Users/${username}/Library/Sounds/Eyuuurh.aiff";
                 };
-                "com.mactrackerapp.Mactracker" = import ../../apps/mactracker.nix;
-                "com.michelf.sim-daltonism" = import ../../apps/sim-daltonism.nix;
+                "com.mactrackerapp.Mactracker" = import (apps + "/mactracker.nix");
+                "com.michelf.sim-daltonism" = import (apps + "/sim-daltonism.nix");
+                "org.cups.PrintingPrefs".UseLastPrinter = 0;
             };
         };
     };
