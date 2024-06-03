@@ -513,3 +513,32 @@
 * [ ] yed
 * [x] zoom
 * [x] zotero
+
+## MAS
+
+* [x] Amphetamine [937984704]
+* [ ] Apple Configurator [1289583905]
+* [x] Cardhop [1290358394]
+* [x] eduVPN client [1317704208]
+* [x] Fantastical [975937182]
+* [x] ~~GarageBand~~ [682658836]
+* [x] ~~iMovie~~ [408981434]
+* [ ] ~~iPhoto~~ [1289583905]
+* [x] ~~Keynote~~ [409183694]
+* [ ] Kindle [1289583905]
+* [x] Klack [6446206067]
+* [x] MacTracker [430255202]
+* [ ] Microsoft To Do [1274495053]
+* [x] MsgFiler [418778021]
+* [x] ~~Numbers~~ [409203825]
+* [x] ~~Pages~~ [409201541]
+* [x] PCalc [403504866]
+* [ ] Pixelmator Pro [1289583905]
+* [x] Photo GeoTag [1289583905]
+* [x] Sim Daltonism [693112260]
+* [ ] Skitch [425955336]
+* [ ] Slack for Desktop [803453959]
+* [x] The Unarchiver [425424353]
+* [x] Unicycle [1472950010]
+* [x] Xcode [497799835]
+* [x] Yoink [457622435]
