@@ -47,33 +47,32 @@ in {
             "android-file-transfer"
             "arq"
             "blueharvest"
-            # "carbon-copy-cloner" # HTTP 404
+            # "carbon-copy-cloner" # HTTP 404 # not configured
             "diffusionbee"
             "discord"
             "docker"
             "dropbox" # settings are in the cloud
             "ears"
-            "fujitsu-scansnap-home"
-            "hugin"
-            "iina"
-            # "makemkv" # version mismatch
-            "moneydance"
-            "mongodb-compass"
-            "monitorcontrol"
-            "mysqlworkbench"
-            "onedrive"
+            "fujitsu-scansnap-home" # not configured
+            "hugin" # not configured
+            "iina" # not configured
+            # "makemkv" # version mismatch # not configured
+            "moneydance" # not configured
+            "mongodb-compass" # not configured
+            "monitorcontrol" # not configured
+            "mysqlworkbench" # not configured
+            "onedrive" # not configured
             # "ransomwhere"
-            # "scroll" # not configured
             # "spamsieve"
-            "steam"
-            "transcribe"
-            "utm"
-            "unicodechecker"
-            "uninstallpkg"
-            "vuescan"
-            "warp"
-            # "whatsapp" # HTTP 500
-            "zed" # basic text editor for now
+            "steam" # not configured
+            "transcribe" # not configured
+            "utm" # not configured
+            "unicodechecker" # not configured
+            "uninstallpkg" # not configured
+            "vuescan" # not configured
+            "warp" # not configured
+            # "whatsapp" # HTTP 500 # not configured
+            "zed" # basic text editor for now # not configured
         ];
         masApps = import (paths.darwin + "/mas-apps-common.nix") // {
             # "Apple Configurator" = 1289583905; # not configured
@@ -114,8 +113,10 @@ in {
                 NSGlobalDomain = {
                     "com.apple.sound.beep.sound" = "/Users/${username}/Library/Sounds/Eyuuurh.aiff";
                 };
+                "com.clickontyler.Ears" = import (apps + "/ears.nix");
                 "com.mactrackerapp.Mactracker" = import (apps + "/mactracker.nix");
                 "com.michelf.sim-daltonism" = import (apps + "/sim-daltonism.nix");
+                "com.zeroonetwenty.BlueHarvest5" = import (apps + "/blueharvest.nix");
                 "org.cups.PrintingPrefs".UseLastPrinter = 0;
             };
         };
