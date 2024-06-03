@@ -44,18 +44,24 @@ in {
         brews = import (paths.darwin + "/homebrew-brews-common.nix") ++ [
         ];
         casks = import (paths.darwin + "/homebrew-casks-common.nix") ++ [
+            "android-file-transfer"
             "arq"
             "blueharvest"
+            # "carbon-copy-cloner" # HTTP 404
+            "diffusionbee"
+            "discord"
             "docker"
             "dropbox" # settings are in the cloud
             "ears"
-            # "hugin" # wedges?
+            "fujitsu-scansnap-home"
+            "hugin"
             "iina"
-            # "makemkv" # borked
+            # "makemkv" # version mismatch
             "moneydance"
             "mongodb-compass"
             "monitorcontrol"
             "mysqlworkbench"
+            "onedrive"
             # "ransomwhere"
             # "scroll" # not configured
             # "spamsieve"
@@ -63,8 +69,10 @@ in {
             "transcribe"
             "utm"
             "unicodechecker"
+            "uninstallpkg"
             "vuescan"
-            # "whatsapp" # borked
+            "warp"
+            # "whatsapp" # HTTP 500
             "zed" # basic text editor for now
         ];
         masApps = import (paths.darwin + "/mas-apps-common.nix") // {
