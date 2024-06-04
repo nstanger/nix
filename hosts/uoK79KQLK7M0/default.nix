@@ -74,12 +74,12 @@ in {
         casks = import (paths.darwin + "/homebrew-casks-common.nix") ++ [
             "docker"
             "dropbox" # settings are in the cloud
-            "mongodb-compass"
-            "mysqlworkbench"
+            "mongodb-compass" # minimal config
+            "mysqlworkbench" # minimal config
             # "ransomwhere"
             "scroll" # not configured
             "spamsieve"
-            "zed" # basic text editor for now
+            "zed" # basic text editor for now # minimal config
         ];
         masApps = import (paths.darwin + "/mas-apps-common.nix") // {
             # "Apple Configurator" = 1289583905; # not configured
