@@ -46,7 +46,6 @@ in {
         casks = import (paths.darwin + "/homebrew-casks-common.nix") ++ [
             "android-file-transfer"
             "arq"
-            "blueharvest"
             # "carbon-copy-cloner" # HTTP 404 # not configured
             "diffusionbee"
             "discord"
@@ -116,7 +115,6 @@ in {
                 "com.clickontyler.Ears" = import (apps + "/ears.nix");
                 "com.mactrackerapp.Mactracker" = import (apps + "/mactracker.nix");
                 "com.michelf.sim-daltonism" = import (apps + "/sim-daltonism.nix");
-                "com.zeroonetwenty.BlueHarvest5" = import (apps + "/blueharvest.nix");
                 "org.cups.PrintingPrefs".UseLastPrinter = 0;
             };
         };

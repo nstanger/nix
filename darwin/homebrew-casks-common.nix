@@ -1,6 +1,7 @@
 [
     # SOFTWARE
     "bibdesk"
+    "blueharvest"
     "calcservice"
     "calibre"
     "color-oracle"
@@ -25,7 +26,7 @@
     # temurin8 requires Rosetta 2 on macOS 13, and isn't supported
     # at all on 14+; can enable on x86 hosts
     "temurin11"
-    "temurin21"
+    "temurin17"
     "vlc"
     # 500 "whatsapp" # not configured
     "wordservice"

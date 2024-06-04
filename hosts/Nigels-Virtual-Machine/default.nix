@@ -1,4 +1,5 @@
 {
+    paths,
     pkgs,
     inputs,
     ...
@@ -48,7 +49,7 @@ in {
 
     home-manager.users."${username}" = {
         imports = [
-            ../../home-manager
+            paths.home-manager
         ];
         home = {
             homeDirectory = "/Users/${username}";
@@ -63,8 +64,8 @@ in {
         };
         programs.zsh.shellAliases = {
         };
-        launchd.agents = {
-            "task.sync" = import ../../home-manager/configs/launchd/task-sync.nix username;
+        launchd.agents = with paths; {
+            "task.sync" = import (home-manager + "/configs/launchd/task-sync.nix") username;
         };
         targets.darwin = {
             defaults = {
