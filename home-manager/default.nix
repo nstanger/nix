@@ -53,7 +53,7 @@ in
             "console.json" = mkITermDynamicProfile;
             "home-ssh.json" = mkITermDynamicProfile;
             "other-ssh.json" = mkITermDynamicProfile;
-            "teaching.json" = mkITermDynamicProfile;
+            # "teaching.json" = mkITermDynamicProfile;
             "work-ssh.json" = mkITermDynamicProfile;
         };
 

@@ -31,8 +31,13 @@ rec {
     };
 
     # Add iTerm dynamic profiles (JSON)
-    mkITermDynamicProfile = name: {
-        source = apps + "/iterm/dynamic-profiles/${name}";
+    mkITermDynamicProfile = name: username:
+        (if builtins.isString username then {
+            text = builtins.readFile (apps + "/iterm/dynamic-profiles/${name}");
+        }
+        else {
+            source = apps + "/iterm/dynamic-profiles/${name}";
+        }) // {
         target = "Library/Application Support/iTerm2/DynamicProfiles/${name}";
     };
 }

@@ -1,4 +1,5 @@
 {
+    lib,
     paths,
     pkgs,
     inputs,
@@ -50,28 +51,28 @@ in {
             "diffusionbee"
             "discord"
             "docker"
-            "dropbox" # settings are in the cloud
+            "dropbox" # settings in cloud
             "ears"
             "fujitsu-scansnap-home" # not configured
-            "hugin" # not configured
+            "hugin" # no config
             "iina" # not configured
-            # "makemkv" # version mismatch # not configured
-            "moneydance" # not configured
-            "mongodb-compass" # not configured
+            # "makemkv" # version mismatch # minimal config
+            "moneydance" # minimal config
+            "mongodb-compass" # minimal config
             "monitorcontrol" # not configured
-            "mysqlworkbench" # not configured
+            "mysqlworkbench" # minimal config
             "onedrive" # not configured
             # "ransomwhere"
             # "spamsieve"
-            "steam" # not configured
-            "transcribe" # not configured
+            "steam" # settings in cloud
+            "transcribe" # no config
             "utm" # not configured
-            "unicodechecker" # not configured
-            "uninstallpkg" # not configured
+            "unicodechecker" # no config
+            "uninstallpkg" # no config
             "vuescan" # not configured
             "warp" # not configured
-            # "whatsapp" # HTTP 500 # not configured
-            "zed" # basic text editor for now # not configured
+            # "whatsapp" # HTTP 500 # minimal config
+            "zed" # basic text editor for now # minimal config
         ];
         masApps = import (paths.darwin + "/mas-apps-common.nix") // {
             # "Apple Configurator" = 1289583905; # not configured
@@ -89,6 +90,9 @@ in {
         ];
         home = {
             homeDirectory = "/Users/${username}";
+            file = {
+                "teaching.json" = lib.my.mkITermDynamicProfile;
+            };
             packages = with pkgs; import (paths.home-manager + "/packages-common.nix") pkgs ++ [
                 # SOFTWARE
                 tart
