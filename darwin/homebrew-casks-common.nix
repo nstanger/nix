@@ -1,5 +1,6 @@
 [
     # SOFTWARE
+    "adobe-acrobat-reader"
     "bibdesk"
     "blueharvest"
     "calcservice"
