@@ -50,11 +50,10 @@ in
             "svg2pdf" = mkShellScript "bin";
 
             # iTerm profiles using the mapAttrs trick
-            "console.json" = mkITermDynamicProfile;
-            "home-ssh.json" = mkITermDynamicProfile;
-            "other-ssh.json" = mkITermDynamicProfile;
-            # "teaching.json" = mkITermDynamicProfile;
-            "work-ssh.json" = mkITermDynamicProfile;
+            "console.json" = mkITermDynamicProfile "";
+            "home-ssh.json" = mkITermDynamicProfile "";
+            "other-ssh.json" = mkITermDynamicProfile "";
+            "work-ssh.json" = mkITermDynamicProfile "";
         };
 
         # Essential packages that ALL hosts must have.

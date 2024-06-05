@@ -90,8 +90,8 @@ in {
         ];
         home = {
             homeDirectory = "/Users/${username}";
-            file = {
-                "teaching.json" = lib.my.mkITermDynamicProfile;
+            file = with lib.my; processHomeFiles {
+                "teaching.json" = mkITermDynamicProfile username;
             };
             packages = with pkgs; import (paths.home-manager + "/packages-common.nix") pkgs ++ [
                 # SOFTWARE
