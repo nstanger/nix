@@ -77,7 +77,7 @@ in {
             "mongodb-compass" # minimal config
             "mysqlworkbench" # minimal config
             # "ransomwhere"
-            "scroll" # not configured
+            "scroll"
             "spamsieve"
             "zed" # basic text editor for now # minimal config
         ];
