@@ -119,11 +119,13 @@ in {
             paths.home-manager
         ];
         home = {
+            homeDirectory = "/Users/${username}";
             file = with lib.my; processHomeFiles {
                 # This really should be bundled into the activation.
                 "fix-automount" = mkShellScript "bin";
+
+                "teaching.json" = mkITermDynamicProfile username;
             };
-            homeDirectory = "/Users/${username}";
             packages = with pkgs; import (paths.home-manager + "/packages-common.nix") pkgs ++ [
                 camunda-modeler
                 mongodb-tools
