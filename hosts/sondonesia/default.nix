@@ -1,10 +1,13 @@
 {
+    inputs,
     lib,
     paths,
     pkgs,
-    inputs,
     ...
-}: 
+}:
+
+with lib.path;
+with paths; 
 let
     username = "nstanger";
 in {
@@ -34,9 +37,9 @@ in {
     };
 
     homebrew = {
-        brews = import (paths.darwin + "/homebrew-brews-common.nix") ++ [
+        brews = import (append darwin-p "homebrew-brews-common.nix") ++ [
         ];
-        casks = import (paths.darwin + "/homebrew-casks-common.nix") ++ [
+        casks = import (append darwin-p "homebrew-casks-common.nix") ++ [
             "android-file-transfer"
             "arq"
             # "carbon-copy-cloner" # HTTP 404 # not configured
@@ -66,7 +69,7 @@ in {
             # "whatsapp" # HTTP 500 # minimal config
             "zed" # basic text editor for now # minimal config
         ];
-        masApps = import (paths.darwin + "/mas-apps-common.nix") // {
+        masApps = import (append darwin-p "mas-apps-common.nix") // {
             # "Apple Configurator" = 1289583905; # not configured
             # "Final Cut Pro" = 424389933; # not configured
             Mactracker = 430255202;
@@ -78,14 +81,14 @@ in {
 
     home-manager.users."${username}" = {
         imports = [
-            paths.home-manager
+            home-manager-p
         ];
         home = {
             homeDirectory = "/Users/${username}";
             file = with lib.my; processHomeFiles {
                 "teaching.json" = mkITermDynamicProfile username;
             };
-            packages = with pkgs; import (paths.home-manager + "/packages-common.nix") pkgs ++ [
+            packages = with pkgs; import (append home-manager-p "packages-common.nix") pkgs ++ [
                 # SOFTWARE
                 tart
                 tvnamer #TESTING
@@ -98,20 +101,20 @@ in {
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
             "context=home"
         ];
-        programs.zsh.shellAliases = with paths; import (home-manager + "/configs/zsh/aliases-common.nix") pkgs // {
+        programs.zsh.shellAliases = import (append home-manager-p "configs/zsh/aliases-common.nix") pkgs // {
         };
-        launchd.agents = with paths; {
-            "task.sync" = import (home-manager + "/configs/launchd/task-sync.nix") username;
+        launchd.agents = {
+            "task.sync" = import (append home-manager-p "configs/launchd/task-sync.nix") username;
         };
         targets.darwin = {
-            defaults = with paths; {
+            defaults = {
                 NSGlobalDomain = {
                     "com.apple.sound.beep.sound" = "/Users/${username}/Library/Sounds/Eyuuurh.aiff";
                 };
-                "com.clickontyler.Ears" = import (apps + "/ears.nix");
-                "com.mactrackerapp.Mactracker" = import (apps + "/mactracker.nix");
-                "com.michelf.sim-daltonism" = import (apps + "/sim-daltonism.nix");
-                "org.clindberg.ManOpen" = import (apps + "/manopen.nix") username;
+                "com.clickontyler.Ears" = import (append apps "ears.nix");
+                "com.mactrackerapp.Mactracker" = import (append apps "mactracker.nix");
+                "com.michelf.sim-daltonism" = import (append apps "sim-daltonism.nix");
+                "org.clindberg.ManOpen" = import (append apps "manopen.nix") username;
                 "org.cups.PrintingPrefs".UseLastPrinter = 0;
             };
         };

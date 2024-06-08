@@ -12,7 +12,7 @@ let
     };
 
     files = import ./files.nix {
-        inherit paths pkgs;
+        inherit lib paths pkgs;
     #     self.attrs = import ./attrs.nix { inherit lib; self = { }; };
     };
 

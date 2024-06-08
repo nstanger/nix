@@ -1,17 +1,13 @@
 {
+    inputs,
+    lib,
     paths,
     pkgs,
-    inputs,
     ...
-}: 
-# let
-#     makeUser = username: shell: authorizedKeys: {
-#         users.users."${username}" = {
-#             home = "/Users/${username}";
-#             shell = pkgs.zsh;
-#             openssh.authorizedKeys.keyFiles = authorizedKeys;
-#     }
-# in
+}:
+
+with lib.path;
+with paths; 
 let
     username = "nstanger";
 in {
@@ -49,7 +45,7 @@ in {
 
     home-manager.users."${username}" = {
         imports = [
-            paths.home-manager
+            home-manager-p
         ];
         home = {
             homeDirectory = "/Users/${username}";
@@ -64,8 +60,8 @@ in {
         };
         programs.zsh.shellAliases = {
         };
-        launchd.agents = with paths; {
-            "task.sync" = import (home-manager + "/configs/launchd/task-sync.nix") username;
+        launchd.agents = {
+            "task.sync" = import (append home-manager-p "configs/launchd/task-sync.nix") username;
         };
         targets.darwin = {
             defaults = {

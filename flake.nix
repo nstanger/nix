@@ -46,11 +46,11 @@
 
                     # Easiest way to fix the major module paths so that we can
                     # access them from anywhere.
-                    paths = {
-                        apps = ./. + "/apps";
-                        darwin = ./. + "/darwin";
-                        home-manager = ./. + "/home-manager";
-                        hosts = ./. + "/hosts";
+                    paths = with lib.path; {
+                        apps = append ./. "apps";
+                        darwin-p = append ./. "darwin"; # avoid name conflict
+                        home-manager-p = append ./. "home-manager"; # avoid name conflict
+                        hosts = append ./. "hosts";
                     };
 
                     lib = pkgs.lib.extend (self: super: {
@@ -60,7 +60,7 @@
                     darwin.lib.darwinSystem {
                         inherit system;
                         specialArgs = { inherit darwin inputs lib paths pkgs self; };
-                        modules = [
+                        modules = with lib.path; with paths; [
                             nix-homebrew.darwinModules.nix-homebrew {
                                 nix-homebrew = {
                                     # Install Homebrew under the default prefix
@@ -97,9 +97,9 @@
                                 };
 #                                home-manager.users.ragon = hmConfig;
                             }
-                            paths.darwin
+                            darwin-p
                             # host-specific configuration
-                            (paths.hosts + "/${hostName}")
+                            (append hosts "${hostName}")
                         ] ++ extraModules;
                     };
 

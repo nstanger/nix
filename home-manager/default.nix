@@ -1,7 +1,7 @@
 {
+    lib,
     paths,
     pkgs,
-    lib,
     ...
 }:
 let
@@ -33,10 +33,10 @@ in
         stateVersion = "23.11";
 
         # append anything weird using //
-        file = with lib.my; with paths; processHomeFiles {
+        file = with lib.my; with lib.path; with paths; processHomeFiles {
             # text-based config files
-            ".agignore" = mkConfigFile (home-manager + "/configs/silver-searcher") "";
-            "logrotate.conf" = mkConfigFile (home-manager + "/configs/logrotate") ".config/logrotate";
+            ".agignore" = mkConfigFile (append home-manager-p "configs/silver-searcher") "";
+            "logrotate.conf" = mkConfigFile (append home-manager-p "configs/logrotate") ".config/logrotate";
 
             # directories
             "logrotate.d" = mkDir ".config/logrotate";
@@ -357,43 +357,43 @@ in
     launchd.enable = true;
 
     targets.darwin = {
-        defaults = with paths; {
-            NSGlobalDomain = import (apps + "/global.nix");
-            "at.EternalStorms.Yoink" = import (apps + "/yoink.nix"); # small screen only?
-            "at.obdev.LaunchBar" = import (apps + "/launchbar.nix");
-            "com.apple.desktopservices" = import (apps + "/desktopservices.nix");
-            "com.apple.dock" = import (apps + "/dock.nix");
-            "com.apple.dt.Xcode" = import (apps + "/xcode.nix");
-            "com.apple.finder" = import (apps + "/finder.nix");
-            "com.apple.FontBook" = import (apps + "/fontbook.nix");
-            "com.apple.HIToolbox" = import (apps + "/hitoolbox.nix");
-            "com.apple.inputsources" = import (apps + "/inputsources.nix");
-            "com.apple.mail" = import (apps + "/mail.nix");
+        defaults = with lib.path; with paths; {
+            NSGlobalDomain = import (append apps "global.nix");
+            "at.EternalStorms.Yoink" = import (append apps "yoink.nix"); # small screen only?
+            "at.obdev.LaunchBar" = import (append apps "launchbar.nix");
+            "com.apple.desktopservices" = import (append apps "desktopservices.nix");
+            "com.apple.dock" = import (append apps "dock.nix");
+            "com.apple.dt.Xcode" = import (append apps "xcode.nix");
+            "com.apple.finder" = import (append apps "finder.nix");
+            "com.apple.FontBook" = import (append apps "fontbook.nix");
+            "com.apple.HIToolbox" = import (append apps "hitoolbox.nix");
+            "com.apple.inputsources" = import (append apps "inputsources.nix");
+            "com.apple.mail" = import (append apps "mail.nix");
             "com.apple.Music".showStatusBar = 1;
-            "com.apple.Preview" = import (apps + "/preview.nix");
-            "com.apple.Safari" = import (apps + "/safari.nix");
+            "com.apple.Preview" = import (append apps "preview.nix");
+            "com.apple.Safari" = import (append apps "safari.nix");
             "com.apple.scriptmenu".ScriptMenuEnabled = 1;
-            "com.apple.Spotlight" = import (apps + "/spotlight.nix");
+            "com.apple.Spotlight" = import (append apps "spotlight.nix");
             # always show window proxy icons (where available)
             "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = 1;
             "com.apple.universalaccess".showWindowTitlebarIcons = 1;
-            "com.atow.msgfiler" = import (apps + "/msgfiler.nix");
-            "com.binarynights.ForkLift" = import (apps + "/forklift.nix");
-            "com.flexibits.fantastical2.mac" = import (apps + "/fantastical2.nix");
-            "com.google.drivefs.settings" = import (apps + "/google-drive.nix");
-            "com.googlecode.iterm2" = import (apps + "/iterm");
-            "com.if.Amphetamine" = import (apps + "/amphetamine.nix");
-            "com.knollsoft.Rectangle" = import (apps + "/rectangle.nix");
-            "com.microsoft.Excel" = import (apps + "/excel.nix");
-            "com.microsoft.Word" = import (apps + "/word.nix");
-            "com.microsoft.office" = import (apps + "/office.nix");
-            "com.microsoft.Powerpoint" = import (apps + "/powerpoint.nix");
-            "com.modesittsoftware.Photo-GeoTag" = import (apps + "/photo-geotag.nix");
-            "com.objective-see.oversight" = import (apps + "/oversight.nix");
-            "com.noodlesoft.Hazel" = import (apps + "/hazel.nix");
-            "com.stclairsoft.DefaultFolderX5" = import (apps + "/default-folder-x.nix");
-            "com.zeroonetwenty.BlueHarvest5" = import (apps + "//blueharvest.nix");
-            "edu.ucsd.cs.mmccrack.bibdesk" = import (apps + "/bibdesk.nix");
+            "com.atow.msgfiler" = import (append apps "msgfiler.nix");
+            "com.binarynights.ForkLift" = import (append apps "forklift.nix");
+            "com.flexibits.fantastical2.mac" = import (append apps "fantastical2.nix");
+            "com.google.drivefs.settings" = import (append apps "google-drive.nix");
+            "com.googlecode.iterm2" = import (append apps "iterm");
+            "com.if.Amphetamine" = import (append apps "amphetamine.nix");
+            "com.knollsoft.Rectangle" = import (append apps "rectangle.nix");
+            "com.microsoft.Excel" = import (append apps "excel.nix");
+            "com.microsoft.Word" = import (append apps "word.nix");
+            "com.microsoft.office" = import (append apps "office.nix");
+            "com.microsoft.Powerpoint" = import (append apps "powerpoint.nix");
+            "com.modesittsoftware.Photo-GeoTag" = import (append apps "photo-geotag.nix");
+            "com.objective-see.oversight" = import (append apps "oversight.nix");
+            "com.noodlesoft.Hazel" = import (append apps "hazel.nix");
+            "com.stclairsoft.DefaultFolderX5" = import (append apps "default-folder-x.nix");
+            "com.zeroonetwenty.BlueHarvest5" = import (append apps "blueharvest.nix");
+            "edu.ucsd.cs.mmccrack.bibdesk" = import (append apps "bibdesk.nix");
             # where on earth are the rest of Vivaldi's settings???
             # (similar for Chrome and Firefox)
             # Chrome: ~/Library/Application Support/Google/Chrome/Default/Preferences (JSON)
@@ -413,12 +413,12 @@ in
             #   > - modify it via the UI (e.g. via about:config in the browser); or
             #   > - set it within a user.js file in your profile.
             "com.vivaldi.Vivaldi".SUAutomaticallyUpdate = 0;
-            "net.sourceforge.skim-app.skim" = import (apps + "/skim.nix");
-            "org.herf.Flux" = import (apps + "/f.lux.nix");
+            "net.sourceforge.skim-app.skim" = import (append apps "skim.nix");
+            "org.herf.Flux" = import (append apps "f.lux.nix");
             # not a hell of a lot else exposed via defaults :/
             "org.videolan.vlc".SUEnableAutomaticChecks = 1;
-            "tracesOf.Uebersicht" = import (apps + "/ubersicht.nix");
-            "uk.co.tla-systems.pcalc" = import (apps + "/pcalc.nix");
+            "tracesOf.Uebersicht" = import (append apps "ubersicht.nix");
+            "uk.co.tla-systems.pcalc" = import (append apps "pcalc.nix");
         };
         search = "Google";
     };

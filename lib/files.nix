@@ -1,8 +1,9 @@
 # Based on <https://github.com/thexyno/nixos-config>
 
-{ paths, pkgs, ... }:
+{ lib, paths, pkgs, ... }:
 
 with builtins;
+with lib.path;
 with paths;
 rec {
     /*  processHomeFiles: Add various kinds of home file using the mapAttrs trick.
@@ -14,7 +15,7 @@ rec {
 
     # mkConfigFile: Add a text-based config file
     mkConfigFile = sourcePath: targetPath: name: {
-        text = readFile (sourcePath + "/${name}");
+        text = readFile (append sourcePath name);
         /*  This adds an unnecessary "/" at the front if targetPath is empty,
             but the target path is always "relative to HOME", so it's not
             worth the effort to do anything about it.
@@ -37,13 +38,13 @@ rec {
     */
     mkShellScript = targetPath: name: {
         executable = true;
-        source = pkgs.writeShellScript "${name}" (readFile (home-manager + "/binfiles/${name}"));
+        source = pkgs.writeShellScript "${name}" (readFile (append home-manager-p "binfiles/${name}"));
         target = "${targetPath}/${name}";
     };
 
     # mkITermDynamicProfile: Add iTerm dynamic profiles (Nix -> JSON).
     mkITermDynamicProfile = username: name: {
-        text = toJSON (import (apps + "/iterm/dynamic-profiles/${replaceStrings ["json"] ["nix"] name}") username);
+        text = toJSON (import (append apps "iterm/dynamic-profiles/${replaceStrings ["json"] ["nix"] name}") username);
         target = "Library/Application Support/iTerm2/DynamicProfiles/${name}";
     };
 }
