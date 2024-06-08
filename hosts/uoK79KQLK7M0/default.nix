@@ -5,14 +5,6 @@
     lib,
     ...
 }: 
-# let
-#     makeUser = username: shell: authorizedKeys: {
-#         users.users."${username}" = {
-#             home = "/Users/${username}";
-#             shell = pkgs.zsh;
-#             openssh.authorizedKeys.keyFiles = authorizedKeys;
-#     }
-# in
 let
     username = "stani07p";
 in {
@@ -176,6 +168,7 @@ in {
                 };
                 "com.mactrackerapp.Mactracker" = import (apps + "/mactracker.nix");
                 "com.michelf.sim-daltonism" = import (apps + "/sim-daltonism.nix");
+                "org.clindberg.ManOpen" = import (apps + "/manopen.nix") username;
                 "org.cups.PrintingPrefs".UseLastPrinter = 0;
             };
             currentHostDefaults = {

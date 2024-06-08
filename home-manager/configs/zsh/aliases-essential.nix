@@ -16,8 +16,10 @@ in {
     ll = "${pkgs.eza}/bin/eza ${ezaBasicOptions} ${ezaLongOptions} --all";
     llr = "${pkgs.eza}/bin/eza ${ezaBasicOptions} ${ezaLongOptions} --all --tree";
     lsregister = "/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister";
-    # requires manual install of ManOpen.app and /usr/local/bin/openman
-    man = "/usr/local/bin/openman";
+    # Requires manual install of ManOpen.app and /usr/local/bin/openman.
+    # Nix man paths aren't exposed in MANPATH but do appear in the output of
+    # the manpath command.
+    man = "/usr/local/bin/openman -M $(manpath)";
     nixswitch = "darwin-rebuild switch --flake ~/Documents/Development/nix/.#";
     nixupdate = "pushd ~/Documents/Development/nix; nix flake update; nixswitch; popd";
     rm = "${pkgs.coreutils}/bin/rm -i";

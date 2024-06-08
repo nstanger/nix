@@ -414,7 +414,6 @@ in
             #   > - set it within a user.js file in your profile.
             "com.vivaldi.Vivaldi".SUAutomaticallyUpdate = 0;
             "net.sourceforge.skim-app.skim" = import (apps + "/skim.nix");
-            "org.clindberg.ManOpen" = import (apps + "/manopen.nix");
             "org.herf.Flux" = import (apps + "/f.lux.nix");
             # not a hell of a lot else exposed via defaults :/
             "org.videolan.vlc".SUEnableAutomaticChecks = 1;
