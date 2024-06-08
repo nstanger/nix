@@ -41,12 +41,9 @@ rec {
         target = "${targetPath}/${name}";
     };
 
-    # mkITermDynamicProfile: Add iTerm dynamic profiles (JSON).
+    # mkITermDynamicProfile: Add iTerm dynamic profiles (Nix -> JSON).
     mkITermDynamicProfile = username: name: {
-        ${if stringLength username > 0 then "text" else null} = replaceStrings ["@USERNAME@"] [username] (readFile (apps + "/iterm/dynamic-profiles/${name}"));
-        # source gets set automatically if text is set
-        # <https://nix-community.github.io/home-manager/options.xhtml#opt-home.file._name_.source>
-        ${if stringLength username == 0 then "source" else null} = apps + "/iterm/dynamic-profiles/${name}";
+        text = toJSON (import (apps + "/iterm/dynamic-profiles/${replaceStrings ["json"] ["nix"] name}") username);
         target = "Library/Application Support/iTerm2/DynamicProfiles/${name}";
     };
 }
