@@ -19,7 +19,7 @@ in {
     # Requires manual install of ManOpen.app and /usr/local/bin/openman.
     # Nix man paths aren't exposed in MANPATH but do appear in the output of
     # the manpath command.
-    man = "/usr/local/bin/openman -M $(manpath)";
+    man = "/usr/local/bin/openman -M $(manpath 2>/dev/null)";
     nixswitch = "darwin-rebuild switch --flake ~/Documents/Development/nix/.#";
     nixupdate = "pushd ~/Documents/Development/nix; nix flake update; nixswitch; popd";
     rm = "${pkgs.coreutils}/bin/rm -i";
