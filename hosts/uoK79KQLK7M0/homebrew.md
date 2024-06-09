@@ -494,9 +494,9 @@
 * [ ] smartreporter-free
 * [ ] ~~smcfancontrol~~
 * [ ] ssdreporter-free
-* [x] temurin11
-* [x] temurin17
-* [ ] ~~temurin8~~
+* [x] temurin@11
+* [x] temurin@17
+* [ ] ~~temurin@8~~
 * [ ] textmate
 * [ ] thetimemachinemechanic
 * [ ] thunderbird

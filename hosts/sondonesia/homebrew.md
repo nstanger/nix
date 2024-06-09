@@ -430,15 +430,15 @@
 * [x] launchbar
 * [ ] libreoffice
 * [ ] lm-studio
-* [ ] mactex-no-gui
-* [ ] makemkv
+* [x] mactex-no-gui
+* [x] makemkv
 * [ ] ~~miniconda~~
 * [x] moneydance
 * [x] mongodb-compass
 * [x] monitorcontrol
 * [ ] ~~muzzle~~
 * [x] mysqlworkbench
-* [ ] netbeans
+* [x] netbeans
 * [x] onedrive
 * [x] oversight
 * [x] pacifist
@@ -451,9 +451,9 @@
 * [x] skim
 * [x] steam
 * [x] synology-drive
-* [x] temurin11
-* [x] temurin17
-* [ ] ~~temurin8~~
+* [x] temurin@11
+* [x] temurin@17
+* [ ] ~~temurin@8~~
 * [ ] textmate
 * [x] transcribe
 * [x] ubersicht
@@ -466,7 +466,7 @@
 * [x] vlc
 * [x] vuescan
 * [x] warp
-* [ ] whatsapp
+* [x] whatsapp
 * [x] zed
 * [x] zoom
 * [x] zotero

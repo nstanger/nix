@@ -308,7 +308,7 @@ in
 
         # this just enables completions, still need zsh-completions package
         enableCompletion = true;
-        enableAutosuggestions = true;
+        autosuggestion.enable = true;
 
         # Shell history
         history = {

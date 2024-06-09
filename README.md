@@ -1,4 +1,6 @@
-# nix-darwin bootstrap on a new machine
+# nix flake configuration
+
+## nix-darwin bootstrap on a new machine
 
 1. Install `nix` using the Determinate Systems installer:
 
@@ -34,11 +36,30 @@
 
 1. Profit!
 
-
-# nix-darwin bootstrap on an existing machine
+## nix-darwin bootstrap on an existing machine
 
 As above, but before cloning and bootstrapping the flake, remove all installed Homebrew packages:
 
    ```sh
    brew remove --force $(brew list --formula) --ignore-dependencies
    ```
+
+## Update flake to latest stable
+
+**Never change the value of `home-manager.stateVersion`!**
+
+In theory, just change the version number in all `nixpkgs` references in `flake.nix` (e.g., `23.11` → `24.05`), then
+
+```sh
+nix flake update
+nixswitch
+```
+
+If you get errors like:
+
+```sh
+error: cannot link '/nix/store/.tmp-link-59633-1986182875' to '/nix/store/.links/068x3y3a6lhjiixbmxx1wrg3lbxhq37blnlxp03038qvhdg0kcvc': File exists
+error: some substitutes for the outputs of derivation '/nix/store/...' failed (usually happens due to networking issues); try '--fallback' to build derivation from source
+```
+
+try setting `auto-optimise-store = false` in `/etc/nix/nix.conf` followed by `nix store optimise`, then re-enable `auto-optimise-store`.

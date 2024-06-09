@@ -24,10 +24,10 @@
     "screenflick" # not configured
     "silentknight" # not configured
     "skim"
-    # temurin8 requires Rosetta 2 on macOS 13, and isn't supported
+    # temurin@8 requires Rosetta 2 on macOS 13, and isn't supported
     # at all on 14+; can enable on x86 hosts
-    "temurin11"
-    "temurin17"
+    "temurin@11"
+    "temurin@17"
     "vlc"
     # 500 "whatsapp" # not configured
     "wordservice"

@@ -68,7 +68,7 @@
             # "ransomwhere" # currently Intel-only
             "rectangle"
             "synology-drive"
-            "temurin21"
+            "temurin@21"
             "ubersicht"
             "visual-studio-code"
             "vivaldi"

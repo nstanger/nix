@@ -42,7 +42,7 @@ in {
         casks = import (append darwin-p "homebrew-casks-common.nix") ++ [
             "android-file-transfer"
             "arq"
-            # "carbon-copy-cloner" # HTTP 404 # not configured
+            "carbon-copy-cloner" # HTTP 404 # not configured
             "diffusionbee"
             "discord"
             "docker"
@@ -51,7 +51,7 @@ in {
             "fujitsu-scansnap-home" # not configured
             "hugin" # no config
             "iina" # not configured
-            # "makemkv" # version mismatch # minimal config
+            "makemkv" # version mismatch # minimal config
             "moneydance" # minimal config
             "mongodb-compass" # minimal config
             "monitorcontrol" # not configured
@@ -66,7 +66,7 @@ in {
             "uninstallpkg" # no config
             "vuescan" # not configured
             "warp" # not configured
-            # "whatsapp" # HTTP 500 # minimal config
+            "whatsapp" # HTTP 500 # minimal config
             "zed" # basic text editor for now # minimal config
         ];
         masApps = import (append darwin-p "mas-apps-common.nix") // {
