@@ -20,10 +20,10 @@
         homebrew-cask.flake = false;
         homebrew-bundle.url = "github:homebrew/homebrew-bundle";
         homebrew-bundle.flake = false;
-        homebrew-cask-fonts.url = "github:homebrew/homebrew-cask-fonts";
-        homebrew-cask-fonts.flake = false;
-        homebrew-cask-versions.url = "github:homebrew/homebrew-cask-versions";
-        homebrew-cask-versions.flake = false;
+        # homebrew-cask-fonts.url = "github:homebrew/homebrew-cask-fonts";
+        # homebrew-cask-fonts.flake = false;
+        # homebrew-cask-versions.url = "github:homebrew/homebrew-cask-versions";
+        # homebrew-cask-versions.flake = false;
     };
     outputs = inputs @ {
         self,
@@ -73,10 +73,6 @@
                                         "homebrew/homebrew-core" = homebrew-core;
                                         "homebrew/homebrew-cask" = homebrew-cask;
                                         "homebrew/homebrew-bundle" = homebrew-bundle;
-                                        "homebrew/homebrew-cask-fonts" = homebrew-cask-fonts;
-                                        "homebrew/homebrew-cask-versions" = homebrew-cask-versions;
-        #                                "homebrew/homebrew-services" = homebrew-services;
-        #                                "homebrew/homebrew-cask-drivers" = homebrew-cask-drivers;
                                     };
 
                                     # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.

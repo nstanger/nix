@@ -101,8 +101,6 @@
             "homebrew/core"
             "homebrew/cask"
             "homebrew/bundle"
-            "homebrew/cask-fonts"
-            "homebrew/cask-versions"
         ];
     };
 
