@@ -377,8 +377,10 @@ in
             # always show window proxy icons (where available)
             "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = 1;
             "com.apple.universalaccess".showWindowTitlebarIcons = 1;
+            "com.araeliumgroup.screenflick" = import (append apps "screenflick.nix");
             "com.atow.msgfiler" = import (append apps "msgfiler.nix");
             "com.binarynights.ForkLift" = import (append apps "forklift.nix");
+            "com.charlessoft.pacifist" = import (append apps "pacifist.nix");
             "com.flexibits.fantastical2.mac" = import (append apps "fantastical2.nix");
             "com.google.drivefs.settings" = import (append apps "google-drive.nix");
             "com.googlecode.iterm2" = import (append apps "iterm");
@@ -391,6 +393,7 @@ in
             "com.modesittsoftware.Photo-GeoTag" = import (append apps "photo-geotag.nix");
             "com.objective-see.oversight" = import (append apps "oversight.nix");
             "com.noodlesoft.Hazel" = import (append apps "hazel.nix");
+            "com.pascal.freeruler" = import (append apps "free-ruler.nix");
             "com.stclairsoft.DefaultFolderX5" = import (append apps "default-folder-x.nix");
             "com.zeroonetwenty.BlueHarvest5" = import (append apps "blueharvest.nix");
             "edu.ucsd.cs.mmccrack.bibdesk" = import (append apps "bibdesk.nix");

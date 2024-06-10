@@ -71,7 +71,7 @@
             "temurin@21"
             "ubersicht"
             "visual-studio-code"
-            "vivaldi"
+            "vivaldi" # config not in defaults
 
             # FONTS
             # These may come as OpenType variable fonts, i.e., a single file

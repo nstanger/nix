@@ -428,7 +428,7 @@
 * [x] iterm2
 * [x] keepassxc
 * [x] launchbar
-* [ ] libreoffice
+* [x] libreoffice
 * [ ] lm-studio
 * [x] mactex-no-gui
 * [x] makemkv

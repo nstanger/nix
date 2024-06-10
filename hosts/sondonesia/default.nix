@@ -42,7 +42,7 @@ in {
         casks = import (append darwin-p "homebrew-casks-common.nix") ++ [
             "android-file-transfer"
             "arq"
-            "carbon-copy-cloner" # HTTP 404 # not configured
+            "carbon-copy-cloner"
             "diffusionbee"
             "discord"
             "docker"
@@ -50,23 +50,23 @@ in {
             "ears"
             "fujitsu-scansnap-home" # not configured
             "hugin" # no config
-            "iina" # not configured
-            "makemkv" # version mismatch # minimal config
+            "iina"
+            "makemkv" # minimal config
             "moneydance" # minimal config
             "mongodb-compass" # minimal config
-            "monitorcontrol" # not configured
+            "monitorcontrol"
             "mysqlworkbench" # minimal config
-            "onedrive" # not configured
+            "onedrive"
             # "ransomwhere"
             # "spamsieve"
             "steam" # settings in cloud
             "transcribe" # no config
-            "utm" # not configured
+            "utm"
             "unicodechecker" # no config
             "uninstallpkg" # no config
-            "vuescan" # not configured
-            "warp" # not configured
-            "whatsapp" # HTTP 500 # minimal config
+            "vuescan" # no config
+            "warp"
+            "whatsapp"
             "zed" # basic text editor for now # minimal config
         ];
         masApps = import (append darwin-p "mas-apps-common.nix") // {
@@ -111,9 +111,16 @@ in {
                 NSGlobalDomain = {
                     "com.apple.sound.beep.sound" = "/Users/${username}/Library/Sounds/Eyuuurh.aiff";
                 };
+                "com.bombich.ccc" = import (append apps "carbon-copy-cloner.nix");
                 "com.clickontyler.Ears" = import (append apps "ears.nix");
+                "com.colliderli.iina" = import (append apps "iina.nix");
                 "com.mactrackerapp.Mactracker" = import (append apps "mactracker.nix");
                 "com.michelf.sim-daltonism" = import (append apps "sim-daltonism.nix");
+                "com.microsoft.OneDrive" = import (append apps "onedrive.nix");
+                "com.utmapp.UTM" = import (append apps "utm.nix");
+                "dev.warp.Warp-Stable" = import (append apps "warp.nix");
+                "me.guillaumeb.MonitorControl" = import (append apps "monitorcontrol.nix");
+                "net.whatsapp.WhatsApp" = import (append apps "whatsapp.nix");
                 "org.clindberg.ManOpen" = import (append apps "manopen.nix") username;
                 "org.cups.PrintingPrefs".UseLastPrinter = 0;
             };

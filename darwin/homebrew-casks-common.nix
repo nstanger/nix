@@ -1,38 +1,37 @@
 [
     # SOFTWARE
-    "adobe-acrobat-reader"
+    "adobe-acrobat-reader" # default config OK
     "bibdesk"
     "blueharvest"
-    "calcservice"
-    "calibre"
-    "color-oracle"
-    "dbeaver-community" # not configured
-    "firefox" # no defaults configuration?
+    "calcservice" # no config
+    "calibre" # config not in defaults
+    "color-oracle" # no config
+    "dbeaver-community" # config not in defaults
+    "firefox" # config not in defaults
     "flux"
     "free-ruler"
-    "google-chrome" # no defaults configuration?
+    "google-chrome" # config not in defaults
     "graphicconverter" # boo, it upgraded to 12 when I wasn't looking
-    "inkscape" # install fails under home-manager
-    "insomnia" # not configured
-    "keepassxc" # not configured
+    "inkscape" # install fails under home-manager, config not in defaults
+    "insomnia" # no config
+    "keepassxc" # no config
     "letter-opener"
-    # 404 "libreoffice" # not configured
+    "libreoffice" # config not in defaults
     "mactex-no-gui" # this appears to be ... complicated with nixpkgs
-    "netbeans" # not configured
-    "pacifist" # not configured
-    "rstudio" # not configured
-    "screenflick" # not configured
-    "silentknight" # not configured
+    "netbeans" # config not in defaults
+    "pacifist"
+    "rstudio" # config not in defaults
+    "screenflick"
+    "silentknight" # default config OK
     "skim"
     # temurin@8 requires Rosetta 2 on macOS 13, and isn't supported
     # at all on 14+; can enable on x86 hosts
     "temurin@11"
     "temurin@17"
     "vlc"
-    # 500 "whatsapp" # not configured
     "wordservice"
     "zoom"
-    "zotero" # not configured
+    "zotero" # config not in defaults
 
     # FONTS
     "font-academicons"

@@ -468,7 +468,7 @@
 * [ ] intellij-idea-ce
 * [x] iterm2
 * [x] keepassxc
-* [ ] libreoffice
+* [x] libreoffice
 * [x] mactex-no-gui
 * [ ] meld
 * [ ] miniconda
