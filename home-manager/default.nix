@@ -38,6 +38,20 @@ in
             ".agignore" = mkConfigFile (append home-manager-p "configs/silver-searcher") "";
             "logrotate.conf" = mkConfigFile (append home-manager-p "configs/logrotate") ".config/logrotate";
 
+            # DBeaver config files
+            # Core prefs requires username
+            "org.eclipse.core.resources.prefs" = mkDBeaverConfigFile "";
+            "org.eclipse.e4.ui.css.swt.theme.prefs" = mkDBeaverConfigFile "";
+            "org.eclipse.e4.ui.workbench.renderers.swt.prefs" = mkDBeaverConfigFile "";
+            "org.eclipse.jsch.core.prefs" = mkDBeaverConfigFile "";
+            "org.eclipse.team.core.prefs" = mkDBeaverConfigFile "";
+            "org.eclipse.ui.browser.prefs" = mkDBeaverConfigFile "";
+            "org.eclipse.ui.editors.prefs" = mkDBeaverConfigFile "";
+            "org.eclipse.ui.ide.prefs" = mkDBeaverConfigFile "";
+            "org.eclipse.ui.workbench.prefs" = mkDBeaverConfigFile "";
+            "org.jkiss.dbeaver.erd.ui.prefs" = mkDBeaverConfigFile "";
+            "org.jkiss.dbeaver.ui.statistics.prefs" = mkDBeaverConfigFile "";
+
             # directories
             "logrotate.d" = mkDir ".config/logrotate";
             "tmp" = mkDir "";

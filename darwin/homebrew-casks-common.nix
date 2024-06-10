@@ -6,7 +6,7 @@
     "calcservice" # no config
     "calibre" # config not in defaults
     "color-oracle" # no config
-    "dbeaver-community" # config not in defaults
+    "dbeaver-community"
     "firefox" # config not in defaults
     "flux"
     "free-ruler"

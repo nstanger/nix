@@ -87,6 +87,7 @@
                                 # Should it be localHostName or computerName instead? Or just not bother?
                                 # networking.hostName = hostName;
                                 home-manager = {
+                                    backupFileExtension = "backup";
                                     useGlobalPkgs = true;
                                     useUserPackages = true;
                                     extraSpecialArgs = { inherit inputs paths pkgs; };

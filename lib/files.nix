@@ -47,4 +47,11 @@ rec {
         text = toJSON (import (append apps "iterm/dynamic-profiles/${replaceStrings ["json"] ["nix"] name}") username);
         target = "Library/Application Support/iTerm2/DynamicProfiles/${name}";
     };
+
+    # mkDBeaverConfigFile: Add a DBeaver preferences file
+    # Argh, DBeaver overwrites the symlinked core prefs file with a new one when it quits!
+    mkDBeaverConfigFile = username: name: {
+        text = replaceStrings ["@USERNAME@"] [username] (readFile (append apps "dbeaver/${name}"));
+        target = "Library/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/${name}";
+    };
 }

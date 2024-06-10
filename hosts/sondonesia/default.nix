@@ -87,6 +87,7 @@ in {
             homeDirectory = "/Users/${username}";
             file = with lib.my; processHomeFiles {
                 "teaching.json" = mkITermDynamicProfile username;
+                "org.jkiss.dbeaver.core.prefs" = mkDBeaverConfigFile username;
             };
             packages = with pkgs; import (append home-manager-p "packages-common.nix") pkgs ++ [
                 # SOFTWARE
