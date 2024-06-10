@@ -2,6 +2,7 @@
     lib,
     paths,
     pkgs,
+    username,
     ...
 }:
 let
@@ -38,20 +39,6 @@ in
             ".agignore" = mkConfigFile (append home-manager-p "configs/silver-searcher") "";
             "logrotate.conf" = mkConfigFile (append home-manager-p "configs/logrotate") ".config/logrotate";
 
-            # DBeaver config files
-            # Core prefs requires username
-            "org.eclipse.core.resources.prefs" = mkDBeaverConfigFile "";
-            "org.eclipse.e4.ui.css.swt.theme.prefs" = mkDBeaverConfigFile "";
-            "org.eclipse.e4.ui.workbench.renderers.swt.prefs" = mkDBeaverConfigFile "";
-            "org.eclipse.jsch.core.prefs" = mkDBeaverConfigFile "";
-            "org.eclipse.team.core.prefs" = mkDBeaverConfigFile "";
-            "org.eclipse.ui.browser.prefs" = mkDBeaverConfigFile "";
-            "org.eclipse.ui.editors.prefs" = mkDBeaverConfigFile "";
-            "org.eclipse.ui.ide.prefs" = mkDBeaverConfigFile "";
-            "org.eclipse.ui.workbench.prefs" = mkDBeaverConfigFile "";
-            "org.jkiss.dbeaver.erd.ui.prefs" = mkDBeaverConfigFile "";
-            "org.jkiss.dbeaver.ui.statistics.prefs" = mkDBeaverConfigFile "";
-
             # directories
             "logrotate.d" = mkDir ".config/logrotate";
             "tmp" = mkDir "";
@@ -64,10 +51,11 @@ in
             "svg2pdf" = mkShellScript "bin";
 
             # iTerm profiles using the mapAttrs trick
-            "console.json" = mkITermDynamicProfile "";
-            "home-ssh.json" = mkITermDynamicProfile "";
-            "other-ssh.json" = mkITermDynamicProfile "";
-            "work-ssh.json" = mkITermDynamicProfile "";
+            "console.json" = mkITermDynamicProfile;
+            "home-ssh.json" = mkITermDynamicProfile;
+            "other-ssh.json" = mkITermDynamicProfile;
+            "teaching.json" = mkITermDynamicProfile;
+            "work-ssh.json" = mkITermDynamicProfile;
         };
 
         # Essential packages that ALL hosts must have.
@@ -153,23 +141,39 @@ in
         };
 
         activation = let
-            # Some coreutils programs (e.g., cp, chmod, ...) somehow
-            # don't mask the macOS provided versions, so use
-            # coreutils --coreutils-prog=xxxx to run them. This is mainly
-            # to ensure --verbose is available (where supported).
+            /*  Some coreutils programs (e.g., cp, chmod, ...) somehow
+                occasionally don't mask the macOS provided versions, so use
+                coreutils --coreutils-prog=xxxx to run them. This is mainly
+                to ensure --verbose is available (where supported).
+            */
             coreutilsCmd = cmd: "coreutils --coreutils-prog=${cmd}";
-        in {
-            # Symlinking an input plugin file doesn't seem to register,
-            # so copy the file into place instead. Target file mode seems
-            # to default to 555, which makes overwriting tricky. Don't
-            # rebuild while Keyboard Settings is open?
-            # See com.apple.HIToolbox for input source defaults.
+
+            dBeaverPrefs = [
+                "org.eclipse.core.resources.prefs"
+                "org.eclipse.e4.ui.css.swt.theme.prefs"
+                "org.eclipse.e4.ui.workbench.renderers.swt.prefs"
+                "org.eclipse.jsch.core.prefs"
+                "org.eclipse.team.core.prefs"
+                "org.eclipse.ui.browser.prefs"
+                "org.eclipse.ui.editors.prefs"
+                "org.eclipse.ui.ide.prefs"
+                "org.eclipse.ui.workbench.prefs"
+                "org.jkiss.dbeaver.core.prefs"
+                "org.jkiss.dbeaver.erd.ui.prefs"
+                "org.jkiss.dbeaver.ui.statistics.prefs"
+            ];
+        in with builtins; with lib.path; with paths; {
+            /*  Symlinking an input plugin file doesn't seem to register,
+                so copy the file into place instead. Target file mode seems
+                to default to 555, which makes overwriting tricky. Don't
+                rebuild while Keyboard Settings is open?
+                See com.apple.HIToolbox for input source defaults.
+            */
             copyIso10646InputPlugin = let
                 target = ''"$HOME/Library/Input Methods/ISO 10646.inputplugin"'';
                 mode = "644";
             in lib.hm.dag.entryAfter ["writeBoundary"] ''
-                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG \
-                    ${builtins.toPath ./configs/keyboard/ISO10646.inputplugin} ${target}
+                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append home-manager-p "configs/keyboard/ISO10646.inputplugin"} ${target}
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
             '';
 
@@ -181,6 +185,19 @@ in
                 $DRY_RUN_CMD touch ${target}
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
             '';
+
+            /*  Install DBeaver prefs files. We can't just symlink these because
+                DBeaver recreates some of them on quit even when nothing has
+                obviously changed :(.
+            */
+            copyDBeaverPrefs = let
+                targetDir = ''$HOME/Library/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings'';
+                mode = "644";
+            in lib.hm.dag.entryAfter ["writeBoundary"] (concatStringsSep "" (map (file: ''
+                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append apps "dbeaver/${file}"} ${targetDir}/${file}
+                $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${targetDir}/${file}
+                $DRY_RUN_CMD sed -i -e 's/@USERNAME@/${username}/' ${targetDir}/${file}
+            '') dBeaverPrefs));
 
             # Relaunch the Finder to update view settings. (Sneaky naming hack
             # so that this runs after setDarwinDefaults.)
@@ -368,7 +385,12 @@ in
         enableZshIntegration = true;
     };
 
-    launchd.enable = true;
+    launchd = {
+        enable = true;
+        agents = {
+            "task.sync" = import (append home-manager-p "configs/launchd/task-sync.nix") username;
+        };
+    };
 
     targets.darwin = {
         defaults = with lib.path; with paths; {

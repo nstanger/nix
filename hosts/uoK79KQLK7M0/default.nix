@@ -3,14 +3,13 @@
     lib,
     paths,
     pkgs,
+    username,
     ...
 }:
 
 with lib.path;
 with paths; 
-let
-    username = "stani07p";
-in {
+{
     users.users."${username}" = {
         home = "/Users/${username}";
         shell = pkgs.zsh;
@@ -118,9 +117,6 @@ in {
             file = with lib.my; processHomeFiles {
                 # This really should be bundled into the activation.
                 "fix-automount" = mkShellScript "bin";
-
-                "teaching.json" = mkITermDynamicProfile username;
-                "org.jkiss.dbeaver.core.prefs" = mkDBeaverConfigFile username;
             };
             packages = with pkgs; import (append home-manager-p "packages-common.nix") pkgs ++ [
                 camunda-modeler
@@ -135,9 +131,6 @@ in {
             "context=work"
         ];
         programs.zsh.shellAliases = import (append home-manager-p "configs/zsh/aliases-common.nix") pkgs // {
-        };
-        launchd.agents = {
-            "task.sync" = import (append home-manager-p "configs/launchd/task-sync.nix") username;
         };
         targets.darwin = {
             defaults = {

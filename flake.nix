@@ -37,7 +37,7 @@
         ...
     }:
         let
-            darwinSystem = system: extraModules: hostName:
+            darwinSystem = system: username: extraModules: hostName:
                 let
                     pkgs = import nixpkgs-darwin {
                         inherit system;
@@ -54,12 +54,12 @@
                     };
 
                     lib = pkgs.lib.extend (self: super: {
-                        my = import ./lib { inherit inputs paths pkgs; lib = self; };
+                        my = import ./lib { inherit inputs paths pkgs username; lib = self; };
                     });
                 in
                     darwin.lib.darwinSystem {
                         inherit system;
-                        specialArgs = { inherit darwin inputs lib paths pkgs self; };
+                        specialArgs = { inherit darwin inputs lib paths pkgs self username; };
                         modules = with lib.path; with paths; [
                             nix-homebrew.darwinModules.nix-homebrew {
                                 nix-homebrew = {
@@ -90,7 +90,7 @@
                                     backupFileExtension = "backup";
                                     useGlobalPkgs = true;
                                     useUserPackages = true;
-                                    extraSpecialArgs = { inherit inputs paths pkgs; };
+                                    extraSpecialArgs = { inherit inputs paths pkgs username; };
                                 };
 #                                home-manager.users.ragon = hmConfig;
                             }
@@ -105,9 +105,9 @@
         in {
             # lib = lib.my;
             darwinConfigurations = processConfigurations {
-                Nigels-Virtual-Machine = darwinSystem "aarch64-darwin" [ ];
-                uoK79KQLK7M0 = darwinSystem "aarch64-darwin" [ ];
-                sondonesia = darwinSystem "aarch64-darwin" [ ];
+                Nigels-Virtual-Machine = darwinSystem "aarch64-darwin" "nstanger" [ ];
+                uoK79KQLK7M0 = darwinSystem "aarch64-darwin" "stani07p" [ ];
+                sondonesia = darwinSystem "aarch64-darwin" "nstanger" [ ];
             };
         };
 }

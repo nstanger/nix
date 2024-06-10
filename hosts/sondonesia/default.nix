@@ -3,14 +3,13 @@
     lib,
     paths,
     pkgs,
+    username,
     ...
 }:
 
 with lib.path;
 with paths; 
-let
-    username = "nstanger";
-in {
+{
     users.users."${username}" = {
         home = "/Users/${username}";
         shell = pkgs.zsh;
@@ -85,10 +84,6 @@ in {
         ];
         home = {
             homeDirectory = "/Users/${username}";
-            file = with lib.my; processHomeFiles {
-                "teaching.json" = mkITermDynamicProfile username;
-                "org.jkiss.dbeaver.core.prefs" = mkDBeaverConfigFile username;
-            };
             packages = with pkgs; import (append home-manager-p "packages-common.nix") pkgs ++ [
                 # SOFTWARE
                 tart
@@ -103,9 +98,6 @@ in {
             "context=home"
         ];
         programs.zsh.shellAliases = import (append home-manager-p "configs/zsh/aliases-common.nix") pkgs // {
-        };
-        launchd.agents = {
-            "task.sync" = import (append home-manager-p "configs/launchd/task-sync.nix") username;
         };
         targets.darwin = {
             defaults = {
