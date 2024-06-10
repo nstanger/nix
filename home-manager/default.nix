@@ -385,7 +385,7 @@ in
         enableZshIntegration = true;
     };
 
-    launchd = {
+    launchd = with lib.path; with paths; {
         enable = true;
         agents = {
             "task.sync" = import (append home-manager-p "configs/launchd/task-sync.nix") username;
