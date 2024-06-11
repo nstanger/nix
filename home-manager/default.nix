@@ -203,18 +203,19 @@ in
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
             '';
 
-            /*  Install DBeaver prefs files. We can't just symlink these because
-                DBeaver recreates some of them on quit even when nothing has
-                obviously changed :(.
+            /*  Install NetBeans prefs files. Annoyingly it includes the major version
+                in the path (so it changes all the time), and also scatters the files
+                over a bunch of sub-directory trees:(.
             */
-            copyDBeaverPrefs = let
-                targetDir = ''$HOME/Library/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings'';
-                mode = "644";
-            in lib.hm.dag.entryAfter ["writeBoundary"] (concatStringsSep "" (map (file: ''
-                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append apps "dbeaver/${file}"} ${targetDir}/${file}
-                $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${targetDir}/${file}
-                $DRY_RUN_CMD sed -i -e 's/@USERNAME@/${username}/' ${targetDir}/${file}
-            '') dBeaverPrefs));
+            # copyNetBeansPrefs = let
+            #     version = "21";
+            #     targetDir = ''"$HOME/Library/Application Support/NetBeans/${version}/config/Preferences/org/netbeans"'';
+            #     mode = "644";
+            # in lib.hm.dag.entryAfter ["writeBoundary"] (concatStringsSep "" (map (file: ''
+            #     $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append configs-path "netbeans/${file}"} ${targetDir}/${file}
+            #     $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${targetDir}/${file}
+            #     $DRY_RUN_CMD sed -i -e 's/@USERNAME@/${username}/' ${targetDir}/${file}
+            # '') netbeansPrefs));
 
             # Relaunch the Finder to update view settings. (Sneaky naming hack
             # so that this runs after setDarwinDefaults.)
