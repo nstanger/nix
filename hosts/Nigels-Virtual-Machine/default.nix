@@ -6,10 +6,10 @@
     username,
     ...
 }:
-
-with lib.path;
-with paths; 
-{
+let
+    inherit (lib.path) append;
+    inherit (paths) home-manager-path;
+in {
     users.users."${username}" = {
         home = "/Users/${username}";
         shell = pkgs.zsh;

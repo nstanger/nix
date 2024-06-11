@@ -6,10 +6,11 @@
     username,
     ...
 }:
-
-with lib.path;
-with paths; 
-{
+let
+    inherit (lib.my) processHomeFiles mkShellScript;
+    inherit (lib.path) append;
+    inherit (paths) apps-path configs-path darwin-path home-manager-path;
+in {
     users.users."${username}" = {
         home = "/Users/${username}";
         shell = pkgs.zsh;
@@ -114,7 +115,7 @@ with paths;
         ];
         home = {
             homeDirectory = "/Users/${username}";
-            file = with lib.my; processHomeFiles {
+            file = processHomeFiles {
                 # This really should be bundled into the activation.
                 "fix-automount" = mkShellScript "bin";
             };
@@ -130,7 +131,7 @@ with paths;
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
             "context=work"
         ];
-        programs.zsh.shellAliases = import (append home-manager-path "configs/zsh/aliases-common.nix") pkgs // {
+        programs.zsh.shellAliases = import (append configs-path "zsh/aliases-common.nix") pkgs // {
         };
         targets.darwin = {
             defaults = {

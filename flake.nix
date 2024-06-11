@@ -46,11 +46,15 @@
 
                     # Easiest way to fix the major module paths so that we can
                     # access them from anywhere.
-                    paths = with lib.path; {
+                    paths = with lib.path; rec {
+                        # top-level paths
                         apps-path = append ./. "apps";
-                        darwin-path = append ./. "darwin"; # avoid name conflict
-                        home-manager-path = append ./. "home-manager"; # avoid name conflict
+                        darwin-path = append ./. "darwin";
+                        home-manager-path = append ./. "home-manager";
                         hosts-path = append ./. "hosts";
+                        # commonly used sub-paths
+                        configs-path = append home-manager-path "configs";
+                        defaults-path = append home-manager-path "defaults";
                     };
 
                     lib = pkgs.lib.extend (self: super: {

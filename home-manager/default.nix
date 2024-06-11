@@ -6,6 +6,10 @@
     ...
 }:
 let
+    inherit (lib.my) processHomeFiles mkConfigFile mkDir mkITermDynamicProfile mkShellScript;
+    inherit (lib.path) append;
+    inherit (paths) apps-path configs-path;
+
     hashdiff = pkgs.stdenv.mkDerivation rec {
         name = "hashdiff";
         src = pkgs.fetchgit {
@@ -34,10 +38,10 @@ in
         stateVersion = "23.11";
 
         # append anything weird using //
-        file = with lib.my; with lib.path; with paths; processHomeFiles {
+        file = processHomeFiles {
             # text-based config files
-            ".agignore" = mkConfigFile (append home-manager-p "configs/silver-searcher") "";
-            "logrotate.conf" = mkConfigFile (append home-manager-p "configs/logrotate") ".config/logrotate";
+            ".agignore" = mkConfigFile (append configs-path "silver-searcher") "";
+            "logrotate.conf" = mkConfigFile (append configs-path "logrotate") ".config/logrotate";
 
             # directories
             "logrotate.d" = mkDir ".config/logrotate";
@@ -130,7 +134,7 @@ in
             TCLLIBPATH = "/usr/lib";
 
             # misc configuration
-            EXA_COLORS = import ./configs/eza/colours.nix;
+            EXA_COLORS = import (append configs-path "eza/colours.nix");
             ISPMS_HOST = "sobmac0011.staff.uod.otago.ac.nz";
             LESS="--no-init --raw-control-chars";
             LSCOLORS="ExGxFxDaCxDxDxxbaDacec";
@@ -162,7 +166,7 @@ in
                 "org.jkiss.dbeaver.erd.ui.prefs"
                 "org.jkiss.dbeaver.ui.statistics.prefs"
             ];
-        in with builtins; with lib.path; with paths; {
+        in with builtins; {
             /*  Install DBeaver prefs files. We can't just symlink these because
                 DBeaver recreates some of them on quit even when nothing has
                 obviously changed :(.
@@ -171,7 +175,7 @@ in
                 targetDir = ''$HOME/Library/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings'';
                 mode = "644";
             in lib.hm.dag.entryAfter ["writeBoundary"] (concatStringsSep "" (map (file: ''
-                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append home-manager-path "configs/dbeaver/${file}"} ${targetDir}/${file}
+                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append configs-path "dbeaver/${file}"} ${targetDir}/${file}
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${targetDir}/${file}
                 $DRY_RUN_CMD sed -i -e 's/@USERNAME@/${username}/' ${targetDir}/${file}
             '') dBeaverPrefs));
@@ -186,7 +190,7 @@ in
                 target = ''"$HOME/Library/Input Methods/ISO 10646.inputplugin"'';
                 mode = "644";
             in lib.hm.dag.entryAfter ["writeBoundary"] ''
-                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append home-manager-path "configs/keyboard/ISO10646.inputplugin"} ${target}
+                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append configs-path "keyboard/ISO10646.inputplugin"} ${target}
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
             '';
 
@@ -254,9 +258,9 @@ in
 
     programs.git = {
         enable = true;
-        aliases = import ./configs/git/aliases.nix;
-        extraConfig = import ./configs/git/extraConfig.nix;
-        ignores = import ./configs/git/gitignore.nix;
+        aliases = import (append configs-path "git/aliases.nix");
+        extraConfig = import (append configs-path "git/extraConfig.nix");
+        ignores = import (append configs-path "git/gitignore.nix");
         lfs.enable = true;
         package = pkgs.gitAndTools.gitFull;
         userName = "Nigel Stanger";
@@ -281,7 +285,7 @@ in
         vimAlias = true;
         vimdiffAlias = true;
         plugins = with pkgs.vimPlugins; [ quietlight ];
-        extraConfig = import ./configs/vim/vimrc.nix;
+        extraConfig = import (append configs-path "vim/vimrc.nix");
     };
 
     programs.pandoc.enable = true;
@@ -294,7 +298,7 @@ in
     programs.starship = {
         enable = true;
         enableZshIntegration = true;
-        settings = import ./configs/starship/settings.nix;
+        settings = import (append configs-path "starship/settings.nix");
     };
 
     programs.taskwarrior = {
@@ -333,7 +337,7 @@ in
 
     programs.yt-dlp = {
         enable = true;
-        extraConfig = import ./configs/yt-dlp/config;
+        extraConfig = import (append configs-path "yt-dlp/config");
     };
 
     programs.zsh = {
@@ -366,13 +370,13 @@ in
             share = false;
         };
 
-        initExtraBeforeCompInit = builtins.readFile ./configs/zsh/initExtraBeforeCompInit.sh;
-        completionInit = builtins.readFile ./configs/zsh/completionInit.sh;
+        initExtraBeforeCompInit = builtins.readFile (append configs-path "zsh/initExtraBeforeCompInit.sh");
+        completionInit = builtins.readFile (append configs-path "zsh/completionInit.sh");
         initExtraFirst = ''
             source ${pkgs.zsh-defer}/share/zsh-defer/zsh-defer.plugin.zsh
         '';
         initExtra = let
-            preExtra = builtins.readFile ./configs/zsh/initExtra.sh;
+            preExtra = builtins.readFile (append configs-path "zsh/initExtra.sh");
             pluginFiles = [
                 # additional plugins not already loaded elsewhere
                 "${pkgs.zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh"
@@ -390,7 +394,7 @@ in
 
         syntaxHighlighting.enable = true;
 
-        shellAliases = import ./configs/zsh/aliases-essential.nix pkgs;
+        shellAliases = import (append configs-path "zsh/aliases-essential.nix") pkgs;
     };
 
     programs.zoxide = {
@@ -398,54 +402,54 @@ in
         enableZshIntegration = true;
     };
 
-    launchd = with lib.path; with paths; {
+    launchd = {
         enable = true;
         agents = {
-            "task.sync" = import (append home-manager-p "configs/launchd/task-sync.nix") username;
+            "task.sync" = import (append configs-path "launchd/task-sync.nix") username;
         };
     };
 
     targets.darwin = {
-        defaults = with lib.path; with paths; {
-            NSGlobalDomain = import (append apps "global.nix");
-            "at.EternalStorms.Yoink" = import (append apps "yoink.nix"); # small screen only?
-            "at.obdev.LaunchBar" = import (append apps "launchbar.nix");
-            "com.apple.desktopservices" = import (append apps "desktopservices.nix");
-            "com.apple.dock" = import (append apps "dock.nix");
-            "com.apple.dt.Xcode" = import (append apps "xcode.nix");
-            "com.apple.finder" = import (append apps "finder.nix");
-            "com.apple.FontBook" = import (append apps "fontbook.nix");
-            "com.apple.HIToolbox" = import (append apps "hitoolbox.nix");
-            "com.apple.inputsources" = import (append apps "inputsources.nix");
-            "com.apple.mail" = import (append apps "mail.nix");
+        defaults = {
+            NSGlobalDomain = import (append apps-path "global.nix");
+            "at.EternalStorms.Yoink" = import (append apps-path "yoink.nix"); # small screen only?
+            "at.obdev.LaunchBar" = import (append apps-path "launchbar.nix");
+            "com.apple.desktopservices" = import (append apps-path "desktopservices.nix");
+            "com.apple.dock" = import (append apps-path "dock.nix");
+            "com.apple.dt.Xcode" = import (append apps-path "xcode.nix");
+            "com.apple.finder" = import (append apps-path "finder.nix");
+            "com.apple.FontBook" = import (append apps-path "fontbook.nix");
+            "com.apple.HIToolbox" = import (append apps-path "hitoolbox.nix");
+            "com.apple.inputsources" = import (append apps-path "inputsources.nix");
+            "com.apple.mail" = import (append apps-path "mail.nix");
             "com.apple.Music".showStatusBar = 1;
-            "com.apple.Preview" = import (append apps "preview.nix");
-            "com.apple.Safari" = import (append apps "safari.nix");
+            "com.apple.Preview" = import (append apps-path "preview.nix");
+            "com.apple.Safari" = import (append apps-path "safari.nix");
             "com.apple.scriptmenu".ScriptMenuEnabled = 1;
-            "com.apple.Spotlight" = import (append apps "spotlight.nix");
+            "com.apple.Spotlight" = import (append apps-path "spotlight.nix");
             # always show window proxy icons (where available)
             "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = 1;
             "com.apple.universalaccess".showWindowTitlebarIcons = 1;
-            "com.araeliumgroup.screenflick" = import (append apps "screenflick.nix");
-            "com.atow.msgfiler" = import (append apps "msgfiler.nix");
-            "com.binarynights.ForkLift" = import (append apps "forklift.nix");
-            "com.charlessoft.pacifist" = import (append apps "pacifist.nix");
-            "com.flexibits.fantastical2.mac" = import (append apps "fantastical2.nix");
-            "com.google.drivefs.settings" = import (append apps "google-drive.nix");
-            "com.googlecode.iterm2" = import (append apps "iterm");
-            "com.if.Amphetamine" = import (append apps "amphetamine.nix");
-            "com.knollsoft.Rectangle" = import (append apps "rectangle.nix");
-            "com.microsoft.Excel" = import (append apps "excel.nix");
-            "com.microsoft.Word" = import (append apps "word.nix");
-            "com.microsoft.office" = import (append apps "office.nix");
-            "com.microsoft.Powerpoint" = import (append apps "powerpoint.nix");
-            "com.modesittsoftware.Photo-GeoTag" = import (append apps "photo-geotag.nix");
-            "com.objective-see.oversight" = import (append apps "oversight.nix");
-            "com.noodlesoft.Hazel" = import (append apps "hazel.nix");
-            "com.pascal.freeruler" = import (append apps "free-ruler.nix");
-            "com.stclairsoft.DefaultFolderX5" = import (append apps "default-folder-x.nix");
-            "com.zeroonetwenty.BlueHarvest5" = import (append apps "blueharvest.nix");
-            "edu.ucsd.cs.mmccrack.bibdesk" = import (append apps "bibdesk.nix");
+            "com.araeliumgroup.screenflick" = import (append apps-path "screenflick.nix");
+            "com.atow.msgfiler" = import (append apps-path "msgfiler.nix");
+            "com.binarynights.ForkLift" = import (append apps-path "forklift.nix");
+            "com.charlessoft.pacifist" = import (append apps-path "pacifist.nix");
+            "com.flexibits.fantastical2.mac" = import (append apps-path "fantastical2.nix");
+            "com.google.drivefs.settings" = import (append apps-path "google-drive.nix");
+            "com.googlecode.iterm2" = import (append apps-path "iterm");
+            "com.if.Amphetamine" = import (append apps-path "amphetamine.nix");
+            "com.knollsoft.Rectangle" = import (append apps-path "rectangle.nix");
+            "com.microsoft.Excel" = import (append apps-path "excel.nix");
+            "com.microsoft.Word" = import (append apps-path "word.nix");
+            "com.microsoft.office" = import (append apps-path "office.nix");
+            "com.microsoft.Powerpoint" = import (append apps-path "powerpoint.nix");
+            "com.modesittsoftware.Photo-GeoTag" = import (append apps-path "photo-geotag.nix");
+            "com.objective-see.oversight" = import (append apps-path "oversight.nix");
+            "com.noodlesoft.Hazel" = import (append apps-path "hazel.nix");
+            "com.pascal.freeruler" = import (append apps-path "free-ruler.nix");
+            "com.stclairsoft.DefaultFolderX5" = import (append apps-path "default-folder-x.nix");
+            "com.zeroonetwenty.BlueHarvest5" = import (append apps-path "blueharvest.nix");
+            "edu.ucsd.cs.mmccrack.bibdesk" = import (append apps-path "bibdesk.nix");
             # where on earth are the rest of Vivaldi's settings???
             # (similar for Chrome and Firefox)
             # Chrome: ~/Library/Application Support/Google/Chrome/Default/Preferences (JSON)
@@ -465,12 +469,12 @@ in
             #   > - modify it via the UI (e.g. via about:config in the browser); or
             #   > - set it within a user.js file in your profile.
             "com.vivaldi.Vivaldi".SUAutomaticallyUpdate = 0;
-            "net.sourceforge.skim-app.skim" = import (append apps "skim.nix");
-            "org.herf.Flux" = import (append apps "f.lux.nix");
+            "net.sourceforge.skim-app.skim" = import (append apps-path "skim.nix");
+            "org.herf.Flux" = import (append apps-path "f.lux.nix");
             # not a hell of a lot else exposed via defaults :/
             "org.videolan.vlc".SUEnableAutomaticChecks = 1;
-            "tracesOf.Uebersicht" = import (append apps "ubersicht.nix");
-            "uk.co.tla-systems.pcalc" = import (append apps "pcalc.nix");
+            "tracesOf.Uebersicht" = import (append apps-path "ubersicht.nix");
+            "uk.co.tla-systems.pcalc" = import (append apps-path "pcalc.nix");
         };
         search = "Google";
     };

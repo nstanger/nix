@@ -6,10 +6,10 @@
     username,
     ...
 }:
-
-with lib.path;
-with paths; 
-{
+let
+    inherit (lib.path) append;
+    inherit (paths) apps-path configs-path darwin-path home-manager-path;
+in {
     users.users."${username}" = {
         home = "/Users/${username}";
         shell = pkgs.zsh;
@@ -97,7 +97,7 @@ with paths;
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
             "context=home"
         ];
-        programs.zsh.shellAliases = import (append home-manager-path "configs/zsh/aliases-common.nix") pkgs // {
+        programs.zsh.shellAliases = import (append configs-path "zsh/aliases-common.nix") pkgs // {
         };
         targets.darwin = {
             defaults = {
