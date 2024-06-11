@@ -171,7 +171,7 @@ in
                 targetDir = ''$HOME/Library/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings'';
                 mode = "644";
             in lib.hm.dag.entryAfter ["writeBoundary"] (concatStringsSep "" (map (file: ''
-                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append apps-path "dbeaver/${file}"} ${targetDir}/${file}
+                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append home-manager-path "configs/dbeaver/${file}"} ${targetDir}/${file}
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${targetDir}/${file}
                 $DRY_RUN_CMD sed -i -e 's/@USERNAME@/${username}/' ${targetDir}/${file}
             '') dBeaverPrefs));
