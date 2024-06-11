@@ -8,7 +8,7 @@
 }:
 let
     inherit (lib.path) append;
-    inherit (paths) configs-path defaults-path darwin-path home-manager-path;
+    inherit (paths) configs-path defaults-path home-manager-path homebrew-path;
 in {
     users.users."${username}" = {
         home = "/Users/${username}";
@@ -36,9 +36,9 @@ in {
     };
 
     homebrew = {
-        brews = import (append darwin-path "homebrew-brews-common.nix") ++ [
+        brews = import (append homebrew-path "homebrew-brews-common.nix") ++ [
         ];
-        casks = import (append darwin-path "homebrew-casks-common.nix") ++ [
+        casks = import (append homebrew-path "homebrew-casks-common.nix") ++ [
             "android-file-transfer"
             "arq"
             "carbon-copy-cloner"
@@ -68,7 +68,7 @@ in {
             "whatsapp"
             "zed" # basic text editor for now # minimal config
         ];
-        masApps = import (append darwin-path "mas-apps-common.nix") // {
+        masApps = import (append homebrew-path "mas-apps-common.nix") // {
             # "Apple Configurator" = 1289583905; # not configured
             # "Final Cut Pro" = 424389933; # not configured
             Mactracker = 430255202;

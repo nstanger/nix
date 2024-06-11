@@ -99,6 +99,7 @@
 #                                home-manager.users.ragon = hmConfig;
                             }
                             darwin-path
+                            homebrew-path
                             # host-specific configuration
                             (append hosts-path "${hostName}")
                         ] ++ extraModules;
