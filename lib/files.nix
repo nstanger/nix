@@ -7,11 +7,10 @@
     username,
     ...
 }:
-
-with builtins;
-with lib.path;
-with paths;
-rec {
+let
+    inherit (lib.path) append;
+    inherit (paths) defaults-path home-manager-path;
+in with builtins; rec {
     /*  processHomeFiles: Add various kinds of home file using the mapAttrs trick.
         It would be nicer to use argument sets, but unfortunately you can't
         do partial application with them :(.
@@ -50,7 +49,7 @@ rec {
 
     # mkITermDynamicProfile: Add iTerm dynamic profiles (Nix -> JSON).
     mkITermDynamicProfile = name: {
-        text = toJSON (import (append apps-path "iterm/dynamic-profiles/${replaceStrings ["json"] ["nix"] name}") username);
+        text = toJSON (import (append defaults-path "iterm/dynamic-profiles/${replaceStrings ["json"] ["nix"] name}") username);
         target = "Library/Application Support/iTerm2/DynamicProfiles/${name}";
     };
 }

@@ -8,7 +8,7 @@
 }:
 let
     inherit (lib.path) append;
-    inherit (paths) apps-path configs-path darwin-path home-manager-path;
+    inherit (paths) configs-path defaults-path darwin-path home-manager-path;
 in {
     users.users."${username}" = {
         home = "/Users/${username}";
@@ -104,17 +104,17 @@ in {
                 NSGlobalDomain = {
                     "com.apple.sound.beep.sound" = "/Users/${username}/Library/Sounds/Eyuuurh.aiff";
                 };
-                "com.bombich.ccc" = import (append apps-path "carbon-copy-cloner.nix");
-                "com.clickontyler.Ears" = import (append apps-path "ears.nix");
-                "com.colliderli.iina" = import (append apps-path "iina.nix");
-                "com.mactrackerapp.Mactracker" = import (append apps-path "mactracker.nix");
-                "com.michelf.sim-daltonism" = import (append apps-path "sim-daltonism.nix");
-                "com.microsoft.OneDrive" = import (append apps-path "onedrive.nix");
-                "com.utmapp.UTM" = import (append apps-path "utm.nix");
-                "dev.warp.Warp-Stable" = import (append apps-path "warp.nix");
-                "me.guillaumeb.MonitorControl" = import (append apps-path "monitorcontrol.nix");
-                "net.whatsapp.WhatsApp" = import (append apps-path "whatsapp.nix");
-                "org.clindberg.ManOpen" = import (append apps-path "manopen.nix") username;
+                "com.bombich.ccc" = import (append defaults-path "carbon-copy-cloner.nix");
+                "com.clickontyler.Ears" = import (append defaults-path "ears.nix");
+                "com.colliderli.iina" = import (append defaults-path "iina.nix");
+                "com.mactrackerapp.Mactracker" = import (append defaults-path "mactracker.nix");
+                "com.michelf.sim-daltonism" = import (append defaults-path "sim-daltonism.nix");
+                "com.microsoft.OneDrive" = import (append defaults-path "onedrive.nix");
+                "com.utmapp.UTM" = import (append defaults-path "utm.nix");
+                "dev.warp.Warp-Stable" = import (append defaults-path "warp.nix");
+                "me.guillaumeb.MonitorControl" = import (append defaults-path "monitorcontrol.nix");
+                "net.whatsapp.WhatsApp" = import (append defaults-path "whatsapp.nix");
+                "org.clindberg.ManOpen" = import (append defaults-path "manopen.nix") username;
                 "org.cups.PrintingPrefs".UseLastPrinter = 0;
             };
         };

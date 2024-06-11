@@ -8,7 +8,7 @@
 let
     inherit (lib.my) processHomeFiles mkConfigFile mkDir mkITermDynamicProfile mkShellScript;
     inherit (lib.path) append;
-    inherit (paths) apps-path configs-path;
+    inherit (paths) defaults-path configs-path;
 
     hashdiff = pkgs.stdenv.mkDerivation rec {
         name = "hashdiff";
@@ -411,45 +411,45 @@ in
 
     targets.darwin = {
         defaults = {
-            NSGlobalDomain = import (append apps-path "global.nix");
-            "at.EternalStorms.Yoink" = import (append apps-path "yoink.nix"); # small screen only?
-            "at.obdev.LaunchBar" = import (append apps-path "launchbar.nix");
-            "com.apple.desktopservices" = import (append apps-path "desktopservices.nix");
-            "com.apple.dock" = import (append apps-path "dock.nix");
-            "com.apple.dt.Xcode" = import (append apps-path "xcode.nix");
-            "com.apple.finder" = import (append apps-path "finder.nix");
-            "com.apple.FontBook" = import (append apps-path "fontbook.nix");
-            "com.apple.HIToolbox" = import (append apps-path "hitoolbox.nix");
-            "com.apple.inputsources" = import (append apps-path "inputsources.nix");
-            "com.apple.mail" = import (append apps-path "mail.nix");
+            NSGlobalDomain = import (append defaults-path "global.nix");
+            "at.EternalStorms.Yoink" = import (append defaults-path "yoink.nix"); # small screen only?
+            "at.obdev.LaunchBar" = import (append defaults-path "launchbar.nix");
+            "com.apple.desktopservices" = import (append defaults-path "desktopservices.nix");
+            "com.apple.dock" = import (append defaults-path "dock.nix");
+            "com.apple.dt.Xcode" = import (append defaults-path "xcode.nix");
+            "com.apple.finder" = import (append defaults-path "finder.nix");
+            "com.apple.FontBook" = import (append defaults-path "fontbook.nix");
+            "com.apple.HIToolbox" = import (append defaults-path "hitoolbox.nix");
+            "com.apple.inputsources" = import (append defaults-path "inputsources.nix");
+            "com.apple.mail" = import (append defaults-path "mail.nix");
             "com.apple.Music".showStatusBar = 1;
-            "com.apple.Preview" = import (append apps-path "preview.nix");
-            "com.apple.Safari" = import (append apps-path "safari.nix");
+            "com.apple.Preview" = import (append defaults-path "preview.nix");
+            "com.apple.Safari" = import (append defaults-path "safari.nix");
             "com.apple.scriptmenu".ScriptMenuEnabled = 1;
-            "com.apple.Spotlight" = import (append apps-path "spotlight.nix");
+            "com.apple.Spotlight" = import (append defaults-path "spotlight.nix");
             # always show window proxy icons (where available)
             "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = 1;
             "com.apple.universalaccess".showWindowTitlebarIcons = 1;
-            "com.araeliumgroup.screenflick" = import (append apps-path "screenflick.nix");
-            "com.atow.msgfiler" = import (append apps-path "msgfiler.nix");
-            "com.binarynights.ForkLift" = import (append apps-path "forklift.nix");
-            "com.charlessoft.pacifist" = import (append apps-path "pacifist.nix");
-            "com.flexibits.fantastical2.mac" = import (append apps-path "fantastical2.nix");
-            "com.google.drivefs.settings" = import (append apps-path "google-drive.nix");
-            "com.googlecode.iterm2" = import (append apps-path "iterm");
-            "com.if.Amphetamine" = import (append apps-path "amphetamine.nix");
-            "com.knollsoft.Rectangle" = import (append apps-path "rectangle.nix");
-            "com.microsoft.Excel" = import (append apps-path "excel.nix");
-            "com.microsoft.Word" = import (append apps-path "word.nix");
-            "com.microsoft.office" = import (append apps-path "office.nix");
-            "com.microsoft.Powerpoint" = import (append apps-path "powerpoint.nix");
-            "com.modesittsoftware.Photo-GeoTag" = import (append apps-path "photo-geotag.nix");
-            "com.objective-see.oversight" = import (append apps-path "oversight.nix");
-            "com.noodlesoft.Hazel" = import (append apps-path "hazel.nix");
-            "com.pascal.freeruler" = import (append apps-path "free-ruler.nix");
-            "com.stclairsoft.DefaultFolderX5" = import (append apps-path "default-folder-x.nix");
-            "com.zeroonetwenty.BlueHarvest5" = import (append apps-path "blueharvest.nix");
-            "edu.ucsd.cs.mmccrack.bibdesk" = import (append apps-path "bibdesk.nix");
+            "com.araeliumgroup.screenflick" = import (append defaults-path "screenflick.nix");
+            "com.atow.msgfiler" = import (append defaults-path "msgfiler.nix");
+            "com.binarynights.ForkLift" = import (append defaults-path "forklift.nix");
+            "com.charlessoft.pacifist" = import (append defaults-path "pacifist.nix");
+            "com.flexibits.fantastical2.mac" = import (append defaults-path "fantastical2.nix");
+            "com.google.drivefs.settings" = import (append defaults-path "google-drive.nix");
+            "com.googlecode.iterm2" = import (append defaults-path "iterm");
+            "com.if.Amphetamine" = import (append defaults-path "amphetamine.nix");
+            "com.knollsoft.Rectangle" = import (append defaults-path "rectangle.nix");
+            "com.microsoft.Excel" = import (append defaults-path "excel.nix");
+            "com.microsoft.Word" = import (append defaults-path "word.nix");
+            "com.microsoft.office" = import (append defaults-path "office.nix");
+            "com.microsoft.Powerpoint" = import (append defaults-path "powerpoint.nix");
+            "com.modesittsoftware.Photo-GeoTag" = import (append defaults-path "photo-geotag.nix");
+            "com.objective-see.oversight" = import (append defaults-path "oversight.nix");
+            "com.noodlesoft.Hazel" = import (append defaults-path "hazel.nix");
+            "com.pascal.freeruler" = import (append defaults-path "free-ruler.nix");
+            "com.stclairsoft.DefaultFolderX5" = import (append defaults-path "default-folder-x.nix");
+            "com.zeroonetwenty.BlueHarvest5" = import (append defaults-path "blueharvest.nix");
+            "edu.ucsd.cs.mmccrack.bibdesk" = import (append defaults-path "bibdesk.nix");
             # where on earth are the rest of Vivaldi's settings???
             # (similar for Chrome and Firefox)
             # Chrome: ~/Library/Application Support/Google/Chrome/Default/Preferences (JSON)
@@ -469,12 +469,12 @@ in
             #   > - modify it via the UI (e.g. via about:config in the browser); or
             #   > - set it within a user.js file in your profile.
             "com.vivaldi.Vivaldi".SUAutomaticallyUpdate = 0;
-            "net.sourceforge.skim-app.skim" = import (append apps-path "skim.nix");
-            "org.herf.Flux" = import (append apps-path "f.lux.nix");
+            "net.sourceforge.skim-app.skim" = import (append defaults-path "skim.nix");
+            "org.herf.Flux" = import (append defaults-path "f.lux.nix");
             # not a hell of a lot else exposed via defaults :/
             "org.videolan.vlc".SUEnableAutomaticChecks = 1;
-            "tracesOf.Uebersicht" = import (append apps-path "ubersicht.nix");
-            "uk.co.tla-systems.pcalc" = import (append apps-path "pcalc.nix");
+            "tracesOf.Uebersicht" = import (append defaults-path "ubersicht.nix");
+            "uk.co.tla-systems.pcalc" = import (append defaults-path "pcalc.nix");
         };
         search = "Google";
     };

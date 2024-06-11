@@ -9,7 +9,7 @@
 let
     inherit (lib.my) processHomeFiles mkShellScript;
     inherit (lib.path) append;
-    inherit (paths) apps-path configs-path darwin-path home-manager-path;
+    inherit (paths) configs-path defaults-path darwin-path home-manager-path;
 in {
     users.users."${username}" = {
         home = "/Users/${username}";
@@ -156,17 +156,17 @@ in {
                 # Update: this turns out to make sense given that the DisplayLink
                 # appears to emulate a remote desktop connection.
                 "com.apple.security.authorization".ignoreArd = true;
-                "com.c-command.SpamSieve" = import (append apps-path "spamsieve.nix");
+                "com.c-command.SpamSieve" = import (append defaults-path "spamsieve.nix");
                 "com.googlecode.iterm2".BootstrapDaemon = 0; # permits Touch ID for sudo
-                "com.knollsoft.Scroll" = import (append apps-path "scroll.nix");
+                "com.knollsoft.Scroll" = import (append defaults-path "scroll.nix");
                 "com.if.Amphetamine" = {
                     "End Session On Low Battery" = 1;
                     "Ignore Battery on AC" = 1;
                     "Low Battery Percent" = 10;
                 };
-                "com.mactrackerapp.Mactracker" = import (append apps-path "mactracker.nix");
-                "com.michelf.sim-daltonism" = import (append apps-path "sim-daltonism.nix");
-                "org.clindberg.ManOpen" = import (append apps-path "manopen.nix") username;
+                "com.mactrackerapp.Mactracker" = import (append defaults-path "mactracker.nix");
+                "com.michelf.sim-daltonism" = import (append defaults-path "sim-daltonism.nix");
+                "org.clindberg.ManOpen" = import (append defaults-path "manopen.nix") username;
                 "org.cups.PrintingPrefs".UseLastPrinter = 0;
             };
             currentHostDefaults = {
