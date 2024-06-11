@@ -63,9 +63,9 @@ with paths;
     };
 
     homebrew = {
-        brews = import (append darwin-p "homebrew-brews-common.nix") ++ [
+        brews = import (append darwin-path "homebrew-brews-common.nix") ++ [
         ];
-        casks = import (append darwin-p "homebrew-casks-common.nix") ++ [
+        casks = import (append darwin-path "homebrew-casks-common.nix") ++ [
             "docker"
             "dropbox" # settings are in the cloud
             "mongodb-compass" # minimal config
@@ -75,7 +75,7 @@ with paths;
             "spamsieve"
             "zed" # basic text editor for now # minimal config
         ];
-        masApps = import (append darwin-p "mas-apps-common.nix") // {
+        masApps = import (append darwin-path "mas-apps-common.nix") // {
             # "Apple Configurator" = 1289583905; # not configured
             # "Final Cut Pro" = 424389933; # not configured
             Klack = 6446206067; # not configured, but pretty simple
@@ -110,7 +110,7 @@ with paths;
 
     home-manager.users."${username}" = {
         imports = [
-            home-manager-p
+            home-manager-path
         ];
         home = {
             homeDirectory = "/Users/${username}";
@@ -118,7 +118,7 @@ with paths;
                 # This really should be bundled into the activation.
                 "fix-automount" = mkShellScript "bin";
             };
-            packages = with pkgs; import (append home-manager-p "packages-common.nix") pkgs ++ [
+            packages = with pkgs; import (append home-manager-path "packages-common.nix") pkgs ++ [
                 camunda-modeler
                 mongodb-tools
                 mongosh
@@ -130,7 +130,7 @@ with paths;
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
             "context=work"
         ];
-        programs.zsh.shellAliases = import (append home-manager-p "configs/zsh/aliases-common.nix") pkgs // {
+        programs.zsh.shellAliases = import (append home-manager-path "configs/zsh/aliases-common.nix") pkgs // {
         };
         targets.darwin = {
             defaults = {
@@ -155,17 +155,17 @@ with paths;
                 # Update: this turns out to make sense given that the DisplayLink
                 # appears to emulate a remote desktop connection.
                 "com.apple.security.authorization".ignoreArd = true;
-                "com.c-command.SpamSieve" = import (append apps "spamsieve.nix");
+                "com.c-command.SpamSieve" = import (append apps-path "spamsieve.nix");
                 "com.googlecode.iterm2".BootstrapDaemon = 0; # permits Touch ID for sudo
-                "com.knollsoft.Scroll" = import (append apps "scroll.nix");
+                "com.knollsoft.Scroll" = import (append apps-path "scroll.nix");
                 "com.if.Amphetamine" = {
                     "End Session On Low Battery" = 1;
                     "Ignore Battery on AC" = 1;
                     "Low Battery Percent" = 10;
                 };
-                "com.mactrackerapp.Mactracker" = import (append apps "mactracker.nix");
-                "com.michelf.sim-daltonism" = import (append apps "sim-daltonism.nix");
-                "org.clindberg.ManOpen" = import (append apps "manopen.nix") username;
+                "com.mactrackerapp.Mactracker" = import (append apps-path "mactracker.nix");
+                "com.michelf.sim-daltonism" = import (append apps-path "sim-daltonism.nix");
+                "org.clindberg.ManOpen" = import (append apps-path "manopen.nix") username;
                 "org.cups.PrintingPrefs".UseLastPrinter = 0;
             };
             currentHostDefaults = {

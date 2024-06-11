@@ -36,9 +36,9 @@ with paths;
     };
 
     homebrew = {
-        brews = import (append darwin-p "homebrew-brews-common.nix") ++ [
+        brews = import (append darwin-path "homebrew-brews-common.nix") ++ [
         ];
-        casks = import (append darwin-p "homebrew-casks-common.nix") ++ [
+        casks = import (append darwin-path "homebrew-casks-common.nix") ++ [
             "android-file-transfer"
             "arq"
             "carbon-copy-cloner"
@@ -68,7 +68,7 @@ with paths;
             "whatsapp"
             "zed" # basic text editor for now # minimal config
         ];
-        masApps = import (append darwin-p "mas-apps-common.nix") // {
+        masApps = import (append darwin-path "mas-apps-common.nix") // {
             # "Apple Configurator" = 1289583905; # not configured
             # "Final Cut Pro" = 424389933; # not configured
             Mactracker = 430255202;
@@ -80,11 +80,11 @@ with paths;
 
     home-manager.users."${username}" = {
         imports = [
-            home-manager-p
+            home-manager-path
         ];
         home = {
             homeDirectory = "/Users/${username}";
-            packages = with pkgs; import (append home-manager-p "packages-common.nix") pkgs ++ [
+            packages = with pkgs; import (append home-manager-path "packages-common.nix") pkgs ++ [
                 # SOFTWARE
                 tart
                 tvnamer #TESTING
@@ -97,24 +97,24 @@ with paths;
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
             "context=home"
         ];
-        programs.zsh.shellAliases = import (append home-manager-p "configs/zsh/aliases-common.nix") pkgs // {
+        programs.zsh.shellAliases = import (append home-manager-path "configs/zsh/aliases-common.nix") pkgs // {
         };
         targets.darwin = {
             defaults = {
                 NSGlobalDomain = {
                     "com.apple.sound.beep.sound" = "/Users/${username}/Library/Sounds/Eyuuurh.aiff";
                 };
-                "com.bombich.ccc" = import (append apps "carbon-copy-cloner.nix");
-                "com.clickontyler.Ears" = import (append apps "ears.nix");
-                "com.colliderli.iina" = import (append apps "iina.nix");
-                "com.mactrackerapp.Mactracker" = import (append apps "mactracker.nix");
-                "com.michelf.sim-daltonism" = import (append apps "sim-daltonism.nix");
-                "com.microsoft.OneDrive" = import (append apps "onedrive.nix");
-                "com.utmapp.UTM" = import (append apps "utm.nix");
-                "dev.warp.Warp-Stable" = import (append apps "warp.nix");
-                "me.guillaumeb.MonitorControl" = import (append apps "monitorcontrol.nix");
-                "net.whatsapp.WhatsApp" = import (append apps "whatsapp.nix");
-                "org.clindberg.ManOpen" = import (append apps "manopen.nix") username;
+                "com.bombich.ccc" = import (append apps-path "carbon-copy-cloner.nix");
+                "com.clickontyler.Ears" = import (append apps-path "ears.nix");
+                "com.colliderli.iina" = import (append apps-path "iina.nix");
+                "com.mactrackerapp.Mactracker" = import (append apps-path "mactracker.nix");
+                "com.michelf.sim-daltonism" = import (append apps-path "sim-daltonism.nix");
+                "com.microsoft.OneDrive" = import (append apps-path "onedrive.nix");
+                "com.utmapp.UTM" = import (append apps-path "utm.nix");
+                "dev.warp.Warp-Stable" = import (append apps-path "warp.nix");
+                "me.guillaumeb.MonitorControl" = import (append apps-path "monitorcontrol.nix");
+                "net.whatsapp.WhatsApp" = import (append apps-path "whatsapp.nix");
+                "org.clindberg.ManOpen" = import (append apps-path "manopen.nix") username;
                 "org.cups.PrintingPrefs".UseLastPrinter = 0;
             };
         };

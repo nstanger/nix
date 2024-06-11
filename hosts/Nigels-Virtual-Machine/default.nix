@@ -44,7 +44,7 @@ with paths;
 
     home-manager.users."${username}" = {
         imports = [
-            home-manager-p
+            home-manager-path
         ];
         home = {
             homeDirectory = "/Users/${username}";

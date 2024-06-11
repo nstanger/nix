@@ -44,13 +44,13 @@ rec {
     */
     mkShellScript = targetPath: name: {
         executable = true;
-        source = pkgs.writeShellScript "${name}" (readFile (append home-manager-p "binfiles/${name}"));
+        source = pkgs.writeShellScript "${name}" (readFile (append home-manager-path "binfiles/${name}"));
         target = "${targetPath}/${name}";
     };
 
     # mkITermDynamicProfile: Add iTerm dynamic profiles (Nix -> JSON).
     mkITermDynamicProfile = name: {
-        text = toJSON (import (append apps "iterm/dynamic-profiles/${replaceStrings ["json"] ["nix"] name}") username);
+        text = toJSON (import (append apps-path "iterm/dynamic-profiles/${replaceStrings ["json"] ["nix"] name}") username);
         target = "Library/Application Support/iTerm2/DynamicProfiles/${name}";
     };
 }

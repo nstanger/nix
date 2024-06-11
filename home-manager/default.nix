@@ -163,6 +163,19 @@ in
                 "org.jkiss.dbeaver.ui.statistics.prefs"
             ];
         in with builtins; with lib.path; with paths; {
+            /*  Install DBeaver prefs files. We can't just symlink these because
+                DBeaver recreates some of them on quit even when nothing has
+                obviously changed :(.
+            */
+            copyDBeaverPrefs = let
+                targetDir = ''$HOME/Library/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings'';
+                mode = "644";
+            in lib.hm.dag.entryAfter ["writeBoundary"] (concatStringsSep "" (map (file: ''
+                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append apps-path "dbeaver/${file}"} ${targetDir}/${file}
+                $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${targetDir}/${file}
+                $DRY_RUN_CMD sed -i -e 's/@USERNAME@/${username}/' ${targetDir}/${file}
+            '') dBeaverPrefs));
+
             /*  Symlinking an input plugin file doesn't seem to register,
                 so copy the file into place instead. Target file mode seems
                 to default to 555, which makes overwriting tricky. Don't
@@ -173,7 +186,7 @@ in
                 target = ''"$HOME/Library/Input Methods/ISO 10646.inputplugin"'';
                 mode = "644";
             in lib.hm.dag.entryAfter ["writeBoundary"] ''
-                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append home-manager-p "configs/keyboard/ISO10646.inputplugin"} ${target}
+                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append home-manager-path "configs/keyboard/ISO10646.inputplugin"} ${target}
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
             '';
 

@@ -47,10 +47,10 @@
                     # Easiest way to fix the major module paths so that we can
                     # access them from anywhere.
                     paths = with lib.path; {
-                        apps = append ./. "apps";
-                        darwin-p = append ./. "darwin"; # avoid name conflict
-                        home-manager-p = append ./. "home-manager"; # avoid name conflict
-                        hosts = append ./. "hosts";
+                        apps-path = append ./. "apps";
+                        darwin-path = append ./. "darwin"; # avoid name conflict
+                        home-manager-path = append ./. "home-manager"; # avoid name conflict
+                        hosts-path = append ./. "hosts";
                     };
 
                     lib = pkgs.lib.extend (self: super: {
@@ -94,9 +94,9 @@
                                 };
 #                                home-manager.users.ragon = hmConfig;
                             }
-                            darwin-p
+                            darwin-path
                             # host-specific configuration
-                            (append hosts "${hostName}")
+                            (append hosts-path "${hostName}")
                         ] ++ extraModules;
                     };
 
