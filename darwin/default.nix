@@ -28,6 +28,7 @@
             findutils.locate # => GNU locate, updatedb
             git
             gnused
+            setconf # to edit key/value config files
         ];
         systemPath = [
             "/usr/local/sbin"
