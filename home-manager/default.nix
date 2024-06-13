@@ -157,7 +157,8 @@ in
             /*  Install DBeaver prefs files. We can't just symlink these because
                 DBeaver recreates some of them on quit even when nothing has
                 obviously changed :(. setconf lets us write directly to the
-                prefs files.
+                prefs files, but for some reason -a is adding multiple entries?
+                It still works regardless.
             */
             copyDBeaverPrefs = let
                 dBeaverPrefs =  foldlAttrs (outeracc: file: prefs:

@@ -15,7 +15,7 @@ username: {
         "eclipse.preferences.version" = 1;
 
         # User Interface > Appearance > Colors and Fonts > DBeaver Fonts > Main font > Monospace font
-        "org.jkiss.dbeaver.dbeaver.ui.fonts.monospace" = "1|Hack Nerd Font|13.0|0|COCOA|1|HackNF-Regular";
+        "org.jkiss.dbeaver.dbeaver.ui.fonts.monospace" = "1|Hack Nerd Font|13.0|0|COCOA|1|HackNF-Regular;";
     };
 
     "org.jkiss.dbeaver.core.prefs" = {
