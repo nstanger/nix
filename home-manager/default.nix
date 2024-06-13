@@ -7,6 +7,7 @@
 }:
 let
     inherit (lib.my) processHomeFiles mkConfigFile mkDir mkITermDynamicProfile mkShellScript;
+    inherit (lib.meta) getExe getExe';
     inherit (lib.path) append;
     inherit (paths) defaults-path configs-path;
 
@@ -150,22 +151,7 @@ in
                 coreutils --coreutils-prog=xxxx to run them. This is mainly
                 to ensure --verbose is available (where supported).
             */
-            coreutilsCmd = cmd: "coreutils --coreutils-prog=${cmd}";
-
-            dBeaverPrefs = [
-                "org.eclipse.core.resources.prefs"
-                "org.eclipse.e4.ui.css.swt.theme.prefs"
-                "org.eclipse.e4.ui.workbench.renderers.swt.prefs"
-                "org.eclipse.jsch.core.prefs"
-                "org.eclipse.team.core.prefs"
-                "org.eclipse.ui.browser.prefs"
-                "org.eclipse.ui.editors.prefs"
-                "org.eclipse.ui.ide.prefs"
-                "org.eclipse.ui.workbench.prefs"
-                "org.jkiss.dbeaver.core.prefs"
-                "org.jkiss.dbeaver.erd.ui.prefs"
-                "org.jkiss.dbeaver.ui.statistics.prefs"
-            ];
+            coreutilsCmd = cmd: ''${getExe' pkgs.coreutils "coreutils"} --coreutils-prog=${cmd}'';
         in with builtins; {
             /*  Install DBeaver prefs files. We can't just symlink these because
                 DBeaver recreates some of them on quit even when nothing has
@@ -199,7 +185,7 @@ in
                 target = ''$HOME/.logrotate.status'';
                 mode = "600";
             in lib.hm.dag.entryAfter ["writeBoundary"] ''
-                $DRY_RUN_CMD touch ${target}
+                $DRY_RUN_CMD ${coreutilsCmd "touch"} ${target}
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
             '';
 
