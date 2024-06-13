@@ -9,6 +9,7 @@ let
     inherit (lib.my) processHomeFiles mkConfigFile mkDir mkITermDynamicProfile mkShellScript;
     inherit (lib.meta) getExe getExe';
     inherit (lib.path) append;
+    inherit (lib.attrsets) foldlAttrs;
     inherit (paths) defaults-path configs-path;
 
     hashdiff = pkgs.stdenv.mkDerivation rec {
@@ -155,15 +156,21 @@ in
         in with builtins; {
             /*  Install DBeaver prefs files. We can't just symlink these because
                 DBeaver recreates some of them on quit even when nothing has
-                obviously changed :(.
+                obviously changed :(. setconf lets us write directly to the
+                prefs files.
             */
             copyDBeaverPrefs = let
+                dBeaverPrefs =  foldlAttrs (outeracc: file: prefs:
+                                    outeracc ++ foldlAttrs (inneracc: key: value:
+                                        inneracc ++ [{filename = "${file}"; "key" = key; "value" = value;}]
+                                    ) [] prefs
+                                ) [] (import (append configs-path "dbeaver") username);
                 targetDir = ''$HOME/Library/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings'';
                 mode = "644";
-            in lib.hm.dag.entryAfter ["writeBoundary"] (concatStringsSep "" (map (file: ''
-                $DRY_RUN_CMD ${coreutilsCmd "cp"} $VERBOSE_ARG ${append configs-path "dbeaver/${file}"} ${targetDir}/${file}
-                $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${targetDir}/${file}
-                $DRY_RUN_CMD sed -i -e 's/@USERNAME@/${username}/' ${targetDir}/${file}
+            in lib.hm.dag.entryAfter ["writeBoundary"] (concatStringsSep "" (map (pref: ''
+                $DRY_RUN_CMD ${coreutilsCmd "mkdir"} -p $VERBOSE_ARG ${targetDir}
+                $DRY_RUN_CMD ${getExe pkgs.setconf} -a "${targetDir}/${pref.filename}" "${pref.key}" "${toString pref.value}"
+                $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${targetDir}/${pref.filename}
             '') dBeaverPrefs));
 
             /*  Symlinking an input plugin file doesn't seem to register,
