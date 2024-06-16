@@ -169,9 +169,9 @@ in
                 targetDir = ''$HOME/Library/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings'';
                 mode = "644";
             in lib.hm.dag.entryAfter ["writeBoundary"] (concatStringsSep "" (map (pref: ''
-                $DRY_RUN_CMD ${coreutilsCmd "mkdir"} -p $VERBOSE_ARG ${targetDir}
+                $DRY_RUN_CMD ${coreutilsCmd "mkdir"} -p $VERBOSE_ARG "${targetDir}"
                 $DRY_RUN_CMD ${getExe pkgs.setconf} -a "${targetDir}/${pref.filename}" "${pref.key}" "${toString pref.value}"
-                $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${targetDir}/${pref.filename}
+                $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} "${targetDir}/${pref.filename}"
             '') dBeaverPrefs));
 
             /*  Symlinking an input plugin file doesn't seem to register,

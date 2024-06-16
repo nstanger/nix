@@ -1,17 +1,21 @@
 username: {
     "org.eclipse.ui.editors.prefs" = {
+        path = ''$HOME/Library/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings'';
+
         # Just in case we need to create the file.
         "eclipse.preferences.version" = 1;
 
         # Editors > Text Editors > show line numbers
-        "lineNumberRuler" = "true";
+        lineNumberRuler = "true";
 
         # Editors > Text Editors > Insert spaces for tabs
         # This also appears independently under Editors > SQL Editor > Formatting but the settings don't appear to be connected?
-        "spacesForTabs" = "true";
+        spacesForTabs = "true";
     };
 
     "org.eclipse.ui.workbench.prefs" = {
+        path = ''$HOME/Library/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings'';
+
         "eclipse.preferences.version" = 1;
 
         # User Interface > Appearance > Colors and Fonts > DBeaver Fonts > Main font > Monospace font
@@ -19,6 +23,8 @@ username: {
     };
 
     "org.jkiss.dbeaver.core.prefs" = {
+        path = ''$HOME/Library/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings'';
+
         "eclipse.preferences.version" = 1;
 
         # Editors > Data Editor > Data Formats
@@ -42,7 +48,7 @@ username: {
         "resultset.datetime.editor" = "true";
 
         # General > Usage Statistics > Send usage statistics
-        "show-database-statistics" = "false";
+        show-database-statistics = "false";
 
         # Editors > SQL Editor
         #   > Formatting
@@ -81,6 +87,8 @@ username: {
     };
 
     "org.jkiss.dbeaver.erd.ui.prefs" = {
+        path = ''$HOME/Library/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings'';
+
         "eclipse.preferences.version" = 1;
 
         # Editors > Diagram Editor > Notation type
@@ -89,6 +97,8 @@ username: {
     };
 
     "org.jkiss.dbeaver.ui.statistics.prefs" = {
+        path = ''$HOME/Library/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings'';
+
         "eclipse.preferences.version" = 1;
 
         # I think this suppresses asking about usage statistics on startup?
