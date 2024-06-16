@@ -35,7 +35,7 @@
 
     # FONTS
     "font-academicons"
-    "font-arimo"
+    # "font-arimo" # variable
     "font-bitstream-vera"
     # "font-bitter" # variable
     "font-cinzel" # variable
@@ -55,7 +55,7 @@
     # "font-outfit" # variable
     # "font-roboto" # breaks during install?
     # Segoe UI: manual install
-    "font-stix" # provided by macOS Ventura, but variable only
+    # "font-stix" # provided by macOS Ventura
     "font-tex-gyre-adventor"
     "font-tex-gyre-bonum"
     "font-tex-gyre-bonum-math"
@@ -68,7 +68,7 @@
     "font-tex-gyre-schola-math"
     "font-tex-gyre-termes"
     "font-tex-gyre-termes-math"
-    "font-xits"
+    # "font-xits" # discontinued?
     "font-xkcd-script"
     # YouTube Sans & YouTube Sans Dark: manual install
 ]
