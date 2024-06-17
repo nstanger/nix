@@ -186,6 +186,8 @@
                 duti -s com.microsoft.Excel tsv all
                 duti -s com.microsoft.VSCode plantuml all
                 duti -s com.microsoft.VSCode pu all
+                duti -s com.microsoft.VSCode puml all
+                duti -s com.microsoft.VSCode ipu all
 
                 duti -s com.microsoft.VSCode net.daringfireball.markdown all
                 duti -s com.microsoft.VSCode public.css all
