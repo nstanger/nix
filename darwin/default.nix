@@ -1,7 +1,14 @@
 {
+    lib,
+    paths,
     pkgs,
     ...
-}: {
+}: let
+    inherit (lib.attrsets) foldlAttrs;
+    inherit (lib.meta) getExe';
+    inherit (lib.path) append;
+    inherit (paths) darwin-path;
+in {
     system.stateVersion = 4;
 
     documentation = {
@@ -174,34 +181,16 @@
         };
 
         # https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
-        postUserActivation = {
+        postUserActivation = let
+            utiMappings = import (append darwin-path "utis.nix");
+        in {
             enable = true;
-            text = ''
+            text = with builtins; ''
                 # Following line should allow us to avoid a logout/login cycle
                 /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-
-                # default file type (UTI) mappings; **requires duti package** (systemPackages)
-                # is this better elsewhere?
-                duti -s com.microsoft.Excel csv all
-                duti -s com.microsoft.Excel tsv all
-                duti -s com.microsoft.VSCode plantuml all
-                duti -s com.microsoft.VSCode pu all
-                duti -s com.microsoft.VSCode puml all
-                duti -s com.microsoft.VSCode ipu all
-
-                duti -s com.microsoft.VSCode net.daringfireball.markdown all
-                duti -s com.microsoft.VSCode public.css all
-                duti -s com.microsoft.VSCode public.json all
-                duti -s com.microsoft.VSCode public.make-source all
-                duti -s com.microsoft.VSCode public.perl-script all
-                duti -s com.microsoft.VSCode public.php-script all
-                duti -s com.microsoft.VSCode public.plain-text all
-                duti -s com.microsoft.VSCode public.python-script all
-                duti -s com.microsoft.VSCode public.ruby-script all
-                duti -s com.microsoft.VSCode public.text all
-                duti -s com.microsoft.VSCode public.xml all
-                duti -s com.microsoft.VSCode public.yaml all
-            '';
+            '' +
+            # Default file type (UTI) mappings; **requires duti package** (systemPackages)
+            concatStringsSep "\n" (foldlAttrs (dutiCmds: bundleId: utiList: dutiCmds ++ map (uti: ''${getExe' pkgs.duti "duti"} -s ${bundleId} ${uti} all'') utiList) [] utiMappings);
         };
     };
 }
