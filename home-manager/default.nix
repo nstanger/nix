@@ -141,6 +141,9 @@ in
             LESS="--no-init --raw-control-chars";
             LSCOLORS="ExGxFxDaCxDxDxxbaDacec";
             PAGER = "bat";
+            # Something broke virtualenvwrapper between nixpkgs 23.11 and
+            # 24.05 :( and the solution appears to be to set this variable.
+            VIRTUALENVWRAPPER_PYTHON=''${getExe' pkgs.python311Full "python3"}'';
             XSLT="saxon-b";
             # automatic completion suggestions: use a slightly lighter shade of grey
             ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=246";
