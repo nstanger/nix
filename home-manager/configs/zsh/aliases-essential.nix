@@ -6,7 +6,9 @@ pkgs: let
     ezaBasicOptions = "--icons --classify --color=auto --group-directories-first";
     ezaLongOptions = "--long --group";
 in {
+    appid="plutil -extract CFBundleIdentifier raw";
     empty = "${pkgs.coreutils}/bin/rm -rf ~/.Trash/*";
+    fileuti = "mdls -name kMDItemContentType";
     # java_home = "/usr/libexec/java_home";
     # unlocktrash = "/usr/bin/sudo /usr/sbin/chown -R ${USER}:${GROUP} ~/.Trash/*";
     ls = "${pkgs.eza}/bin/eza ${ezaBasicOptions}";
