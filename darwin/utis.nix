@@ -1,7 +1,8 @@
 {
     "com.microsoft.Excel" = [
-        "csv"
-        "tsv"
+        "public.comma-separated-values-text"
+        "public.tab-separated-values-text"
+        "public.utf8-tab-separated-values-text"
     ];
     "com.microsoft.VSCode" = [
         # PlantUML
@@ -11,18 +12,54 @@
         "puml"
 
         # UTIs
+        "com.apple.ascii-property-list"
+        "com.apple.xml-property-list"
+        "com.netscape.javascript-source"
         "net.daringfireball.markdown"
+        "public.bash-script"
+        "public.c-header"
+        "public.c-plus-plus-header"
+        "public.c-plus-plus-inline-header"
+        "public.c-plus-plus-source"
+        "public.c-source"
         "public.css"
+        "public.csh-script"
         "public.json"
+        "public.ksh-script"
+        "public.lex-source"
         "public.make-source"
+        "public.pascal-source"
+        "public.patch-file"
         "public.perl-script"
         "public.php-script"
         "public.plain-text"
         "public.python-script"
         "public.ruby-script"
+        "public.shell-script"
+        "public.source-code"
+        "public.tcsh-script"
         "public.text"
+        "public.utf16-external-plain-text"
+        "public.utf16-plain-text"
+        "public.utf8-plain-text"
         "public.xml"
+        "public.yacc-source"
         "public.yaml"
+        "public.zsh-script"
+    ];
+    "com.vivaldi.Vivaldi" = [
+        "org.ietf.mhtml"
+        "public.html"
+        "public.xhtml"
+    ];
+    "edu.ucsd.cs.mmccrack.bibdesk" = [
+        "org.tug.tex.bibtex"
+    ];
+    "net.sourceforge.skim-app.skim" = [
+        "com.adobe.pdf"
+    ];
+    "org.inkscape.Inkscape" = [
+        "public.svg-image"
     ];
     "org.libreoffice.script" = [
         "org.oasis-open.opendocument.chart"
@@ -47,5 +84,8 @@
         "vnd.oasis.opendocument.presentation-flat-xml"
         "vnd.oasis.opendocument.spreadsheet-flat-xml"
         "vnd.oasis.opendocument.text-flat-xml"
+    ];
+    "org.videolan.vlc" = [
+        "public.avi"
     ];
 }
