@@ -28,9 +28,17 @@
         keyCode = 87;
         modifierFlags = 1835008;
     };
+    firstTwoThirds = {
+        keyCode = 86;
+        modifierFlags = 1966080;
+    };
     larger = {
         keyCode = 69;
         modifierFlags = 1835008;
+    };
+    lastTwoThirds = {
+        keyCode = 88;
+        modifierFlags = 1966080;
     };
     leftHalf = {
         keyCode = 86;
