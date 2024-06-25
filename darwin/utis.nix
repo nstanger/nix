@@ -49,7 +49,9 @@
     ];
     "com.vivaldi.Vivaldi" = [
         "org.ietf.mhtml"
-        "public.html"
+        # "failed to set com.vivaldi.Vivaldi as handler for public.html (error -54)" - WTF?
+        # explicit duti -s com.vivaldi.Vivaldi public.html works
+        # "public.html"
         "public.xhtml"
     ];
     "edu.ucsd.cs.mmccrack.bibdesk" = [
