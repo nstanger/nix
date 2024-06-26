@@ -409,6 +409,14 @@ in
     };
 
     targets.darwin = {
+        currentHostDefaults = {
+            NSGlobalDomain = {
+                # Compactify menu extras somewhat.
+                # <https://www.jessesquires.com/blog/2023/12/16/macbook-notch-and-menu-bar-fixes>
+                NSStatusItemSpacing = 12;
+                NSStatusItemSelectionPadding = 8;
+            };
+        };
         defaults = {
             NSGlobalDomain = import (append defaults-path "global.nix");
             "at.EternalStorms.Yoink" = import (append defaults-path "yoink.nix"); # small screen only?
