@@ -403,6 +403,7 @@ in
     launchd = {
         enable = true;
         agents = {
+            "logrotate" = import (append configs-path "launchd/logrotate.nix") username;
             "task.sync" = import (append configs-path "launchd/task-sync.nix") username;
         };
     };
