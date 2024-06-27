@@ -10,6 +10,23 @@ let
     inherit (lib.my) processHomeFiles mkShellScript;
     inherit (lib.path) append;
     inherit (paths) configs-path defaults-path home-manager-path homebrew-path;
+
+    autopostgresqlbackup = pkgs.stdenv.mkDerivation rec {
+        name = "autopostgresqlbackup";
+        version = "2.0";
+        src = pkgs.fetchgit {
+            url = "https://github.com/k0lter/autopostgresqlbackup.git";
+            rev = "refs/tags/${version}";
+            hash = "sha256-wL9jh8CeV5LzXaQyhp6FBdcUO6tdgDICVziZKMYwOUQ=";
+        };
+        installPhase = ''
+            mkdir -p $out/bin
+            cp autopostgresqlbackup $out/bin
+            # man page will be in 2.1 release
+            # mkdir -p $out/man/man1
+            # cp autopostgresqlbackup.1 $out/man/man1
+        '';
+    };
 in {
     users.users."${username}" = {
         home = "/Users/${username}";
@@ -120,6 +137,7 @@ in {
                 "fix-automount" = mkShellScript "bin";
             };
             packages = with pkgs; import (append home-manager-path "packages-common.nix") pkgs ++ [
+                autopostgresqlbackup
                 camunda-modeler
                 mongodb-tools
                 mongosh
