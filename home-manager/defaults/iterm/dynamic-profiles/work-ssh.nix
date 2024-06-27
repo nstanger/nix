@@ -29,6 +29,18 @@ username: {
             ];
         }
         {
+            Name = "stani07p@uoK79KQLK7M0.staff.uod.otago.ac.nz";
+            Guid = "stani07p@uoK79KQLK7M0.staff.uod.otago.ac.nz";
+            "Dynamic Profile Parent Name" = "Work SSH: General";
+            "Custom Command" = "Yes";
+            Command = "/usr/bin/ssh stani07p@uoK79KQLK7M0.staff.uod.otago.ac.nz";
+            "Use Custom Window Title" = true;
+            "Custom Window Title" = "stani07p@uoK79KQLK7M0.staff.uod.otago.ac.nz";
+            "Bound Hosts" = [
+                "uoK79KQLK7M0"
+            ];
+        }
+        {
             Name = "stani07p@isdb.uod.otago.ac.nz";
             Guid = "stani07p@isdb.uod.otago.ac.nz";
             "Dynamic Profile Parent Name" = "Work SSH: General";
