@@ -40,9 +40,10 @@
 
 As above, but before cloning and bootstrapping the flake, remove all installed Homebrew packages:
 
-   ```sh
-   brew remove --force $(brew list --formula) --ignore-dependencies
-   ```
+```sh
+brew remove --force $(brew list --cask) --ignore-dependencies
+brew remove --force $(brew list --formula) --ignore-dependencies
+```
 
 ## Update flake to latest stable
 
