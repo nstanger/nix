@@ -70,7 +70,7 @@
 * [ ] glib
 * [ ] gmime
 * [ ] gmp
-* [ ] gnu-getopt
+* [x] gnu-getopt
 * [x] gnu-sed
 * [x] gnu-tar
 * [x] gnupg

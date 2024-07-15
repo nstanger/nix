@@ -75,6 +75,7 @@ in
             dos2unix
             exiftool
             eza
+            getopt
             git-extras
             gnugrep
             gnumake
