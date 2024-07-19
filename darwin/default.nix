@@ -2,6 +2,7 @@
     lib,
     paths,
     pkgs,
+    unstable,
     ...
 }: let
     inherit (lib.attrsets) foldlAttrs;
@@ -27,15 +28,15 @@ in {
             "/Applications"
         ];
         
-        systemPackages = with pkgs; [
-            coreutils
-            curl
-            duti # file type mappings
-            findutils # => GNU find, xargs
-            findutils.locate # => GNU locate, updatedb
-            git
-            gnused
-            setconf # to edit key/value config files
+        systemPackages = [
+            pkgs.coreutils
+            pkgs.curl
+            pkgs.duti # file type mappings
+            pkgs.findutils # => GNU find, xargs
+            pkgs.findutils.locate # => GNU locate, updatedb
+            unstable.git
+            pkgs.gnused
+            pkgs.setconf # to edit key/value config files
         ];
         systemPath = [
             "/usr/local/sbin"

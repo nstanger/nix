@@ -2,6 +2,7 @@
     lib,
     paths,
     pkgs,
+    unstable,
     username,
     ...
 }:
@@ -261,7 +262,7 @@ in
         extraConfig = import (append configs-path "git/extraConfig.nix");
         ignores = import (append configs-path "git/gitignore.nix");
         lfs.enable = true;
-        package = pkgs.gitAndTools.gitFull;
+        package = unstable.gitAndTools.gitFull;
         userName = "Nigel Stanger";
         userEmail = "nigel.stanger@otago.ac.nz";
     };

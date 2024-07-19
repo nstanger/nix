@@ -3,7 +3,7 @@
     inputs = {
         nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
         nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
-        nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+        nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
         nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
         home-manager.url = "github:nix-community/home-manager/release-24.05";
@@ -43,6 +43,10 @@
                         inherit system;
                         config.allowUnfree = true;
                     };
+                    unstable = import nixpkgs-unstable {
+                        inherit system;
+                        config.allowUnfree = true;
+                    };
 
                     # Easiest way to fix the major module paths so that we can
                     # access them from anywhere.
@@ -63,7 +67,7 @@
                 in
                     darwin.lib.darwinSystem {
                         inherit system;
-                        specialArgs = { inherit darwin inputs lib paths pkgs self username; };
+                        specialArgs = { inherit darwin inputs lib paths pkgs unstable self username; };
                         modules = with lib.path; with paths; [
                             nix-homebrew.darwinModules.nix-homebrew {
                                 nix-homebrew = {
@@ -94,7 +98,7 @@
                                     backupFileExtension = "backup";
                                     useGlobalPkgs = true;
                                     useUserPackages = true;
-                                    extraSpecialArgs = { inherit inputs paths pkgs username; };
+                                    extraSpecialArgs = { inherit inputs paths pkgs unstable username; };
                                 };
 #                                home-manager.users.ragon = hmConfig;
                             }
