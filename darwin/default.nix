@@ -34,7 +34,7 @@ in {
             pkgs.duti # file type mappings
             pkgs.findutils # => GNU find, xargs
             pkgs.findutils.locate # => GNU locate, updatedb
-            unstable.git
+            unstable.gitFull # to avoid LFS-breaking bug in 2.44.1
             pkgs.gnused
             pkgs.setconf # to edit key/value config files
         ];

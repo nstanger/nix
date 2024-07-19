@@ -262,7 +262,7 @@ in
         extraConfig = import (append configs-path "git/extraConfig.nix");
         ignores = import (append configs-path "git/gitignore.nix");
         lfs.enable = true;
-        package = unstable.gitAndTools.gitFull;
+        # package is installed globally by nix-darwin
         userName = "Nigel Stanger";
         userEmail = "nigel.stanger@otago.ac.nz";
     };
