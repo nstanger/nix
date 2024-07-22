@@ -28,15 +28,14 @@ in {
             "/Applications"
         ];
         
-        systemPackages = [
-            pkgs.coreutils
-            pkgs.curl
-            pkgs.duti # file type mappings
-            pkgs.findutils # => GNU find, xargs
-            pkgs.findutils.locate # => GNU locate, updatedb
-            unstable.gitFull # to avoid LFS-breaking bug in 2.44.1
-            pkgs.gnused
-            pkgs.setconf # to edit key/value config files
+        systemPackages = with pkgs; [
+            coreutils
+            curl
+            duti # file type mappings
+            findutils # => GNU find, xargs
+            findutils.locate # => GNU locate, updatedb
+            gnused
+            setconf # to edit key/value config files
         ];
         systemPath = [
             "/usr/local/sbin"
