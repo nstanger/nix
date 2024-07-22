@@ -34,7 +34,7 @@ username: {
                 };
                 "0x7f-0x80000-0x33" = {
                     Action = 10;
-                    Text = "\\u007f";
+                    Text = builtins.fromJSON ''"\u007f"'';
                 };
                 "0xf728-0x80000-0x75" = {
                     Action = 10;
