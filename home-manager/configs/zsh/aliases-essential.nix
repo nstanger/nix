@@ -6,8 +6,10 @@ pkgs: let
     ezaBasicOptions = "--icons --classify --color=auto --group-directories-first";
     ezaLongOptions = "--long --group";
 in {
+    # e.g., appid /Applications/VLC/Contents/Info.plist
     appid="plutil -extract CFBundleIdentifier raw";
     empty = "${pkgs.coreutils}/bin/rm -rf ~/.Trash/*";
+    # e.g., fileuti test.wav
     fileuti = "mdls -name kMDItemContentType";
     # java_home = "/usr/libexec/java_home";
     # unlocktrash = "/usr/bin/sudo /usr/sbin/chown -R ${USER}:${GROUP} ~/.Trash/*";
