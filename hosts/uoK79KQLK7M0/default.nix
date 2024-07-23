@@ -141,6 +141,7 @@ in {
                 camunda-modeler
                 mongodb-tools
                 mongosh
+                openai-whisper
                 postgresql_14 # for the client, server(s) run in Docker
                 pwgen
                 tart
