@@ -88,6 +88,8 @@
         "vnd.oasis.opendocument.text-flat-xml"
     ];
     "org.videolan.vlc" = [
+        "org.matroska.mkv"
         "public.avi"
+        "public.mpeg-4"
     ];
 }
