@@ -86,6 +86,7 @@ in {
             homeDirectory = "/Users/${username}";
             packages = with pkgs; import (append home-manager-path "packages-common.nix") pkgs ++ [
                 # SOFTWARE
+                openai-whisper
                 tart
                 tvnamer #TESTING
                 wakeonlan
