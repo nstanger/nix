@@ -151,6 +151,7 @@ in {
             "context=work"
         ];
         programs.zsh.shellAliases = import (append configs-path "zsh/aliases-common.nix") pkgs // {
+            fakesmtp = "java_home -v 11 -exec java -jar /Applications/fakeSMTP-2.0.jar";
         };
         targets.darwin = {
             defaults = {
