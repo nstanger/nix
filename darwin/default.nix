@@ -160,6 +160,9 @@ in {
                 # The following line will cease to work at some stage, but plugins
                 # will probably also be gone by then anyway.
                 sudo defaults write "/Library/Preferences/com.apple.mail.plist" EnableBundles 1
+
+                # Enable CUPS web interface.
+                cupsctl WebInterface=yes
             '';
         };
 
