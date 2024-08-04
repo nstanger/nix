@@ -86,6 +86,7 @@ in {
         casks = import (append homebrew-path "homebrew-casks-common.nix") ++ [
             "docker"
             "dropbox" # settings are in the cloud
+            "ears"
             "mongodb-compass" # minimal config
             "mysqlworkbench" # minimal config
             # "ransomwhere"
@@ -177,6 +178,7 @@ in {
                 # appears to emulate a remote desktop connection.
                 "com.apple.security.authorization".ignoreArd = true;
                 "com.c-command.SpamSieve" = import (append defaults-path "spamsieve.nix");
+                "com.clickontyler.Ears" = import (append defaults-path "ears.nix");
                 "com.googlecode.iterm2".BootstrapDaemon = 0; # permits Touch ID for sudo
                 "com.knollsoft.Scroll" = import (append defaults-path "scroll.nix");
                 "com.if.Amphetamine" = {
