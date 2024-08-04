@@ -82,6 +82,9 @@ in {
 
     homebrew = {
         brews = import (append homebrew-path "homebrew-brews-common.nix") ++ [
+            # nixpkgs version broken on aarch64-darwin
+            # Installs a buttload of crap just to give us ssconvert :(
+            "gnumeric"
         ];
         casks = import (append homebrew-path "homebrew-casks-common.nix") ++ [
             "docker"

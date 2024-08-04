@@ -4,7 +4,6 @@ pkgs: with pkgs; [
     entr
     ffmpeg
     gawk
-    # gnumeric # marked as broken on Darwin + aarch64
     gradle_7
     graphviz-nox
     gron
