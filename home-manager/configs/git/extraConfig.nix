@@ -19,7 +19,7 @@
     };
     credential = {
         helper = "osxkeychain";
-        useHttpPath = true;
+        useHttpPath = false;
     };
     diff = {
         tool = "vscode";
