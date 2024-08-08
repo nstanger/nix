@@ -1,6 +1,7 @@
 [
     # SOFTWARE
     "adobe-acrobat-reader" # default config OK
+    "audacity" # NOT CONFIGURED
     "bibdesk"
     "blueharvest"
     "calcservice" # no config
