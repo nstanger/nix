@@ -95,6 +95,7 @@ in {
             # "ransomwhere"
             "scroll"
             "spamsieve"
+            "whatsapp"
             "zed" # basic text editor for now # minimal config
         ];
         masApps = import (append homebrew-path "mas-apps-common.nix") // {
@@ -191,6 +192,7 @@ in {
                 };
                 "com.mactrackerapp.Mactracker" = import (append defaults-path "mactracker.nix");
                 "com.michelf.sim-daltonism" = import (append defaults-path "sim-daltonism.nix");
+                "net.whatsapp.WhatsApp" = import (append defaults-path "whatsapp.nix");
                 "org.clindberg.ManOpen" = import (append defaults-path "manopen.nix") username;
                 "org.cups.PrintingPrefs".UseLastPrinter = 0;
             };
