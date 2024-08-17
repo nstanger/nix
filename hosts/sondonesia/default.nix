@@ -40,6 +40,7 @@ in {
         ];
         casks = import (append homebrew-path "homebrew-casks-common.nix") ++ [
             "android-file-transfer"
+            "apparency"
             "arq"
             "carbon-copy-cloner"
             "diffusionbee"
