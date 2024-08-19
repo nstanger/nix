@@ -13,6 +13,8 @@
         darwin.inputs.nixpkgs.follows = "nixpkgs-stable";
 
         nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+        nix-homebrew.inputs.nixpkgs.follows = "nixpkgs-stable";
+        nix-homebrew.inputs.nix-darwin.follows = "darwin";
 
         homebrew-core.url = "github:homebrew/homebrew-core";
         homebrew-core.flake = false;
@@ -34,7 +36,7 @@
         home-manager,
         darwin,
         nix-homebrew,
-        ...
+        ... 
     }:
         let
             darwinSystem = system: username: extraModules: hostName:
