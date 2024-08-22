@@ -77,6 +77,7 @@ in
             exiftool
             eza
             getopt
+            git-credential-oauth
             git-extras
             gnugrep
             gnumake

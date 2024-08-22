@@ -18,7 +18,10 @@
         autocrlf = "input";
     };
     credential = {
-        helper = "osxkeychain";
+        helper = [
+            "osxkeychain"
+            "oauth"
+        ];
         useHttpPath = false;
     };
     diff = {
