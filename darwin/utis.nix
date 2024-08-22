@@ -11,11 +11,17 @@
         "pu"
         "puml"
 
+        # Subtitles
+        "srt"
+        "ssa"
+        "sub"
+
         # UTIs
         "com.apple.ascii-property-list"
         "com.apple.xml-property-list"
         "com.netscape.javascript-source"
         "net.daringfireball.markdown"
+        "org.w3.webvtt"
         "public.bash-script"
         "public.c-header"
         "public.c-plus-plus-header"
