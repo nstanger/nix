@@ -92,6 +92,7 @@ in {
             "ears"
             "mongodb-compass" # minimal config
             "mysqlworkbench" # minimal config
+            "ollama" # minimal config
             # "ransomwhere"
             "scroll"
             "spamsieve"

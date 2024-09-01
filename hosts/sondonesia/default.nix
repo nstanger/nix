@@ -56,6 +56,7 @@ in {
             "mongodb-compass" # minimal config
             "monitorcontrol"
             "mysqlworkbench" # minimal config
+            "ollama" # minimal config
             "onedrive"
             # "ransomwhere"
             # "spamsieve"
