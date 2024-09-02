@@ -1,0 +1,33 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{fontspec}
+\usepackage{natbib}
+\usepackage{unicode-math}
+\usepackage{url}
+\usepackage{xltxtra}
+\usepackage{xunicode}
+
+\setmainfont{Palatino}
+
+\setmathfont{latinmodern-math.otf}
+\setmathrm{latinmodern-math.otf}
+
+\defaultfontfeatures[Iosevka Light]{RawFeature={+ss03;-calt}}
+\setmonofont{Iosevka Light}[Scale=MatchLowercase,Mapping=]
+
+\pagestyle{empty}
+\textwidth = 6.5in
+\voffset = -105pt
+\hoffset = -80pt
+\renewcommand{\refname}{}
+% The following command is provided for LaTeX2RTF compatibility with amslatex.
+\newif\iflatextortf
+\iflatextortf
+\providecommand{\bysame}{\_\_\_\_\_}
+\fi
+
+\begin{document}
+\nocite{*}
+\bibliography{<<File>>}
+\bibliographystyle{<<Style>>}
+\end{document}

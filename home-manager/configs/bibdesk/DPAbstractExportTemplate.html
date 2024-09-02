@@ -1,0 +1,23 @@
+<hr>
+
+<a name="<$citeKey/>"></a><h3><$fields.Number/>: <$fields.Title.stringByRemovingTeX.htmlString/></h3>
+
+<h4><$pubAuthorsForDisplay.stringByRemovingTeX.htmlString/></h4>
+
+<$fields.Abstract?>
+<p><$fields.Abstract.stringByRemovingTeX.htmlString/></p>
+<?$fields.Abstract?>
+<p>(No abstract.)</p>
+</$fields.Abstract?>
+
+<$fields.Keywords?>
+<p><strong>Keywords:</strong> <$fields.Keywords.stringByRemovingTeX.htmlString/></p>
+
+</$fields.Keywords?>
+<$fields.Size?>
+<p><a href="papers/<$citeKey/>.pdf">Download</a> (PDF, <$fields.Size/>)</p>
+</$fields.Size?>
+<$fields.Note?>
+
+<p style="color: green;"><$fields.Note/></p>
+</$fields.Note?>

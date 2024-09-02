@@ -7,6 +7,7 @@
     ...
 }:
 let
+    inherit (lib.my) processHomeFiles mkConfigFile;
     inherit (lib.path) append;
     inherit (paths) configs-path defaults-path home-manager-path homebrew-path;
 in {
@@ -86,6 +87,9 @@ in {
         ];
         home = {
             homeDirectory = "/Users/${username}";
+            file = processHomeFiles {
+                "previewtemplate.tex" = mkConfigFile (append configs-path "bibdesk") "Library/Application Support/BibDesk";
+            };
             packages = with pkgs; import (append home-manager-path "packages-common.nix") pkgs ++ [
                 # SOFTWARE
                 openai-whisper-cpp

@@ -75,6 +75,6 @@
         "3rd Author"
     ];
     "Startup Behavior" = 3;
-    "TeX Binary Path" = "/Library/TeX/Distributions/Programs/texbin/pdflatex";
+    "TeX Binary Path" = "/Library/TeX/Distributions/Programs/texbin/xelatex";
     "Uses TeX" = 1;
 }
