@@ -1,6 +1,7 @@
 [
     # SOFTWARE
     "adobe-acrobat-reader" # default config OK
+    "alt-tab" # default config OK, deny list is awkward
     "audacity" # NOT CONFIGURED
     "bibdesk"
     "blueharvest"
