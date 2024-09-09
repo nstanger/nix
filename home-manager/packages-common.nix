@@ -14,6 +14,7 @@ pkgs: with pkgs; [
     nodePackages.tiddlywiki
     p7zip
     plantuml
+    poppler_utils
     proselint
     ps2eps
     R

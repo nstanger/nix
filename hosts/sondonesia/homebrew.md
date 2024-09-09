@@ -256,7 +256,7 @@
 * [ ] pkg-config
 * [x] plantuml
 * [x] plantuml@1.2022.1
-* [ ] poppler
+* [x] poppler
 * [ ] popt
 * [ ] postgresql@14
 * [x] proselint

@@ -286,7 +286,7 @@
 * [ ] pkcs11-helper
 * [ ] pkg-config
 * [x] plantuml@1.2022.1
-* [ ] poppler
+* [x] poppler
 * [x] popt
 * [ ] postgresql@14
 * [ ] potrace
@@ -406,7 +406,7 @@
 * [ ] android-file-transfer
 * [ ] android-platform-tools
 * [ ] android-studio
-* [ ] audacity
+* [x] audacity
 * [ ] ~~bbedit~~
 * [x] bibdesk
 * [x] blockblock
