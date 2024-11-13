@@ -53,6 +53,9 @@
         "public.yaml"
         "public.zsh-script"
     ];
+    "com.rstudio.desktop" = [
+        "r"
+    ];
     "com.vivaldi.Vivaldi" = [
         "org.ietf.mhtml"
         # "failed to set com.vivaldi.Vivaldi as handler for public.html (error -54)" - WTF?
