@@ -22,6 +22,7 @@
     "mactex-no-gui" # this appears to be ... complicated with nixpkgs
     "netbeans" # config not in defaults
     "pacifist"
+    "R"
     "rstudio" # config not in defaults
     "screenflick"
     "silentknight" # default config OK

@@ -17,7 +17,8 @@ pkgs: with pkgs; [
     poppler_utils
     proselint
     ps2eps
-    R
+    # R seems to be thoroughly broken, switch to Homebrew :(
+    # R
     saxonb_9_1
     svgcleaner
     tmux
