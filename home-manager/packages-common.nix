@@ -11,6 +11,8 @@ pkgs: with pkgs; [
     imagemagick
     mkcert
     # neovide
+    # Need node to shut up the VS Code Sonarlint extension.
+    nodejs-slim_22
     nodePackages.tiddlywiki
     p7zip
     plantuml
