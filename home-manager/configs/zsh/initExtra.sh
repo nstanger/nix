@@ -19,6 +19,8 @@ setopt PUSHD_MINUS
 setopt APPEND_HISTORY
 # ignore duplicates when searching
 setopt HIST_FIND_NO_DUPS
+# ignore commands that start with a space
+setopt HIST_IGNORE_SPACE
 # don't save duplicates to the history file
 setopt HIST_SAVE_NO_DUPS
 # removes extra blanks from commmands in history
