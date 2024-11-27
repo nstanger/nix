@@ -47,8 +47,9 @@ in {
                     infosci-software	-fstype=smbfs,soft ://${username}@registry.otago.ac.nz/obs/obsdept/infosci/software
                     calt-course-advising	-fstype=smbfs,soft ://${username}@registry.otago.ac.nz/obs/obsdept/shared_projects/caltcourseadvising
                     staff-desktop	-fstype=smbfs,soft ://${username}@registry.otago.ac.nz/mdr/Profiles-V2/s/${username}
-                    #course-outlines	-fstype=smbfs,soft ://${username}@registry.otago.ac.nz/obs/obsdept/infosci/shared/AdminStaff/Course%20Outlines
+                    # course-outlines	-fstype=smbfs,soft ://${username}@registry.otago.ac.nz/obs/obsdept/infosci/shared/AdminStaff/Course%20Outlines
 
+                    # infosci-datasets	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/infosci/Datasets
                     infosci-python	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/infosci-python
                     its-software	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/its-software
                     lecture-dropboxes	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/its-alldropboxes
@@ -127,6 +128,13 @@ in {
         enable = true;
         text = ''
             # reload automount configuration
+            if grep -q auto_shares /etc/auto_master
+            then
+                echo 'SMB automount already configured'
+            else
+                echo 'configuring SMB automount...'
+                echo '/System/Volumes/Data/mnt/shares    auto_shares    -nosuid,noowners' | sudo tee -a /etc/auto_master > /dev/null
+            fi
             echo "mounting shared volumes..."
             sudo automount -vc
         '';
@@ -139,7 +147,7 @@ in {
         home = {
             homeDirectory = "/Users/${username}";
             file = processHomeFiles {
-                # This really should be bundled into the activation.
+                # This is bundled into the activation, but still useful as a fallback.
                 "fix-automount" = mkShellScript "bin";
 
                 "previewtemplate.tex" = mkConfigFile (append configs-path "bibdesk") "Library/Application Support/BibDesk";
