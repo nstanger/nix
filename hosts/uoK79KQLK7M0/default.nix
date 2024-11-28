@@ -49,7 +49,7 @@ in {
                     staff-desktop	-fstype=smbfs,soft ://${username}@registry.otago.ac.nz/mdr/Profiles-V2/s/${username}
                     # course-outlines	-fstype=smbfs,soft ://${username}@registry.otago.ac.nz/obs/obsdept/infosci/shared/AdminStaff/Course%20Outlines
 
-                    # infosci-datasets	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/infosci/Datasets
+                    infosci-datasets	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/infosci/Datasets
                     infosci-python	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/infosci-python
                     its-software	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/its-software
                     lecture-dropboxes	-fstype=smbfs,soft ://${username}@storage.hcs-p01.otago.ac.nz/its-alldropboxes
