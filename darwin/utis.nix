@@ -16,11 +16,15 @@
         "ssa"
         "sub"
 
+        # Miscellaneous
+        "jsx"
+
         # UTIs
         "com.apple.ascii-property-list"
         "com.apple.xml-property-list"
         "com.netscape.javascript-source"
         "net.daringfireball.markdown"
+        "org.coffeescript.coffeescript"
         "org.w3.webvtt"
         "public.bash-script"
         "public.c-header"
