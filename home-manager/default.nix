@@ -146,7 +146,7 @@ in
             PAGER = "bat";
             # Something broke virtualenvwrapper between nixpkgs 23.11 and
             # 24.05 :( and the solution appears to be to set this variable.
-            VIRTUALENVWRAPPER_PYTHON=''${getExe' pkgs.python311Full "python3"}'';
+            VIRTUALENVWRAPPER_PYTHON=''${getExe' pkgs.python312Full "python3"}'';
             XSLT="saxon-b";
             # automatic completion suggestions: use a slightly lighter shade of grey
             ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=246";
@@ -304,10 +304,11 @@ in
 
     programs.taskwarrior = {
         enable = true;
+        package = pkgs.taskwarrior2;
         colorTheme = "light-256";
         dataLocation = "~/.config/task";
         config = {
-            taskd = {
+            taskd = { # CHANGES in TW 3.0
                 certificate = "~/.config/task/Nigel_Stanger.cert.pem";
                 key = "~/.config/task/Nigel_Stanger.key.pem";
                 ca = "~/.config/task/ca.cert.pem";
@@ -407,7 +408,7 @@ in
         enable = true;
         agents = {
             "logrotate" = import (append configs-path "launchd/logrotate.nix") username;
-            "task.sync" = import (append configs-path "launchd/task-sync.nix") username;
+            "task.sync" = import (append configs-path "launchd/task-sync.nix") username; # NEEDS UPDATING TW 3.0
         };
     };
 

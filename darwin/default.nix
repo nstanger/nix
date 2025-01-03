@@ -21,7 +21,6 @@ in {
 
     environment = {
         shells = with pkgs; [ bash zsh ];
-        loginShell = "${pkgs.zsh}/bin/zsh -l";
         variables.SHELL = "${pkgs.zsh}/bin/zsh";
         
         pathsToLink = [
@@ -43,17 +42,18 @@ in {
         ];
     };
     
-    nix.settings = {
-        auto-optimise-store = true;
-        bash-prompt-prefix = "(nix:$name)\\040";
-        build-users-group = "nixbld";
-        experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" ];
-        extra-nix-path = "nixpkgs=flake:nixpkgs";
+    nix = {
+        optimise.automatic = true;
+        settings = {
+            bash-prompt-prefix = "(nix:$name)\\040";
+            build-users-group = "nixbld";
+            experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" ];
+            extra-nix-path = "nixpkgs=flake:nixpkgs";
+        };
     };
     
     fonts = {
-        fontDir.enable = true;
-        fonts = with pkgs; [
+        packages = with pkgs; [
             # terminal nerd font
             (nerdfonts.override { fonts = [ "Hack" ]; })
         ];
