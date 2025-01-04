@@ -17,6 +17,7 @@
     "inkscape" # install fails under home-manager, config not in defaults
     "insomnia" # no config
     "keepassxc" # no config
+    "localsend"
     "letter-opener"
     "libreoffice" # config not in defaults
     "mactex-no-gui" # this appears to be ... complicated with nixpkgs

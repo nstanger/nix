@@ -465,6 +465,7 @@ in
             "com.vivaldi.Vivaldi".SUAutomaticallyUpdate = 0;
             "net.sourceforge.skim-app.skim" = import (append defaults-path "skim.nix");
             "org.herf.Flux" = import (append defaults-path "f.lux.nix");
+            "org.localsend.localsendApp" = import (append defaults-path "localsend.nix");
             # not a hell of a lot else exposed via defaults :/
             "org.videolan.vlc".SUEnableAutomaticChecks = 1;
             "tracesOf.Uebersicht" = import (append defaults-path "ubersicht.nix");
