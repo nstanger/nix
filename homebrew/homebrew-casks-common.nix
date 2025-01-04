@@ -38,15 +38,15 @@
 
     # FONTS
     "font-academicons"
-    # "font-arimo" # variable
+    "font-arimo" # variable
     "font-bitstream-vera"
-    # "font-bitter" # variable
+    "font-bitter" # variable
     "font-cinzel" # variable
     "font-cinzel-decorative"
     "font-computer-modern"
     "font-crimson-pro" # variable
     "font-dejavu"
-    # "font-fontaweome" # needed? also version 6
+    # "font-fontawesome" # needed? also version 6
     "font-gentium-plus"
     # Letter Gothic 12 Pitch: manual install
     "font-linux-biolinum"
@@ -55,7 +55,7 @@
     # Minion Pro: manual install
     "font-noto-sans"
     "font-open-iconic" # appears in Font Book as "Icons"
-    # "font-outfit" # variable
+    "font-outfit" # variable
     # "font-roboto" # breaks during install?
     # Segoe UI: manual install
     # "font-stix" # provided by macOS Ventura
