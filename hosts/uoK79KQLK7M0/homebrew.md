@@ -55,7 +55,7 @@
 * [ ] exiv2
 * [ ] fdupes
 * [x] ffmpeg
-* [ ] file-formula
+* [x] file-formula
 * [x] findutils
 * [ ] flac
 * [ ] flake8

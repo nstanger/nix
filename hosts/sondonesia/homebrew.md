@@ -46,7 +46,7 @@
 * [x] exiftool
 * [ ] exiv2
 * [x] ffmpeg
-* [ ] file-formula
+* [x] file-formula
 * [x] findutils
 * [ ] flac
 * [ ] flake8

@@ -76,6 +76,7 @@ in
             dos2unix
             exiftool
             eza
+            file
             getopt
             git-credential-oauth
             git-extras
