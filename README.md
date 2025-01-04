@@ -2,6 +2,8 @@
 
 ## nix-darwin bootstrap on a new machine
 
+1. Remove any existing Homebrew-installed apps to avoid clashes.
+
 1. Install `nix` using the Determinate Systems installer:
 
    ```sh
