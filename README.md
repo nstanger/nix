@@ -2,27 +2,25 @@
 
 ## nix-darwin bootstrap on a new machine
 
-1. Theoretically you should be able to migrate the existing installation by setting `nix-homebrew.autoMigrate = true`, but it may or may not work. Homebrew casks in particular may result in clashes and my need to be removed first (doing so from the Finder is probably sufficient).
-
-2. Install `nix` using the Determinate Systems installer:
+1. Install `nix` using the Determinate Systems installer:
 
    ```sh
-   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
    ```
 
-3. Start a `git` shell:
+2. Start a `git` shell:
 
    ```sh
    nix-shell -p git
    ```
 
-4. Clone the flake:
+3. Clone the flake:
 
    ```sh
    git clone https://github.com/nstanger/nix.git
    ```
 
-5. Assuming system and user names are correct, `cd` into the flake repo and bootstrap the flake:
+4. Assuming system and user names are correct, `cd` into the flake repo and bootstrap the flake:
 
    ```sh
    # prevent griping about "Unexpected files in /etc"
@@ -36,7 +34,7 @@
 
    If there is a “Problem with the SSL CA cert”, during the initial `nix build`, check the solutions in this issue: <https://github.com/nixos/nix/issues/2899>. this usually happens if starting again after wiping a previous `nix` installation, which can leave dangling links as per <https://github.com/nixos/nix/issues/2899#issuecomment-1669501326>. You need to `sudo rm /etc/ssl/certs/ca-certificates.crt` again before `darwin-rebuild switch` as otherwise it complains about the file being in the way.
 
-6. Profit!
+5. Profit!
 
 ## nix-darwin bootstrap on an existing machine
 
@@ -46,6 +44,10 @@ As above, but before cloning and bootstrapping the flake, remove all installed H
 brew remove --force $(brew list --cask) --ignore-dependencies
 brew remove --force $(brew list --formula) --ignore-dependencies
 ```
+
+Theoretically you should be able to migrate the existing installation by setting `nix-homebrew.autoMigrate = true`, but it may or may not work.
+
+Existing apps in `/Applications` may need to be manually removed to avoid clashes.
 
 ## Update flake to latest stable
 
