@@ -28,7 +28,7 @@
    sudo mv /etc/shells /etc/shells.before-nix-darwin
    sudo mv /etc/zshenv /etc/zshenv.before-nix-darwin
 
-   nix build --extra-experimental features "nix-command flakes" ./#darwinConfigurations.[system name].system
+   nix build --extra-experimental-features "nix-command flakes" ./#darwinConfigurations.[system name].system
    ./result/sw/bin/darwin-rebuild switch --flake /path/to/flake/repo
    ```
 
