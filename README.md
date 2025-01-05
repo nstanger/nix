@@ -29,7 +29,9 @@
    sudo mv /etc/zshenv /etc/zshenv.before-nix-darwin
 
    nix build --extra-experimental-features "nix-command flakes" ./#darwinConfigurations.[system name].system
+   # e.g., nix build --extra-experimental-features "nix-command flakes" ./#darwinConfigurations.poldavia.system
    ./result/sw/bin/darwin-rebuild switch --flake /path/to/flake/repo
+   # e.g., ./result/sw/bin/darwin-rebuild switch --flake ~/Documents/Development/nix/.#
    ```
 
    If there is a “Problem with the SSL CA cert”, during the initial `nix build`, check the solutions in this issue: <https://github.com/nixos/nix/issues/2899>. this usually happens if starting again after wiping a previous `nix` installation, which can leave dangling links as per <https://github.com/nixos/nix/issues/2899#issuecomment-1669501326>. You need to `sudo rm /etc/ssl/certs/ca-certificates.crt` again before `darwin-rebuild switch` as otherwise it complains about the file being in the way.
