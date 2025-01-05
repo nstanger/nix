@@ -33,7 +33,7 @@ in {
         # apple silicon only: also install homebrew under the default intel prefix for rosetta 2
         enableRosetta = false;
         # automatically migrate existing homebrew installations - once only?
-        autoMigrate = true;
+        autoMigrate = false;
     };
 
     homebrew = {
