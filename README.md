@@ -40,16 +40,38 @@
 
 ## nix-darwin bootstrap on an existing machine
 
-As above, but before cloning and bootstrapping the flake, remove all installed Homebrew packages:
+As above, but before cloning and bootstrapping the flake, uninstall Homebrew (as per <https://github.com/homebrew/install#uninstall-homebrew>):
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+sudo rm -rf /usr/local/Homebrew
+sudo rm -rf /usr/local/Frameworks
+```
+
+or if you’re feeling lucky, just remove all the packages, but this may not always work cleanly:
 
 ```sh
 brew remove --force $(brew list --cask) --ignore-dependencies
 brew remove --force $(brew list --formula) --ignore-dependencies
 ```
 
-Theoretically you should be able to migrate the existing installation by setting `nix-homebrew.autoMigrate = true`, but it may or may not work.
+Theoretically you should be able to migrate an existing Homebrew installation by setting `nix-homebrew.autoMigrate = true`, but I’m wary of it working cleanly:
 
-Existing apps in `/Applications` may need to be manually removed to avoid clashes.
+```text
+Warning: /usr/local seems to contain an existing copy of Homebrew.
+==> Looks like an Intel installation (Homebrew repository is under the 'Homebrew' subdirectory)
+==> There are two ways to proceed:
+==> 1. Use the official uninstallation script to remove Homebrew (you will lose all taps and installed packages)
+==> 2. Set nix-homebrew.autoMigrate = true; to allow nix-homebrew to migrate the installation
+==> During auto-migration, nix-homebrew will delete the existing installation while keeping installed packages.
+```
+
+Other issues:
+
+* `mv ~/.zshrc ~/.zshrc.old` and `mv ~/.zshenv ~/.zshenv.old` probably makes sense to ensure things are clean. (If there is an existing `~/.zshrc.d` then this can probably also be removed, or at least emptied.)
+* Existing apps in `/Applications` may need to be manually removed to avoid clashes.
+* If you get an error like `SHA.c: loadable library and perl binaries are mismatched (got handshake key 0xf880080, needed 0xc400080)` then `rm -rf ~/Library/perl5` and try again. (Nix is getting confused over Perl versions.)
+* Homebrew cask installs can be extremely slow (looking at you, Calibre 😠) as they are usually downloaded from the original website, with highly variable bandwidth. This is particularly bad on the first `switch` 🙁 as Nix doesn’t print download progress (perhaps `-verbose`?). Doing an initial `brew fetch` of all the casks might help somewhat (i.e., `brew fetch --force --casks [list]`)—it’s no faster but at least displays download progress by default. Formulae seems to be just as slow, but there aren’t many these and they’re only installed as dependencies of other things.
 
 ## Update flake to latest stable
 
