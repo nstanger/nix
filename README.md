@@ -5,8 +5,13 @@
 1. Install `nix` using the Determinate Systems installer:
 
    ```sh
-   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
+   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
    ```
+   > **UPDATE 2025-01:** In true Nix fashion, there is now a confusing difference between the Determinate Nix Installer, which just installs Nix, and Determinate Nix, which is a downstream distribution of Nix that includes `nixd`. Apparently Determinate Nix shouldn’t be installed (via the `--determinate` option) if you are using `nix-darwin `(see <https://github.com/DeterminateSystems/determinate>), although it seems to be working OK on Poldavia after I inadvertently installed it.
+   >
+   > If I understand things correctly, on `nix-darwin` systems you should install Nix normally (without `--determinate`) as in the command above. If you then want to use Determinate Nix, you can add the Determinate flake as a module (<https://github.com/DeterminateSystems/determinate?tab=readme-ov-file#installing-using-our-nix-flake>).
+   >
+   > There’s a subtlety around `follows` for `nixpkgs` that I don’t quite understand: “We recommend not using a follows directive for Nixpkgs (`inputs.nixpkgs.follows = "nixpkgs"`) in conjunction with the Determinate flake, as it leads to cache misses for artifacts otherwise available from FlakeHub Cache.” However it looks like I don’t do that anyway so it should be fine.
 
 2. Start a `git` shell:
 
