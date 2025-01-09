@@ -44,13 +44,14 @@ in {
             "arq"
             "carbon-copy-cloner"
             "docker"
-            "dropbox" # settings in cloud
             "fujitsu-scansnap-home" # not configured
             "hugin" # no config
             "iina"
             "makemkv" # minimal config
             "moneydance" # minimal config
             "onedrive"
+            "opencore-configurator"
+            "opencore-patcher"
             # "ransomwhere"
             # "spamsieve"
             "steam" # settings in cloud
