@@ -55,6 +55,7 @@ in {
             # "ransomwhere"
             # "spamsieve"
             "steam" # settings in cloud
+            "steelseries-gg"
             "transcribe" # no config
             "utm"
             "unicodechecker" # no config
