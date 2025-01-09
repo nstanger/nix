@@ -456,8 +456,8 @@
 * [ ] muzzle
 * [x] netbeans
 * [x] onedrive
-* [ ] **opencore-configurator**
-* [ ] **opencore-patcher**
+* [x] opencore-configurator
+* [x] opencore-patcher
 * [ ] orca
 * [ ] plex
 * [ ] plexamp
@@ -472,7 +472,7 @@
 * [ ] shotcut
 * [x] silentknight
 * [ ] slidepilot
-* [ ] smcfancontrol
+* [x] smcfancontrol
 * [x] steam
 * [ ] **stellarium**
 * [ ] **synthesia**
