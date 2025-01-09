@@ -17,6 +17,7 @@
         "sub"
 
         # Miscellaneous
+        "coffee"
         "jsx"
 
         # UTIs
@@ -24,7 +25,6 @@
         "com.apple.xml-property-list"
         "com.netscape.javascript-source"
         "net.daringfireball.markdown"
-        "org.coffeescript.coffeescript" # need to run something that declares this first, e.g., VS Code
         "org.w3.webvtt"
         "public.bash-script"
         "public.c-header"
