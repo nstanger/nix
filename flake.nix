@@ -12,8 +12,6 @@
         darwin.url = "github:lnl7/nix-darwin";
         darwin.inputs.nixpkgs.follows = "nixpkgs-stable";
 
-        determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
-
         nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
         nix-homebrew.inputs.nixpkgs.follows = "nixpkgs-stable";
         nix-homebrew.inputs.nix-darwin.follows = "darwin";
@@ -37,7 +35,6 @@
         nixpkgs-unstable,
         home-manager,
         darwin,
-        determinate,
         nix-homebrew,
         ... 
     }:
@@ -108,7 +105,6 @@
 #                                home-manager.users.ragon = hmConfig;
                             }
                             darwin-path
-                            determinate.darwinModules.default
                             homebrew-path
                             # host-specific configuration
                             (append hosts-path "${hostName}")

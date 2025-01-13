@@ -7,19 +7,16 @@
    ```sh
    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
    ```
-
-   > **Don’t** install with the `--determinate` switch! In true Nix fashion, there is a confusing distinction between the **Determinate Nix Installer** and **Determinate Nix**. The former can install either “plain” Nix or Determinate Nix (using the `--determinate` switch). The latter is a downstream distribution of Nix that includes `nixd`. Apparently Determinate Nix shouldn’t be installed via installer if you are using `nix-darwin `(see <https://github.com/DeterminateSystems/determinate>), although it seems to be working OK on Poldavia after I inadvertently installed it.
+   > **UPDATE 2025-01:** In true Nix fashion, there is now a confusing difference between the Determinate Nix Installer, which just installs Nix, and Determinate Nix, which is a downstream distribution of Nix that includes `nixd`. Apparently Determinate Nix shouldn’t be installed (via the `--determinate` option) if you are using `nix-darwin `(see <https://github.com/DeterminateSystems/determinate>), although it seems to be working OK on Poldavia after I inadvertently installed it.
    >
-   > On `nix-darwin` systems you should install Nix normally (without `--determinate`) as in the command above. This flake then installs Determinate Nix via the Determinate flake (<https://github.com/DeterminateSystems/determinate?tab=readme-ov-file#installing-using-our-nix-flake>).
+   > If I understand things correctly, on `nix-darwin` systems you should install Nix normally (without `--determinate`) as in the command above. If you then want to use Determinate Nix, you can add the Determinate flake as a module (<https://github.com/DeterminateSystems/determinate?tab=readme-ov-file#installing-using-our-nix-flake>).
    >
-   > There’s a subtlety around `follows` for `nixpkgs` that I don’t quite understand: “We recommend not using a follows directive for Nixpkgs (`inputs.nixpkgs.follows = "nixpkgs"`) in conjunction with the Determinate flake, as it leads to cache misses for artifacts otherwise available from FlakeHub Cache.” However it looks like I don’t do that anyway (I think?) so it should be fine.
+   > There’s a subtlety around `follows` for `nixpkgs` that I don’t quite understand: “We recommend not using a follows directive for Nixpkgs (`inputs.nixpkgs.follows = "nixpkgs"`) in conjunction with the Determinate flake, as it leads to cache misses for artifacts otherwise available from FlakeHub Cache.” However it looks like I don’t do that anyway so it should be fine.
 
 2. Start a `git` shell:
 
    ```sh
-   nix shell nixpkgs#git
-
-   # or: nix-shell -p git
+   nix-shell -p git
    ```
 
 3. Clone the flake:
@@ -74,14 +71,12 @@ Warning: /usr/local seems to contain an existing copy of Homebrew.
 ==> During auto-migration, nix-homebrew will delete the existing installation while keeping installed packages.
 ```
 
-Reinstalling from scratch should be much cleaner.
-
 Other issues:
 
-* `mv ~/.zshrc ~/.zshrc.old` and `mv ~/.zshenv ~/.zshenv.old` probably makes sense to ensure things are clean. (If there is an existing `~/.zshrc.d` then this can probably also be removed, or at least emptied.) **Check for machine-specific initialisations that may need to be migrated.**
+* `mv ~/.zshrc ~/.zshrc.old` and `mv ~/.zshenv ~/.zshenv.old` probably makes sense to ensure things are clean. (If there is an existing `~/.zshrc.d` then this can probably also be removed, or at least emptied.)
 * Existing apps in `/Applications` may need to be manually removed to avoid clashes.
 * If you get an error like `SHA.c: loadable library and perl binaries are mismatched (got handshake key 0xf880080, needed 0xc400080)` then `rm -rf ~/Library/perl5` and try again. (Nix is getting confused over Perl versions.)
-* Homebrew cask installs through Nix can be extremely slow (looking at you, Calibre 😠) as they are usually downloaded from the original website, with highly variable bandwidth. This is particularly bad on the first `switch` 🙁 as Nix doesn’t print download progress (perhaps `-verbose`?). Doing an initial `brew fetch` of all the casks might help somewhat (i.e., `brew fetch --force --casks [list]`)—it’s no faster but at least displays download progress by default. Formulae seems to be just as slow, but there aren’t many these and they’re only installed as dependencies of other things. It’s probably sensible to keep a copy of the downloaded cache.
+* Homebrew cask installs can be extremely slow (looking at you, Calibre 😠) as they are usually downloaded from the original website, with highly variable bandwidth. This is particularly bad on the first `switch` 🙁 as Nix doesn’t print download progress (perhaps `-verbose`?). Doing an initial `brew fetch` of all the casks might help somewhat (i.e., `brew fetch --force --casks [list]`)—it’s no faster but at least displays download progress by default. Formulae seems to be just as slow, but there aren’t many these and they’re only installed as dependencies of other things.
 
 ## Update flake to latest stable
 

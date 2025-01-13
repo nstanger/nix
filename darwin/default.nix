@@ -43,11 +43,12 @@ in {
     };
     
     nix = {
-        optimise.automatic = false;
+        optimise.automatic = true;
         settings = {
             bash-prompt-prefix = "(nix:$name)\\040";
             build-users-group = "nixbld";
             experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" ];
+            extra-nix-path = "nixpkgs=flake:nixpkgs";
         };
     };
     
