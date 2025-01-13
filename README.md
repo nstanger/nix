@@ -100,4 +100,15 @@ If you get errors like:
 error: cannot link '/nix/store/.tmp-link-59633-1986182875' to '/nix/store/.links/068x3y3a6lhjiixbmxx1wrg3lbxhq37blnlxp03038qvhdg0kcvc': File exists
 error: some substitutes for the outputs of derivation '/nix/store/...' failed (usually happens due to networking issues); try '--fallback' to build derivation from source
 ```
-first try a few times to see whether it eventually resolves itself. The number of packages built usually goes down each time. If that doesn’t work, try setting `auto-optimise-store = false` in `/etc/nix/nix.conf` followed by `nix store optimise`, then re-enable `auto-optimise-store`.
+first try a few times to see whether it eventually resolves itself. The number of packages built usually goes down each time. If that doesn’t work, try setting `auto-optimise-store = false` in `/etc/nix/nix.conf` followed by `nix store optimise`, then re-enable `auto-optimise-store`. (This may no longer be an issue with Determinate Nix?)
+
+## If a macOS update borks Nix
+
+See <https://gist.github.com/meeech/0b97a86f235d10bc4e2a1116eec38e7e>.
+
+Some possible causes of borkage include:
+
+* Overwriting `/etc/zshrc`.
+* Deleting `/Library/LaunchDaemons/org.nixos.darwin-store.plist`.
+* Messing with `/etc/synthetic.conf`.
+
