@@ -24,6 +24,7 @@
             "knockknock"
             "launchbar"
             "oversight"
+            "pika"
             # "ransomwhere" # currently Intel-only
             "rectangle"
             "synology-drive"
