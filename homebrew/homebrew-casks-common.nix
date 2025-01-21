@@ -15,7 +15,6 @@
     "google-chrome" # config not in defaults
     "graphicconverter" # boo, it upgraded to 12 when I wasn't looking
     "inkscape" # install fails under home-manager, config not in defaults
-    "insomnia" # no config
     "keepassxc" # no config
     "letter-opener"
     "libreoffice" # config not in defaults
