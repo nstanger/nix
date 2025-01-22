@@ -5,6 +5,7 @@
     "audacity" # NOT CONFIGURED
     "bibdesk"
     "blueharvest"
+    "bruno" # minimal config
     "calcservice" # no config
     "calibre" # config not in defaults
     "color-oracle" # no config
