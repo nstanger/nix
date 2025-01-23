@@ -53,7 +53,6 @@ in {
             "opencore-configurator"
             "opencore-patcher"
             # "ransomwhere"
-            "smcfancontrol"
             # "spamsieve"
             "steam" # settings in cloud
             "steelseries-gg" # no config
@@ -104,7 +103,6 @@ in {
                 };
                 "com.bombich.ccc" = import (append defaults-path "carbon-copy-cloner.nix");
                 "com.colliderli.iina" = import (append defaults-path "iina.nix");
-                "com.eidac.smcFanControl2" = import (append defaults-path "smcfancontrol.nix");
                 "com.mactrackerapp.Mactracker" = import (append defaults-path "mactracker.nix");
                 "com.michelf.sim-daltonism" = import (append defaults-path "sim-daltonism.nix");
                 "com.microsoft.OneDrive" = import (append defaults-path "onedrive.nix");

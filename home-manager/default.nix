@@ -449,6 +449,7 @@ in
             "com.atow.msgfiler" = import (append defaults-path "msgfiler.nix");
             "com.binarynights.ForkLift" = import (append defaults-path "forklift.nix");
             "com.charlessoft.pacifist" = import (append defaults-path "pacifist.nix");
+            "com.crystalidea.macsfancontrol" = import (append defaults-path "macs-fan-control.nix");
             "cx.c3.theunarchiver" = import (append defaults-path "theunarchiver.nix");
             "com.flexibits.fantastical2.mac" = import (append defaults-path "fantastical2.nix");
             "com.google.drivefs.settings" = import (append defaults-path "google-drive.nix");

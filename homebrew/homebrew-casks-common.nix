@@ -20,6 +20,7 @@
     "letter-opener"
     "libreoffice" # config not in defaults
     "localsend"
+    "macs-fan-control"
     "mactex-no-gui" # this appears to be ... complicated with nixpkgs
     "netbeans" # config not in defaults
     "pacifist"
