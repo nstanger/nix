@@ -146,6 +146,7 @@ in
             LESS="--no-init --raw-control-chars";
             LSCOLORS="ExGxFxDaCxDxDxxbaDacec";
             PAGER = "bat";
+            # see <https://plantuml.com/security>; UNSECURE is fine
             PLANTUML_SECURITY_PROFILE = "UNSECURE";
             # Something broke virtualenvwrapper between nixpkgs 23.11 and
             # 24.05 :( and the solution appears to be to set this variable.
