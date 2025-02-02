@@ -13,18 +13,18 @@ let
 
     autopostgresqlbackup = pkgs.stdenv.mkDerivation rec {
         name = "autopostgresqlbackup";
-        version = "2.0";
+        version = "2.3";
+        buildInputs = [pkgs.pandoc];
         src = pkgs.fetchgit {
             url = "https://github.com/k0lter/autopostgresqlbackup.git";
             rev = "refs/tags/${version}";
-            hash = "sha256-wL9jh8CeV5LzXaQyhp6FBdcUO6tdgDICVziZKMYwOUQ=";
+            hash = "sha256-dTamqJQFQI+QWOSDAcUNFfeQd8WNa3mcGCfe7viRq4c=";
         };
         installPhase = ''
             mkdir -p $out/bin
             cp autopostgresqlbackup $out/bin
-            # man page will be in 2.1 release
-            # mkdir -p $out/man/man1
-            # cp autopostgresqlbackup.1 $out/man/man1
+            mkdir -p $out/man/man8
+            cp autopostgresqlbackup.8 $out/man/man8
         '';
     };
 in {
