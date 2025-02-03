@@ -161,6 +161,7 @@ in {
                 mongodb-tools
                 mongosh
                 openai-whisper-cpp
+                mariadb_114 # for the client, server(s) run in Docker
                 postgresql_14 # for the client, server(s) run in Docker
                 pwgen
                 tart
