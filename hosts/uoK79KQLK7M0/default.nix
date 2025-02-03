@@ -7,7 +7,8 @@
     ...
 }:
 let
-    inherit (lib.my) processHomeFiles mkConfigFile mkShellScript;
+    inherit (lib.my) processHomeFiles mkConfigFile mkDir mkShellScript;
+    inherit (lib.meta) getExe getExe';
     inherit (lib.path) append;
     inherit (paths) configs-path defaults-path home-manager-path homebrew-path;
 
@@ -147,9 +148,10 @@ in {
         home = {
             homeDirectory = "/Users/${username}";
             file = processHomeFiles {
-                # This is bundled into the activation, but still useful as a fallback.
+                # This is bundled into the system activation, but still useful as a fallback.
                 "fix-automount" = mkShellScript "bin";
 
+                # BibDesk
                 "previewtemplate.tex" = mkConfigFile (append configs-path "bibdesk") "Library/Application Support/BibDesk";
                 "DPAbstractExportTemplate.html" = mkConfigFile (append configs-path "bibdesk") "Library/Application Support/BibDesk/Templates";
                 "DPExportTemplate.html" = mkConfigFile (append configs-path "bibdesk") "Library/Application Support/BibDesk/Templates";

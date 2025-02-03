@@ -198,6 +198,18 @@ in
                 $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG ${mode} ${target}
             '';
 
+            # Create ~/.autodbbackup.d and ensure correct permissions.
+            # Unfortunately this doesn't seem able to be done as host-specific
+            # activation :(.
+            createDotAutoDbBackupDotD = let
+                target = ''$HOME/.autodbbackup.d'';
+                modeDir = "700";
+                modeFiles = "600";
+            in lib.hm.dag.entryAfter ["writeBoundary"] ''
+                $DRY_RUN_CMD ${coreutilsCmd "mkdir"} -p -m ${modeDir} ${target}
+                $DRY_RUN_CMD ${coreutilsCmd "chmod"} $VERBOSE_ARG -f ${modeFiles} ${target}/*
+            '';
+
             # Create per-user logrotate status file.
             createLogRotateDotStatus = let
                 target = ''$HOME/.logrotate.status'';
