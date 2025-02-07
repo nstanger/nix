@@ -26,6 +26,7 @@
     "pacifist"
     "R"
     "rstudio" # config not in defaults
+    "rustdesk"
     "screenflick"
     "silentknight" # default config OK
     "skim"
