@@ -103,6 +103,18 @@ username: {
             ];
         }
         {
+            Name = "nstanger@router.stanger.org.nz";
+            Guid = "nstanger@router.stanger.org.nz";
+            "Dynamic Profile Parent Name" = "Home SSH: General";
+            "Custom Command" = "Yes";
+            Command = "/usr/bin/ssh -p 22424 nstanger@router.stanger.org.nz";
+            "Use Custom Window Title" = true;
+            "Custom Window Title" = "nstanger@router.stanger.org.nz";
+            "Bound Hosts" = [
+                "router3"
+            ];
+        }
+        {
             Name = "root@router3.stanger.org.nz";
             Guid = "root@router3.stanger.org.nz";
             "Dynamic Profile Parent Name" = "Home SSH: General";
