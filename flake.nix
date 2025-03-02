@@ -117,6 +117,7 @@
             # lib = lib.my;
             darwinConfigurations = processConfigurations {
                 Nigels-Virtual-Machine = darwinSystem "aarch64-darwin" "nstanger" [ ];
+                KGVYYWHLG6 = darwinSystem "aarch64-darwin" "stani07p" [ ];
                 uoK79KQLK7M0 = darwinSystem "aarch64-darwin" "stani07p" [ ];
                 sondonesia = darwinSystem "aarch64-darwin" "nstanger" [ ];
                 poldavia = darwinSystem "x86_64-darwin" "nstanger" [ ];
