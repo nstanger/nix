@@ -59,6 +59,7 @@ in {
             "mysqlworkbench" # minimal config
             "ollama" # minimal config
             "onedrive"
+            "plexamp"
             # "ransomwhere"
             # "spamsieve"
             "steam" # settings in cloud
