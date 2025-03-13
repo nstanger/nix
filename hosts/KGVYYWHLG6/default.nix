@@ -167,6 +167,9 @@ in {
                 postgresql_14 # for the client, server(s) run in Docker
                 pwgen
                 tart
+
+                # FONTS
+                open-sans
             ];
         };
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
