@@ -121,6 +121,8 @@ in
             TEXMFVAR = "$(/Library/TeX/Distributions/Programs/texbin/kpsewhich -expand-var '$TEXMFVAR')";
 
             # directory paths
+            # On OUDW systems current year files will be symlinked under this path as
+            # OneDrive and direnv don't interact well.
             ALL_PAPERS_ROOT = "$HOME/Documents/Teaching";
             TEACHING_SHARED = "$HOME/Documents/Teaching/Shared";
 
