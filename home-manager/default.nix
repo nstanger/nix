@@ -133,7 +133,7 @@ in
             # JAVA_HOME = $(/usr/libexec/java_home -v 17);
             # R_GSCMD = "${BREW_PREFIX}/bin/gs";
             # RSTUDIO_WHICH_R = "${BREW_PREFIX}/bin/R";
-            TEXDOCVIEW_pdf = "$HOME/bin/preview %s";
+            # TEXDOCVIEW_pdf = "$HOME/bin/preview %s";
             TEXEDIT = "code --wait --goto %s:%d";
 
             # library paths
