@@ -58,6 +58,7 @@
     # Minion Pro: manual install
     "font-noto-sans"
     "font-open-iconic" # appears in Font Book as "Icons"
+    "font-open-sans" # no longer installed by default on Otago machines
     "font-outfit" # variable
     # "font-roboto" # breaks during install?
     # Segoe UI: manual install

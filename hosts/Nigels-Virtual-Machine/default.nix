@@ -54,7 +54,6 @@ in {
                 tvnamer #TESTING
 
                 # FONTS
-                open-sans
             ];
         };
         programs.zsh.shellAliases = {

@@ -89,7 +89,6 @@ in {
                 wakeonlan
 
                 # FONTS
-                open-sans
             ];
         };
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
