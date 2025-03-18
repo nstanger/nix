@@ -64,6 +64,7 @@ in {
         ];
         masApps = import (append homebrew-path "mas-apps-common.nix") // {
             # "Apple Configurator" = 1289583905; # not configured
+            "eduVPN client" = 1317704208;
             # "Final Cut Pro" = 424389933; # not configured
             Mactracker = 430255202;
             # "Pixelmator Pro" = 1289583905; # not configured

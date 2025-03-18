@@ -1,7 +1,8 @@
 {
     Amphetamine = 937984704;
     CardHop = 1290358394;
-    "eduVPN client" = 1317704208;
+    # eduVPN is installed by default on OUDW machines and can't be removed,
+    # so install per-host
     Fantastical = 975937182;
     # iPhoto = 1289583905; # not configured
     # Kindle = 1289583905; # not configured
