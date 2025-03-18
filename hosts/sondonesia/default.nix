@@ -69,7 +69,6 @@ in {
             "uninstallpkg" # no config
             "vuescan" # no config
             "warp"
-            "whatsapp"
             "zed" # basic text editor for now # minimal config
         ];
         masApps = import (append homebrew-path "mas-apps-common.nix") // {
@@ -79,6 +78,7 @@ in {
             # "Pixelmator Pro" = 1289583905; # not configured
             "Sim Daltonism" = 693112260;
             # "Slack for Desktop" = 803453959; # not configured
+            WhatsApp = 310633997;
         };
     };
 
