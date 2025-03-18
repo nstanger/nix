@@ -108,7 +108,7 @@ in {
             # "Pixelmator Pro" = 1289583905; # not configured
             "Sim Daltonism" = 693112260;
             # "Slack for Desktop" = 803453959; # not configured
-            WhatsApp = 310633997;
+            "WhatsApp Messenger" = 310633997;
         };
     };
 
