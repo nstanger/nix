@@ -16,6 +16,21 @@
         "ssa"
         "sub"
 
+        # SQL
+        "plsql"
+        "psql"
+        "sql"
+
+        # TeX
+        "aux"
+        "bbl"
+        "cls"
+        "dtx"
+        "ins"
+        "ltx"
+        "sty"
+        "tex"
+
         # Miscellaneous
         "coffee"
         "jsx"
