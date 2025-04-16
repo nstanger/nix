@@ -322,17 +322,20 @@ in
 
     programs.taskwarrior = {
         enable = true;
-        package = pkgs.taskwarrior2;
+        package = pkgs.taskwarrior3;
         colorTheme = "light-256";
         dataLocation = "~/.config/task";
         config = {
-            taskd = { # CHANGES in TW 3.0
-                certificate = "~/.config/task/Nigel_Stanger.cert.pem";
-                key = "~/.config/task/Nigel_Stanger.key.pem";
-                ca = "~/.config/task/ca.cert.pem";
-                credentials = "stanger.org.nz/Nigel Stanger/ffce3667-319b-456f-ad9f-ce815131db35";
-                server = "taskd.stanger.org.nz:53589";
-            };
+            sync.server.url = "https://task.stanger.org.nz";
+            # Put sync.server.client_id and sync.encryption_secret in
+            # .config/task/taskrc for security.
+            # taskd = { # CHANGES in TW 3.0
+            #     certificate = "~/.config/task/Nigel_Stanger.cert.pem";
+            #     key = "~/.config/task/Nigel_Stanger.key.pem";
+            #     ca = "~/.config/task/ca.cert.pem";
+            #     credentials = "stanger.org.nz/Nigel Stanger/ffce3667-319b-456f-ad9f-ce815131db35";
+            #     server = "taskd.stanger.org.nz:53589";
+            # };
             context.home = {
                 read = "+home";
                 write = "+home";
