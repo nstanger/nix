@@ -5,6 +5,11 @@
         "public.utf8-tab-separated-values-text"
     ];
     "com.microsoft.VSCode" = [
+        # Java
+        "coffee"
+        "prop"
+        "jsx"
+
         # PlantUML
         "ipu"
         "plantuml"
