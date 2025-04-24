@@ -85,6 +85,7 @@ in {
             packages = with pkgs; import (append home-manager-path "packages-common.nix") pkgs ++ [
                 # SOFTWARE
                 # android-tools
+                smartmontools
                 tvnamer #TESTING
                 wakeonlan
 

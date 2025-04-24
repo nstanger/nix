@@ -297,7 +297,7 @@
 * [ ] shapelib
 * [ ] shared-mime-info
 * [ ] six
-* [ ] smartmontools
+* [x] smartmontools
 * [ ] snappy
 * [ ] speex
 * [ ] sqlite
