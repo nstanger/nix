@@ -144,7 +144,7 @@ in
 
             # misc configuration
             EXA_COLORS = import (append configs-path "eza/colours.nix");
-            ISPMS_HOST = "sobmac0011.staff.uod.otago.ac.nz";
+            # ISPMS_HOST = "sobmac0011.staff.uod.otago.ac.nz";
             LESS="--no-init --raw-control-chars";
             LSCOLORS="ExGxFxDaCxDxDxxbaDacec";
             PAGER = "bat";

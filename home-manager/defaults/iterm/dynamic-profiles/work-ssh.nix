@@ -17,18 +17,6 @@ username: {
             ];
         }
         {
-            Name = "nstanger@sobmac0011.staff.uod.otago.ac.nz";
-            Guid = "nstanger@sobmac0011.staff.uod.otago.ac.nz";
-            "Dynamic Profile Parent Name" = "Work SSH: General";
-            "Custom Command" = "Yes";
-            Command = "/usr/bin/ssh nstanger@sobmac0011.staff.uod.otago.ac.nz";
-            "Use Custom Window Title" = true;
-            "Custom Window Title" = "nstanger@sobmac0011.staff.uod.otago.ac.nz";
-            "Bound Hosts" = [
-                "sobmac0011"
-            ];
-        }
-        {
             Name = "stani07p@uoK79KQLK7M0.staff.uod.otago.ac.nz";
             Guid = "stani07p@uoK79KQLK7M0.staff.uod.otago.ac.nz";
             "Dynamic Profile Parent Name" = "Work SSH: General";
