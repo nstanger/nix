@@ -474,7 +474,7 @@
 ## MAS
 
 * [x] Amphetamine [937984704]
-* [ ] Apple Configurator [1289583905]
+* [ ] Apple Configurator [1037126344]
 * [x] Cardhop [1290358394]
 * [ ] ChordPro Buddy [434955766] ??
 * [ ] Compressor [424390742]
@@ -485,9 +485,9 @@
 * [x] ~~GarageBand~~ [682658836]
 * [ ] Home Assistant [1099568401]
 * [x] ~~iMovie~~ [408981434]
-* [ ] ~~iPhoto~~ [1289583905]
+* [ ] ~~iPhoto~~ [discontinued]
 * [x] ~~Keynote~~ [409183694]
-* [ ] Kindle [1289583905]
+* [ ] Kindle [302584613]
 * [ ] Let’s Connect! VPN [1486810037]
 * [ ] Logic Pro [634148309]
 * [x] MacTracker [430255202]
@@ -500,7 +500,7 @@
 * [ ] Paprika Recipe Manager [451907568]
 * [x] PCalc [403504866]
 * [ ] Pixelmator Pro [1289583905]
-* [x] Photo GeoTag [1289583905]
+* [x] ~~Photo GeoTag~~ [discontinued]
 * [ ] QR Code Scanner [1593228108]
 * [x] Sim Daltonism [693112260]
 * [ ] Skitch [425955336]

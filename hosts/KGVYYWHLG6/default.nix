@@ -102,7 +102,7 @@ in {
             "zed" # basic text editor for now # minimal config
         ];
         masApps = import (append homebrew-path "mas-apps-common.nix") // {
-            # "Apple Configurator" = 1289583905; # not configured
+            # "Apple Configurator" = 1037126344; # not configured
             # "Final Cut Pro" = 424389933; # not configured
             Klack = 6446206067; # not configured, but pretty simple
             Mactracker = 430255202;
