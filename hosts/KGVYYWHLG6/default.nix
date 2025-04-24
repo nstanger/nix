@@ -96,6 +96,7 @@ in {
             "mysqlworkbench" # minimal config
             "ollama" # minimal config
             # "ransomwhere"
+            # "scroll"
             # "spamsieve"
             "steermouse"
             "zed" # basic text editor for now # minimal config
