@@ -114,3 +114,13 @@ If things get **really** borked, you might not even have a proper path to fix th
 eval `/usr/libexec/path_helper -s`
 ```
 
+## Fix stalled post-build on macOS Sequoia
+
+As per <https://github.com/DeterminateSystems/nix-installer/issues/1479#issuecomment-2754661175>:
+
+```sh
+sudo launchctl list | ag determinate
+sudo launchctl kickstart -k system/systems.determinate.nix-store
+sudo launchctl kickstart -k system/systems.determinate.nix-daemon
+sudo launchctl kickstart -k system/systems.determinate.nix-installer.nix-hook
+```
