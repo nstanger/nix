@@ -12,22 +12,22 @@ let
     inherit (lib.path) append;
     inherit (paths) configs-path defaults-path home-manager-path homebrew-path;
 
-    autopostgresqlbackup = pkgs.stdenv.mkDerivation rec {
-        name = "autopostgresqlbackup";
-        version = "2.3";
-        buildInputs = [pkgs.pandoc];
-        src = pkgs.fetchgit {
-            url = "https://github.com/k0lter/autopostgresqlbackup.git";
-            rev = "refs/tags/${version}";
-            hash = "sha256-dTamqJQFQI+QWOSDAcUNFfeQd8WNa3mcGCfe7viRq4c=";
-        };
-        installPhase = ''
-            mkdir -p $out/bin
-            cp autopostgresqlbackup $out/bin
-            mkdir -p $out/man/man8
-            cp autopostgresqlbackup.8 $out/man/man8
-        '';
-    };
+    # autopostgresqlbackup = pkgs.stdenv.mkDerivation rec {
+    #     name = "autopostgresqlbackup";
+    #     version = "2.3";
+    #     buildInputs = [pkgs.pandoc];
+    #     src = pkgs.fetchgit {
+    #         url = "https://github.com/k0lter/autopostgresqlbackup.git";
+    #         rev = "refs/tags/${version}";
+    #         hash = "sha256-dTamqJQFQI+QWOSDAcUNFfeQd8WNa3mcGCfe7viRq4c=";
+    #     };
+    #     installPhase = ''
+    #         mkdir -p $out/bin
+    #         cp autopostgresqlbackup $out/bin
+    #         mkdir -p $out/man/man8
+    #         cp autopostgresqlbackup.8 $out/man/man8
+    #     '';
+    # };
 in {
     users.users."${username}" = {
         home = "/Users/${username}";
@@ -159,7 +159,7 @@ in {
                 "DPItemExportTemplate.html" = mkConfigFile (append configs-path "bibdesk") "Library/Application Support/BibDesk/Templates";
             };
             packages = with pkgs; import (append home-manager-path "packages-common.nix") pkgs ++ [
-                autopostgresqlbackup
+                # autopostgresqlbackup
                 camunda-modeler
                 mongodb-tools
                 mongosh
