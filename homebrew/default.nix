@@ -9,6 +9,7 @@
             Host specific packages go in each host module.
         */
         brews = [
+            "mas" # otherwise it gets installed and uninstalled every rebuild
         ];
         casks = [
             # SOFTWARE
