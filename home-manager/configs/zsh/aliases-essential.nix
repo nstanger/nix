@@ -24,8 +24,8 @@ in {
     # Nix man paths aren't exposed in MANPATH but do appear in the output of
     # the manpath command.
     man = "/usr/local/bin/openman -M $(manpath 2>/dev/null)";
-    nixswitch = "sudo darwin-rebuild switch --flake ~/LocalDocuments/Development/nix/.#";
-    nixupdate = "pushd ~/LocalDocuments/Development/nix; nix flake update; nixswitch; popd";
+    nixswitch = "pushd ~/Documents/Development/nix; sudo darwin-rebuild switch --flake .#; popd";
+    nixupdate = "pushd ~/Documents/Development/nix; nix flake update; nixswitch; popd";
     rm = "${pkgs.coreutils}/bin/rm -i";
     # locate = "${BREW_PREFIX}/bin/glocate -d /var/db/locate.database";
     # smbclient = "rlwrap /opt/local/bin/smbclient";
