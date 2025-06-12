@@ -393,27 +393,31 @@ in
             share = false;
         };
 
-        initExtraBeforeCompInit = builtins.readFile (append configs-path "zsh/initExtraBeforeCompInit.sh");
         completionInit = builtins.readFile (append configs-path "zsh/completionInit.sh");
-        initExtraFirst = ''
-            source ${pkgs.zsh-defer}/share/zsh-defer/zsh-defer.plugin.zsh
-        '';
-        initExtra = let
-            preExtra = builtins.readFile (append configs-path "zsh/initExtra.sh");
-            pluginFiles = [
-                # additional plugins not already loaded elsewhere
-                "${pkgs.zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh"
-            ];
-            pluginSources = map (x: "zsh-defer source " + x) pluginFiles;
-            plugins = builtins.concatStringsSep "\n" (pluginSources);
-            # for anything that must be run AFTER a plugin loads
-            postExtra = ''
+        initContent = let
+            zshConfigEarlyInit = lib.mkOrder 500 ''
+                source ${pkgs.zsh-defer}/share/zsh-defer/zsh-defer.plugin.zsh
             '';
-        in ''
-            ${preExtra}
-            ${plugins}
-            ${postExtra}
-        '';
+            zshConfigBeforeCompInit = lib.mkOrder 550 (builtins.readFile (append configs-path "zsh/initExtraBeforeCompInit.sh"));
+            zshConfig = let
+                preExtra = builtins.readFile (append configs-path "zsh/initExtra.sh");
+                pluginFiles = [
+                    # additional plugins not already loaded elsewhere
+                    "${pkgs.zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh"
+                ];
+                pluginSources = map (x: "zsh-defer source " + x) pluginFiles;
+                plugins = builtins.concatStringsSep "\n" (pluginSources);
+                # for anything that must be run AFTER a plugin loads
+                postExtra = ''
+                '';
+            in lib.mkOrder 1000 ''
+                ${preExtra}
+                ${plugins}
+                ${postExtra}
+            '';
+            zshConfigAfter = lib.mkOrder 1500 ''
+            '';
+        in lib.mkMerge [ zshConfigEarlyInit zshConfigBeforeCompInit zshConfig zshConfigAfter ];
 
         syntaxHighlighting.enable = true;
 

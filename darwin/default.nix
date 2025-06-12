@@ -3,6 +3,7 @@
     paths,
     pkgs,
     unstable,
+    username,
     ...
 }: let
     inherit (lib.attrsets) foldlAttrs;
@@ -43,7 +44,8 @@ in {
     };
     
     nix = {
-        optimise.automatic = true;
+        enable = false;
+        # optimise.automatic = true;
         settings = {
             bash-prompt-prefix = "(nix:$name)\\040";
             build-users-group = "nixbld";
@@ -55,13 +57,9 @@ in {
     fonts = {
         packages = with pkgs; [
             # terminal nerd font
-            (nerdfonts.override { fonts = [ "Hack" ]; })
+            nerd-fonts.hack
         ];
     };
-
-    # security.pam.enableSudoTouchIdAuth = true;
-    
-    services.nix-daemon.enable = true;
 
     # system.keyboard.enableKeyMapping = true;
     
@@ -143,10 +141,14 @@ in {
         # CustomSystemPreferences = {};
     };
 
+    system.primaryUser = username;
+
     system.activationScripts = {
         extraActivation = {
             enable = true;
-            text = ''
+            text = let
+                userLibrary = "/Users/${username}/Library";
+            in ''
                 echo "activating extra system preferences..."
 
                 # Microsoft AutoUpdate daemon check once per week instead of *every 2 hours*.
@@ -163,14 +165,7 @@ in {
 
                 # Enable CUPS web interface.
                 cupsctl WebInterface=yes
-            '';
-        };
 
-        extraUserActivation = {
-            enable = true;
-
-            # huh, .source doesn't work...
-            text = ''
                 echo "activating extra user preferences..."
 
                 # Close any open System Preferences panes, to prevent them from overriding
@@ -179,16 +174,18 @@ in {
 
                 # Show the ~/Library folder
                 # We really only ever need to do this *once*, but you never know...
-                chflags -f nohidden ~/Library && [[ $(xattr ~/Library) = *com.apple.FinderInfo* ]] && xattr -d com.apple.FinderInfo ~/Library
+                sudo -u ${username} chflags -f nohidden ${userLibrary} && [[ $(xattr ${userLibrary}) = *com.apple.FinderInfo* ]] && xattr -d com.apple.FinderInfo ${userLibrary}
             '';
         };
 
         # https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
-        postUserActivation = let
+        postActivation = let
             utiMappings = import (append darwin-path "utis.nix");
         in {
             enable = true;
             text = with builtins; ''
+                echo "activating settings..."
+
                 # Following line should allow us to avoid a logout/login cycle
                 /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
             '' +

@@ -71,7 +71,7 @@ in {
 
     # enable Touch ID for sudo in terminal
     # (but also see targets.darwin.defaults below for additional hackery)
-    security.pam.enableSudoTouchIdAuth = true;
+    security.pam.services.sudo_local.touchIdAuth = true;
 
     nix-homebrew = {
         # user owning the homebrew prefix

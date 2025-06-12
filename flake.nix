@@ -1,20 +1,20 @@
 {
     description = "System configuration";
     inputs = {
-        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-        nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
+        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+        nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
-        home-manager.url = "github:nix-community/home-manager/release-24.11";
+        home-manager.url = "github:nix-community/home-manager/release-25.05";
         home-manager.inputs.nixpkgs.follows = "nixpkgs-stable";
 
-        darwin.url = "github:lnl7/nix-darwin";
-        darwin.inputs.nixpkgs.follows = "nixpkgs-stable";
+        nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+        nix-darwin.inputs.nixpkgs.follows = "nixpkgs-stable";
 
         nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
         nix-homebrew.inputs.nixpkgs.follows = "nixpkgs-stable";
-        nix-homebrew.inputs.nix-darwin.follows = "darwin";
+        nix-homebrew.inputs.nix-darwin.follows = "nix-darwin";
 
         homebrew-core.url = "github:homebrew/homebrew-core";
         homebrew-core.flake = false;
@@ -34,7 +34,7 @@
         nixpkgs-darwin,
         nixpkgs-unstable,
         home-manager,
-        darwin,
+        nix-darwin,
         nix-homebrew,
         ... 
     }:
@@ -67,9 +67,9 @@
                         my = import ./lib { inherit inputs paths pkgs username; lib = self; };
                     });
                 in
-                    darwin.lib.darwinSystem {
+                    nix-darwin.lib.darwinSystem {
                         inherit system;
-                        specialArgs = { inherit darwin inputs lib paths pkgs unstable self username; };
+                        specialArgs = { inherit nix-darwin inputs lib paths pkgs unstable self username; };
                         modules = with lib.path; with paths; [
                             nix-homebrew.darwinModules.nix-homebrew {
                                 nix-homebrew = {
