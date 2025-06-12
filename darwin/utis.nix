@@ -5,7 +5,7 @@
         "public.utf8-tab-separated-values-text"
     ];
     "com.microsoft.VSCode" = [
-        # Java
+        # JavaScript
         "coffee"
         "prop"
         "jsx"
@@ -35,10 +35,6 @@
         "ltx"
         "sty"
         "tex"
-
-        # Miscellaneous
-        "coffee"
-        "jsx"
 
         # UTIs
         "com.apple.ascii-property-list"
