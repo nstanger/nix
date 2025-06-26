@@ -124,3 +124,9 @@ sudo launchctl kickstart -k system/systems.determinate.nix-store
 sudo launchctl kickstart -k system/systems.determinate.nix-daemon
 sudo launchctl kickstart -k system/systems.determinate.nix-installer.nix-hook
 ```
+
+## zsh “insecure completions” issues
+
+If `compinit` starts complaining about insecure completions, this is probably due to JAMF updating an application, which changes the owner to `otagoit`. This may also prevent updating within the app itself. The solution is to `sudo chown -R stani07p /Applications/Whatever.app`.
+
+See also <https://dev.to/manojspace/solving-zsh-compinits-insecure-files-warning-34pg>.
