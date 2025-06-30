@@ -157,6 +157,12 @@ in {
                 "DPAbstractExportTemplate.html" = mkConfigFile (append configs-path "bibdesk") "Library/Application Support/BibDesk/Templates";
                 "DPExportTemplate.html" = mkConfigFile (append configs-path "bibdesk") "Library/Application Support/BibDesk/Templates";
                 "DPItemExportTemplate.html" = mkConfigFile (append configs-path "bibdesk") "Library/Application Support/BibDesk/Templates";
+
+                # logrotate
+                # autopostgresqlbackup and RustDesk are a pain because they already rotate
+                # and timestamp their own log files. It might be possible to convince
+                # logrotate to delete the old versions, but it turns out they're relatively
+                # tiny (e.g., RustDesk hundreds of KB at worst), so who cares?
             };
             packages = with pkgs; import (append home-manager-path "packages-common.nix") pkgs ++ [
                 # autopostgresqlbackup
