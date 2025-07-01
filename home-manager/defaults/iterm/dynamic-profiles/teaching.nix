@@ -21,6 +21,16 @@ username: {
             ];
         }
         {
+            Name = "COSC 203";
+            Guid = "466cb4f3-391a-5dd6-8477-8a746faebe7f";
+            "Dynamic Profile Parent Name" = "Teaching";
+            "Use Custom Window Title" = true;
+            "Custom Window Title" = "COSC 203";
+            "Bound Hosts" = [
+                "/Users/${username}/Documents/Teaching/COSC203*"
+            ];
+        }
+        {
             Name = "COSC 344";
             Guid = "55b09e8f-1060-4d4c-9aec-06c348e74f16";
             "Dynamic Profile Parent Name" = "Teaching";
