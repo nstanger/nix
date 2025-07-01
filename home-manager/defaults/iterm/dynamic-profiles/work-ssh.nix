@@ -24,9 +24,9 @@ username: {
             Command = "/usr/bin/ssh stani07p@KGVYYWHLG6.staff.uod.otago.ac.nz";
             "Use Custom Window Title" = true;
             "Custom Window Title" = "stani07p@KGVYYWHLG6.staff.uod.otago.ac.nz";
-            "Bound Hosts" = [
-                "KGVYYWHLG6"
-            ];
+            # "Bound Hosts" = [
+            #     "KGVYYWHLG6"
+            # ];
         }
         {
             Name = "stani07p@isdb.uod.otago.ac.nz";
