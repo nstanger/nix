@@ -44,6 +44,7 @@ in
         file = processHomeFiles {
             # text-based config files
             ".agignore" = mkConfigFile (append configs-path "silver-searcher") "";
+            "latexmkrc" = mkConfigFile (append configs-path "latexmk") ".config/latexmk";
             "logrotate.conf" = mkConfigFile (append configs-path "logrotate") ".config/logrotate";
 
             # directories

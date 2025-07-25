@@ -1,0 +1,16 @@
+# PDF using LuaLaTeX
+$pdf_mode = 4;
+
+# force continuation
+$force_mode = 1;
+
+# default options:
+#   -file-line-error: enable file:line:error style messages
+#   -halt-on-error: stop processing at the first error
+#   -interaction=nonstopmode: run without user interaction
+#   -shell-escape: enable for things like minted
+#   -synctex=1: enable SyncTeX (compressed)
+&set_tex_cmds("-file-line-error -halt-on-error -interaction=nonstopmode -shell-escape -synctex=1 %O %S");
+
+# extensions to clean
+$clean_ext = "fls nav snm synctex.gz vrb listing";
