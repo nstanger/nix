@@ -41,7 +41,6 @@
         "com.apple.xml-property-list"
         "com.netscape.javascript-source"
         "net.daringfireball.markdown"
-        "org.tug.tex"
         "org.w3.webvtt"
         "public.bash-script"
         "public.c-header"
