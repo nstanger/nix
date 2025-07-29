@@ -286,24 +286,33 @@
     ####################
     # GRADLE
     ####################
-    ".gradle"
-    "build/"
-    "gradle"
+    # Specifying this globally doesn't work when you want to do something
+    # like ignore the gradle/ directory in general but include files within
+    # that directory like libs.versions.toml or wrapper/*. This is probably
+    # something that is better in project-specific .gitignores so that it
+    # is portable across installations.
+    # ".gradle"
+    # "/build/"
+    # "/gradle/"
+    # "/gradle/wrapper/*"
 
-    # Ignore Gradle GUI config
-    "gradle-app.setting"
+    # # Ignore Gradle GUI config
+    # "gradle-app.setting"
 
-    # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-    "!gradle-wrapper.jar"
+    # # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+    # "!/gradle/wrapper/gradle-wrapper.jar"
 
-    # Cache of project
-    ".gradletasknamecache"
+    # # Avoid ignoring Gradle version catalog libs.version.toml
+    # "!/gradle/libs.version.toml"
 
-    # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-    # gradle/wrapper/gradle-wrapper.properties
+    # # Cache of project
+    # ".gradletasknamecache"
 
-    ### Gradle Patch ###
-    "**/build/"
+    # # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+    # # gradle/wrapper/gradle-wrapper.properties
+
+    # ### Gradle Patch ###
+    # "**/build/"
 
     ####################
     # XCODE
