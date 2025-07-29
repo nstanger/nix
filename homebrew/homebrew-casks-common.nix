@@ -24,6 +24,7 @@
     "mactex-no-gui" # this appears to be ... complicated with nixpkgs
     "netbeans" # config not in defaults
     "pacifist"
+    "qlmarkdown" # not signed or notarised, see <https://github.com/sbarex/QLMarkdown>
     "R"
     "rstudio" # config not in defaults
     "rustdesk"
