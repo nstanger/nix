@@ -43,16 +43,9 @@ in {
         ];
     };
     
-    nix = {
-        enable = false;
-        # optimise.automatic = true;
-        settings = {
-            bash-prompt-prefix = "(nix:$name)\\040";
-            build-users-group = "nixbld";
-            experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" ];
-            extra-nix-path = "nixpkgs=flake:nixpkgs";
-        };
-    };
+    # Nix config is now per-host, as newer versions of the Determinate Nix
+    # installer directly generate the contents of /etc/nix. Only use darwin
+    # nix config if Nix was installed by an older version of the installer.
     
     fonts = {
         packages = with pkgs; [
