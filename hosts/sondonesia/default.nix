@@ -108,6 +108,7 @@ in {
             packages = with pkgs; import (append home-manager-path "packages-common.nix") pkgs ++ [
                 # SOFTWARE
                 android-tools
+                macpm # Apple Silicon only
                 openai-whisper-cpp
                 tart
                 tvnamer #TESTING
