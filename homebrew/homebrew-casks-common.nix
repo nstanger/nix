@@ -11,7 +11,7 @@
     "color-oracle" # no config
     "dbeaver-community"
     "firefox" # config not in defaults
-    "flux"
+    "flux-app"
     "free-ruler"
     "google-chrome" # config not in defaults
     "graphicconverter" # boo, it upgraded to 12 when I wasn't looking
@@ -25,7 +25,7 @@
     "netbeans" # config not in defaults
     "pacifist"
     "qlmarkdown" # not signed or notarised, see <https://github.com/sbarex/QLMarkdown>
-    "R"
+    "r-app"
     "rstudio" # config not in defaults
     "rustdesk"
     "screenflick"

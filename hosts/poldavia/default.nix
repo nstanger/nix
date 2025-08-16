@@ -43,7 +43,7 @@ in {
             "android-file-transfer"
             "arq"
             "carbon-copy-cloner"
-            "docker"
+            "docker-desktop"
             "fujitsu-scansnap-home" # not configured
             "hugin" # no config
             "iina"

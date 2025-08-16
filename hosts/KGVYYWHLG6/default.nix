@@ -89,12 +89,12 @@ in {
             "gnumeric"
         ];
         casks = import (append homebrew-path "homebrew-casks-common.nix") ++ [
-            "docker"
+            "docker-desktop"
             "dropbox" # settings are in the cloud
             "ears"
             "mongodb-compass" # minimal config
             "mysqlworkbench" # minimal config
-            "ollama" # minimal config
+            "ollama-app" # minimal config
             # "ransomwhere"
             # "scroll"
             # "spamsieve"

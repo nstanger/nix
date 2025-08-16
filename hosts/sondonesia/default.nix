@@ -59,7 +59,7 @@ in {
             "carbon-copy-cloner"
             "diffusionbee"
             "discord"
-            "docker"
+            "docker-desktop"
             "dropbox" # settings in cloud
             "ears"
             "fujitsu-scansnap-home" # not configured
@@ -70,7 +70,7 @@ in {
             "mongodb-compass" # minimal config
             "monitorcontrol"
             "mysqlworkbench" # minimal config
-            "ollama" # minimal config
+            "ollama-app" # minimal config
             "onedrive"
             "plexamp"
             # "ransomwhere"
