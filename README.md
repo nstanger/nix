@@ -130,3 +130,15 @@ sudo launchctl kickstart -k system/systems.determinate.nix-installer.nix-hook
 If `compinit` starts complaining about insecure completions, this is probably due to JAMF updating an application, which changes the owner to `otagoit`. This may also prevent updating within the app itself. The solution is to `sudo chown -R stani07p /Applications/Whatever.app`.
 
 See also <https://dev.to/manojspace/solving-zsh-compinits-insecure-files-warning-34pg>.
+
+## zsh: killed     *[whatever]*
+
+For example, I was getting `zsh: killed     git`. This turns out to be an invalid code signature on the binary (see <https://stackoverflow.com/a/79347586>). To fix:
+
+```sh
+codesign --sign - --force PATH_TO_YOUR_ISSUE_BINARY
+
+# e.g.:
+$ sudo codesign --sign - --force h4qkiw2ba16b3yi12kv3ricqg4h7mk8b-git-with-svn-2.50.1/bin/git
+h4qkiw2ba16b3yi12kv3ricqg4h7mk8b-git-with-svn-2.50.1/bin/git: replacing existing signature
+```
