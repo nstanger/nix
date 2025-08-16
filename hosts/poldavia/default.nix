@@ -36,6 +36,19 @@ in {
         autoMigrate = false;
     };
 
+    # Poldavia used an older (?) version of the Determinate Nix Installer
+    # that doesn't directly manipulate the contents of /etc/nix.
+    nix = {
+        enable = true;
+        # optimise.automatic = true;
+        settings = {
+            bash-prompt-prefix = "(nix:$name)\\040";
+            build-users-group = "nixbld";
+            experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" ];
+            extra-nix-path = "nixpkgs=flake:nixpkgs";
+        };
+    };
+
     homebrew = {
         brews = import (append homebrew-path "homebrew-brews-common.nix") ++ [
         ];
