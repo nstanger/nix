@@ -72,7 +72,6 @@ in
         # Host specific packages go in each host module.
         packages = with pkgs; [
             # SOFTWARE
-            asitop
             bfg-repo-cleaner
             blackbox
             dos2unix

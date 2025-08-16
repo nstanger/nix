@@ -167,6 +167,7 @@ in {
             packages = with pkgs; import (append home-manager-path "packages-common.nix") pkgs ++ [
                 # autopostgresqlbackup
                 camunda-modeler
+                macpm # Apple Silicon only
                 mongodb-tools
                 mongosh
                 openai-whisper-cpp
