@@ -119,6 +119,7 @@
     "org.videolan.vlc" = [
         "org.matroska.mkv"
         "public.avi"
+        "public.mpeg"
         "public.mpeg-4"
     ];
 }
