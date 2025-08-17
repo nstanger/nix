@@ -14,6 +14,7 @@
     "flux-app"
     "free-ruler"
     "google-chrome" # config not in defaults
+    "grandperspective"
     "graphicconverter" # boo, it upgraded to 12 when I wasn't looking
     "inkscape" # install fails under home-manager, config not in defaults
     "keepassxc" # no config
