@@ -82,6 +82,12 @@ in {
         autoMigrate = false;
     };
 
+    # KGVYYWHLG6 use version of the Determinate Nix Installer
+    # that directly manages the contents of /etc/nix.
+    nix = {
+        enable = false;
+    };
+
     homebrew = {
         brews = import (append homebrew-path "homebrew-brews-common.nix") ++ [
             # nixpkgs version broken on aarch64-darwin
