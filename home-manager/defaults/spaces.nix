@@ -1,4 +1,5 @@
 {
+    # doesn't seem to have any effect :(
     "app-bindings" = {
         "com.apple.activitymonitor" = "AllSpaces";
         "com.apple.printcenter" = "AllSpaces";
