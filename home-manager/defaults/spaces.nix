@@ -1,7 +1,9 @@
 {
-    # doesn't seem to have any effect :(
+    # Doesn't seem to have any effect :(.
+    # Useful for documentation purposes at least.
     "app-bindings" = {
         "com.apple.activitymonitor" = "AllSpaces";
+        "com.apple.finder" = "AllSpaces";
         "com.apple.printcenter" = "AllSpaces";
         "com.binarynights.forklift" = "AllSpaces";
         "com.crystalidea.macsfancontrol" = "AllSpaces";
