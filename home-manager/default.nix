@@ -450,6 +450,7 @@ in
             NSGlobalDomain = import (append defaults-path "global.nix");
             "at.EternalStorms.Yoink" = import (append defaults-path "yoink.nix"); # small screen only?
             "at.obdev.LaunchBar" = import (append defaults-path "launchbar.nix");
+            "com.apple.archiveutility" = import (append defaults-path "archive-utility.nix");
             "com.apple.desktopservices" = import (append defaults-path "desktopservices.nix");
             "com.apple.dock" = import (append defaults-path "dock.nix");
             "com.apple.dt.Xcode" = import (append defaults-path "xcode.nix");
