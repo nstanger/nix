@@ -16,13 +16,13 @@ username: {
             ];
         }
         {
-            Name = "nzougorg@nzoug.org";
-            Guid = "nzougorg@nzoug.org";
+            Name = "nzougorg@cs305.bluehost.com";
+            Guid = "nzougorg@cs305.bluehost.com";
             "Dynamic Profile Parent Name" = "Other SSH: General";
             "Custom Command" = "Yes";
-            Command = "/usr/bin/ssh nzougorg@nzoug.org";
+            Command = "/usr/bin/ssh nzougorg@cs305.bluehost.com";
             "Use Custom Window Title" = true;
-            "Custom Window Title" = "nzougorg@nzoug.org";
+            "Custom Window Title" = "nzougorg@cs305.bluehost.com";
             "Keyboard Map" = {
                 "0xf702-0x280000" = {
                     Action = 10;
