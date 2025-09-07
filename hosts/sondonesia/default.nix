@@ -61,6 +61,9 @@ in {
             "discord"
             "docker-desktop"
             "dropbox" # settings in cloud
+            "font-noto-color-emoji"
+            "font-noto-sans-arabic"
+            "font-noto-sans-sc"
             "ears"
             "fujitsu-scansnap-home" # not configured
             "hugin" # no config
@@ -115,8 +118,6 @@ in {
                 wakeonlan
 
                 # FONTS
-                font-noto-sans-arabic
-                font-noto-sans-sc
             ];
         };
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [

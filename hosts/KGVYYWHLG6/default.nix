@@ -98,6 +98,9 @@ in {
             "docker-desktop"
             "dropbox" # settings are in the cloud
             "ears"
+             "font-noto-color-emoji"
+             "font-noto-sans-arabic"
+             "font-noto-sans-sc"
             "mongodb-compass" # minimal config
             "mysqlworkbench" # minimal config
             "ollama-app" # minimal config
@@ -183,8 +186,6 @@ in {
                 tart
 
                 # FONTS
-                font-noto-sans-arabic
-                font-noto-sans-sc
             ];
         };
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
