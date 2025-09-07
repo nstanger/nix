@@ -115,6 +115,8 @@ in {
                 wakeonlan
 
                 # FONTS
+                font-noto-sans-arabic
+                font-noto-sans-sc
             ];
         };
         programs.taskwarrior.extraConfig = builtins.concatStringsSep "\n" [
