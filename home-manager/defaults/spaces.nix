@@ -9,6 +9,7 @@
         "com.binarynights.forklift" = "AllSpaces";
         "com.crystalidea.macsfancontrol" = "AllSpaces";
         "com.electron.dockerdesktop" = "AllSpaces";
+        "com.electron.ollama" = "AllSpaces";
         "com.getdropbox.dropbox" = "AllSpaces";
         "com.google.drivefs" = "AllSpaces";
         "com.if.amphetamine" = "AllSpaces";
