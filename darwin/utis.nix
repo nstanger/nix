@@ -21,10 +21,13 @@
         "ssa"
         "sub"
 
-        # SQL
+        # Database
+        "cypher"
+        "mysql"
         "plsql"
         "psql"
         "sql"
+        "tsql"
 
         # TeX
         "aux"
