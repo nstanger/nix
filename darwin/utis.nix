@@ -1,4 +1,8 @@
 {
+    "com.flexibits.fantastical2.mac" = [
+        "ics",
+        "public.calendar-event"
+    ];
     "com.microsoft.Excel" = [
         "public.comma-separated-values-text"
         "public.tab-separated-values-text"
