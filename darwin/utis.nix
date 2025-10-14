@@ -28,6 +28,7 @@
         # Database
         "cypher"
         "mysql"
+        "pgsql"
         "plsql"
         "psql"
         "sql"
