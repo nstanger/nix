@@ -466,7 +466,7 @@ in
             "com.apple.Spotlight" = import (append defaults-path "spotlight.nix");
             # always show window proxy icons (where available)
             "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = 1;
-            "com.apple.universalaccess".showWindowTitlebarIcons = 1;
+            "com.apple.universalaccess" = import (append defaults-path "universal-access.nix");
             "com.araeliumgroup.screenflick" = import (append defaults-path "screenflick.nix");
             "com.atow.msgfiler" = import (append defaults-path "msgfiler.nix");
             "com.binarynights.ForkLift" = import (append defaults-path "forklift.nix");
