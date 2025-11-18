@@ -9,6 +9,9 @@
         "public.utf8-tab-separated-values-text"
     ];
     "com.microsoft.VSCode" = [
+        # Nix
+        "nix"
+        
         # JavaScript
         "coffee"
         "prop"
