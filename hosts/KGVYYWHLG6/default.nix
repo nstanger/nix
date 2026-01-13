@@ -102,7 +102,6 @@ in {
              "font-noto-sans-arabic"
              "font-noto-sans-sc"
             "mongodb-compass" # minimal config
-            "mysqlworkbench" # minimal config
             "ollama-app" # minimal config
             # "ransomwhere"
             # "scroll"
