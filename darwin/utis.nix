@@ -1,6 +1,6 @@
 {
     "com.flexibits.fantastical2.mac" = [
-        "ics",
+        "ics"
         "public.calendar-event"
     ];
     "com.microsoft.Excel" = [
