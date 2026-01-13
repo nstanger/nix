@@ -424,6 +424,12 @@ in
         enableZshIntegration = true;
     };
 
+    services.gpg-agent = {
+        enable = true;
+        pinentry.package = pkgs.pinentry_mac;
+        pinentry.program = "pinentry-mac";
+    };
+
     launchd = {
         enable = true;
         agents = {
