@@ -66,9 +66,9 @@ in {
             "font-noto-sans-sc"
             "ears"
             "fujitsu-scansnap-home" # not configured
-            "hugin" # no config
+            "hugin" # no config; DEPRECATED in Homebrew 2025-11-10 (very old version: 2019)
             "iina"
-            "makemkv" # minimal config
+            "makemkv" # minimal config; DEPRECATED in Homebrew 2026-09-01 (old version: 1.17)
             "moneydance" # minimal config
             "mongodb-compass" # minimal config
             "monitorcontrol"

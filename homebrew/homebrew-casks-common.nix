@@ -25,7 +25,7 @@
     "mactex-no-gui" # this appears to be ... complicated with nixpkgs
     "netbeans" # config not in defaults
     "pacifist"
-    "qlmarkdown" # not signed or notarised, see <https://github.com/sbarex/QLMarkdown>
+    "qlmarkdown" # not signed or notarised, see <https://github.com/sbarex/QLMarkdown>; DEPRECATED in Homebrew 2026-09-01
     "r-app"
     "rstudio" # config not in defaults
     "rustdesk"
