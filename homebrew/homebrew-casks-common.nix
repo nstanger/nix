@@ -36,6 +36,7 @@
     # at all on 14+; can enable on x86 hosts
     "temurin@11"
     "temurin@17"
+    "temurin@21"
     "vlc"
     "wordservice"
     "zoom"

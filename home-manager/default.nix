@@ -130,7 +130,6 @@ in
             EDITOR = "code --wait --new-window";
             # GIT_EDITOR = "code --wait --new-window";
             # GRAPHVIZ_DOT = "${BREW_PREFIX}/bin/dot";
-            # JAVA_HOME = $(/usr/libexec/java_home -v 17);
             # R_GSCMD = "${BREW_PREFIX}/bin/gs";
             # RSTUDIO_WHICH_R = "${BREW_PREFIX}/bin/R";
             # TEXDOCVIEW_pdf = "$HOME/bin/preview %s";
@@ -293,7 +292,7 @@ in
 
     programs.java = {
         enable = true;
-        package = pkgs.jdk21;
+        package = pkgs.javaPackages.compiler.temurin-bin.jdk-25;
     };
 
     programs.jq.enable = true;

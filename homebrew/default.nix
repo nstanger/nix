@@ -29,7 +29,7 @@
             # "ransomwhere" # currently Intel-only
             "rectangle"
             "synology-drive"
-            "temurin@21"
+            "temurin" # change to temurin@25 once available
             "ubersicht"
             "visual-studio-code"
             "vivaldi" # config not in defaults

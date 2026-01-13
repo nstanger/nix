@@ -11,7 +11,6 @@ in {
     empty = "${pkgs.coreutils}/bin/rm -rf ~/.Trash/*";
     # e.g., fileuti test.wav
     fileuti = "mdls -name kMDItemContentType";
-    # java_home = "/usr/libexec/java_home";
     # unlocktrash = "/usr/bin/sudo /usr/sbin/chown -R ${USER}:${GROUP} ~/.Trash/*";
     ls = "${pkgs.eza}/bin/eza ${ezaBasicOptions}";
     lsr = "${pkgs.eza}/bin/eza ${ezaBasicOptions} --tree";
