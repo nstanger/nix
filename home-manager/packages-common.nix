@@ -4,7 +4,7 @@ pkgs: with pkgs; [
     entr
     ffmpeg
     gawk
-    gradle_7
+    gradle_9
     graphviz-nox
     gron
     imgcat
@@ -16,7 +16,7 @@ pkgs: with pkgs; [
     nodePackages.tiddlywiki
     p7zip
     plantuml
-    poppler_utils
+    poppler-utils
     proselint
     ps2eps
     # R seems to be thoroughly broken, switch to Homebrew :(
@@ -38,7 +38,7 @@ pkgs: with pkgs; [
         however that there is only a "python3xxPackages" (specfic
         Python version, e.g., "311"), not a "python3Packages".
     */
-    python312Full
+    python312
     python312Packages.virtualenvwrapper
     python312Packages.pygments
 

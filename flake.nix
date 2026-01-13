@@ -1,15 +1,15 @@
 {
     description = "System configuration";
     inputs = {
-        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
-        nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
+        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+        nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
-        home-manager.url = "github:nix-community/home-manager/release-25.05";
+        home-manager.url = "github:nix-community/home-manager/release-25.11";
         home-manager.inputs.nixpkgs.follows = "nixpkgs-stable";
 
-        nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+        nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
         nix-darwin.inputs.nixpkgs.follows = "nixpkgs-stable";
 
         nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";

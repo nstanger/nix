@@ -152,7 +152,7 @@ in
             PLANTUML_SECURITY_PROFILE = "UNSECURE";
             # Something broke virtualenvwrapper between nixpkgs 23.11 and
             # 24.05 :( and the solution appears to be to set this variable.
-            VIRTUALENVWRAPPER_PYTHON=''${getExe' pkgs.python312Full "python3"}'';
+            VIRTUALENVWRAPPER_PYTHON=''${getExe' pkgs.python312 "python3"}'';
             XSLT="saxon-b";
             # automatic completion suggestions: use a slightly lighter shade of grey
             ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=246";
@@ -277,13 +277,14 @@ in
 
     programs.git = {
         enable = true;
-        aliases = import (append configs-path "git/aliases.nix");
-        extraConfig = import (append configs-path "git/extraConfig.nix");
+        settings = import (append configs-path "git/extraConfig.nix") // {
+            alias = import (append configs-path "git/aliases.nix");
+            user.name = "Nigel Stanger";
+            user.email = "nigel.stanger@otago.ac.nz";
+        };
         ignores = import (append configs-path "git/gitignore.nix");
         lfs.enable = true;
-        package = unstable.gitAndTools.gitFull;
-        userName = "Nigel Stanger";
-        userEmail = "nigel.stanger@otago.ac.nz";
+        package = pkgs.gitFull;
     };
 
     programs.gpg = {
@@ -351,11 +352,6 @@ in
             # suppress "You have more urgent tasks." message
             nag = "";
         };
-    };
-
-    programs.thefuck = {
-        enable = true;
-        enableZshIntegration = true;
     };
 
     programs.yt-dlp = {

@@ -112,7 +112,7 @@ in {
                 # SOFTWARE
                 android-tools
                 macpm # Apple Silicon only
-                openai-whisper-cpp
+                whisper-cpp
                 tart
                 tvnamer #TESTING
                 wakeonlan
