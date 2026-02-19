@@ -79,8 +79,6 @@ in {
             NSNavPanelExpandedStateForSaveMode2 = true;
             PMPrintingExpandedStateForPrint = true;
             PMPrintingExpandedStateForPrint2 = true;
-            # System Settings > Menu Bar > Show menu bar background
-            SLSMenuBarUseBlurredAppearance = true;
             # scroll direction is host specific
             # "com.apple.swipescrolldirection" = false;
             # F1, F2, etc. keys are standard function keys
@@ -131,7 +129,7 @@ in {
         # universalaccess.closeViewScrollWheelToggle = true;
         ActivityMonitor.IconType = 3; # disk activity
 
-        # home-manager.targetrs.darwin.defaults seems to do a better job than
+        # home-manager.targets.darwin.defaults seems to do a better job than
         # CustomSystemPreferences for non-specified defaults
         # CustomSystemPreferences = {};
     };

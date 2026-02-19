@@ -445,6 +445,8 @@ in
                 # <https://www.jessesquires.com/blog/2023/12/16/macbook-notch-and-menu-bar-fixes>
                 NSStatusItemSpacing = 12;
                 NSStatusItemSelectionPadding = 8;
+                # System Settings > Menu Bar > Show menu bar background
+                SLSMenuBarUseBlurredAppearance = true;
             };
         };
         defaults = {
