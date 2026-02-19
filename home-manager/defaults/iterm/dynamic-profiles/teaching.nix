@@ -41,43 +41,23 @@ username: {
             ];
         }
         {
-            Name = "INFO 201";
+            Name = "DATA 403";
             Guid = "b0353294-43b7-5874-88cb-a00312650e47";
             "Dynamic Profile Parent Name" = "Teaching";
             "Use Custom Window Title" = true;
-            "Custom Window Title" = "INFO 201";
+            "Custom Window Title" = "DATA 403";
             "Bound Hosts" = [
-                "/Users/${username}/Documents/Teaching/INFO201*"
+                "/Users/${username}/Documents/Teaching/DATA403*"
             ];
         }
         {
-            Name = "INFO 202";
-            Guid = "996b25e0-7016-5a0b-b090-bb10c5f26bdf";
-            "Dynamic Profile Parent Name" = "Teaching";
-            "Use Custom Window Title" = true;
-            "Custom Window Title" = "INFO 202";
-            "Bound Hosts" = [
-                "/Users/${username}/Documents/Teaching/INFO202*"
-            ];
-        }
-        {
-            Name = "INFO 303";
-            Guid = "46ed0342-bf93-564b-876b-ed009746061a";
-            "Dynamic Profile Parent Name" = "Teaching";
-            "Use Custom Window Title" = true;
-            "Custom Window Title" = "INFO 303";
-            "Bound Hosts" = [
-                "/Users/${username}/Documents/Teaching/INFO303*"
-            ];
-        }
-        {
-            Name = "INFO 408";
+            Name = "DATA 404";
             Guid = "f5ff25b9-3cd9-5de3-8518-337c0315ba40";
             "Dynamic Profile Parent Name" = "Teaching";
             "Use Custom Window Title" = true;
-            "Custom Window Title" = "INFO 408";
+            "Custom Window Title" = "DATA 404";
             "Bound Hosts" = [
-                "/Users/${username}/Documents/Teaching/INFO408*"
+                "/Users/${username}/Documents/Teaching/DATA404*"
             ];
         }
         {
