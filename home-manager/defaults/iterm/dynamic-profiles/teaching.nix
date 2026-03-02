@@ -3,7 +3,7 @@ username: {
         {
             Name = "Teaching";
             Guid = "fc00c6ec-f7fc-5679-b64f-f31c9238610e";
-            "Initial Text" = "set_working_dir";
+            # "Initial Text" = "set_working_dir";
             "Use Custom Window Title" = true;
             "Custom Window Title" = "Teaching";
             Tags = [
