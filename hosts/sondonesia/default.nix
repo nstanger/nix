@@ -114,6 +114,7 @@ in {
                 whisper-cpp
                 tart
                 tvnamer #TESTING
+                typst
                 wakeonlan
 
                 # FONTS
