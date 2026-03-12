@@ -179,7 +179,7 @@
         "Red Component" = 1;
     };
     "Custom Command" = "No";
-    "Custom Directory" = "Advanced";
+    "Custom Directory" = "No";
     "Default Bookmark" = "No";
     Description = "Default";
     "Disable Window Resizing" = 1;
