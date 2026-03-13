@@ -8,6 +8,9 @@
         "public.tab-separated-values-text"
         "public.utf8-tab-separated-values-text"
     ];
+    "com.microsoft.Outlook" = [
+        "com.apple.mail.email"
+    ];
     "com.microsoft.VSCode" = [
         # Nix
         "nix"
@@ -46,6 +49,9 @@
         "ltx"
         "sty"
         "tex"
+
+        # Typst
+        "typ"
 
         # UTIs
         "com.apple.ascii-property-list"
