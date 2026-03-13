@@ -111,3 +111,31 @@ function set_working_dir() {
         cd "$target"
     fi
 }
+
+
+#####################################################################
+# Function to pull all branches from remote to avoid merge conflicts
+# among main/release branches.
+function git_pull_all() {
+    CURRENT=$(git symbolic-ref --short -q HEAD)
+    echo "Starting from branch '$CURRENT'"
+    for branch in $(git branch | sed 's/^..//'); do
+        if [[ "$branch" != "$CURRENT" ]]; then
+            git switch $branch
+        fi
+        git pull origin $branch || break
+    done
+    git switch $CURRENT
+}
+
+
+#####################################################################
+# Function to publish to a release branch.
+function git_push_release() {
+    CURRENT=$(git symbolic-ref --short -q HEAD);
+    echo "Starting from branch '$CURRENT'"
+    git switch release
+    git push
+    git switch $CURRENT
+}
+
