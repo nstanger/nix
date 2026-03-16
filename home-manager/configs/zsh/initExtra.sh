@@ -135,6 +135,7 @@ function git_push_release() {
     CURRENT=$(git symbolic-ref --short -q HEAD);
     echo "Starting from branch '$CURRENT'"
     git switch release
+    git merge main
     git push
     git switch $CURRENT
 }
