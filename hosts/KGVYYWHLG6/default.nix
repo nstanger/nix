@@ -118,6 +118,7 @@ in {
             "Sim Daltonism" = 693112260;
             # "Slack for Desktop" = 803453959; # not configured
             "WhatsApp Messenger" = 310633997;
+            "Windows App" = 1295203466;
         };
     };
 
