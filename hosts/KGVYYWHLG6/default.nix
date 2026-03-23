@@ -107,6 +107,7 @@ in {
             # "scroll"
             # "spamsieve"
             "steermouse"
+            "utm"
             "zed" # basic text editor for now # minimal config
         ];
         masApps = import (append homebrew-path "mas-apps-common.nix") // {
