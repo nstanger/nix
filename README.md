@@ -2,15 +2,15 @@
 
 ## nix-darwin bootstrap on a new machine
 
-1. Install `nix` using the Determinate Systems installer:
+1. Install `nix` using the Lix installer:
 
    ```sh
-   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+   curl --proto '=https' --tlsv1.2 -sSf -L https://install.lix.systems/lix | sh -s -- install
    ```
 
-   > **Don’t install with the `--determinate` switch!** In the true spirit of Nix, there is a confusing distinction between the **Determinate Nix Installer** and **Determinate Nix**. The former can install either “plain” or “Determinate” Nix (using the `--determinate` switch). The latter is a downstream distribution of Nix that includes `nixd`. This is known to not play well with `nix-darwin` and in my experience it also deletes `/Library/LaunchDaemons/org.nixos.darwin-store.plist`, which sets up the Nix store mount. Obviously this borks Nix completely until you can manually re-mount the store (see below)!
+2. Open new terminal window to update the path or run `. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh`.
 
-2. Start a `git` shell:
+3. Start a `git` shell:
 
    ```sh
    nix shell nixpkgs#git
@@ -18,13 +18,13 @@
    # or: nix-shell -p git
    ```
 
-3. Clone the flake:
+4. Clone the flake:
 
    ```sh
    git clone https://github.com/nstanger/nix.git
    ```
 
-4. Assuming system and user names are correct, `cd` into the flake repo and bootstrap the flake:
+5. Assuming system and user names are correct, `cd` into the flake repo and bootstrap the flake:
 
    ```sh
    # prevent griping about "Unexpected files in /etc"
@@ -40,7 +40,7 @@
 
    If there is a “Problem with the SSL CA cert”, during the initial `nix build`, check the solutions in this issue: <https://github.com/nixos/nix/issues/2899>. this usually happens if starting again after wiping a previous `nix` installation, which can leave dangling links as per <https://github.com/nixos/nix/issues/2899#issuecomment-1669501326>. You need to `sudo rm /etc/ssl/certs/ca-certificates.crt` again before `darwin-rebuild switch` as otherwise it complains about the file being in the way.
 
-5. Profit!
+6. Profit!
 
 ## nix-darwin bootstrap on an existing machine
 
