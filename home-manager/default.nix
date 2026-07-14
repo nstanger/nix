@@ -73,13 +73,13 @@ in
         packages = with pkgs; [
             # SOFTWARE
             bfg-repo-cleaner
-            blackbox
             dos2unix
             exiftool
             eza
             file
             getopt
             git-credential-oauth
+            git-crypt
             git-extras
             gnugrep
             gnumake
