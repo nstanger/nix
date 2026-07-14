@@ -303,6 +303,8 @@ in
         enable = true;
         vimAlias = true;
         vimdiffAlias = true;
+        withRuby = false;
+        withPython3 = true;
         plugins = with pkgs.vimPlugins; [ quietlight ];
         extraConfig = import (append configs-path "vim/vimrc.nix");
     };
