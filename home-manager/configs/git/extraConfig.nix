@@ -39,11 +39,6 @@
             clean = "git media clean %f";
             smudge = "git media smudge %f";
         };
-        lfs = {
-            clean = "git-lfs clean -- %f";
-            smudge = "git-lfs smudge -- %f";
-            process = "git-lfs filter-process";
-        };
     };
     init.defaultBranch = "main";
     merge.tool = "vscode";
