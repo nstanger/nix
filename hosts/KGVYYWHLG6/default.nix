@@ -115,9 +115,10 @@ in {
             # "Final Cut Pro" = 424389933; # not configured
             Klack = 6446206067; # not configured, but pretty simple
             Mactracker = 430255202;
-            # "Pixelmator Pro" = 1289583905; # not configured
+            "Pixelmator Pro" = 1289583905; # not configured
             "Sim Daltonism" = 693112260;
             # "Slack for Desktop" = 803453959; # not configured
+            "Sweet Home 3D" = 669289700;
             "WhatsApp Messenger" = 310633997;
             "Windows App" = 1295203466;
         };
