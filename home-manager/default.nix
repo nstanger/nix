@@ -473,7 +473,7 @@ in
             "com.apple.TimeMachine".DoNotOfferNewDisksForBackup = 1;
             "com.apple.universalaccess" = import (append defaults-path "universal-access.nix");
             "com.araeliumgroup.screenflick" = import (append defaults-path "screenflick.nix");
-            "com.atow.msgfiler" = import (append defaults-path "msgfiler.nix");
+            # "com.atow.msgfiler" = import (append defaults-path "msgfiler.nix");
             "com.binarynights.ForkLift" = import (append defaults-path "forklift.nix");
             "com.charlessoft.pacifist" = import (append defaults-path "pacifist.nix");
             "com.crystalidea.macsfancontrol" = import (append defaults-path "macs-fan-control.nix");
