@@ -57,7 +57,8 @@
         onActivation = {
             autoUpdate = false;
             upgrade = false;
-            cleanup = "uninstall"; # should maybe be "zap" - remove anything not listed here
+            # changed from "uninstall" because it removed non-mas installed apps!
+            cleanup = "none";
         };
         taps = [
             "homebrew/core"
