@@ -15,6 +15,7 @@ pkgs: with pkgs; [
     nixfmt
     # Need node to shut up the VS Code Sonarlint extension.
     nodejs-slim_22
+    nurl
     tiddlywiki
     p7zip
     plantuml

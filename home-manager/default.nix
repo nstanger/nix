@@ -250,17 +250,17 @@ in
             theme = "QuietLight";
             italic-text = "always";
         };
-        # themes = {
-        #     QuietLight = {
-        #         src = pkgs.fetchFromGitHub {
-        #             owner = "Colorsublime";
-        #             repo = "Colorsublime-Themes"; # Bat uses sublime syntax for its themes
-        #             rev = "949c70f12a8d8f5d8cfc966be45fd42cd3a6904c";
-        #             sha256 = null;
-        #         };
-        #         file = "themes/QuietLight.tmTheme";
-        #     };
-        # };
+        themes = {
+            QuietLight = {
+                src = pkgs.fetchFromGitHub {
+                    owner = "Colorsublime";
+                    repo = "Colorsublime-Themes";
+                    rev = "949c70f12a8d8f5d8cfc966be45fd42cd3a6904c";
+                    hash = "sha256-HMHVQvAxcFg4jGdw4J98Xes3peAxRM87MVkbOnJjvi8=";
+                };
+                file = "themes/QuietLight.tmTheme";
+            };
+        };
     };
 
     programs.direnv = {
