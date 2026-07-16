@@ -8,7 +8,6 @@
     "bruno" # minimal config
     "calcservice" # no config
     "calibre" # config not in defaults
-    "color-oracle" # no config
     "dbeaver-community"
     "firefox" # config not in defaults
     "flux-app"
