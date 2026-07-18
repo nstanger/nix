@@ -61,10 +61,10 @@ in {
             "discord"
             "docker-desktop"
             "dropbox" # settings in cloud
+            "ears"
             "font-noto-color-emoji"
             "font-noto-sans-arabic"
             "font-noto-sans-sc"
-            "ears"
             "fujitsu-scansnap-home" # not configured
             "hugin" # no config; DEPRECATED in Homebrew 2025-11-10 (very old version: 2019)
             "iina"
