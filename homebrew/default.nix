@@ -47,7 +47,6 @@
             "font-inconsolata" # variable
             "font-iosevka"
         ];
-        caskArgs.no_quarantine = true;
         global = {
             autoUpdate = false;
             brewfile = true;
