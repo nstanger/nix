@@ -17,7 +17,7 @@
     "graphicconverter" # boo, it upgraded to 12 when I wasn't looking
     "inkscape" # install fails under home-manager, config not in defaults
     "keepassxc" # no config
-    "letter-opener"
+    # "letter-opener"
     "libreoffice" # config not in defaults
     "localsend"
     "macs-fan-control"
