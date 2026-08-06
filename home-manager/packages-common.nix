@@ -41,9 +41,9 @@ pkgs: with pkgs; [
         however that there is only a "python3xxPackages" (specfic
         Python version, e.g., "311"), not a "python3Packages".
     */
-    python314
-    python314Packages.virtualenvwrapper
-    python314Packages.pygments
+    python313
+    python313Packages.virtualenvwrapper
+    python313Packages.pygments
 
     # FONTS
     symbola # not in Homebrew
