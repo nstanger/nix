@@ -36,6 +36,7 @@
     "temurin@11"
     "temurin@17"
     "temurin@21"
+    "temurin@25"
     "thaw"
     "vlc"
     "wordservice"
