@@ -72,7 +72,7 @@ in {
             "moneydance" # minimal config
             "mongodb-compass" # minimal config
             "monitorcontrol"
-            "ollama-app" # minimal config
+            # "ollama-app" # minimal config
             "onedrive"
             "plexamp"
             # "ransomwhere"

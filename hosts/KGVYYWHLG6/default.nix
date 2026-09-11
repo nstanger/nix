@@ -102,7 +102,7 @@ in {
              "font-noto-sans-arabic"
              "font-noto-sans-sc"
             "mongodb-compass" # minimal config
-            "ollama-app" # minimal config
+            # "ollama-app" # minimal config
             # "ransomwhere"
             # "scroll"
             # "spamsieve"
