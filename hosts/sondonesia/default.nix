@@ -95,7 +95,7 @@ in {
             "Sim Daltonism" = 693112260;
             # "Slack for Desktop" = 803453959; # not configured
             "Sweet Home 3D" = 669289700;
-            "WhatsApp Messenger" = 310633997;
+            # "WhatsApp Messenger" = 310633997;
             "Windows App" = 1295203466;
         };
     };
