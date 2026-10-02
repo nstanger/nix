@@ -492,6 +492,7 @@ in
             "com.noodlesoft.Hazel" = import (append defaults-path "hazel.nix");
             "com.pascal.freeruler" = import (append defaults-path "free-ruler.nix");
             "com.stclairsoft.DefaultFolderX5" = import (append defaults-path "default-folder-x.nix");
+            "com.stonerl.Thaw" = import (append defaults-path "thaw.nix");
             "com.zeroonetwenty.BlueHarvest5" = import (append defaults-path "blueharvest.nix");
             "edu.ucsd.cs.mmccrack.bibdesk" = import (append defaults-path "bibdesk.nix");
             "com.vivaldi.Vivaldi".SUAutomaticallyUpdate = 0;
