@@ -72,7 +72,6 @@ in {
             # "moneydance" # minimal config
             # "mongodb-compass" # minimal config
             # "monitorcontrol"
-            # "ollama-app" # minimal config
             "onedrive"
             "plexamp"
             # "ransomwhere"
@@ -91,6 +90,7 @@ in {
             "eduVPN client" = 1317704208;
             # "Final Cut Pro" = 424389933; # not configured
             # Mactracker = 430255202;
+            "Logic Pro" = 634148309; # not configured
             "Pixelmator Pro" = 1289583905; # not configured
             # "Sim Daltonism" = 693112260;
             # "Slack for Desktop" = 803453959; # not configured
