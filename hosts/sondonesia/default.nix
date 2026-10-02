@@ -90,6 +90,7 @@ in {
             # "Apple Configurator" = 1037126344; # not configured
             "eduVPN client" = 1317704208;
             # "Final Cut Pro" = 424389933; # not configured
+            # "Logic Pro" = 634148309; # not configured
             Mactracker = 430255202;
             "Pixelmator Pro" = 1289583905; # not configured
             "Sim Daltonism" = 693112260;
