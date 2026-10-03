@@ -40,7 +40,7 @@
 
     python = {
         symbol = "󰌠 "; # Nerd Font f0320 nf-md-language_python
-        format = "[$symbol($version )(\($virtualenv\) )]($style)";
+        format = "[$symbol($version )(\\($virtualenv\\) )]($style)";
     };
 
     hostname = {
@@ -91,7 +91,7 @@
     };
 
     git_commit = {
-        format = "[\($hash$tag\)]($style)";
+        format = "[\\($hash$tag\\)]($style)";
         style = "bold bright-red";
         tag_disabled = false;
     };
